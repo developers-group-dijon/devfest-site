@@ -73,4 +73,24 @@
  * @typedef {RawEvent & EventProperties} Event
  */
 
+///////////////////////////////
+// Ticketing
+///////////////////////////////
+
+/**
+ * @typedef Ticketing
+ * @property {string} url
+ * @property {?string} comment
+ * @property {TicketPricing[]} princings
+ */
+
+/**
+ * @typedef TicketPricing
+ * @property {string} id
+ * @property {string} name
+ * @property {string} price
+ * @property {?string} comment
+ * @property {?string} url
+ */
+
 module.exports = {};

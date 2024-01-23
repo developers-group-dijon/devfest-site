@@ -34,7 +34,15 @@ permalink: "/"
       <h2>TODO: quelques speakers</h2>
    </div>
    <div>
-      <h2>TODO: billetterie</h2>
+      <h2>Réservez-votre billet</h2>
+      <div>
+      {% for pricing in ticketing.pricings %}
+         <div><a href="{{ pricing.url | default(ticketing.url) }}">{{ pricing.name }}</a></div>
+         <div>{{ pricing.price }}</div>
+         <div>{{ ticketing.comment }}</div>
+         <div>{{ pricing.comment }}</div>
+      {% endfor %}
+      </div>
    </div>
    <div>
       <h2>TODO: photos édition précédente</h2>
@@ -50,7 +58,7 @@ permalink: "/"
          <a href="{{ (event.previousEditions | first).url }}">Voir l'édition {{ (event.previousEditions | first).year }}</a>
          <h2>Organisateur</h2>
          <div>{{ event.team.message | md | safe }}</div>
-         <a href="/team/">Découvrir l'équipe</a>
+         <a href="{# TODO: page de l'équipe /team/ #}">Découvrir l'équipe</a>
       </div>
    </div>
    <div>
