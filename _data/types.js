@@ -32,11 +32,20 @@
  * @property {PreviousEdition[]} previousEditions
  * @property {EditionComment[]} comments
  * @property {Team} team
+ * @property {Link[]} aPropos
+ * @property {Link[]} contact
+ * @property {Link[]} resources
  */
 
 /**
  * @typedef WithRawEvent
  * @property {RawEvent} rawEvent
+ */
+
+/**
+ * @typedef Link
+ * @property {string} name
+ * @property {string} url
  */
 
 /**

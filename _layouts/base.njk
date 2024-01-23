@@ -23,5 +23,35 @@
       </nav>
     </header>
     <main>{{ content | safe }}</main>
+    <footer class="site-footer">
+      <div class="site-links">
+        <div class="centered-content">
+          <div class="site-links-group">
+            <h3>À propos</h3>
+            {%- for link in event.aPropos %}
+            <a href="{{ link.url }}">{{ link.name }}</a>
+            {%- endfor -%}
+            {%- for link in event.previousEditions %}
+            <a href="{{ link.url }}">{{ link.name }}</a>
+            {%- endfor -%}
+          </div>
+          <div class="site-links-group">
+            <h3>Ressources</h3>
+            {%- for link in event.resources %}
+            <a href="{{ link.url }}">{{ link.name }}</a>
+            {%- endfor -%}
+          </div>
+          <div class="site-links-group">
+            <h3>Contact</h3>
+            {%- for link in event.contact %}
+            <a href="{{ link.url }}">{{ link.name }}</a>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+      <div class="site-copyright">
+        <div class="centered-content">{{ event.name }}<a href="https://developers-group-dijon.fr/">Fait avec ❤ par le Developers Group Dijon</a></div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -50,6 +50,33 @@ const rawEvent = {
     why: "Le DevFest Dijon 2023 sera la deuxième édition dijonnaise d’un événement qui rassemble des milliers de développeurs et de passionnés dans le monde entier chaque année pour penser les technologies de demain. Le Devfest est LE lieu unique pour partager et échanger autour de nombreux sujets tels que Web, Cloud, Mobile, objets connectés et bien plus encore",
     photo: "/team/team.jpg",
   },
+  // TODO: lien vers les réseaux
+  aPropos: [
+    {
+      name: "Developers Group Dijon",
+      url: "https://developers-group-dijon.fr/",
+    },
+    {
+      name: "Google Developers Group",
+      url: "https://developers.google.com/",
+    },
+  ],
+  resources: [
+    {
+      name: "Code de Conduite",
+      url: "https://developers-group-dijon.fr/code-de-conduite/",
+    },
+  ],
+  contact: [
+    {
+      name: "Contactez-nous",
+      url: "mailto:developers.group.dijon@gmail.com",
+    },
+    // {
+    //   name: "L'équipe",
+    //   url: "/team/",
+    // },
+  ],
 };
 
 module.exports = rawEvent;

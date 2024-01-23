@@ -27,3 +27,11 @@ h3 {
 .site-header .menu a.ticketing-link:hover {
   background: #333;
 }
+
+.site-links {
+  background-color: #eee;
+}
+
+.site-copyright {
+  background-color: #ddd;
+}
