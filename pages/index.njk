@@ -62,6 +62,14 @@ permalink: "/"
       </div>
    </div>
    <div>
-     <h2>TODO: sponsors</h2>
+      <h2>Partenaires &amp; Sponsors</h2>
+      {% for sponsorType in sponsors %}
+      <div class="sponsorType">
+         <h3>{{ sponsorType.name }}</h3>
+         {% for sponsor in sponsorType.sponsors %}
+         <a class="sponsor" href="{{ sponsor.website }}" title="{{ sponsor.name }}"><img src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt="Logo {{ sponsor.name}}"></a>
+         {% endfor %}
+      </div>
+      {% endfor %}
    </div>
 </div>
