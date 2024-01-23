@@ -11,6 +11,15 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
   </head>
   <body>
-    {{ content | safe }}
+    <header class="site-header">
+      <nav class="centered-content">
+        <span><a href="/"><img src="/assets/brand-logo.png" alt="{{ event.name }}"></a></span>
+        <div class="menu">
+          <a class="item" href="/">Accueil</a>
+          <a class="item ticketing-link" href="{{ ticketing.url}}">Billeterie</a>
+        </div>
+      </nav>
+    </header>
+    <main>{{ content | safe }}</main>
   </body>
 </html>

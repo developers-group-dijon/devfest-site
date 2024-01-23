@@ -1,3 +1,57 @@
+/* Règles générales */
 body {
-  max-width: 1000px;
+  margin: 0;
+}
+
+.centered-content {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
+}
+
+/* Header */
+.site-header {
+  overflow: hidden;
+  height: 64px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  background-color: #fff;
+}
+
+.site-header > .centered-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.site-header .menu {
+  display: flex;
+  height: 100%;
+}
+
+/* Footer */
+.site-copyright {
+  overflow: hidden;
+  min-height: 50px;
+}
+
+.site-copyright > .centered-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.site-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1rem;
+}
+
+.site-links-group {
+  display: flex;
+  flex-direction: column;
 }

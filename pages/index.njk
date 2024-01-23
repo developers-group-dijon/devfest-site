@@ -4,36 +4,43 @@ title: "DevFest Dijon"
 permalink: "/"
 ---
 
-<div>
-   <div>
-      <span>
-         {%- if (event.dayCount === 1) -%}
-            {{ event.dateStart | dateFormat }}
-         {%- else -%}
-            du {{ event.dateStart | dateFormat }} au {{ event.dateEnd | dateFormat }}
-         {%- endif -%}
-      </span>
-      <span>Le plus grand festival dédié aux développeurs de Bourgogne-Franche-Comté</span>
-      <span>{{ event.location.name }}</span>
+<link rel="stylesheet" type="text/css" href="/assets/css/index.css" />
+<div class="hero-info">
+   <img class="big-logo" src="/assets/index/big-logo.png">
+   <div class="hero-title">
+      {%- if (event.dayCount === 1) -%}
+         {{ event.dateStart | dateFormat }}
+      {%- else -%}
+         du {{ event.dateStart | dateFormat }} au {{ event.dateEnd | dateFormat }}
+      {%- endif -%}
    </div>
-   <div>
+   <div class="hero-title">Le plus grand festival dédié aux développeurs de Bourgogne-Franche-Comté</div>
+   <div class="hero-title">{{ event.location.name }}</div>
+   {# TODO: ajouter des liens vers le replay #}
+</div>
+<div>
+   <div class="centered-content event-info">
       <div>
       {%- for comment in event.comments %}
          <h2>{{ comment.title }}</h2>
          <div>{{- comment.content | md | safe -}}</div>
       {%- endfor %}
       </div>
-      <div>
-         <div><span>{{ event.visitors }}</span><span>Participants</span></div>
-         <div><span>{{ event.dayCount }}</span><span>Journée</span></div>
-         <div><span>{{ event.sessionCount }}</span><span>Sessions</span></div>
-         <div><span>{{ tracks.length }}</span><span>Scènes</span></div>
+      <div class="stats">
+         <div class="stat"><span class="stat-value">{{ event.visitors }}</span><span class="stat-label">Participants</span></div>
+         <div class="stat"><span class="stat-value">{{ event.dayCount }}</span><span class="stat-label">Journée</span></div>
+         <div class="stat"><span class="stat-value">{{ event.sessionCount }}</span><span class="stat-label">Sessions</span></div>
+         <div class="stat"><span class="stat-value">{{ tracks.length }}</span><span class="stat-label">Scènes</span></div>
       </div>
    </div>
-   <div>
+</div>
+<div>
+   <div class="centered-content">
       <h2>TODO: quelques speakers</h2>
    </div>
-   <div>
+</div>
+<div>
+   <div class="centered-content">
       <h2>Réservez-votre billet</h2>
       <div>
       {% for pricing in ticketing.pricings %}
@@ -44,31 +51,37 @@ permalink: "/"
       {% endfor %}
       </div>
    </div>
-   <div>
-      <h2>TODO: photos édition précédente</h2>
-   </div>
-   <div>
-      <h2>TODO: location (carte + infos)</h2>
-   </div>
-   <div>
+</div>
+<div>
+   <h2>TODO: photos édition précédente</h2>
+</div>
+<div>
+   <h2>TODO: location (carte + infos)</h2>
+</div>
+<div>
+   <div class="centered-content team-info">
       <img src="{{ event.team.photo | normalizeAssetUrl }}" alt="Photo de l'équipe oragnisatrice">
       <div>
          <h2>Pourquoi un Devfest à Dijon ?</h2>
          <div>{{ event.team.why | md | safe }}</div>
-         <a href="{{ (event.previousEditions | first).url }}">Voir l'édition {{ (event.previousEditions | first).year }}</a>
+         <a href="{{ (event.previousEditions | first).url }}">Jeter un œil au {{ (event.previousEditions | first).name }}</a>
          <h2>Organisateur</h2>
          <div>{{ event.team.message | md | safe }}</div>
          <a href="{# TODO: page de l'équipe /team/ #}">Découvrir l'équipe</a>
       </div>
    </div>
-   <div>
+</div>
+<div>
+   <div class="centered-content">
       <h2>Partenaires &amp; Sponsors</h2>
       {% for sponsorType in sponsors %}
       <div class="sponsorType">
          <h3>{{ sponsorType.name }}</h3>
-         {% for sponsor in sponsorType.sponsors %}
-         <a class="sponsor" href="{{ sponsor.website }}" title="{{ sponsor.name }}"><img src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt="Logo {{ sponsor.name}}"></a>
-         {% endfor %}
+         <div class="sponsors">
+            {% for sponsor in sponsorType.sponsors %}
+            <a class="sponsor" href="{{ sponsor.website }}" title="{{ sponsor.name }}"><img src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt="Logo {{ sponsor.name}}"></a>
+            {% endfor %}
+         </div>
       </div>
       {% endfor %}
    </div>
