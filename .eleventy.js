@@ -1,5 +1,6 @@
 // @ts-ignore
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const filters = require("./_eleventy/filters");
 
 module.exports =
   /**
@@ -20,6 +21,13 @@ module.exports =
     eleventyConfig.addPassthroughCopy({
       _assets: "/assets",
     });
+
+    ////
+    // Filtres
+    ////
+    for (const filter in filters) {
+      eleventyConfig.addFilter(filter, filters[filter]);
+    }
 
     ////
     // Configuration

@@ -4,6 +4,56 @@ title: "DevFest Dijon"
 permalink: "/"
 ---
 
-<div class="home-page">
-Hello !
+<div>
+   <div>
+      <span>
+         {%- if (event.dayCount === 1) -%}
+            {{ event.dateStart | dateFormat }}
+         {%- else -%}
+            du {{ event.dateStart | dateFormat }} au {{ event.dateEnd | dateFormat }}
+         {%- endif -%}
+      </span>
+      <span>Le plus grand festival dédié aux développeurs de Bourgogne-Franche-Comté</span>
+      <span>{{ event.location.name }}</span>
+   </div>
+   <div>
+      <div>
+      {%- for comment in event.comments %}
+         <h2>{{ comment.title }}</h2>
+         <div>{{- comment.content | md | safe -}}</div>
+      {%- endfor %}
+      </div>
+      <div>
+         <div><span>{{ event.visitors }}</span><span>Participants</span></div>
+         <div><span>{{ event.dayCount }}</span><span>Journée</span></div>
+         <div><span>{{ event.sessionCount }}</span><span>Sessions</span></div>
+         <div><span>0 {# TODO: nb de tracks #}</span><span>Scènes</span></div>
+      </div>
+   </div>
+   <div>
+      <h2>TODO: quelques speakers</h2>
+   </div>
+   <div>
+      <h2>TODO: billetterie</h2>
+   </div>
+   <div>
+      <h2>TODO: photos édition précédente</h2>
+   </div>
+   <div>
+      <h2>TODO: location (carte + infos)</h2>
+   </div>
+   <div>
+      <img src="{{ event.team.photo | normalizeAssetUrl }}" alt="Photo de l'équipe oragnisatrice">
+      <div>
+         <h2>Pourquoi un Devfest à Dijon ?</h2>
+         <div>{{ event.team.why | md | safe }}</div>
+         <a href="{{ (event.previousEditions | first).url }}">Voir l'édition {{ (event.previousEditions | first).year }}</a>
+         <h2>Organisateur</h2>
+         <div>{{ event.team.message | md | safe }}</div>
+         <a href="/team/">Découvrir l'équipe</a>
+      </div>
+   </div>
+   <div>
+     <h2>TODO: sponsors</h2>
+   </div>
 </div>

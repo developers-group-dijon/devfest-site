@@ -24,6 +24,7 @@
     "@commitlint/cli": "^18.5.0",
     "@commitlint/config-conventional": "^18.5.0",
     "@types/debug": "^4.1.12",
+    "@types/markdown-it": "^13.0.7",
     "debug": "^4.3.4",
     "eslint": "^8.56.0",
     "eslint-plugin-jsdoc": "^48.0.2",
