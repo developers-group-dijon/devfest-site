@@ -112,4 +112,14 @@
  * @property {string} website
  */
 
+///////////////////////////////
+// Track
+///////////////////////////////
+
+/**
+ * @typedef Track
+ * @property {string} id
+ * @property {string} name
+ */
+
 module.exports = {};
