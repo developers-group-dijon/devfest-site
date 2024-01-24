@@ -39,15 +39,18 @@ permalink: "/"
       <h2>TODO: quelques speakers</h2>
    </div>
 </div>
-<div>
+<div class="ticketing">
    <div class="centered-content">
       <h2>Réservez-votre billet</h2>
-      <div>
+      <div class="pricings">
       {% for pricing in ticketing.pricings %}
-         <div><a href="{{ pricing.url | default(ticketing.url) }}">{{ pricing.name }}</a></div>
-         <div>{{ pricing.price }}</div>
-         <div>{{ ticketing.comment }}</div>
-         <div>{{ pricing.comment }}</div>
+         <a class="pricing" href="{{ pricing.url | default(ticketing.url) }}">
+            <div class="pricing-name">{{ pricing.name }}</div>
+            <div class="pricing-price">{{ pricing.price }}</div>
+            <div class="pricing-ticketing-comment">{{ ticketing.comment }}</div>
+            <div class="pricing-comment">{{ pricing.comment }}</div>
+            <div class="pricing-action">Acheter</div>
+         </a>
       {% endfor %}
       </div>
    </div>

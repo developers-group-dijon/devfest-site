@@ -67,3 +67,60 @@
   grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
 }
+
+.ticketing {
+  background-color: #af0179;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.pricings {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: start;
+}
+
+.pricing {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #333;
+  width: 200px;
+  text-align: center;
+  padding-top: 24px;
+}
+
+.pricing > * {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 0.5rem;
+}
+
+.pricing:hover {
+  background-color: #eee;
+}
+
+.pricing-name {
+  font-size: 1.2rem;
+}
+
+.pricing-price {
+  font-size: 2rem;
+}
+
+.pricing-ticketing-comment {
+  font-size: 0.9rem;
+}
+
+.pricing-comment {
+  font-size: 0.8rem;
+}
+
+.pricing-action {
+  border-top: 1px solid #ddd;
+  padding: 1rem 0;
+  margin-top: 0.5rem;
+}
