@@ -288,6 +288,20 @@ const SocialId = {
  * @typedef {ParsedSession & SessionProperties} Session
  */
 
+///////////////////////////////
+// Slot
+///////////////////////////////
+/**
+ * @typedef {Map<Time, Date>} SlotsByTimeMap
+ */
+/**
+ * @typedef {Map<Day, Date[]>} SlotsByDay
+ */
+/**
+ * @typedef WithSlotsByDay
+ * @property {SlotsByDay} slots
+ */
+
 module.exports = {
   SocialId,
 };

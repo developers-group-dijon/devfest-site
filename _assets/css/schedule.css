@@ -1,0 +1,69 @@
+.grid-day > div.session {
+  border: 1px solid #333;
+  background-color: #eee;
+  padding: 1rem;
+}
+
+.date {
+  /* Pour que l'ancre ne soit pas masquée par le header */
+  padding-top: 64px;
+  margin-top: -64px;
+}
+
+.time {
+  text-align: right;
+}
+
+.hours {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 2rem;
+  width: 2rem;
+}
+
+.minutes {
+  display: inline-block;
+  font-weight: 400;
+  width: 1rem;
+}
+
+.track {
+  font-weight: 400;
+  text-align: center;
+}
+
+.session .title {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.session .abstract {
+  margin-bottom: 1rem;
+}
+
+.session .extra {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  text-align: right;
+}
+
+.session .speakers {
+  margin-top: 1rem;
+}
+
+.session .speaker-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.session .speaker .speaker-name {
+  vertical-align: middle;
+}
+
+.session .speaker .avatar {
+  width: 2rem;
+  height: 2rem;
+  vertical-align: middle;
+}

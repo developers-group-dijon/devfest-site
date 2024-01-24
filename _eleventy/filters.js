@@ -8,12 +8,28 @@ const defaultDateFormat = new Intl.DateTimeFormat("fr-FR", {
   day: "numeric",
   weekday: "long",
 });
+
+const defaultDayFormat = new Intl.DateTimeFormat("fr-FR", {
+  day: "numeric",
+  weekday: "long",
+});
+
 /**
  * @param {Date} value
  * @returns {string}
  */
 function dateFormat(value) {
   return defaultDateFormat.format(value);
+}
+
+/**
+ * @param {import('../_data/types').Day} value
+ * @returns {string}
+ */
+function dayFormat(value) {
+  return defaultDayFormat.format(
+    new Date(value / 10000, (value / 100) % 100, value % 100),
+  );
 }
 
 /**
@@ -65,14 +81,49 @@ function subList(value, size) {
 }
 
 /**
+ * @param {?Date} value
+ * @returns {string}
+ */
+function hours(value) {
+  return `${value?.getHours()}`;
+}
+
+/**
+ * @param {?Date} value
+ * @returns {string}
+ */
+function minutes(value) {
+  const minutes = value?.getMinutes();
+  if (minutes == null) {
+    return "";
+  }
+  if (minutes >= 10) {
+    return `${minutes}`;
+  }
+  return `0${minutes}`;
+}
+
+/**
+ * @param {Date} value
+ * @returns {string}
+ */
+function dateKey(value) {
+  return `${value.getTime()}`;
+}
+
+/**
  * @type {{[key: string]: Function}}
  */
 const res = {
   md,
   dateFormat,
+  dayFormat,
   normalizeAssetUrl,
   socialLink,
   subList,
+  hours,
+  minutes,
+  dateKey,
 };
 
 module.exports = res;

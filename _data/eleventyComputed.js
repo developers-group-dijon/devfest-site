@@ -1,4 +1,4 @@
-const { nn } = require("../_eleventy/utils");
+const { nn, sortedEntries } = require("../_eleventy/utils");
 
 /**
  * @param {Date} date
@@ -99,6 +99,84 @@ function parseSessions(data) {
   });
 }
 
+/**
+ * Calcule les slots d'une journée.
+ * Il s'agit des  de début des sessions.
+ * @param { import('./types').WithParsedSessions } data
+ * @returns {import('./types').SlotsByDay}
+ */
+function buildSlots(data) {
+  [data.parsedSessions];
+  // Identification des dates de début des sessions pour chaque jour
+  // Pour ne pas avoir de dates de début en doublon, on passe par
+  // une Map avec comme clé le {@type {import('./types').Time}} (number)
+  // des dates de début.
+  /** @type {Map<import("./types").Day, Map<number, Date>>} */
+  const tmpMap = new Map();
+  for (const session of data.parsedSessions) {
+    if (!tmpMap.has(session.day)) {
+      tmpMap.set(session.day, new Map());
+    }
+    nn(tmpMap.get(session.day)).set(
+      session.dateStart.getTime(),
+      session.dateStart,
+    );
+  }
+
+  // On trie les entrées de la map (jour et date)
+  // et on ne garde que les dates pour les slots
+  /** @type {import('./types').SlotsByDay} */
+  const res = new Map(
+    sortedEntries(tmpMap).map(([day, dateMap]) => [
+      day,
+      sortedEntries(dateMap).map(([_, date]) => date),
+    ]),
+  );
+
+  return res;
+}
+
+/**
+ * Calcule le nombre de slots que va occcuper une session.
+ * @param {import('./types').ParsedSession} session
+ * @param {Date[]} slots
+ * @returns {number}
+ */
+function countSlots({ dateStart, duration }, slots) {
+  let res = 0;
+
+  const timeStart = dateStart.getTime();
+  const timeEnd = dateStart.getTime() + duration;
+  for (const slotDateStart of slots) {
+    const slotTimeStart = slotDateStart.getTime();
+    if (slotTimeStart < timeStart) {
+      continue;
+    }
+    if (slotTimeStart >= timeStart && slotDateStart.getTime() <= timeEnd) {
+      res++;
+    }
+    break;
+  }
+  return res;
+}
+
+/**
+ * @param { import('./types').WithParsedSessions & import('./types').WithSlotsByDay } data
+ * @returns {import('./types').Session[]}
+ */
+function buildSessions(data) {
+  [data.parsedSessions, data.slots];
+  if (!data.parsedSessions) {
+    return [];
+  }
+  return data.parsedSessions.map((session) => {
+    return {
+      ...session,
+      nbSlots: countSlots(session, nn(data.slots.get(session.day))),
+    };
+  });
+}
+
 module.exports = {
   event: parseEvent,
   speakersMap: buildSpeakersMap,
@@ -106,4 +184,6 @@ module.exports = {
   tracksMap: buildTracksMap,
   categoriesMap: buildCategoriesMap,
   parsedSessions: parseSessions,
+  slots: buildSlots,
+  sessions: buildSessions,
 };
