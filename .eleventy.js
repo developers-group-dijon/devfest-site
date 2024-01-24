@@ -21,6 +21,14 @@ module.exports =
     eleventyConfig.addPassthroughCopy({
       _assets: "/assets",
     });
+    eleventyConfig.addPassthroughCopy({
+      "./node_modules/@fontsource/poppins/latin.css":
+        "./assets/poppins/latin.css",
+      "./node_modules/@fontsource/poppins/latin-italic.css":
+        "./assets/poppins/latin-italic.css",
+      "./node_modules/@fontsource/poppins/files/poppins-latin-*":
+        "./assets/poppins/files/",
+    });
 
     ////
     // Filtres

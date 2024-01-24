@@ -22,7 +22,7 @@ permalink: "/"
    <div class="centered-content event-info">
       <div>
       {%- for comment in event.comments %}
-         <h2>{{ comment.title }}</h2>
+         <h1>{{ comment.title }}</h1>
          <div>{{- comment.content | md | safe -}}</div>
       {%- endfor %}
       </div>
@@ -36,12 +36,12 @@ permalink: "/"
 </div>
 <div>
    <div class="centered-content">
-      <h2>TODO: quelques speakers</h2>
+      <h1>TODO: quelques speakers</h1>
    </div>
 </div>
 <div class="ticketing">
    <div class="centered-content">
-      <h2>Réservez-votre billet</h2>
+      <h1>Réservez-votre billet</h1>
       <div class="pricings">
       {% for pricing in ticketing.pricings %}
          <a class="pricing" href="{{ pricing.url | default(ticketing.url) }}">
@@ -56,19 +56,19 @@ permalink: "/"
    </div>
 </div>
 <div>
-   <h2>TODO: photos édition précédente</h2>
+   <h1>TODO: photos édition précédente</h1>
 </div>
 <div>
-   <h2>TODO: location (carte + infos)</h2>
+   <h1>TODO: location (carte + infos)</h1>
 </div>
 <div>
    <div class="centered-content team-info">
       <img src="{{ event.team.photo | normalizeAssetUrl }}" alt="Photo de l'équipe oragnisatrice">
       <div>
-         <h2>Pourquoi un Devfest à Dijon ?</h2>
+         <h1>Pourquoi un Devfest à Dijon ?</h1>
          <div>{{ event.team.why | md | safe }}</div>
          <a href="{{ (event.previousEditions | first).url }}">Jeter un œil au {{ (event.previousEditions | first).name }}</a>
-         <h2>Organisateur</h2>
+         <h1>Organisateur</h1>
          <div>{{ event.team.message | md | safe }}</div>
          <a href="{# TODO: page de l'équipe /team/ #}">Découvrir l'équipe</a>
       </div>
@@ -76,10 +76,10 @@ permalink: "/"
 </div>
 <div>
    <div class="centered-content">
-      <h2>Partenaires &amp; Sponsors</h2>
+      <h1>Partenaires &amp; Sponsors</h1>
       {% for sponsorType in sponsors %}
       <div class="sponsorType">
-         <h3>{{ sponsorType.name }}</h3>
+         <h2>{{ sponsorType.name }}</h2>
          <div class="sponsors">
             {% for sponsor in sponsorType.sponsors %}
             <a class="sponsor" href="{{ sponsor.website }}" title="{{ sponsor.name }}"><img src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt="Logo {{ sponsor.name}}"></a>

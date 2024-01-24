@@ -1,15 +1,57 @@
+body {
+  font-family: Poppins, sans-serif;
+  font-weight: 200;
+  font-size: 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 1em 0 0.5em;
+  font-weight: 400;
+}
+
+/*
+La taille de la police des titres est calculée avec un ratio "Major second" (1.125)
+Le site https://typescale.com/?scale=1.125 permet d'avoir un aperçu du rendu
+*/
+h1 {
+  font-size: 2.027rem;
+}
+
+h2 {
+  font-size: 1.802rem;
+}
+
+h3 {
+  font-size: 1.602rem;
+}
+
+h4 {
+  font-size: 1.424rem;
+}
+
+h5 {
+  font-size: 1.266rem;
+}
+
+h6 {
+  font-size: 1.125rem;
+}
+
+small {
+  font-size: 0.889rem;
+}
+
 .site-header {
   background-color: #fff0;
 }
 
 body.scrolled .site-header {
   background-color: #fff;
-}
-
-h1,
-h2,
-h3 {
-  margin: 30px 0 20px;
 }
 
 .site-header .menu a.item {

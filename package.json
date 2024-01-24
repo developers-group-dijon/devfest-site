@@ -35,5 +35,8 @@
     "stylelint": "^16.2.0",
     "stylelint-config-standard": "^36.0.0",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@fontsource/poppins": "^5.0.8"
   }
 }
