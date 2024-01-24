@@ -101,6 +101,7 @@
 
 .pricing:hover {
   background-color: #eee;
+  text-decoration: none;
 }
 
 .pricing-name {
