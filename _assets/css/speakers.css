@@ -1,0 +1,15 @@
+.speakers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+
+.speaker {
+  border: 1px solid #ddd;
+  padding: 2rem;
+}
+
+.company {
+  margin-bottom: 1rem;
+}
