@@ -1,0 +1,16 @@
+---
+layout: base.njk
+---
+
+{%- if css %}
+<link rel="stylesheet" type="text/css" href="{{ css | normalizeAssetUrl }}" />
+{%- endif -%}
+<div class="page-header" style="background-image: url({{ (image if image else '/default-background.jpg') | normalizeAssetUrl }});">
+  <div class="centered-content">
+    <h1>{{ title }}</h1>
+    <div class="page-description">{{ description | md | safe }}</div>
+  </div>
+</div>
+<main class="centered-content page-content">
+  {{ content | safe }}
+</main>

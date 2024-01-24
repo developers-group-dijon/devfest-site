@@ -108,3 +108,12 @@ body.scrolled .site-header {
 .visible-link::after {
   content: " →";
 }
+
+.page-header {
+  background: no-repeat center center;
+  background-size: cover;
+}
+
+.page-description {
+  max-width: 600px;
+}
