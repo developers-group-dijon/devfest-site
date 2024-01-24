@@ -49,7 +49,7 @@ permalink: "/"
             <div class="pricing-price">{{ pricing.price }}</div>
             <div class="pricing-ticketing-comment">{{ ticketing.comment }}</div>
             <div class="pricing-comment">{{ pricing.comment }}</div>
-            <div class="pricing-action">Acheter</div>
+            <div class="pricing-action visible-link">Acheter</div>
          </a>
       {% endfor %}
       </div>
@@ -67,10 +67,10 @@ permalink: "/"
       <div>
          <h1>Pourquoi un Devfest à Dijon ?</h1>
          <div>{{ event.team.why | md | safe }}</div>
-         <a href="{{ (event.previousEditions | first).url }}">Jeter un œil au {{ (event.previousEditions | first).name }}</a>
+         <a class="visible-link" href="{{ (event.previousEditions | first).url }}">Jeter un œil au {{ (event.previousEditions | first).name }}</a>
          <h1>Organisateur</h1>
          <div>{{ event.team.message | md | safe }}</div>
-         <a href="{# TODO: page de l'équipe /team/ #}">Découvrir l'équipe</a>
+         <a class="visible-link" href="{# TODO: page de l'équipe /team/ #}">Découvrir l'équipe</a>
       </div>
    </div>
 </div>

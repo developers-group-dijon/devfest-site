@@ -95,3 +95,16 @@ body.scrolled .site-header {
 .site-copyright {
   background-color: #ddd;
 }
+
+.visible-link {
+  padding: 0.2rem 0.5rem;
+  color: #af0179;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+
+.visible-link::after {
+  content: " →";
+}
