@@ -9,7 +9,7 @@ eleventyComputed:
 ---
 <div class="speakers">
    {%- for speaker in speakers %}
-   <div class="speaker">
+   <a class="speaker" href="/speaker/{{ speaker.id | slugify }}">
       <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">
       <h4>{{ speaker.name }}</h4>
       <div>{{ speaker.jobTitle }}</div>
@@ -20,6 +20,6 @@ eleventyComputed:
          <span class="social" href="{{ social.name | socialLink(social.id) }}"><a>{{social.name}}</a></span>
          {%- endfor -%}
       </div>
-   </div>
+   </a>
    {%- endfor -%}
 </div>

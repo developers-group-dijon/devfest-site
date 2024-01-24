@@ -1,0 +1,32 @@
+---js
+{
+    pagination: {
+        data: "speakers",
+        size: 1,
+        alias: "speaker",
+    },
+    permalink: "/speaker/{{ speaker.id | slugify }}/",
+    layout: "page.njk",
+    // image: "/team/background.jpg"
+    css: "/css/speaker.css",
+    eleventyComputed:{
+        title: "{{ speaker.name }}",
+        description: "{{ speaker.jobTitle }} {{ speaker.company }}",
+    },
+}
+---
+
+<div class="speaker">
+    <div>
+        <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/speakers/defaut.png') | normalizeAssetUrl }}" alt="avatar">
+        <div class="job_title">{{ speaker.bio | md | safe }}</div>
+        <div class="socials">
+            {%- for social in member.socials %}
+            <span class="social" href="{{ social.name | socialLink(social.id) }}"><a>{{social.name}}</a></span>
+            {%- endfor -%}
+        </div>
+    </div>
+    <div class="sessions">
+    </div>
+    {# TODO: liste des sessions du speaker #}
+</div>
