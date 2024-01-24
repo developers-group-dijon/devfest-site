@@ -17,6 +17,11 @@
  * @typedef {string} MdString
  */
 
+/**
+ * Durée en millisecondes
+ * @typedef {number} Duration
+ */
+
 ///////////////////////////////
 // Event
 ///////////////////////////////
@@ -130,9 +135,20 @@
  * @property {string} id
  * @property {string} name
  */
+/**
+ * @typedef WithTracks
+ * @property {Track[]} tracks
+ */
+/**
+ * @typedef {Map<string, Track>} TracksMap
+ */
+/**
+ * @typedef WithTracksMap
+ * @property {TracksMap} tracksMap
+ */
 
 ///////////////////////////////
-// Member
+// Member et speaker
 ///////////////////////////////
 
 /**
@@ -145,6 +161,29 @@
  * @property {?string} photoUrl
  * @property {Social[]} socials
  * @property {?string} companyLogoUrl
+ */
+
+/**
+ * @typedef Speaker
+ * @property {string} id
+ * @property {string} name
+ * @property {?string} jobTitle
+ * @property {?string} bio
+ * @property {?string} company
+ * @property {?string} photoUrl
+ * @property {Social[]} socials
+ * @property {?string} companyLogoUrl
+ */
+/**
+ * @typedef WithSpeakersMap
+ * @property {SpeakersMap} speakersMap
+ */
+/**
+ * @typedef {Map<string, Speaker>} SpeakersMap
+ */
+/**
+ * @typedef WithSpeakers
+ * @property {Speaker[]} speakers
  */
 
 /**
@@ -162,6 +201,92 @@ const SocialId = {
   LINKEDIN: "linkedin",
   GITHUB: "github",
 };
+
+///////////////////////////////
+// Category
+///////////////////////////////
+/**
+ * @typedef Category
+ * @property {string} id
+ * @property {string} name
+ * @property {string} color
+ */
+/**
+ * @typedef WithCategories
+ * @property {Category[]} categories
+ */
+/**
+ * @typedef {Map<string, Category>} CategoriesMap
+ */
+/**
+ * @typedef WithCategoriesMap
+ * @property {CategoriesMap} categoriesMap
+ */
+
+///////////////////////////////
+// Format
+///////////////////////////////
+/**
+ * @typedef Format
+ * @property {string} id
+ * @property {string} name
+ * @property {number} durationMinutes
+ */
+/**
+ * @typedef WithFormats
+ * @property {Format[]} formats
+ */
+/**
+ * @typedef {Map<string, Format>} FormatsMap
+ */
+/**
+/**
+ * @typedef WithFormatsMap
+ * @property {FormatsMap} formatsMap
+ */
+
+///////////////////////////////
+// Session
+///////////////////////////////
+/**
+ * @typedef RawSession
+ * @property {string} id
+ * @property {Date} dateStart
+ * @property {string} title
+ * @property {?string} abstract
+ * @property {number} durationMinutes
+ * @property {string[]} speakerIds
+ * @property {?string} trackId
+ * @property {string[]?} trackRange
+ * @property {string} formatId
+ * @property {string} categoryId
+ * @property {boolean=} hideTrackTitle
+ */
+/**
+ * @typedef WithRawSessions
+ * @property {RawSession[]} rawSessions
+ */
+
+/**
+ * @typedef ParsedSessionProperties
+ * @property {Day} day
+ * @property {Duration} duration
+ * @property {Speaker[]} speakers
+ * @property {Format} format
+ * @property {Category} category
+ * @property {Track[]} tracks
+ * @typedef {RawSession & ParsedSessionProperties} ParsedSession
+ */
+/**
+ * @typedef WithParsedSessions
+ * @property {ParsedSession[]} parsedSessions
+ */
+
+/**
+ * @typedef SessionProperties
+ * @property {number} nbSlots
+ * @typedef {ParsedSession & SessionProperties} Session
+ */
 
 module.exports = {
   SocialId,
