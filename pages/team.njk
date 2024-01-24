@@ -1,0 +1,27 @@
+---
+permalink: /team/
+layout: page.njk
+title: L'équipe
+# image: "/team/background.jpg"
+css: "/css/team.css"
+eleventyComputed:
+   description: Découvrez l'équipe de bénévoles qui oeuvre chaque jour pour donner vie au {{ event.name }}
+---
+
+<div class="team-page">
+   <div class="team">
+      {%- for member in team %}
+      <div class="member">
+         <img class="avatar" src="{{ (member.photoUrl if member.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">
+         <h4 class="name">{{ member.name }}</h4>
+         <div class="job_title">{{ member.jobTitle }} ⋅ {{ member.company }}</div>
+         <div class="bio">{{ member.bio }}</div>
+         <div class="socials">
+            {%- for social in member.socials %}
+            <a class="social" href="{{ social.link | socialLink(social.id) }}">{{social.name}}</a>
+            {%- endfor -%}
+         </div>
+      </div>
+      {%- endfor -%}
+   </div>
+</div>

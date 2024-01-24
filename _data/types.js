@@ -131,4 +131,38 @@
  * @property {string} name
  */
 
-module.exports = {};
+///////////////////////////////
+// Member
+///////////////////////////////
+
+/**
+ * @typedef Member
+ * @property {string} id
+ * @property {string} name
+ * @property {?string} jobTitle
+ * @property {?string} bio
+ * @property {?string} company
+ * @property {?string} photoUrl
+ * @property {Social[]} socials
+ * @property {?string} companyLogoUrl
+ */
+
+/**
+ * @typedef Social
+ * @property {string} id
+ * @property {string} name
+ * @property {string} link
+ */
+
+/**
+ * @readonly
+ * @enum {string}
+ */
+const SocialId = {
+  LINKEDIN: "linkedin",
+  GITHUB: "github",
+};
+
+module.exports = {
+  SocialId,
+};

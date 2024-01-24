@@ -1,3 +1,5 @@
+const { SocialId } = require("../_data/types");
+
 const markdownit = require("markdown-it")({ typographer: true, breaks: true });
 
 const defaultDateFormat = new Intl.DateTimeFormat("fr-FR", {
@@ -37,12 +39,28 @@ function normalizeAssetUrl(value) {
 }
 
 /**
+ * @param {string} userId
+ * @param {SocialId} socialId
+ * @returns {string}
+ */
+function socialLink(userId, socialId) {
+  switch (socialId) {
+    case SocialId.GITHUB:
+      return `https://github.com/${userId}`;
+    case SocialId.LINKEDIN:
+      return `https://www.linkedin.com/in/${userId}`;
+    default:
+      throw new Error(`Réseau social non supporté : ${socialId}`);
+  }
+}
+/**
  * @type {{[key: string]: Function}}
  */
 const res = {
   md,
   dateFormat,
   normalizeAssetUrl,
+  socialLink,
 };
 
 module.exports = res;

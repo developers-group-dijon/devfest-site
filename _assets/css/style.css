@@ -109,6 +109,13 @@ body.scrolled .site-header {
   content: " →";
 }
 
+.avatar {
+  object-fit: cover;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+}
+
 .page-header {
   background: no-repeat center center;
   background-size: cover;

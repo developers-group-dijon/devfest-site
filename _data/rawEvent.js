@@ -72,10 +72,10 @@ const rawEvent = {
       name: "Contactez-nous",
       url: "mailto:developers.group.dijon@gmail.com",
     },
-    // {
-    //   name: "L'équipe",
-    //   url: "/team/",
-    // },
+    {
+      name: "L'équipe",
+      url: "/team/",
+    },
   ],
 };
 
