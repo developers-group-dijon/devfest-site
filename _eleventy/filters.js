@@ -53,6 +53,17 @@ function socialLink(userId, socialId) {
       throw new Error(`Réseau social non supporté : ${socialId}`);
   }
 }
+
+/**
+ * @template T
+ * @param {T[]} value
+ * @param {number} size
+ * @returns {T[]}
+ */
+function subList(value, size) {
+  return value.slice(0, size);
+}
+
 /**
  * @type {{[key: string]: Function}}
  */
@@ -61,6 +72,7 @@ const res = {
   dateFormat,
   normalizeAssetUrl,
   socialLink,
+  subList,
 };
 
 module.exports = res;

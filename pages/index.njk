@@ -36,7 +36,17 @@ permalink: "/"
 </div>
 <div>
    <div class="centered-content">
-      <h1>TODO: quelques speakers</h1>
+      <h1>Speakers</h1>
+      <div class="speakers">
+         {% for speaker in speakers | subList(4) %}
+         <div class="speaker">
+            <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">
+            <h4 class="speaker-name">{{ speaker.name }}</h4>
+            <div>{{ speaker.company }}</div>
+         </div>
+         {% endfor %}
+         {# <div class="visible-link"><a href="/speakers/">Voir tous les speakers</a></div> #}
+      </div>
    </div>
 </div>
 <div class="ticketing">

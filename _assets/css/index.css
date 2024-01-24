@@ -125,3 +125,11 @@
   padding: 1rem 0;
   margin-top: 0.5rem;
 }
+
+.speakers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
