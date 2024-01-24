@@ -1,3 +1,11 @@
+.site-header {
+  background-color: #fff0;
+}
+
+body.scrolled .site-header {
+  background-color: #fff;
+}
+
 h1,
 h2,
 h3 {
