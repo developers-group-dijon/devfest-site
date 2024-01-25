@@ -11,15 +11,17 @@ function buildDay(date) {
 }
 
 /**
- * @param {import('./types').WithRawEvent} data
+ * @param {import('./types').WithRawEvent & import('./types').WithParsedSessions } data
  * @returns {import('./types').Event}
  */
-function parseEvent({ rawEvent }) {
+function parseEvent(data) {
+  [data.parsedSessions];
   return {
-    ...rawEvent,
-    dayCount: buildDay(rawEvent.dateEnd) - buildDay(rawEvent.dateStart) + 1,
-    // TODO: calculer
-    sessionCount: 0,
+    ...data.rawEvent,
+    dayCount:
+      buildDay(data.rawEvent.dateEnd) - buildDay(data.rawEvent.dateStart) + 1,
+    sessionCount: (data.parsedSessions || []).filter((s) => !s.hideTrackTitle)
+      .length,
   };
 }
 
