@@ -57,6 +57,7 @@ a:hover {
 }
 
 .site-header {
+  z-index: 1;
   background-color: #fff0;
 }
 
