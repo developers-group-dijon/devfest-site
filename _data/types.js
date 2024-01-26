@@ -207,6 +207,25 @@ const SocialId = {
   GITHUB: "github",
 };
 
+/**
+ * @readonly
+ * @enum {string}
+ */
+const Language = {
+  FRENCH: "French",
+  ENGLISH: "English",
+};
+
+/**
+ * @readonly
+ * @enum {string}
+ */
+const Level = {
+  ADVANCED: "advanced",
+  INTERMEDIATE: "intermediate",
+  BEGINNER: "beginner",
+};
+
 ///////////////////////////////
 // Category
 ///////////////////////////////
@@ -266,6 +285,8 @@ const SocialId = {
  * @property {string} formatId
  * @property {string} categoryId
  * @property {boolean=} hideTrackTitle
+ * @property {Language=} language
+ * @property {Level=} level
  */
 /**
  * @typedef WithRawSessions
@@ -309,4 +330,6 @@ const SocialId = {
 
 module.exports = {
   SocialId,
+  Language,
+  Level,
 };

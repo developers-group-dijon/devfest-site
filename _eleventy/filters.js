@@ -1,4 +1,4 @@
-const { SocialId } = require("../_data/types");
+const { SocialId, Level, Language } = require("../_data/types");
 
 const markdownit = require("markdown-it")({ typographer: true, breaks: true });
 
@@ -141,6 +141,42 @@ function mapName(value) {
 }
 
 /**
+ * @param {Level=} value
+ * @returns {string}
+ */
+function formatLevel(value) {
+  if (value == null) {
+    return "";
+  }
+  switch (value) {
+    case Level.ADVANCED:
+      return "Avancé";
+    case Level.INTERMEDIATE:
+      return "Intermédiaire";
+    case Level.BEGINNER:
+      return "Débutant";
+  }
+  throw new Error(`Level non géré : ${value}`);
+}
+
+/**
+ * @param {Language=} value
+ * @returns {string}
+ */
+function formatLanguage(value) {
+  if (value == null) {
+    return "";
+  }
+  switch (value) {
+    case Language.FRENCH:
+      return "FR";
+    case Language.ENGLISH:
+      return "EN";
+  }
+  throw new Error(`Language non géré : ${value}`);
+}
+
+/**
  * @type {{[key: string]: Function}}
  */
 const res = {
@@ -156,6 +192,8 @@ const res = {
   minutes,
   dateKey,
   mapName,
+  formatLevel,
+  formatLanguage,
 };
 
 module.exports = res;

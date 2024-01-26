@@ -46,7 +46,7 @@ eleventyComputed:
             <div class="abstract">{{ session.abstract | md | safe | striptags | truncate(100) }}</div>
             <div class="extra">{{ session.durationMinutes }} minutes</div>
             {%- if session.level or session.category.name %}
-            <div class="extra">{{ session.level }} ⋅ {{ session.category.name }}</div>
+            <div class="extra">{{ session.category.name }} ⋅ {{ session.level | formatLevel }} ⋅ {{ session.language | formatLanguage }}</div>
             {%- endif -%}
             {%- if session.speakers.length %}
             <div class="speakers">
