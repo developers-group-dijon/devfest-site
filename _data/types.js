@@ -205,6 +205,7 @@
 const SocialId = {
   LINKEDIN: "linkedin",
   GITHUB: "github",
+  TWITTER: "twitter",
 };
 
 /**

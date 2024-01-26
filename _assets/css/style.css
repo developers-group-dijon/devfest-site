@@ -124,3 +124,14 @@ body.scrolled .site-header {
 .page-description {
   max-width: 600px;
 }
+
+.social-icon svg {
+  max-height: 1.5rem;
+  max-width: 1.5rem;
+  vertical-align: bottom;
+  fill: #333;
+}
+
+a.social-icon:hover svg {
+  fill: #222;
+}

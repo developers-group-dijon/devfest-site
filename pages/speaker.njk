@@ -22,8 +22,8 @@
         <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/speakers/defaut.png') | normalizeAssetUrl }}" alt="avatar">
         <div class="job_title">{{ speaker.bio | md | safe }}</div>
         <div class="socials">
-            {%- for social in member.socials %}
-            <span class="social" href="{{ social.name | socialLink(social.id) }}"><a>{{social.name}}</a></span>
+            {%- for social in speaker.socials %}
+            <a class="social-icon" href="{{ social.link | socialLink(social.id) }}" title="{{ social.name }} ⋅ {{ social.link }}">{{ social.id | socialIconSvg | safe }}</a>
             {%- endfor -%}
         </div>
     </div>

@@ -10,9 +10,8 @@
   padding: 2rem;
 }
 
-.speaker:hover {
-  background-color: #eee;
-  text-decoration: none;
+.socials {
+  margin-top: 1rem;
 }
 
 .company {
