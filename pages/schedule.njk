@@ -36,7 +36,13 @@ eleventyComputed:
          {%- for session in sessions %}
             {%- set column = (session.trackRange[0]+" / "+session.trackRange[1]+"-end") if session.trackRange else (session.trackId | default ("track / -1")) %}
          <div class="session" style="grid-column: {{ column }} ; grid-row: slot_{{ session.dateStart | dateKey }} / span {{ session.nbSlots }}">
-            <div class="title">{{ session.title }}</div>
+            <div class="title">
+               {%- if session.hideTrackTitle -%}
+               {{ session.title }}
+               {%- else -%}
+               <a href="/session/{{ session.id | slugify }}">{{ session.title }}</a>
+               {%- endif -%}
+            </div>
             <div class="abstract">{{ session.abstract | md | safe | striptags | truncate(100) }}</div>
             <div class="extra">{{ session.durationMinutes }} minutes</div>
             {%- if session.level or session.category.name %}

@@ -14,6 +14,11 @@ const defaultDayFormat = new Intl.DateTimeFormat("fr-FR", {
   weekday: "long",
 });
 
+const defaultTimeFormat = new Intl.DateTimeFormat("fr-FR", {
+  hour: "numeric",
+  minute: "2-digit",
+});
+
 /**
  * @param {Date} value
  * @returns {string}
@@ -30,6 +35,22 @@ function dayFormat(value) {
   return defaultDayFormat.format(
     new Date(value / 10000, (value / 100) % 100, value % 100),
   );
+}
+
+/**
+ * @param {Date} value
+ * @returns {string}
+ */
+function timeFormat(value) {
+  return defaultTimeFormat.format(value);
+}
+
+/**
+ * @param {Date} value
+ * @returns {string}
+ */
+function shortDateFormat(value) {
+  return defaultDayFormat.format(value);
 }
 
 /**
@@ -112,18 +133,29 @@ function dateKey(value) {
 }
 
 /**
+ * @param {import("../_data/types").WithName[]} value
+ * @returns {string[]}
+ */
+function mapName(value) {
+  return value.map((v) => v.name);
+}
+
+/**
  * @type {{[key: string]: Function}}
  */
 const res = {
   md,
   dateFormat,
   dayFormat,
+  shortDateFormat,
+  timeFormat,
   normalizeAssetUrl,
   socialLink,
   subList,
   hours,
   minutes,
   dateKey,
+  mapName,
 };
 
 module.exports = res;

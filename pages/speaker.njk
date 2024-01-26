@@ -12,6 +12,7 @@
     eleventyComputed:{
         title: "{{ speaker.name }}",
         description: "{{ speaker.jobTitle }} {{ speaker.company }}",
+        speakerSessions: function(data) { return (data.sessions || []).filter((s) => (s.speakerIds || []).includes(data.speaker.id)); },
     },
 }
 ---
@@ -27,6 +28,11 @@
         </div>
     </div>
     <div class="sessions">
+        <h3>Sessions</h3>
+        <ul>
+            {%- for session in speakerSessions %}
+            <li><a class="session-name" href="/session/{{ session.id | slugify }}">{{ session.title }}</a></li>
+            {%- endfor -%}
+        </ul>
     </div>
-    {# TODO: liste des sessions du speaker #}
 </div>

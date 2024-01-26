@@ -22,6 +22,11 @@
  * @typedef {number} Duration
  */
 
+/**
+ * @typedef WithName
+ * @property {string} name
+ */
+
 ///////////////////////////////
 // Event
 ///////////////////////////////

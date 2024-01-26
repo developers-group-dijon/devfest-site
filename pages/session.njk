@@ -1,0 +1,35 @@
+---js
+{
+    pagination: {
+        data: "rawSessions",
+        size: 1,
+        alias: "rawSession",
+        before: function(paginationData, fullData) {
+            return paginationData.filter(rawSession => rawSession.hideTrackTitle === false);
+        },
+    },
+    permalink: "/session/{{ rawSession.id | slugify }}/",
+    layout: "page.njk",
+    // image: "/session/background.jpg"
+    css: "/css/session.css",
+    eleventyComputed: {
+        title: "{{ rawSession.title | safe }}",
+        // Les données calculées (eleventyComputed) ne sont pas disponibles dans la pagination.
+        // On travaille donc sur les rawSessions qu'on "résoud" ici
+        session: function(data) { return (data.sessions || []).find((s) => s.id === data.rawSession.id) },
+        description: "{{ session.format.name }} ({{ session.durationMinutes }} minutes) ⋅ {{ session.category.name }} ⋅ {{ session.level }}\n{{ session.dateStart | shortDateFormat | capitalize }} à {{ session.dateStart | timeFormat }} ⋅ {{ session.tracks | mapName | join(', ') }}",
+    },
+}
+---
+<div class="session">
+    <div class="abstract">{{ session.abstract | md | safe }}</div>
+
+    <div class="speakers">
+        {%- for speaker in session.speakers %}
+        <div class="speaker">
+            <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/speakers/defaut.png') | normalizeAssetUrl }}" alt="avatar">
+            <div><a class="speaker-name" href="/speaker/{{ speaker.id | slugify }}">{{ speaker.name }} ⋅ {{ speaker.company }}</a></div>
+        </div>
+        {%- endfor -%}
+    </div>
+</div>
