@@ -80,8 +80,8 @@
 /**
  * @typedef EventLocalisation
  * @property {string} name
- * @property {?string} description
- * @property {string[]} adress
+ * @property {?MdString} description
+ * @property {string} address
  * @property {string} url
  */
 

@@ -2,6 +2,7 @@
 layout: base.njk
 title: "DevFest Dijon"
 permalink: "/"
+# mapImage: "/image/map.jpg"
 ---
 
 <link rel="stylesheet" type="text/css" href="/assets/css/index.css" />
@@ -68,8 +69,12 @@ permalink: "/"
 <div>
    <h1>TODO: photos édition précédente</h1>
 </div>
-<div>
-   <h1>TODO: location (carte + infos)</h1>
+<div class="map" style="background-image: url({{ (mapImape if mapImape else '/default-background.jpg') | normalizeAssetUrl }});">
+   <div class="location">
+      <h1>Le lieu : {{ event.location.name }}</h1>
+      <div>{{ event.location.description  }}</div>
+      <div class="address"><a href="{{ event.location.url }}">{{ event.location.address  }}</a></div>
+   </div>
 </div>
 <div>
    <div class="centered-content team-info">

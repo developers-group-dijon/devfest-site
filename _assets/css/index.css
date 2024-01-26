@@ -133,3 +133,35 @@
   text-align: center;
   margin-bottom: 2rem;
 }
+
+.map {
+  height: 610px;
+  position: relative;
+  background-color: #ddd;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+}
+
+.location {
+  display: inline-block;
+  padding: 3rem;
+  width: 500px;
+  position: absolute;
+  bottom: 3.2rem;
+  left: 3.2rem;
+  color: #fff;
+  background-color: #000;
+}
+
+.location .address {
+  padding: 0.5rem 0;
+  color: #fff;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+
+.location .address::after {
+  content: " →";
+}
