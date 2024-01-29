@@ -43,6 +43,9 @@ const rawEvent = {
     address: "11 rue Sully, 21000 Dijon",
     url: "maps.google.com",
   },
+  photos: ["/photos/photo1.jpg", "/photos/photo2.jpg"],
+  photosLink:
+    "https://drive.google.com/drive/folders/16oUIYp7uIUli_Z7sJhfEyKCDjZpaIAly/",
   access: ["Parking relai", "Ligne tram A arrêt CHU", "Ligne de bus 11"],
   team: {
     message:

@@ -66,8 +66,14 @@ permalink: "/"
       </div>
    </div>
 </div>
-<div>
-   <h1>TODO: photos édition précédente</h1>
+<div class="photos">
+   <div class="photo-link" >
+      <h1>Les temps forts du {{ (event.previousEditions | first).name }}</h1>
+      <a class="visible-link" href="{{ event.photosLink }}">Voir toutes les photos</a>
+   </div>
+   {%- for i in range(1, 9) %}
+   <div class="img photo{{ i }}" style="grid-area: photo{{ i }}; background-image: url({{ photos[i] if photos[i] else '' | normalizeAssetUrl }})"></div>
+   {%- endfor %}
 </div>
 <div class="map" style="background-image: url({{ (mapImape if mapImape else '/default-background.jpg') | normalizeAssetUrl }});">
    <div class="location">

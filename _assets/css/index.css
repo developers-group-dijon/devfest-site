@@ -165,3 +165,36 @@
 .location .address::after {
   content: " →";
 }
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 25.7vh);
+  grid-template-areas:
+    "photo1 photo1 photo2 photo2 photo3"
+    "photo4 photo5 photoLink photoLink photo3"
+    "photo6 photo6 photo7 photo7 photo8";
+  background-color: #fff;
+  gap: 0.5rem;
+}
+
+.photos .photo-link {
+  grid-area: photoLink;
+  text-align: center;
+  color: #fff;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.photos > .img {
+  background-color: #eee;
+  background-size: cover;
+  background-position: 50%;
+}
+
+.photos .photo-link h1 {
+  margin-top: 0;
+}

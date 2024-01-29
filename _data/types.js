@@ -45,6 +45,8 @@
  * @property {Link[]} aPropos
  * @property {Link[]} contact
  * @property {Link[]} resources
+ * @property {string[]} photos
+ * @property {string} photosLink
  */
 
 /**
