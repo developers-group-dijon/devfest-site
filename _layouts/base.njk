@@ -6,17 +6,17 @@
     <title>{{ event.name }} ⋅ {{ title }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="stylesheet" type="text/css" href="/assets/css/layout.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/assets/poppins/latin-italic.css">
-    <link rel="stylesheet" type="text/css" href="/assets/poppins/latin.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | normalizeAssetUrl }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | normalizeAssetUrl }}">
+    <link rel="stylesheet" type="text/css" href="{{ '/css/layout.css' | normalizeAssetUrl }}">
+    <link rel="stylesheet" type="text/css" href="{{ '/css/style.css' | normalizeAssetUrl }}">
+    <link rel="stylesheet" type="text/css" href="{{ '/poppins/latin-italic.css' | normalizeAssetUrl }}">
+    <link rel="stylesheet" type="text/css" href="{{ '/poppins/latin.css' | normalizeAssetUrl }}">
   </head>
   <body>
     <header class="site-header">
       <nav class="centered-content">
-        <span><a href="/"><img src="/assets/brand-logo.png" alt="{{ event.name }}"></a></span>
+        <span><a href="/"><img src="{{ '/brand-logo.png' | normalizeAssetUrl }}" alt="{{ event.name }}"></a></span>
         <div class="menu">
           <a class="item" href="/">Accueil</a>
           <a class="item" href="/speakers/">Speakers</a>
@@ -56,6 +56,6 @@
         <div class="centered-content">{{ event.name }}<a href="https://developers-group-dijon.fr/">Fait avec ❤ par le Developers Group Dijon</a></div>
       </div>
     </footer>
-    <script src="/assets/js/site.js" ></script>
+    <script src="{{ '/js/site.js' | normalizeAssetUrl }}" ></script>
   </body>
 </html>

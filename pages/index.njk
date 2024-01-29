@@ -5,9 +5,9 @@ permalink: "/"
 # mapImage: "/image/map.jpg"
 ---
 
-<link rel="stylesheet" type="text/css" href="/assets/css/index.css" />
+<link rel="stylesheet" type="text/css" href="{{ '/css/index.css' | normalizeAssetUrl }}" />
 <div class="hero-info">
-   <img class="big-logo" src="/assets/index/big-logo.png">
+   <img class="big-logo" src="{{ '/index/big-logo.png' | normalizeAssetUrl }}">
    <div class="hero-title">
       {%- if (event.dayCount === 1) -%}
          {{ event.dateStart | dateFormat }}
