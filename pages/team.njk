@@ -17,7 +17,7 @@ eleventyComputed:
       <div class="bio">{{ member.bio }}</div>
       <div class="socials">
          {%- for social in member.socials %}
-         <a class="social-icon" href="{{ social.link | socialLink(social.id) }}" title="{{ social.name }} ⋅ {{ social.link }}">{{ social.id | socialIconSvg | safe }}</a>
+         {% social social %}
          {%- endfor -%}
       </div>
    </div>

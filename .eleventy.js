@@ -1,6 +1,7 @@
 // @ts-ignore
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const filters = require("./_eleventy/filters");
+const shortcodes = require("./_eleventy/shortcodes");
 
 module.exports =
   /**
@@ -35,6 +36,13 @@ module.exports =
     ////
     for (const filter in filters) {
       eleventyConfig.addFilter(filter, filters[filter]);
+    }
+
+    ////
+    // Shortcodes
+    ////
+    for (const shortcode in shortcodes) {
+      eleventyConfig.addShortcode(shortcode, shortcodes[shortcode]);
     }
 
     ////

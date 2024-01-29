@@ -1,5 +1,4 @@
-const fs = require("node:fs");
-const { SocialId, Level, Language } = require("../_data/types");
+const { Level, Language } = require("../_data/types");
 
 const markdownit = require("markdown-it")({ typographer: true, breaks: true });
 
@@ -74,65 +73,6 @@ function normalizeAssetUrl(value) {
     return `/assets${value}`;
   }
   return value;
-}
-
-/**
- * @param {string} userId
- * @param {SocialId} socialId
- * @returns {string}
- */
-function socialLink(userId, socialId) {
-  switch (socialId) {
-    case SocialId.GITHUB:
-      return `https://github.com/${userId}`;
-    case SocialId.LINKEDIN:
-      return `https://www.linkedin.com/in/${userId}`;
-    case SocialId.TWITTER:
-      return `https://twitter.com/${userId}`;
-    default:
-      throw new Error(`Réseau social non supporté : ${socialId}`);
-  }
-}
-
-/**
- * @param {SocialId} socialId
- * @returns {string}
- */
-function socialIcon(socialId) {
-  switch (socialId) {
-    case SocialId.GITHUB:
-      return "github.svg";
-    case SocialId.LINKEDIN:
-      return "linkedin";
-    case SocialId.TWITTER:
-      return "x-twitter.svg";
-    default:
-      throw new Error(`Réseau social non supporté : ${socialId}`);
-  }
-}
-/**
- * @param {SocialId} socialId
- * @returns {string}
- */
-function socialIconSvg(socialId) {
-  const base = "node_modules/@fortawesome/fontawesome-free/svgs/brands/";
-  let iconName;
-  switch (socialId) {
-    case SocialId.GITHUB:
-      iconName = "github";
-      break;
-    case SocialId.LINKEDIN:
-      iconName = "linkedin";
-      break;
-    case SocialId.TWITTER:
-      iconName = "x-twitter";
-      break;
-    default:
-      throw new Error(`Réseau social non supporté : ${socialId}`);
-  }
-  const data = fs.readFileSync(`${base}${iconName}.svg`);
-
-  return data.toString();
 }
 
 /**
@@ -230,9 +170,6 @@ const res = {
   shortDateFormat,
   timeFormat,
   normalizeAssetUrl,
-  socialLink,
-  socialIcon,
-  socialIconSvg,
   subList,
   hours,
   minutes,
