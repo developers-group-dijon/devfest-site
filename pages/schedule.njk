@@ -19,7 +19,7 @@ eleventyComputed:
    }
    {%- endfor %}
 </style>
-<div class="schedule-page">
+<div class="schedule-page full-width">
    {%- for day, daySlot in slots %}
    <div class="day">
       <a href="#{{ day }}"><h2 class="date" id="{{ day }}">{{ day | dayFormat | capitalize }}</h2></a>

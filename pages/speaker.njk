@@ -8,7 +8,7 @@
     permalink: "/speaker/{{ speaker.id | slugify }}/",
     layout: "page.njk",
     // image: "/team/background.jpg"
-    css: "/css/speaker.css",
+    // css: "/css/speaker.css",
     eleventyComputed:{
         title: "{{ speaker.name }}",
         description: "{{ speaker.jobTitle }} {{ speaker.company }}",
@@ -17,22 +17,20 @@
 }
 ---
 
-<div class="speaker">
-    <div>
-        <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/speakers/defaut.png') | normalizeAssetUrl }}" alt="avatar">
-        <div class="job_title">{{ speaker.bio | md | safe }}</div>
-        <div class="socials">
-            {%- for social in speaker.socials %}
-            <a class="social-icon" href="{{ social.link | socialLink(social.id) }}" title="{{ social.name }} ⋅ {{ social.link }}">{{ social.id | socialIconSvg | safe }}</a>
-            {%- endfor -%}
-        </div>
+<div class="main-content">
+    <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/speakers/defaut.png') | normalizeAssetUrl }}" alt="avatar">
+    <div class="job_title">{{ speaker.bio | md | safe }}</div>
+    <div class="socials">
+        {%- for social in speaker.socials %}
+        <a class="social-icon" href="{{ social.link | socialLink(social.id) }}" title="{{ social.name }} ⋅ {{ social.link }}">{{ social.id | socialIconSvg | safe }}</a>
+        {%- endfor -%}
     </div>
-    <div class="sessions">
-        <h3>Sessions</h3>
-        <ul>
-            {%- for session in speakerSessions %}
-            <li><a class="session-name" href="/session/{{ session.id | slugify }}">{{ session.title }}</a></li>
-            {%- endfor -%}
-        </ul>
-    </div>
+</div>
+<div class="aside">
+    <h3>Sessions</h3>
+    <ul>
+        {%- for session in speakerSessions %}
+        <li><a class="session-name" href="/session/{{ session.id | slugify }}">{{ session.title }}</a></li>
+        {%- endfor -%}
+    </ul>
 </div>

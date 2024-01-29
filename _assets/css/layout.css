@@ -69,4 +69,19 @@ body {
 .page-content {
   margin-top: 2rem;
   margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1rem;
+}
+
+.page-content .full-width {
+  grid-column: 1 / span 2;
+}
+
+.page-content .aside {
+  grid-column: 2;
+}
+
+.page-content .main-content {
+  grid-column: 1;
 }

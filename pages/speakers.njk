@@ -7,7 +7,7 @@ css: "/css/speakers.css"
 eleventyComputed:
    description: Découvrez les speakers du {{ event.name }}, en provenances du monde entier et de dizaines d'entreprises au sommet de la technologie
 ---
-<div class="speakers">
+<div class="full-width speakers">
    {%- for speaker in speakers %}
    <div class="speaker">
       <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">

@@ -1,16 +1,6 @@
-.session {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 1rem;
-}
-
-.speakers {
-  margin-top: 2rem;
-  text-align: center;
-}
-
 .speaker {
   padding: 2rem;
+  text-align: center;
 }
 
 .company {
