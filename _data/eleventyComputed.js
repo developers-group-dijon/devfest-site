@@ -145,21 +145,13 @@ function buildSlots(data) {
  * @returns {number}
  */
 function countSlots({ dateStart, duration }, slots) {
-  let res = 0;
-
   const timeStart = dateStart.getTime();
   const timeEnd = dateStart.getTime() + duration;
-  for (const slotDateStart of slots) {
-    const slotTimeStart = slotDateStart.getTime();
-    if (slotTimeStart < timeStart) {
-      continue;
-    }
-    if (slotTimeStart >= timeStart && slotDateStart.getTime() <= timeEnd) {
-      res++;
-    }
-    break;
-  }
-  return res;
+  return slots
+    .map((slotDateStart) => slotDateStart.getTime())
+    .filter(
+      (slotTimeStart) => slotTimeStart >= timeStart && slotTimeStart < timeEnd,
+    ).length;
 }
 
 /**
