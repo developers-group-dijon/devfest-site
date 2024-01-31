@@ -1,0 +1,14 @@
+[run]
+  defaults
+  # On exclut quelques navigateurs présents dans "defaults" qui ne sont
+  # pas notre cible et qui bloquent quelques features CSS
+  not kaios 2.5 # gap, minmax, rgba
+  not and_qq > 0 # minmax
+  # https://www.spacebar.news/stop-using-opera-browser/
+  not opera > 0
+  not op_mob > 0
+  not op_mini all
+  not dead
+
+[build]
+  current node

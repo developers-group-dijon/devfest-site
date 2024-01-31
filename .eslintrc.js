@@ -4,8 +4,17 @@ module.exports = {
     commonjs: true,
     es2021: true,
   },
-  plugins: ["sort-keys-fix", "jsdoc"],
-  extends: ["eslint:recommended", "plugin:jsdoc/recommended"],
+  settings: {
+    browserslistOpts: {
+      env: process.env.BROWSERSLIST_ENV,
+    },
+  },
+  plugins: ["sort-keys-fix", "jsdoc", "compat"],
+  extends: [
+    "eslint:recommended",
+    "plugin:jsdoc/recommended",
+    "plugin:compat/recommended",
+  ],
   overrides: [
     {
       env: {

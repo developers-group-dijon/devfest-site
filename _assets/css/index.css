@@ -30,13 +30,13 @@
 .team-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 1rem;
+  gap: 1rem;
 }
 
 .event-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 1rem;
+  gap: 1rem;
 }
 
 .stats {
