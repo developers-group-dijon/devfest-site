@@ -4,7 +4,7 @@
   height: 75vh !important;
   width: 100%;
   background:
-    linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)),
+    linear-gradient(rgb(0 0 0 / 30%), rgb(0 0 0 / 10%)),
     url("/assets/index/background.jpg") center center no-repeat;
   background-color: #fff;
   background-size: cover;
@@ -23,6 +23,8 @@
   line-height: 1.1;
   color: white;
   margin: 10px;
+  text-shadow: 1px 1px 1px rgb(0 0 0 / 40%);
+  font-weight: 300;
 }
 
 .team-info {
