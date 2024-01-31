@@ -29,6 +29,7 @@ body {
 .site-header .menu {
   display: flex;
   height: 100%;
+  gap: 0.5rem;
 }
 
 /* Footer */

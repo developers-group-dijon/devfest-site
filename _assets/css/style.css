@@ -63,14 +63,28 @@ a:hover {
 
 body.scrolled .site-header {
   background-color: #fff;
+  box-shadow:
+    0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 3px 1px -2px rgb(0 0 0 / 12%),
+    0 1px 5px 0 rgb(0 0 0 / 20%);
 }
 
 .site-header .menu a.item {
   transition: background-color 0.3s;
+  font-weight: 400;
   font-size: 1rem;
   display: block;
-  padding: 0 15px;
+  padding: 0 1rem;
   line-height: 64px;
+  text-transform: uppercase;
+}
+
+.site-header .menu a.item.ticketing-link {
+  box-shadow:
+    0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 3px 1px -2px rgb(0 0 0 / 12%),
+    0 1px 5px 0 rgb(0 0 0 / 20%);
+  transition: box-shadow 0.25s;
 }
 
 .site-header .menu a.item:hover {
