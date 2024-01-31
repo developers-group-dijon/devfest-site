@@ -1,4 +1,12 @@
 ---
+brandLogo: /brand-logo.png
+icons:
+  - href: /favicon-16x16.png
+    sizes: 16x16
+    type: image/png
+  - href: /favicon-32x32.png
+    sizes: 32x32
+    type: image/png
 ---
 <!doctype html>
 <html lang="fr">
@@ -6,8 +14,9 @@
     <title>{{ event.name }} ⋅ {{ title }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | normalizeAssetUrl }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | normalizeAssetUrl }}">
+    {%- for icon in icons %}
+    <link rel="icon" type="{{ icon.type }}" sizes="{{ icon.sizes }}" href="{{ icon.href | normalizeAssetUrl }}">
+    {%- endfor %}
     <link rel="stylesheet" type="text/css" href="{{ '/css/layout.css' | normalizeAssetUrl }}">
     <link rel="stylesheet" type="text/css" href="{{ '/css/style.css' | normalizeAssetUrl }}">
     <link rel="stylesheet" type="text/css" href="{{ '/poppins/latin-italic.css' | normalizeAssetUrl }}">
@@ -16,7 +25,7 @@
   <body>
     <header class="site-header">
       <nav class="centered-content">
-        <span><a href="/"><img src="{{ '/brand-logo.png' | normalizeAssetUrl }}" alt="{{ event.name }}"></a></span>
+        <span><a href="/" class="site-logo"><img src="{{ brandLogo | normalizeAssetUrl }}" alt="{{ event.name }}"></a></span>
         <div class="menu">
           <a class="item" href="/">Accueil</a>
           <a class="item" href="/speakers/">Speakers</a>

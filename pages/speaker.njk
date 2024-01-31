@@ -7,9 +7,8 @@
     },
     permalink: "/speaker/{{ speaker.id | slugify }}/",
     layout: "page.njk",
-    // image: "/team/background.jpg"
-    // css: "/css/speaker.css",
-    eleventyComputed:{
+    image: "/background/speaker.jpg",
+    eleventyComputed: {
         title: "{{ speaker.name }}",
         description: "{{ speaker.jobTitle }} {{ speaker.company }}",
         speakerSessions: function(data) { return (data.sessions || []).filter((s) => (s.speakerIds || []).includes(data.speaker.id)); },

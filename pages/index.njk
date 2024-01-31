@@ -2,22 +2,36 @@
 layout: base.njk
 title: "Accueil"
 permalink: "/"
-# mapImage: "/image/map.jpg"
+background: "/background/hero-background.jpg"
+bigLogo: "/images/hero-big-logo.png"
+mapImage: "/images/map.jpg"
+teamPhoto: "/images/team.jpg"
+photos:
+ - "/images/photo1.jpg"
+ - "/images/photo2.jpg"
+ - "/images/photo3.jpg"
+ - "/images/photo4.jpg"
+ - "/images/photo5.jpg"
+ - "/images/photo6.jpg"
+ - "/images/photo7.jpg"
+ - "/images/photo8.jpg"
 ---
 
 <link rel="stylesheet" type="text/css" href="{{ '/css/index.css' | normalizeAssetUrl }}" />
-<div class="hero-info">
-   <img class="big-logo" src="{{ '/index/big-logo.png' | normalizeAssetUrl }}" alt="logo {{ event.name }}">
-   <h1 class="hero-title">
-      {%- if (event.dayCount === 1) -%}
-         {{ event.dateStart | dateFormat | capitalize }}
-      {%- else -%}
-         Du {{ event.dateStart | dateFormat }} au {{ event.dateEnd | dateFormat }}
-      {%- endif -%}
-   </h1>
-   <h1 class="hero-title">Le plus grand festival dédié aux développeurs de Bourgogne-Franche-Comté</h1>
-   <h1 class="hero-title">{{ event.location.name }}</h1>
-   {# TODO: ajouter des liens vers le replay #}
+<div class="hero-info-image" style="background-image: url('{{ background | normalizeAssetUrl}}')">
+   <div class="hero-info">
+      <img class="big-logo" src="{{ bigLogo | normalizeAssetUrl }}" alt="logo {{ event.name }}">
+      <h1 class="hero-title">
+         {%- if (event.dayCount === 1) -%}
+            {{ event.dateStart | dateFormat | capitalize }}
+         {%- else -%}
+            Du {{ event.dateStart | dateFormat }} au {{ event.dateEnd | dateFormat }}
+         {%- endif -%}
+      </h1>
+      <h1 class="hero-title">Le plus grand festival dédié aux développeurs de Bourgogne-Franche-Comté</h1>
+      <h1 class="hero-title">{{ event.location.name }}</h1>
+      {# TODO: ajouter des liens vers le replay #}
+   </div>
 </div>
 <div>
    <div class="centered-content event-info">
@@ -84,7 +98,7 @@ permalink: "/"
    <div class="img photo{{ i }}" style="grid-area: photo{{ i }}; background-image: url({{ photos[i] if photos[i] else '' | normalizeAssetUrl }})"></div>
    {%- endfor %}
 </div>
-<div class="map" style="background-image: url({{ (mapImape if mapImape else '/default-background.jpg') | normalizeAssetUrl }});">
+<div class="map" style="background-image: url({{ (mapImage if mapImage else '/default-background.jpg') | normalizeAssetUrl }});">
    <div class="location dark-zone">
       <h1>Le lieu : {{ event.location.name }}</h1>
       <div>{{ event.location.description  }}</div>
@@ -93,7 +107,7 @@ permalink: "/"
 </div>
 <div>
    <div class="centered-content team-info">
-      <img src="{{ event.team.photo | normalizeAssetUrl }}" alt="Photo de l'équipe oragnisatrice">
+      <img class="team-photo" src="{{ teamPhoto | normalizeAssetUrl }}" alt="Photo de l'équipe organisatrice">
       <div>
          <h1>Pourquoi un Devfest à Dijon ?</h1>
          <div>{{ event.team.why | md | safe }}</div>

@@ -46,18 +46,17 @@ const rawEvent = {
   ],
   location: {
     name: "ESEO Dijon",
-    description: "Sur le campus de Dijon. Accessible avec la ligne A du tram et la ligne 11 en bus. En voiture, privilégier les parkings relais.",
+    description:
+      "Sur le campus de Dijon. Accessible avec la ligne A du tram et la ligne 11 en bus. En voiture, privilégier les parkings relais.",
     address: "11 rue Sully, 21000 Dijon",
     url: "https://maps.google.com",
   },
-  photos: ["/photos/photo1.jpg", "/photos/photo2.jpg"],
   photosLink:
     "https://drive.google.com/drive/folders/16oUIYp7uIUli_Z7sJhfEyKCDjZpaIAly/",
   team: {
     message:
       "Le Devfest Dijon 2023 est organisé par le [Developers Group Dijon](https://developers-group-dijon.fr/), fiers d'organiser le deuxième DevFest Dijon !",
     why: "Le DevFest Dijon 2023 sera la deuxième édition dijonnaise d’un événement qui rassemble des milliers de développeurs et de passionnés dans le monde entier chaque année pour penser les technologies de demain. Le Devfest est LE lieu unique pour partager et échanger autour de nombreux sujets tels que Web, Cloud, Mobile, objets connectés et bien plus encore",
-    photo: "/team/team.jpg",
   },
   // TODO: lien vers les réseaux
   aPropos: [

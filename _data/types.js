@@ -44,7 +44,6 @@
  * @property {Link[]} aPropos
  * @property {Link[]} contact
  * @property {Link[]} resources
- * @property {string[]} photos
  * @property {string} photosLink
  */
 
@@ -63,7 +62,6 @@
  * @typedef Team
  * @property {MdString} message
  * @property {MdString} why
- * @property {string} photo
  */
 
 /**
