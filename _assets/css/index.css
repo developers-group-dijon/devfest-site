@@ -52,14 +52,15 @@
 .stat-value {
   font-size: 3rem;
   margin-bottom: 1.5 rem;
+  font-weight: 400;
 }
 
 .stat-value::after {
   content: "";
   display: block;
-  height: 3px;
+  height: 4px;
   width: 64px;
-  background-color: #333;
+  background-color: #af0179;
 }
 
 .sponsor-types {
