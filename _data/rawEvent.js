@@ -41,7 +41,7 @@ const rawEvent = {
     name: "ESEO Dijon",
     description: "Sur le campus",
     address: "11 rue Sully, 21000 Dijon",
-    url: "maps.google.com",
+    url: "https://maps.google.com",
   },
   photos: ["/photos/photo1.jpg", "/photos/photo2.jpg"],
   photosLink:
