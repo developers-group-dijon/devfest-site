@@ -6,8 +6,13 @@
 }
 
 .speaker {
-  border: 1px solid #ddd;
+  border: 1px solid var(--divider-color);
+  border-radius: 0.2rem;
   padding: 2rem;
+}
+
+.speaker:hover {
+  background-color: var(--gray-lighter-background-color);
 }
 
 .socials {

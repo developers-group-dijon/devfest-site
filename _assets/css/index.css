@@ -4,9 +4,8 @@
   height: 75vh !important;
   width: 100%;
   background:
-    linear-gradient(rgb(0 0 0 / 30%), rgb(0 0 0 / 10%)),
+    var(--index-header-gradient),
     url("/assets/index/background.jpg") center center no-repeat;
-  background-color: #fff;
   background-size: cover;
   padding-top: 25vh;
   display: flex;
@@ -19,12 +18,11 @@
 }
 
 .hero-title {
-  font-size: 28px;
   line-height: 1.1;
   color: white;
-  margin: 10px;
+  margin: 0.5rem;
   text-shadow: 1px 1px 1px rgb(0 0 0 / 40%);
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .team-info {
@@ -62,7 +60,7 @@
   display: block;
   height: 4px;
   width: 64px;
-  background-color: #af0179;
+  background-color: var(--default-primary-color);
 }
 
 .sponsor-types {
@@ -100,7 +98,7 @@
 }
 
 .ticketing {
-  background-color: #af0179;
+  background-color: var(--primary-background-color);
   padding-top: 1px;
   padding-bottom: 1px;
 }
@@ -114,11 +112,11 @@
 }
 
 .pricing {
-  background-color: #fff;
+  background-color: var(--default-background-color);
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  color: #333;
+  color: var(primary-text-color);
   width: 200px;
   text-align: center;
   padding-top: 24px;
@@ -154,14 +152,16 @@
 
 .pricing-ticketing-comment {
   font-size: 0.9rem;
+  color: var(--secondary-text-color);
 }
 
 .pricing-comment {
   font-size: 0.8rem;
+  color: var(--secondary-text-color);
 }
 
 .pricing-action {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--divider-color);
   padding: 1rem 0;
   margin-top: 0.5rem;
 }
@@ -177,7 +177,6 @@
 .map {
   height: 610px;
   position: relative;
-  background-color: #ddd;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right;
@@ -190,20 +189,13 @@
   position: absolute;
   bottom: 3.2rem;
   left: 3.2rem;
-  color: #fff;
-  background-color: #000;
+  color: var(--primary-inv-text-color);
+  background-color: var(--gray-darker-background-color);
 }
 
 .location .address {
   padding: 0.5rem 0;
-  color: #fff;
-  font-weight: 600;
-  margin-top: 0.5rem;
-  display: inline-block;
-}
-
-.location .address::after {
-  content: " →";
+  text-transform: none;
 }
 
 .photos {
@@ -214,15 +206,14 @@
     "photo1 photo1 photo2 photo2 photo3"
     "photo4 photo5 photoLink photoLink photo3"
     "photo6 photo6 photo7 photo7 photo8";
-  background-color: #fff;
   gap: 0.5rem;
 }
 
 .photos .photo-link {
   grid-area: photoLink;
   text-align: center;
-  color: #fff;
-  background-color: #000;
+  color: var(--primary-inv-text-color);
+  background-color: var(--gray-darker-background-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -230,7 +221,7 @@
 }
 
 .photos > .img {
-  background-color: #eee;
+  background-color: var(--gray-lighter-background-color);
   background-size: cover;
   background-position: 50%;
 }

@@ -11,7 +11,7 @@ eleventyComputed:
    {%- for speaker in speakers %}
    <div class="speaker">
       <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">
-      <h4><a href="/speaker/{{ speaker.id | slugify }}">{{ speaker.name }}</a></h4>
+      <h2><a href="/speaker/{{ speaker.id | slugify }}">{{ speaker.name }}</a></h2>
       <div>{{ speaker.jobTitle }}</div>
       <div class="company">{{ speaker.company }}</div>
       <div class="bio">{{ speaker.bio | md | safe | striptags | truncate(100) }}</div>

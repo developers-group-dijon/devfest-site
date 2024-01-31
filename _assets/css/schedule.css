@@ -1,7 +1,11 @@
 .grid-day > div.session {
-  border: 1px solid #333;
-  background-color: #eee;
-  padding: 1rem;
+  border: 1px solid var(--divider-color);
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+}
+
+.grid-day > div.session:hover {
+  background-color: var(--gray-lighter-background-color);
 }
 
 .date {
@@ -11,6 +15,7 @@
 }
 
 .time {
+  color: var(--secondary-text-color);
   text-align: right;
 }
 
@@ -28,6 +33,7 @@
 }
 
 .track {
+  color: var(--secondary-text-color);
   font-weight: 400;
   text-align: center;
 }
@@ -43,7 +49,7 @@
 }
 
 .session .extra {
-  color: #666;
+  color: var(--secondary-text-color);
   font-size: 0.9rem;
   margin-bottom: 0.3rem;
   text-align: right;
