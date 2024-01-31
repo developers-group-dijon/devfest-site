@@ -119,6 +119,18 @@
   width: 200px;
   text-align: center;
   padding-top: 24px;
+  box-shadow:
+    0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 3px 1px -2px rgb(0 0 0 / 12%),
+    0 1px 5px 0 rgb(0 0 0 / 20%);
+  transition: box-shadow 0.25s;
+}
+
+.pricing:hover {
+  box-shadow:
+    0 8px 17px 0 rgb(0 0 0 / 20%),
+    0 6px 20px 0 rgb(0 0 0 / 19%);
+  text-decoration: none;
 }
 
 .pricing > * {
@@ -127,13 +139,9 @@
   padding-bottom: 0.5rem;
 }
 
-.pricing:hover {
-  background-color: #eee;
-  text-decoration: none;
-}
-
 .pricing-name {
   font-size: 1.2rem;
+  font-weight: 300;
 }
 
 .pricing-price {
