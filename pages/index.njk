@@ -105,14 +105,14 @@ permalink: "/"
    </div>
 </div>
 <div>
-   <div class="centered-content">
+   <div class="centered-content sponsor-types">
       <h1>Partenaires &amp; Sponsors</h1>
       {%- for sponsorType in sponsors %}
-      <div class="sponsorType">
+      <div>
          <h2>{{ sponsorType.name }}</h2>
          <div class="sponsors">
             {%- for sponsor in sponsorType.sponsors %}
-            <a class="sponsor" href="{{ sponsor.website }}" title="{{ sponsor.name }}"><img src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt="Logo {{ sponsor.name}}"></a>
+            <a class="sponsor" href="{{ sponsor.website }}" title="{{ sponsor.name }}"><img class="logo" src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt="Logo {{ sponsor.name}}"></a>
             {%- endfor %}
          </div>
       </div>
