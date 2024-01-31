@@ -2,9 +2,9 @@
  * Inspiré des données JSON de OpenPlanner.fr
  * Chemin : speakers
  * Modifications :
- * - Télécharger et faire une version optimisée des photos
- * - Ajuster les bio (Markdown possible)
- * - Compléter jobTitle
+ * - télécharger et faire une version optimisée des photos (128x128)
+ * - ajuster les bio (Markdown possible)
+ * - compléter jobTitle
  *
  * Cette donnée sera parsée/complétée pour avoir une donnée "speakers"
  */

@@ -37,7 +37,6 @@
  * @property {Date} dateStart
  * @property {Date} dateEnd
  * @property {EventLocalisation} location
- * @property {string[]} access
  * @property {string} visitors
  * @property {PreviousEdition[]} previousEditions
  * @property {EditionComment[]} comments

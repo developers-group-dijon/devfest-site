@@ -1,3 +1,11 @@
+/**
+ * Informations des tarifs
+ * À noter :
+ * - le lien global est utilisé dans le menu
+ * - possibilité d'avoir un lien par tarif (avce fallback sur le lien global)
+ * - possibilité d'avoir un commentaire par tarif en plus du commentaire global
+ */
+
 /** @typedef {import("./types").Ticketing} */
 const ticketing = {
   comment:
@@ -9,6 +17,7 @@ const ticketing = {
       name: "Tarif Early",
       price: "25 €",
       comment: "Seulement 100 places !",
+      url: null,
     },
     {
       id: "standard",

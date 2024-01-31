@@ -8,7 +8,14 @@
  * - ajout previousEditions
  * - dateStart et endStart en Date
  *
+ * Il y a tellement de modifications qu'au final il n'est pas intéressant
+ * de partir des données d'OpenPlanner.fr
+ *
  * Cette donnée sera parsée/complétée pour avoir une donnée "event"
+ *
+ * À noter :
+ * - optimiser "team.photo" pour une taille de 560x420
+ * - optimiser les 8 "photos" en fonction de leur position sur la grille
  */
 
 /**
@@ -39,14 +46,13 @@ const rawEvent = {
   ],
   location: {
     name: "ESEO Dijon",
-    description: "Sur le campus",
+    description: "Sur le campus de Dijon. Accessible avec la ligne A du tram et la ligne 11 en bus. En voiture, privilégier les parkings relais.",
     address: "11 rue Sully, 21000 Dijon",
     url: "https://maps.google.com",
   },
   photos: ["/photos/photo1.jpg", "/photos/photo2.jpg"],
   photosLink:
     "https://drive.google.com/drive/folders/16oUIYp7uIUli_Z7sJhfEyKCDjZpaIAly/",
-  access: ["Parking relai", "Ligne tram A arrêt CHU", "Ligne de bus 11"],
   team: {
     message:
       "Le Devfest Dijon 2023 est organisé par le [Developers Group Dijon](https://developers-group-dijon.fr/), fiers d'organiser le deuxième DevFest Dijon !",
