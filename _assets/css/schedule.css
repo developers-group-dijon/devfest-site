@@ -1,3 +1,16 @@
+.grid-day {
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 0.5em;
+}
+
+@media (max-width: 900px) {
+  .grid-day {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .grid-day > div.session {
   border: 1px solid var(--divider-color);
   border-radius: 0.2rem;
@@ -19,11 +32,18 @@
   text-align: right;
 }
 
+@media (max-width: 900px) {
+  .time {
+    text-align: left;
+  }
+}
+
 .hours {
   display: inline-block;
   font-weight: 500;
   font-size: 2rem;
   width: 2rem;
+  text-align: right;
 }
 
 .minutes {
@@ -36,6 +56,12 @@
   color: var(--secondary-text-color);
   font-weight: 400;
   text-align: center;
+}
+
+@media (max-width: 900px) {
+  .track {
+    display: none;
+  }
 }
 
 .session .title {
@@ -53,6 +79,16 @@
   font-size: 0.9rem;
   margin-bottom: 0.3rem;
   text-align: right;
+}
+
+.session .extra .session-track {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .session .extra .session-track {
+    display: inline;
+  }
 }
 
 .session .speakers {

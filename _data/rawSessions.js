@@ -69,7 +69,7 @@ module.exports = [
     dateEnd: new Date("2023-12-08T17:25:00.000+01:00"),
     durationMinutes: 20,
     speakerIds: [],
-    trackId: "amphi-1",
+    trackRange: ["amphi-1", "amphi-2"],
     language: null,
     level: null,
     imageUrl: null,

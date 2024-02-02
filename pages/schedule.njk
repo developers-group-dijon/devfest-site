@@ -11,10 +11,7 @@ eleventyComputed:
 <style>
    {%- for day, daySlot in slots %}
    .grid-day.day_{{ day }} {
-      display: grid;
-      grid-auto-rows: auto;
-      gap: 0.5em;
-      grid-template-columns: [time] 100px {% for track in tracks %}[{{tracks[loop.index0 - 1].id if loop.index0 > 0 else "track" }} {{track.id}}] auto {% endfor %}[{{ tracks[tracks.length - 1].id }}-end track-end];
+      grid-template-columns: [time] minmax(64px, 150px) {% for track in tracks %}[{{tracks[loop.index0 - 1].id if loop.index0 > 0 else "track" }} {{track.id}}] minmax(200px, 1fr) {% endfor %}[{{ tracks[tracks.length - 1].id }}-end track-end];
       grid-template-rows: [track] auto {% for slot in daySlot -%}[slot_{{ slot | dateKey }}] auto {% endfor -%}[end];
    }
    {%- endfor %}
@@ -24,16 +21,15 @@ eleventyComputed:
    <div class="day">
       <a href="#{{ day }}"><h2 class="date" id="{{ day }}">{{ day | dayFormat | capitalize }}</h2></a>
       <div class="grid-day day_{{ day }}">
+         {%- for track in tracks %}
+         <div class="track" style="grid-column: {{ track.id }}; grid-row: track">{{ track.name }}</div>
+         {%- endfor -%}
          {%- for slot in daySlot %}
          <div class="time" style="grid-column: time; grid-row: slot_{{ slot | dateKey }};">
             <span class="hours">{{ slot | hours }}</span>
             <span class="minutes">{{ slot | minutes }}</span>
          </div>
-         {%- endfor -%}
-         {%- for track in tracks %}
-         <div class="track" style="grid-column: {{ track.id }}; grid-row: track">{{ track.name }}</div>
-         {%- endfor -%}
-         {%- for session in sessions %}
+         {%- for session in sessions | filterByDateStart(slot) %}
             {%- set column = (session.trackRange[0]+" / "+session.trackRange[1]+"-end") if session.trackRange else (session.trackId | default ("track / -1")) %}
          <div class="session" style="grid-column: {{ column }} ; grid-row: slot_{{ session.dateStart | dateKey }} / span {{ session.nbSlots }}">
             <div class="title">
@@ -44,7 +40,7 @@ eleventyComputed:
                {%- endif -%}
             </div>
             <div class="abstract">{{ session.abstract | md | safe | striptags | truncate(100) }}</div>
-            <div class="extra">{{ session.durationMinutes }} minutes</div>
+            <div class="extra">{{ session.durationMinutes }} minutes<span class="session-track">{%- for track in session.tracks %} ⋅ {{ track.name }}{%- endfor %}</span></div>
             {%- if session.level or session.category.name %}
             <div class="extra">{{ session.category.name }} ⋅ {{ session.level | formatLevel }} ⋅ {{ session.language | formatLanguage }}</div>
             {%- endif -%}
@@ -60,6 +56,7 @@ eleventyComputed:
             </div>
             {%- endif -%}
          </div>
+         {%- endfor -%}
          {%- endfor -%}
       </div>
    </div>

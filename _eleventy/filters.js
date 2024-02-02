@@ -117,6 +117,15 @@ function dateKey(value) {
 }
 
 /**
+ * @param {import("../_data/types").Session[]} value
+ * @param {Date} dateStart
+ * @returns {import("../_data/types").Session[]}
+ */
+function filterByDateStart(value, dateStart) {
+  return value.filter((e) => e.dateStart.getTime() === dateStart.getTime());
+}
+
+/**
  * @param {import("../_data/types").WithName[]} value
  * @returns {string[]}
  */
@@ -174,6 +183,7 @@ const res = {
   hours,
   minutes,
   dateKey,
+  filterByDateStart,
   mapName,
   formatLevel,
   formatLanguage,

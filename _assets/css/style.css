@@ -104,6 +104,40 @@ body.scrolled .site-header {
   color: var(--primary-inv-text-color);
 }
 
+.social-icon svg {
+  max-height: 1.5rem;
+  max-width: 1.5rem;
+  vertical-align: bottom;
+  fill: var(--secondary-text-color);
+}
+
+a.social-icon:hover svg {
+  fill: var(--primary-text-color);
+}
+
+.site-header .menu a.item.home-icon svg {
+  fill: var(--primary-inv-text-color);
+  height: 1rem;
+}
+
+.site-header .menu a.item.home-icon {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .site-header .menu a.item {
+    padding: 0 0.5rem;
+  }
+
+  .site-header .menu a.item.home {
+    display: none;
+  }
+
+  .site-header .menu a.item.home-icon {
+    display: inline;
+  }
+}
+
 .site-header .menu a.item.ticketing-link {
   box-shadow:
     0 2px 2px 0 rgb(0 0 0 / 14%),
@@ -119,6 +153,10 @@ body.scrolled .site-header {
 
 body.scrolled .site-header .menu a.item {
   color: var(--primary-text-color);
+}
+
+body.scrolled .site-header .menu a.item.home-icon svg {
+  fill: var(--primary-text-color);
 }
 
 .site-header .menu a.ticketing-link {
@@ -183,15 +221,4 @@ body.scrolled .site-header .menu a.item {
   max-width: 600px;
   font-size: 1.1rem;
   font-weight: 300;
-}
-
-.social-icon svg {
-  max-height: 1.5rem;
-  max-width: 1.5rem;
-  vertical-align: bottom;
-  fill: var(--secondary-text-color);
-}
-
-a.social-icon:hover svg {
-  fill: var(--primary-text-color);
 }

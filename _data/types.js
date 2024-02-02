@@ -264,7 +264,6 @@ const Level = {
  * @typedef {Map<string, Format>} FormatsMap
  */
 /**
-/**
  * @typedef WithFormatsMap
  * @property {FormatsMap} formatsMap
  */

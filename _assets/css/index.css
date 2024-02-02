@@ -26,27 +26,44 @@
   margin: 0.5rem;
   text-shadow: 1px 1px 1px rgb(0 0 0 / 40%);
   font-weight: 500;
+  text-align: center;
 }
 
 .team-info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .team-info {
+    grid-template-columns: 1fr;
+  }
 }
 
 .team-photo {
   background-color: var(--gray-lighter-background-color);
+  max-width: 100%;
+  max-height: 100%;
+  margin-top: 2rem;
+  margin-inline: auto;
 }
 
 .event-info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .event-info {
+    grid-template-columns: 1fr;
+  }
 }
 
 .stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 1rem;
 }
 
@@ -81,6 +98,18 @@
   gap: 1rem;
 }
 
+@media (max-width: 900px) {
+  .sponsors {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .sponsors {
+    grid-template-columns: 1fr;
+  }
+}
+
 .sponsor {
   max-height: 90px;
   padding: 1rem;
@@ -101,7 +130,8 @@
 }
 
 .sponsor .logo {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .ticketing {
@@ -116,6 +146,13 @@
   margin-bottom: 20px;
   justify-content: center;
   align-items: start;
+}
+
+@media (max-width: 600px) {
+  .pricings {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .pricing {
@@ -175,18 +212,42 @@
 
 .speakers {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   text-align: center;
+}
+
+@media (max-width: 900px) {
+  .speakers {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .speakers {
+    grid-template-columns: 1fr;
+  }
+}
+
+.all-speakers {
   margin-bottom: 2rem;
+}
+
+.map-container {
+  position: relative;
 }
 
 .map {
   height: 610px;
-  position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: right;
+  background-position: 50%;
+}
+
+@media (max-width: 900px) {
+  .map {
+    background-position: 67%;
+  }
 }
 
 .location {
@@ -200,6 +261,16 @@
   background-color: var(--gray-darker-background-color);
 }
 
+@media (max-width: 900px) {
+  .location {
+    position: relative;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: auto;
+  }
+}
+
 .location .address {
   padding: 0.5rem 0;
   text-transform: none;
@@ -207,13 +278,27 @@
 
 .photos {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   grid-template-rows: repeat(3, 25.7vh);
   grid-template-areas:
     "photo1 photo1 photo2 photo2 photo3"
     "photo4 photo5 photoLink photoLink photo3"
     "photo6 photo6 photo7 photo7 photo8";
   gap: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .photos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(4, 20vh) minmax(20vh, min-content);
+    grid-template-areas:
+      "photo1 photo2 photo2"
+      "photo4 photo4 photo3"
+      "photo5 photo7 photo3"
+      "photo6 photo6 photo8"
+      "photoLink photoLink photoLink";
+    grid-auto-rows: auto;
+  }
 }
 
 .photos .photo-link {

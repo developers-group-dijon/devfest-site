@@ -25,9 +25,10 @@ icons:
   <body>
     <header class="site-header">
       <nav class="centered-content">
-        <span><a href="/" class="site-logo"><img src="{{ brandLogo | normalizeAssetUrl }}" alt="{{ event.name }}"></a></span>
+        <a href="/" class="site-logo"><img src="{{ brandLogo | normalizeAssetUrl }}" alt="{{ event.name }}"></a>
         <div class="menu">
-          <a class="item" href="/">Accueil</a>
+          <a class="item home-icon" href="/">{% iconSvg 'solid/house' %}</a>
+          <a class="item home" href="/">Accueil</a>
           <a class="item" href="/speakers/">Speakers</a>
           <a class="item" href="/schedule/">Programme</a>
           <a class="item ticketing-link" href="{{ ticketing.url}}">Billeterie</a>

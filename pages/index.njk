@@ -69,8 +69,8 @@ photos:
             <div>…</div>
          </div>
          {%- endfor %}
-         <div class="visible-link"><a href="/speakers/">Voir tous les speakers</a></div>
       </div>
+      <div class="visible-link all-speakers"><a href="/speakers/">Voir tous les speakers</a></div>
    </div>
 </div>
 <div class="ticketing">
@@ -94,11 +94,13 @@ photos:
       <h1>Les temps forts du {{ (event.previousEditions | first).name }}</h1>
       <a class="visible-link" href="{{ event.photosLink }}">Voir toutes les photos</a>
    </div>
-   {%- for i in range(1, 9) %}
-   <div class="img photo{{ i }}" style="grid-area: photo{{ i }}; background-image: url({{ photos[i] if photos[i] else '' | normalizeAssetUrl }})"></div>
+   {%- for i in range(0, 8) %}
+   <div class="img photo{{ i }}" style="grid-area: photo{{ i + 1 }}; background-image: url({{ (photos[i] if photos[i] else '') | normalizeAssetUrl }})"></div>
    {%- endfor %}
 </div>
-<div class="map" style="background-image: url({{ (mapImage if mapImage else '/default-background.jpg') | normalizeAssetUrl }});">
+<div class="map-container">
+   <div class="map" style="background-image: url({{ (mapImage if mapImage else '/default-background.jpg') | normalizeAssetUrl }});">
+   </div>
    <div class="location dark-zone">
       <h1>Le lieu : {{ event.location.name }}</h1>
       <div>{{ event.location.description  }}</div>

@@ -20,11 +20,21 @@ function socialLink(userId, socialId) {
 }
 
 /**
+ * @param {string} path
+ * @returns {string}
+ */
+function iconSvg(path) {
+  return fs
+    .readFileSync(`node_modules/@fortawesome/fontawesome-free/svgs/${path}.svg`)
+    .toString();
+}
+
+/**
  * @param {SocialId} socialId
  * @returns {string}
  */
 function socialIconSvg(socialId) {
-  const base = "node_modules/@fortawesome/fontawesome-free/svgs/brands/";
+  const base = "brands/";
   let iconName;
   switch (socialId) {
     case SocialId.GITHUB:
@@ -39,9 +49,8 @@ function socialIconSvg(socialId) {
     default:
       throw new Error(`Réseau social non supporté : ${socialId}`);
   }
-  const data = fs.readFileSync(`${base}${iconName}.svg`);
 
-  return data.toString();
+  return iconSvg(`${base}${iconName}`);
 }
 
 /**
@@ -59,6 +68,7 @@ function social({ id, name, link }) {
  */
 const res = {
   social,
+  iconSvg,
 };
 
 module.exports = res;
