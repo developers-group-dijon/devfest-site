@@ -49,7 +49,7 @@ const rawEvent = {
     description:
       "Sur le campus de Dijon. Accessible avec la ligne A du tram et la ligne 11 en bus. En voiture, privilégier les parkings relais.",
     address: "11 rue Sully, 21000 Dijon",
-    url: "https://maps.google.com",
+    url: "https://www.google.com/maps/dir/?api=1&destination=47.317764,5.0643906,17z",
   },
   photosLink:
     "https://drive.google.com/drive/folders/16oUIYp7uIUli_Z7sJhfEyKCDjZpaIAly/",
