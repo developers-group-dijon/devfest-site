@@ -170,6 +170,22 @@ function formatLanguage(value) {
 }
 
 /**
+ * Calcule le nombre de slots que va occcuper une session.
+ * @param {import('../_data/types').Session} session
+ * @param {Date[]} slots
+ * @returns {number}
+ */
+function countSlots({ dateStart, duration }, slots) {
+  const timeStart = dateStart.getTime();
+  const timeEnd = dateStart.getTime() + duration;
+  return slots
+    .map((slotDateStart) => slotDateStart.getTime())
+    .filter(
+      (slotTimeStart) => slotTimeStart >= timeStart && slotTimeStart < timeEnd,
+    ).length;
+}
+
+/**
  * @type {{[key: string]: Function}}
  */
 const res = {
@@ -187,6 +203,7 @@ const res = {
   mapName,
   formatLevel,
   formatLanguage,
+  countSlots,
 };
 
 module.exports = res;

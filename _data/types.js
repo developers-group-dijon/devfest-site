@@ -292,24 +292,18 @@ const Level = {
  */
 
 /**
- * @typedef ParsedSessionProperties
+ * @typedef SessionProperties
  * @property {Day} day
  * @property {Duration} duration
  * @property {Speaker[]} speakers
  * @property {Format} format
  * @property {Category} category
  * @property {Track[]} tracks
- * @typedef {RawSession & ParsedSessionProperties} ParsedSession
+ * @typedef {RawSession & SessionProperties} Session
  */
 /**
- * @typedef WithParsedSessions
- * @property {ParsedSession[]} parsedSessions
- */
-
-/**
- * @typedef SessionProperties
- * @property {number} nbSlots
- * @typedef {ParsedSession & SessionProperties} Session
+ * @typedef WithSessions
+ * @property {Session[]} sessions
  */
 
 ///////////////////////////////

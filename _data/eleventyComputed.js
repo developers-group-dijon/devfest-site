@@ -11,17 +11,16 @@ function buildDay(date) {
 }
 
 /**
- * @param {import('./types').WithRawEvent & import('./types').WithParsedSessions } data
+ * @param {import('./types').WithRawEvent & import('./types').WithSessions } data
  * @returns {import('./types').Event}
  */
 function parseEvent(data) {
-  [data.parsedSessions];
+  [data.sessions];
   return {
     ...data.rawEvent,
     dayCount:
       buildDay(data.rawEvent.dateEnd) - buildDay(data.rawEvent.dateStart) + 1,
-    sessionCount: (data.parsedSessions || []).filter((s) => !s.hideTrackTitle)
-      .length,
+    sessionCount: (data.sessions || []).filter((s) => !s.hideTrackTitle).length,
   };
 }
 
@@ -75,7 +74,7 @@ function buildCategoriesMap(data) {
 /**
  * RawSessions avec quelques ajouts : format des dates, le jour, le données de référence (speakers, …)
  * @param { import('./types').WithSpeakersMap & import('./types').WithRawSessions & import('./types').WithFormatsMap & import('./types').WithCategoriesMap & import('./types').WithTracksMap } data
- * @returns {import('./types').ParsedSession[]}
+ * @returns {import('./types').Session[]}
  */
 function parseSessions(data) {
   [data.formatsMap, data.categoriesMap, data.speakersMap, data.tracksMap];
@@ -104,18 +103,18 @@ function parseSessions(data) {
 /**
  * Calcule les slots d'une journée.
  * Il s'agit des  de début des sessions.
- * @param { import('./types').WithParsedSessions } data
+ * @param { import('./types').WithSessions } data
  * @returns {import('./types').SlotsByDay}
  */
 function buildSlots(data) {
-  [data.parsedSessions];
+  [data.sessions];
   // Identification des dates de début des sessions pour chaque jour
   // Pour ne pas avoir de dates de début en doublon, on passe par
   // une Map avec comme clé le {@type {import('./types').Time}} (number)
   // des dates de début.
   /** @type {Map<import("./types").Day, Map<number, Date>>} */
   const tmpMap = new Map();
-  for (const session of data.parsedSessions) {
+  for (const session of data.sessions) {
     if (!tmpMap.has(session.day)) {
       tmpMap.set(session.day, new Map());
     }
@@ -138,46 +137,12 @@ function buildSlots(data) {
   return res;
 }
 
-/**
- * Calcule le nombre de slots que va occcuper une session.
- * @param {import('./types').ParsedSession} session
- * @param {Date[]} slots
- * @returns {number}
- */
-function countSlots({ dateStart, duration }, slots) {
-  const timeStart = dateStart.getTime();
-  const timeEnd = dateStart.getTime() + duration;
-  return slots
-    .map((slotDateStart) => slotDateStart.getTime())
-    .filter(
-      (slotTimeStart) => slotTimeStart >= timeStart && slotTimeStart < timeEnd,
-    ).length;
-}
-
-/**
- * @param { import('./types').WithParsedSessions & import('./types').WithSlotsByDay } data
- * @returns {import('./types').Session[]}
- */
-function buildSessions(data) {
-  [data.parsedSessions, data.slots];
-  if (!data.parsedSessions) {
-    return [];
-  }
-  return data.parsedSessions.map((session) => {
-    return {
-      ...session,
-      nbSlots: countSlots(session, nn(data.slots.get(session.day))),
-    };
-  });
-}
-
 module.exports = {
   event: parseEvent,
   speakersMap: buildSpeakersMap,
   formatsMap: buildFormatsMap,
   tracksMap: buildTracksMap,
   categoriesMap: buildCategoriesMap,
-  parsedSessions: parseSessions,
+  sessions: parseSessions,
   slots: buildSlots,
-  sessions: buildSessions,
 };

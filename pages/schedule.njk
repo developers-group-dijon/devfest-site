@@ -31,7 +31,7 @@ eleventyComputed:
          </div>
          {%- for session in sessions | filterByDateStart(slot) %}
             {%- set column = (session.trackRange[0]+" / "+session.trackRange[1]+"-end") if session.trackRange else (session.trackId | default ("track / -1")) %}
-         <div class="session" style="grid-column: {{ column }} ; grid-row: slot_{{ session.dateStart | dateKey }} / span {{ session.nbSlots }}">
+         <div class="session" style="grid-column: {{ column }} ; grid-row: slot_{{ session.dateStart | dateKey }} / span {{ session | countSlots(daySlot) }}">
             <div class="title">
                {%- if session.hideTrackTitle -%}
                {{ session.title }}
