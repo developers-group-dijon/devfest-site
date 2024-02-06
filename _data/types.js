@@ -157,14 +157,13 @@
 
 /**
  * @typedef Member
- * @property {string} id
  * @property {string} name
  * @property {?string} jobTitle
- * @property {?string} bio
+ * @property {?string=} bio
  * @property {?string} company
- * @property {?string} photoUrl
+ * @property {?string=} photoUrl
  * @property {Social[]} socials
- * @property {?string} companyLogoUrl
+ * @property {?string=} companyLogoUrl
  */
 
 /**
