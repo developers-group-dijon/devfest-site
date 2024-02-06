@@ -49,7 +49,7 @@ eleventyComputed:
                <div class="speaker-title">Speakers</div>
                {%- for speaker in session.speakers -%}
                <div class="speaker">
-                  <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/speakers/defaut.png') | normalizeAssetUrl }}" alt="avatar">
+                  <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">
                   <a class="speaker-name" href="/speaker/{{ speaker.id | slugify }}">{{ speaker.name }} ⋅ {{ speaker.company }}</a>
                </div>
                {%- endfor %}
