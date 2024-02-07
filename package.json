@@ -10,6 +10,7 @@
     "lint:eslint:build": "BROWSERSLIST_ENV=build eslint --ignore-pattern=_assets .",
     "lint:stylelint": "BROWSERSLIST_ENV=run stylelint '_assets/**/*.css'",
     "lint:jsdoc": "node_modules/.bin/tsc",
+    "lint:commit": "commitlint --to HEAD",
     "lint": "run-p lint:*",
     "format:prettier": "prettier --write .",
     "format:eslint": "eslint --fix .",
