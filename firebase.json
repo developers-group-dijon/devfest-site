@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "main",
+      "public": "_site",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    },
+    {
+      "target": "devfest-dijon-2023",
+      "public": "_site",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    },
+    {
+      "target": "devfest-dijon-2024",
+      "public": "_site",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    }
+  ]
+}

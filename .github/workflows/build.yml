@@ -2,6 +2,9 @@ name: Validate code and build site
 
 on:
   push:
+    branches:
+      - "!main"
+      - "!devfest-*"
   pull_request:
 
 jobs:

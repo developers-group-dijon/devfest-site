@@ -1,0 +1,21 @@
+{
+  "projects": {
+    "default": "devfest-dijon"
+  },
+  "targets": {
+    "devfest-dijon": {
+      "hosting": {
+        "devfest-dijon-2023": [
+          "devfest-dijon-2023"
+        ],
+        "devfest-dijon-2024": [
+          "devfest-dijon-2024"
+        ],
+        "main": [
+          "devfest-dijon-snapshot"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
