@@ -55,7 +55,7 @@ const rawEvent = {
     "https://drive.google.com/drive/folders/16oUIYp7uIUli_Z7sJhfEyKCDjZpaIAly/",
   team: {
     message:
-      "Le Devfest Dijon 2023 est organisé par le [Developers Group Dijon](https://developers-group-dijon.fr/), fiers d'organiser le deuxième DevFest Dijon !",
+      "Le Devfest Dijon 2023 est organisé par le [Developers Group Dijon](https://developers-group-dijon.fr/), fier de cette deuxième DevFest Dijon !",
     why: "Le DevFest Dijon 2023 sera la deuxième édition dijonnaise d’un événement qui rassemble des milliers de développeurs et de passionnés dans le monde entier chaque année pour penser les technologies de demain. Le Devfest est LE lieu unique pour partager et échanger autour de nombreux sujets tels que Web, Cloud, Mobile, objets connectés et bien plus encore",
   },
   // TODO: lien vers les réseaux
