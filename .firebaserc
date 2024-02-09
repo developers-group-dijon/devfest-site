@@ -8,11 +8,8 @@
         "devfest-dijon-2023": [
           "devfest-dijon-2023"
         ],
-        "devfest-dijon-2024": [
-          "devfest-dijon-2024"
-        ],
         "main": [
-          "devfest-dijon-snapshot"
+          "devfest-dijon"
         ]
       }
     }
