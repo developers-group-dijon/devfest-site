@@ -8,6 +8,10 @@ on:
       - "main"
       - "devfest-*"
   pull_request:
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
 jobs:
   build_and_preview:
     if: "${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}"
@@ -31,3 +35,4 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEVFEST_DIJON }}"
           projectId: devfest-dijon
           channelId: "${{ github.event_name == 'push' && github.ref_name || null }}"
+          target: main
