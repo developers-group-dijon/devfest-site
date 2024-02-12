@@ -3,10 +3,18 @@
 
 name: Deploy to Firebase Hosting on PR
 on:
+  push:
+    branches-ignore:
+      - main
+      - devfest-*
   pull_request:
 jobs:
   build_and_preview:
-    if: "${{ github.event.pull_request.head.repo.full_name == github.repository }}"
+    if: "${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}"
+    permissions:
+      checks: write
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,4 +33,6 @@ jobs:
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEVFEST_DIJON }}"
+          channelId: "${{ github.event_name == 'push' && github.ref_name || null }}"
           projectId: devfest-dijon
+          target: main
