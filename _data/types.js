@@ -117,14 +117,12 @@
 
 /**
  * @typedef SponsorType
- * @property {string} id
  * @property {string} name
  * @property {Sponsor[]} sponsors
  */
 
 /**
  * @typedef Sponsor
- * @property {string} id
  * @property {string} logoUrl
  * @property {string} name
  * @property {string} website
