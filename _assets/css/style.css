@@ -18,7 +18,8 @@
 
   /* Other colors */
   --divider-color: #b6b6b6;
-  --index-header-gradient: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 10%));
+  --index-header-gradient: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 0%));
+  --index-header-shadow: 1px 1px 1px rgb(0 0 0 / 40%);
   --page-header-gradient: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 30%));
   --page-header-shadow: 1px 1px 2px rgb(0 0 0);
 }
@@ -222,5 +223,5 @@ body.scrolled .site-header .menu a.item.home-icon svg {
 .page-description {
   max-width: 600px;
   font-size: 1.1rem;
-  font-weight: 300;
+  font-weight: 400;
 }

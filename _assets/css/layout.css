@@ -35,6 +35,14 @@ body {
   }
 }
 
+.site-header .site-logo > img {
+  display: none;
+}
+
+body.scrolled .site-header .site-logo > img {
+  display: inline;
+}
+
 .site-header > .centered-content {
   display: flex;
   flex-direction: row;
