@@ -19,7 +19,8 @@
   /* Other colors */
   --divider-color: #b6b6b6;
   --index-header-gradient: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 10%));
-  --page-header-gradient: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 20%));
+  --page-header-gradient: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 30%));
+  --page-header-shadow: 1px 1px 2px rgb(0 0 0);
 }
 
 body {
@@ -210,6 +211,7 @@ body.scrolled .site-header .menu a.item.home-icon svg {
 .page-header {
   background: var(--page-header-gradient);
   color: var(--primary-inv-text-color);
+  text-shadow: var(--page-header-shadow);
 }
 
 .page-header-image {
