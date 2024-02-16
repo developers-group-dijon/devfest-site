@@ -40,7 +40,7 @@ icons:
       <div class="site-links">
         <div class="centered-content">
           <div class="site-links-group">
-            <h3>À propos</h3>
+            <div class="site-links-group-title">À propos</div>
             {%- for link in event.aPropos %}
             <a href="{{ link.url }}">{{ link.name }}</a>
             {%- endfor -%}
@@ -49,13 +49,13 @@ icons:
             {%- endfor -%}
           </div>
           <div class="site-links-group">
-            <h3>Ressources</h3>
+            <div class="site-links-group-title">Ressources</div>
             {%- for link in event.resources %}
             <a href="{{ link.url }}">{{ link.name }}</a>
             {%- endfor -%}
           </div>
           <div class="site-links-group">
-            <h3>Contact</h3>
+            <div class="site-links-group-title">Contact</div>
             {%- for link in event.contact %}
             <a href="{{ link.url }}">{{ link.name }}</a>
             {%- endfor -%}

@@ -57,7 +57,7 @@ photos:
          {%- for speaker in speakers %}
          <div class="speaker" data-to-hide>
             <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">
-            <h4 class="speaker-name">{{ speaker.name }}</h4>
+            <div class="speaker-name">{{ speaker.name }}</div>
             <div>{{ speaker.company }}</div>
          </div>
          {%- endfor %}
@@ -65,7 +65,7 @@ photos:
          {%- for i in range(0, 4) %}
          <div class="speaker" data-to-remove>
             <img class="avatar" src="{{ '/default-avatar.png' | normalizeAssetUrl }}" alt="avatar">
-            <h4 class="speaker-name">…</h4>
+            <div class="speaker-name">…</div>
             <div>…</div>
          </div>
          {%- endfor %}

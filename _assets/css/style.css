@@ -97,7 +97,7 @@ body.scrolled .site-header {
 
 .site-header .menu a.item {
   transition: background-color 0.3s;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1rem;
   display: block;
   padding: 0 1rem;

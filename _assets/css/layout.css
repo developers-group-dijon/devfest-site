@@ -115,6 +115,12 @@ body.scrolled .site-header .site-logo > img {
   flex-direction: column;
 }
 
+.site-links-group-title {
+  font-size: 1.6rem;
+  margin: 1em 0 0.5em;
+  font-weight: 400;
+}
+
 /* Layout des pages (hors accueil) */
 .page-header {
   padding-top: 64px;

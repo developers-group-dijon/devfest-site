@@ -12,7 +12,7 @@ eleventyComputed:
    {%- for member in team %}
    <div class="member">
       <img class="avatar" src="{{ (member.photoUrl if member.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">
-      <h4 class="name">{{ member.name }}</h4>
+      <div class="name">{{ member.name }}</div>
       <div class="job_title">{{ member.jobTitle }} ⋅ {{ member.company }}</div>
       <div class="bio">{{ member.bio }}</div>
       <div class="socials">

@@ -233,6 +233,12 @@
   }
 }
 
+.speakers .speaker-name {
+  font-size: 1.4rem;
+  margin: 1em 0 0.5em;
+  font-weight: 400;
+}
+
 .all-speakers {
   margin-bottom: 2rem;
 }

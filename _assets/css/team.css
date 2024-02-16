@@ -16,3 +16,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+.team .name {
+  font-size: 1.4rem;
+  margin: 1em 0 0.5em;
+  font-weight: 400;
+}
