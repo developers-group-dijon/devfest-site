@@ -9,6 +9,7 @@
  * @type {import("./types").SponsorType[]}
  */
 const sponsors = [
+  /*
   {
     name: "Sponsors",
     sponsors: [
@@ -99,6 +100,7 @@ const sponsors = [
       },
     ],
   },
+*/
 ];
 
 module.exports = sponsors;

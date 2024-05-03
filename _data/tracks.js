@@ -15,6 +15,10 @@ const tracks = [
     id: "amphi-2",
     name: "Amphi 2",
   },
+  {
+    id: "amphi-3",
+    name: "Amphi 3",
+  },
 ];
 
 module.exports = tracks;

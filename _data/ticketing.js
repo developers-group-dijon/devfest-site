@@ -10,14 +10,14 @@
 const ticketing = {
   comment:
     "inclut le petit-déjeuner, le repas le midi et le café pour la journée",
-  url: "https://my.weezevent.com/devfest-dijon-2023",
+  url: null,
   pricings: [
+    /*
     {
       id: "early",
       name: "Tarif Early",
       price: "25 €",
       comment: "Seulement 100 places !",
-      url: null,
     },
     {
       id: "standard",
@@ -30,6 +30,7 @@ const ticketing = {
       price: "20 €",
       comment: "Une pièce-justificative pourra être demandée",
     },
+*/
   ],
 };
 

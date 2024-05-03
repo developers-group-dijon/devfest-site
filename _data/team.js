@@ -89,6 +89,15 @@ const team = [
     socials: [{ id: "linkedin", name: "Linkedin", link: "carolinechanlon" }],
   },
   {
+    name: "Matthieu Lamalle",
+    jobTitle: "Ingénieur Logiciel Libre",
+    company: "Cadoles",
+    photoUrl: "/avatars/matthieu.jpg",
+    socials: [
+      { id: "linkedin", name: "Linkedin", link: "matthieu-lamalle-29387a53" },
+    ],
+  },
+  {
     name: "Jean-Philippe Benadjer",
     jobTitle: "Infographiste",
     company: "Atol CD",
