@@ -29,9 +29,10 @@ icons:
         <div class="menu">
           <a class="item home-icon" href="/">{% iconSvg 'solid/house' %}</a>
           <a class="item home" href="/">Accueil</a>
-          <a class="item" href="/speakers/">Speakers</a>
-          <a class="item" href="/schedule/">Programme</a>
-          <a class="item ticketing-link" href="{{ ticketing.url}}">Billeterie</a>
+          {% if speakers.length > 0 %}<a class="item" href="/speakers/">Speakers</a>{% endif %}
+          {% if event.sessionCount > 0 %}<a class="item" href="/schedule/">Programme</a>{% endif %}
+          {% if ticketing.url %}<a class="item ticketing-link" href="{{ ticketing.url}}">Billeterie</a>{% endif %}
+          {% if sponsors.length == 0 %}<a class="item ticketing-link" href="{{ event.contact[0].url }}">Devenir sponsor</a>{% endif %}
         </div>
       </nav>
     </header>

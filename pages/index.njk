@@ -44,11 +44,12 @@ photos:
       <div class="stats">
          <div class="stat"><span class="stat-value">{{ event.visitors }}</span><span class="stat-label">Participants</span></div>
          <div class="stat"><span class="stat-value">{{ event.dayCount }}</span><span class="stat-label">Journée</span></div>
-         <div class="stat"><span class="stat-value">{{ event.sessionCount }}</span><span class="stat-label">Sessions</span></div>
+         <div class="stat"><span class="stat-value">{{ event.sessionCount if event.sessionCount > 0 else "+20" }}</span><span class="stat-label">Sessions</span></div>
          <div class="stat"><span class="stat-value">{{ tracks.length }}</span><span class="stat-label">Scènes</span></div>
       </div>
    </div>
 </div>
+{%- if speakers.length > 0 %}
 <div>
    <div class="centered-content">
       <h1>Speakers</h1>
@@ -73,9 +74,14 @@ photos:
       <div class="visible-link all-speakers"><a href="/speakers/">Voir tous les speakers</a></div>
    </div>
 </div>
+{%- endif %}
 <div class="ticketing">
    <div class="centered-content">
+      {%- if ticketing.pricings.length > 0 %}
       <h1>Réservez-votre billet</h1>
+      {%- else %}
+      <h1>Suivez-nous <a class="link" href="{{ event.contact[0].url }}">les réseaux</a> pour ne pas manquer l'ouverture de la billetterie</h1>
+      {%- endif %}
       <div class="pricings">
       {%- for pricing in ticketing.pricings %}
          <a class="pricing" href="{{ pricing.url | default(ticketing.url) }}">
@@ -120,6 +126,7 @@ photos:
       </div>
    </div>
 </div>
+{%- if sponsors.length > 0 %}
 <div>
    <div class="centered-content sponsor-types">
       <h1>Partenaires &amp; Sponsors</h1>
@@ -135,4 +142,5 @@ photos:
       {%- endfor %}
    </div>
 </div>
+{%- endif %}
 <script src="{{ '/js/index.js' | normalizeAssetUrl }}" ></script>

@@ -97,7 +97,7 @@
 
 /**
  * @typedef Ticketing
- * @property {string} url
+ * @property {?string} url
  * @property {?string} comment
  * @property {TicketPricing[]} princings
  */
