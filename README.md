@@ -86,10 +86,13 @@ Dans tous les cas les fichiers sont référencés avec des URLs relatives au dos
 
 - _Archiver_ la version actuelle
   - Nouveau site dans projet le hosting du projet `devfest-dijon` dans la console Firebase (idéalement pour que ce soit simple de s'y retrouver le site est au format `devfest-dijon-<année>`)
-  - Définir les règle en local (`target` → `site`) dans `.firebaserc` et `firebase.json` (`firebase target:apply hosting devfest-dijon-<année> devfest-dijon-<année>`)
+  - Définir les règle en local (`target` → `site`)
+    - dans `.firebaserc` : `firebase target:apply hosting devfest-dijon-<année> devfest-dijon-<année>`, à noter le premier paramètre est le nom de la branche (ce sera le `target` dans firebase) et le second le site_id dans firebase.
+    - dans `firebase.json` en ajoutant un élément de la partie `hosting` (`{"target": "devfest-dijon-<année>", "public": "_site", "ignore": ["firebase.json", "**/.*", "**/node_modules/**"] }` où le target est le nom de la branche)
   - Créer un nouvelles branche Git du nom du `target` (du coup toujours `devfest-dijon-<année>`)
   - Pousser la branche sur Github
-  - Configurer l'alias DNS `https://devfest-<année>.developpers` → `https://devfest-<année>.developers-group-dijon.fr/`
+  - Configurer l'alias DNS `https://devfest-dijon-<année>.web.app` → `https://devfest-<année>.developers-group-dijon.fr/`
+  - Ajouter un domaine personnalisé pour le site dans la console firebase
 - Mettre à jour le code sur `main`
   - cf. [Personnaliser le contenu du site](#personnaliser-le-contenu-du-site)
 
