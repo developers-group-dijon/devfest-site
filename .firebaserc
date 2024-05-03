@@ -5,11 +5,11 @@
   "targets": {
     "devfest-dijon": {
       "hosting": {
-        "devfest-dijon-2023": [
-          "devfest-dijon-2023"
-        ],
         "main": [
           "devfest-dijon"
+        ],
+        "devfest-dijon-2023": [
+          "devfest-dijon-2023-7c663"
         ]
       }
     }
