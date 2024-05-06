@@ -26,6 +26,7 @@ const rawEvent = {
   dateStart: new Date("2024-12-06T08:00:00.000Z"),
   dateEnd: new Date("2024-12-06T17:00:00.000Z"),
   visitors: "+400",
+  callForPaper: "https://conference-hall.io/public/event/LvvYRcF5AIhpojdn2lkQ",
   comments: [
     {
       title: "Le Devfest Dijon, c'est quoi ?",

@@ -45,6 +45,7 @@
  * @property {Link[]} contact
  * @property {Link[]} resources
  * @property {string} photosLink
+ * @property {string?} callForPaper
  */
 
 /**
