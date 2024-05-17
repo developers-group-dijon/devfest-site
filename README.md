@@ -72,8 +72,8 @@ Dans tous les cas les fichiers sont référencés avec des URLs relatives au dos
     - `brandLogo` : logo dans le header (taille recommandée 150x30)
     - `icons` : favicons
   - `_pages/index.njk`
-    - `bigLogo` : logo dans la zone _hero_ (taille recommandée 2000x1100)
-    - `background` : arrière plan de la zone _hero_ (taille recommandée)
+    - `bigLogo` : logo dans la zone _hero_ (taille recommandée 400x150)
+    - `background` : arrière plan de la zone _hero_ (taille recommandée 2000x1100)
     - `mapImage` : carte de localisation, [uMap](https://umap.openstreetmap.fr/fr/map/new/#5/45.136/-1.187) peut aider à faire la carte avec un peu de retouche d'image (couleur) par la suite (taille recommandée 2000x610)
     - `teamPhoto` : photo de l'équipe (taille recommandée 700x500)
     - `photos` : 8 photos (taille recommandée [500..800]x[500..800])
