@@ -34,9 +34,9 @@ const rawEvent = {
         "Le Devfest Dijon 2024 est la troisième édition de la plus grande conférence technique de Bourgogne-Franche-Comté destinée aux développeurs. Elle s'adresse aux étudiants, aux professionnels ou tout simplement curieux, passionnés de technologies.",
     },
     {
-      title: "Devfest 2024 : Hommage à Gustave Eiffel",
+      title: "Devfest 2024 : A la rencontre des Ducs de Bourgogne",
       content:
-        "Le design de cette édition du DevFest est un hommage à Gustave Eiffel, ingénieur et industriel français qui a notamment participé à la construction de la tour Eiffel à Paris, de la statue de la Liberté à New York et de la poste centrale de Saïgon.",
+        "Pour cette édition du DevFest nous vous invitons à venir découvrir les Ducs de Bourgogne. Vous en avez surement déjà entendu parler. Mais saviez-vous que sous leur règne, au moyen-âge, la Bourgogne était si puissante qu’ils ont failli détrôner le Roi et faire de Dijon la capitale de la France ?",
     },
   ],
   previousEditions: [
