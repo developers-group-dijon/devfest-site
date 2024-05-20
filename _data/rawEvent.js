@@ -29,12 +29,12 @@ const rawEvent = {
   callForPaper: "https://conference-hall.io/public/event/LvvYRcF5AIhpojdn2lkQ",
   comments: [
     {
-      title: "Le Devfest Dijon, c'est quoi ?",
+      title: "Le DevFest Dijon, c'est quoi ?",
       content:
-        "Le Devfest Dijon 2024 est la troisième édition de la plus grande conférence technique de Bourgogne-Franche-Comté destinée aux développeurs. Elle s'adresse aux étudiants, aux professionnels ou tout simplement curieux, passionnés de technologies.",
+        "Le DevFest Dijon 2024 est la troisième édition de la plus grande conférence technique de Bourgogne-Franche-Comté destinée aux développeurs. Elle s'adresse aux étudiants, aux professionnels ou tout simplement curieux, passionnés de technologies.",
     },
     {
-      title: "Devfest 2024 : A la rencontre des Ducs de Bourgogne",
+      title: "DevFest 2024 : À la rencontre des Ducs de Bourgogne",
       content:
         "Pour cette édition du DevFest nous vous invitons à venir découvrir les Ducs de Bourgogne. Vous en avez surement déjà entendu parler. Mais saviez-vous que sous leur règne, au moyen-âge, la Bourgogne était si puissante qu’ils ont failli détrôner le Roi et faire de Dijon la capitale de la France ?",
     },
@@ -60,8 +60,8 @@ const rawEvent = {
     "https://drive.google.com/drive/folders/16oUIYp7uIUli_Z7sJhfEyKCDjZpaIAly/",
   team: {
     message:
-      "Le Devfest Dijon 2024 est organisé par le [Developers Group Dijon](https://developers-group-dijon.fr/), fier de cette troisième DevFest Dijon !",
-    why: "Le DevFest Dijon 2024 sera la troisième édition dijonnaise d’un événement qui rassemble des milliers de développeurs et de passionnés dans le monde entier chaque année pour penser les technologies de demain. Le Devfest est LE lieu unique pour partager et échanger autour de nombreux sujets tels que Web, Cloud, Mobile, objets connectés et bien plus encore",
+      "Le DevFest Dijon 2024 est organisé par le [Developers Group Dijon](https://developers-group-dijon.fr/), fier de cette troisième DevFest Dijon !",
+    why: "Le DevFest Dijon 2024 sera la troisième édition dijonnaise d’un événement qui rassemble des milliers de développeurs et de passionnés dans le monde entier chaque année pour penser les technologies de demain. Le DevFest est LE lieu unique pour partager et échanger autour de nombreux sujets tels que Web, Cloud, Mobile, objets connectés et bien plus encore",
   },
   // TODO: lien vers les réseaux
   aPropos: [
