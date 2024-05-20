@@ -117,6 +117,33 @@ const team = [
     photoUrl: "/avatars/romy.jpg",
     socials: [{ id: "linkedin", name: "Linkedin", link: "romy-fuentes" }],
   },
+  {
+    name: "Michel Girard",
+    jobTitle: "Responsable de formation Numérique",
+    company: "DIIAGE",
+    photoUrl: "/avatars/michel.jpg",
+    socials: [{ id: "linkedin", name: "Linkedin", link: "themoat" }],
+  },
+  {
+    name: "Laetitia Detalle",
+    jobTitle: "Coordinateur Pédagogique/Coach/Formateur",
+    company: "DIIAGE",
+    photoUrl: "/avatars/laetitia.jpg",
+    socials: [
+      { id: "linkedin", name: "Linkedin", link: "laetitia-detalle-305590264" },
+    ],
+  },
+  {
+    name: "Fabrice Ubertosi",
+    jobTitle: "Directeur Technique",
+    company: "CPage",
+    photoUrl: "/avatars/fabrice.jpg",
+    socials: [
+      { id: "linkedin", name: "Linkedin", link: "ubertosi-fabrice-11b763124" },
+    ],
+  },
 ];
 
 module.exports = team;
+
+// convert img.png -resize "200x200" img.jpg
