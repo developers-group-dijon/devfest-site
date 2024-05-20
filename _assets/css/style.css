@@ -172,6 +172,11 @@ a.cfp-link {
   line-height: 2em;
   align-self: center;
   color: var(--primary-inv-text-color) !important;
+  box-shadow:
+    0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 3px 1px -2px rgb(0 0 0 / 12%),
+    0 1px 5px 0 rgb(0 0 0 / 20%);
+  transition: box-shadow 0.25s;
 }
 
 a.cfp-link:hover {
