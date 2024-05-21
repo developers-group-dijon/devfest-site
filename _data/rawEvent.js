@@ -27,6 +27,9 @@ const rawEvent = {
   dateEnd: new Date("2024-12-06T17:00:00.000Z"),
   visitors: "+400",
   callForPaper: "https://conference-hall.io/public/event/LvvYRcF5AIhpojdn2lkQ",
+  // Lien pour devenir sponsor (mettre null pour ne pas afficher le lien)
+  sponsoringUrl:
+    "https://docs.google.com/forms/d/e/1FAIpQLSdvyfreoLIsnb2uyeVVaCBTVn-6UHAtUbifC_0zTUiaaE_i0g/viewform",
   comments: [
     {
       title: "Le DevFest Dijon, c'est quoi ?",

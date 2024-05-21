@@ -43,6 +43,7 @@
  * @property {Team} team
  * @property {Link[]} aPropos
  * @property {Link[]} contact
+ * @property {string?} sponsoringUrl
  * @property {Link[]} resources
  * @property {string} photosLink
  * @property {string?} callForPaper
