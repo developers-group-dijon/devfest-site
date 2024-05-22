@@ -86,6 +86,7 @@ Dans tous les cas les fichiers sont référencés avec des URLs relatives au dos
 
 - _Archiver_ la version actuelle
   - Nouveau site dans projet le hosting du projet `devfest-dijon` dans la console Firebase (idéalement pour que ce soit simple de s'y retrouver le site est au format `devfest-dijon-<année>`)
+  - Modifier `_data/site.json` pour indiquer la bonne URL d'accès
   - Définir les règle en local (`target` → `site`)
     - dans `.firebaserc` : `firebase target:apply hosting devfest-dijon-<année> devfest-dijon-<année>`, à noter le premier paramètre est le nom de la branche (ce sera le `target` dans firebase) et le second le site_id dans firebase.
     - dans `firebase.json` en ajoutant un élément de la partie `hosting` (`{"target": "devfest-dijon-<année>", "public": "_site", "ignore": ["firebase.json", "**/.*", "**/node_modules/**"] }` où le target est le nom de la branche)
