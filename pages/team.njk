@@ -2,7 +2,7 @@
 permalink: /team/
 layout: page.njk
 title: L'équipe
-image: "/background/team.jpg"
+image: "/background/team.webp"
 css: "/css/team.css"
 eleventyComputed:
    description: Découvrez l'équipe de bénévoles qui oeuvre chaque jour pour donner vie au {{ event.name }}
@@ -11,7 +11,7 @@ eleventyComputed:
 <div class="team full-width">
    {%- for member in team %}
    <div class="member">
-      <img class="avatar" src="{{ (member.photoUrl if member.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">
+      <img class="avatar" src="{{ (member.photoUrl if member.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="avatar">
       <div class="name">{{ member.name }}</div>
       <div class="job_title">{{ member.jobTitle }} ⋅ {{ member.company }}</div>
       <div class="bio">{{ member.bio }}</div>

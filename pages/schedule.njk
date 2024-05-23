@@ -2,7 +2,7 @@
 permalink: /schedule/
 layout: page.njk
 title: Le programme
-image: "/background/sessions.jpg"
+image: "/background/sessions.webp"
 css: "/css/schedule.css"
 eleventyComputed:
    description: Cette année, le {{ event.name }} se déroulera sur {{ tracks.length }} scènes en simultanées. Découvrez le programme et sélectionnez vos talks favoris pour créer votre programme sur mesure !
@@ -49,7 +49,7 @@ eleventyComputed:
                <div class="speaker-title">Speakers</div>
                {%- for speaker in session.speakers -%}
                <div class="speaker">
-                  <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">
+                  <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="avatar">
                   <a class="speaker-name" href="/speaker/{{ speaker.id | slugify }}">{{ speaker.name }} ⋅ {{ speaker.company }}</a>
                </div>
                {%- endfor %}

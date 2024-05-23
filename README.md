@@ -60,7 +60,7 @@ Les fichiers dans le répertoire `_assets`
 
 On distingue 2 types de contenu images.
 
-Dans tous les cas les fichiers sont référencés avec des URLs relatives au dossier `_assets` (par exemple `/avatar/foo.jpg`)
+Dans tous les cas les fichiers sont référencés avec des URLs relatives au dossier `_assets` (par exemple `/avatar/foo.webp`)
 
 - Les données : référencés dans les fichiers `_data`
 

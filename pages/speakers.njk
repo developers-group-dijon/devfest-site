@@ -2,7 +2,7 @@
 permalink: /speakers/
 layout: page.njk
 title: Les speakers
-image: "/background/speakers.jpg"
+image: "/background/speakers.webp"
 css: "/css/speakers.css"
 eleventyComputed:
    description: Découvrez les speakers du {{ event.name }}, en provenances du monde entier et de dizaines d'entreprises au sommet de la technologie
@@ -10,7 +10,7 @@ eleventyComputed:
 <div class="full-width speakers">
    {%- for speaker in speakers %}
    <div class="speaker">
-      <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">
+      <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="avatar">
       <h2><a href="/speaker/{{ speaker.id | slugify }}">{{ speaker.name }}</a></h2>
       <div>{{ speaker.jobTitle }}</div>
       <div class="company">{{ speaker.company }}</div>

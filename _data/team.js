@@ -14,21 +14,21 @@ const team = [
     name: "Allan Cruchaudet",
     jobTitle: "Chargé de communication",
     company: "Atol CD",
-    photoUrl: "/avatars/allan.jpg",
+    photoUrl: "/avatars/allan.webp",
     socials: [{ id: "linkedin", name: "Linkedin", link: "allan-cruchaudet" }],
   },
   {
     name: "Jérémy Colombet",
     jobTitle: "Directeur technique",
     company: "CiTech",
-    photoUrl: "/avatars/jeremy.jpg",
+    photoUrl: "/avatars/jeremy.webp",
     socials: [{ id: "linkedin", name: "Linkedin", link: "jeremy-colombet" }],
   },
   {
     name: "Sabrina Bonard",
     jobTitle: "Développeuse mobile",
     company: null,
-    photoUrl: "/avatars/sabrina.jpg",
+    photoUrl: "/avatars/sabrina.webp",
     socials: [
       { id: "linkedin", name: "Linkedin", link: "sabrina-bonard-917701bb" },
     ],
@@ -37,21 +37,21 @@ const team = [
     name: "Amélie Guittet",
     jobTitle: "Responsable communication",
     company: "Atol CD",
-    photoUrl: "/avatars/amelie.jpg",
+    photoUrl: "/avatars/amelie.webp",
     socials: [{ id: "linkedin", name: "Linkedin", link: "guittetamelie" }],
   },
   {
     name: "Guillaume Poittevin",
     jobTitle: "Senior Solutions Architect",
     company: "Capgemini",
-    photoUrl: "/avatars/guillaume-poittevin.jpg",
+    photoUrl: "/avatars/guillaume-poittevin.webp",
     socials: [{ id: "linkedin", name: "Linkedin", link: "theguit" }],
   },
   {
     name: "Mathilde Couenne",
     jobTitle: "Assistante de direction",
     company: "Alteca",
-    photoUrl: "/avatars/mathilde.jpg",
+    photoUrl: "/avatars/mathilde.webp",
     socials: [
       { id: "linkedin", name: "Linkedin", link: "mathilde-couenne-a27504109" },
     ],
@@ -60,7 +60,7 @@ const team = [
     name: "Nicolas Le Pochat",
     jobTitle: "Président fondateur",
     company: "Gammeo",
-    photoUrl: "/avatars/nicolas.jpg",
+    photoUrl: "/avatars/nicolas.webp",
     socials: [
       { id: "linkedin", name: "Linkedin", link: "nicolas-le-pochat-4a883bb" },
     ],
@@ -69,14 +69,14 @@ const team = [
     name: "Adrien Gras",
     jobTitle: "Architecte solutions",
     company: "OwlNext",
-    photoUrl: "/avatars/adrien.jpg",
+    photoUrl: "/avatars/adrien.webp",
     socials: [{ id: "linkedin", name: "Linkedin", link: "adrien-gras" }],
   },
   {
     name: "Xavier Calland",
     jobTitle: "Directeur technique",
     company: "Atol CD",
-    photoUrl: "/avatars/xavier.jpg",
+    photoUrl: "/avatars/xavier.webp",
     socials: [
       { id: "linkedin", name: "Linkedin", link: "xavier-calland-4471866" },
     ],
@@ -85,14 +85,14 @@ const team = [
     name: "Caroline Chanlon",
     jobTitle: "Directrice",
     company: "Osanah communication",
-    photoUrl: "/avatars/caroline.jpg",
+    photoUrl: "/avatars/caroline.webp",
     socials: [{ id: "linkedin", name: "Linkedin", link: "carolinechanlon" }],
   },
   {
     name: "Matthieu Lamalle",
     jobTitle: "Ingénieur Logiciel Libre",
     company: "Cadoles",
-    photoUrl: "/avatars/matthieu.jpg",
+    photoUrl: "/avatars/matthieu.webp",
     socials: [
       { id: "linkedin", name: "Linkedin", link: "matthieu-lamalle-29387a53" },
     ],
@@ -101,7 +101,7 @@ const team = [
     name: "Jean-Philippe Benadjer",
     jobTitle: "Infographiste",
     company: "Atol CD",
-    photoUrl: "/avatars/jean-philippe.jpg",
+    photoUrl: "/avatars/jean-philippe.webp",
     socials: [
       {
         id: "linkedin",
@@ -114,21 +114,21 @@ const team = [
     name: "Romy Fuentes",
     jobTitle: "Chargée de communication",
     company: "Atol CD",
-    photoUrl: "/avatars/romy.jpg",
+    photoUrl: "/avatars/romy.webp",
     socials: [{ id: "linkedin", name: "Linkedin", link: "romy-fuentes" }],
   },
   {
     name: "Michel Girard",
     jobTitle: "Responsable de formation Numérique",
     company: "DIIAGE",
-    photoUrl: "/avatars/michel.jpg",
+    photoUrl: "/avatars/michel.webp",
     socials: [{ id: "linkedin", name: "Linkedin", link: "themoat" }],
   },
   {
     name: "Laetitia Detalle",
     jobTitle: "Coordinateur Pédagogique/Coach/Formateur",
     company: "DIIAGE",
-    photoUrl: "/avatars/laetitia.jpg",
+    photoUrl: "/avatars/laetitia.webp",
     socials: [
       { id: "linkedin", name: "Linkedin", link: "laetitia-detalle-305590264" },
     ],
@@ -137,7 +137,7 @@ const team = [
     name: "Fabrice Ubertosi",
     jobTitle: "Directeur Technique",
     company: "CPage",
-    photoUrl: "/avatars/fabrice.jpg",
+    photoUrl: "/avatars/fabrice.webp",
     socials: [
       { id: "linkedin", name: "Linkedin", link: "ubertosi-fabrice-11b763124" },
     ],
@@ -146,4 +146,4 @@ const team = [
 
 module.exports = team;
 
-// convert img.png -resize "200x200" img.jpg
+// convert img.png -resize "200x200" img.webp

@@ -22,13 +22,13 @@ const Buffer = require('buffer').Buffer;
 speakers.forEach(({ id, photoUrl }) => {
   if (!photoUrl) {
     return;
- dule.exports = speaker.jpg }
-  fetch(phquire("node:fs".jpgl)
+  }
+  fetch(photoUrl)
     .then((r) => r.arrayBuffer())
     .then((b) => {
       fs.createWriteStream(`./_assets/avatars/${id}`).write(Buffer.from(b));
     });
 });
 
-# for f in *; do convert $f  -resize "128x128" "$f.jpg"; rm "$f" ; done
+# for f in *; do convert $f -resize "128x128" "$f.webp"; rm "$f" ; done
 */

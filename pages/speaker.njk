@@ -7,7 +7,7 @@
     },
     permalink: "/speaker/{{ speaker.id | slugify }}/",
     layout: "page.njk",
-    image: "/background/speakers.jpg",
+    image: "/background/speakers.webp",
     css: "/css/speaker.css",
     eleventyComputed: {
         title: "{{ speaker.name }}",
@@ -18,7 +18,7 @@
 ---
 
 <div class="main-content">
-    <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">
+    <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="avatar">
     <div class="job_title">{{ speaker.bio | md | safe }}</div>
     <div class="socials">
         {%- for social in speaker.socials %}

@@ -2,19 +2,19 @@
 layout: base.njk
 title: "Accueil"
 permalink: "/"
-background: "/background/hero-background.jpg"
-bigLogo: "/images/hero-big-logo.png"
-mapImage: "/images/map.jpg"
-teamPhoto: "/images/team.jpg"
+background: "/background/hero-background.webp"
+bigLogo: "/images/hero-big-logo.webp"
+mapImage: "/images/map.webp"
+teamPhoto: "/images/team.webp"
 photos:
- - "/images/photo1.jpg"
- - "/images/photo2.jpg"
- - "/images/photo3.jpg"
- - "/images/photo4.jpg"
- - "/images/photo5.jpg"
- - "/images/photo6.jpg"
- - "/images/photo7.jpg"
- - "/images/photo8.jpg"
+ - "/images/photo1.webp"
+ - "/images/photo2.webp"
+ - "/images/photo3.webp"
+ - "/images/photo4.webp"
+ - "/images/photo5.webp"
+ - "/images/photo6.webp"
+ - "/images/photo7.webp"
+ - "/images/photo8.webp"
 ---
 
 <link rel="stylesheet" type="text/css" href="{{ '/css/index.css' | normalizeAssetUrl }}" />
@@ -59,7 +59,7 @@ photos:
          {# Speakers en mode masqué #}
          {%- for speaker in speakers %}
          <div class="speaker" data-to-hide>
-            <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.png') | normalizeAssetUrl }}" alt="avatar">
+            <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="avatar">
             <div class="speaker-name">{{ speaker.name }}</div>
             <div>{{ speaker.company }}</div>
          </div>
@@ -67,7 +67,7 @@ photos:
          {# Placeholders pour les speakers #}
          {%- for i in range(0, 4) %}
          <div class="speaker" data-to-remove>
-            <img class="avatar" src="{{ '/default-avatar.png' | normalizeAssetUrl }}" alt="avatar">
+            <img class="avatar" src="{{ '/default-avatar.webp' | normalizeAssetUrl }}" alt="avatar">
             <div class="speaker-name">…</div>
             <div>…</div>
          </div>
@@ -107,7 +107,7 @@ photos:
    {%- endfor %}
 </div>
 <div class="map-container">
-   <div class="map" style="background-image: url({{ (mapImage if mapImage else '/default-background.jpg') | normalizeAssetUrl }});">
+   <div class="map" style="background-image: url({{ (mapImage if mapImage else '/default-background.webp') | normalizeAssetUrl }});">
    </div>
    <div class="location dark-zone">
       <h1>Le lieu : {{ event.location.name }}</h1>
