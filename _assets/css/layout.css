@@ -113,6 +113,7 @@ body.scrolled .site-header .site-logo > img {
 .site-links-group {
   display: flex;
   flex-direction: column;
+  line-height: 1.8em;
 }
 
 .site-links-group-title {

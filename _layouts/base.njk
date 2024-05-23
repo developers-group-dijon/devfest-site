@@ -26,9 +26,9 @@ icons:
   <body>
     <header class="site-header">
       <nav class="centered-content">
-        <a href="/" class="site-logo"><img src="{{ brandLogo | normalizeAssetUrl }}" alt="{{ event.name }}"></a>
+        <a href="/" class="site-logo" title="Retour à la page d'accueil"><img src="{{ brandLogo | normalizeAssetUrl }}" alt="Logo {{ event.name }}"></a>
         <div class="menu">
-          <a class="item home-icon" href="/">{% iconSvg 'solid/house' %}</a>
+          <a class="item home-icon" href="/" title="Retour à la page d'accueil">{% iconSvg 'solid/house' %}</a>
           <a class="item home" href="/">Accueil</a>
           {% if speakers.length > 0 %}<a class="item" href="/speakers/">Speakers</a>{% endif %}
           {% if event.sessionCount > 0 %}<a class="item" href="/schedule/">Programme</a>{% endif %}

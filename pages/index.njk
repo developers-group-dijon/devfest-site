@@ -28,7 +28,9 @@ photos:
             Du {{ event.dateStart | dateFormat }} au {{ event.dateEnd | dateFormat }}
          {%- endif -%}
       <br>
-      Le plus grand festival dédié aux développeurs de Bourgogne-Franche-Comté
+      Le plus grand festival dédié aux développeurs
+      <br>
+      de Bourgogne-Franche-Comté
       <br>
       {{ event.location.name }}</h1>
       {% if speakers.length == 0 and event.callForPaper %}<a href="{{ event.callForPaper }}" class="cfp-link">Call for paper</a>{% endif %}
