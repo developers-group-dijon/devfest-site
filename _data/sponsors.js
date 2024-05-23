@@ -9,6 +9,31 @@
  * @type {import("./types").SponsorType[]}
  */
 const sponsors = [
+  {
+    name: "Partenaires de l'événement",
+    sponsors: [
+      {
+        name: "Dijon Métropole",
+        website: "https://www.dijon-metropole.fr",
+        logoUrl: "/sponsors/dijon-metropole.png",
+      },
+      {
+        name: "Google",
+        website: "https://www.google.com",
+        logoUrl: "/sponsors/google.png",
+      },
+    ],
+  },
+  {
+    name: "Sponsors Gold",
+    sponsors: [
+      {
+        name: "YMAG",
+        website: "https://www.ymag.fr",
+        logoUrl: "/sponsors/ymag.png",
+      },
+    ],
+  },
   /*
   {
     name: "Sponsors",
@@ -29,19 +54,9 @@ const sponsors = [
         logoUrl: "/sponsors/cadoles.png",
       },
       {
-        name: "Dijon Métropole",
-        website: "https://www.dijon-metropole.fr",
-        logoUrl: "/sponsors/dijon-metropole.png",
-      },
-      {
         name: "French tech BFC",
         website: "https://lafrenchtechbfc.fr/",
         logoUrl: "/sponsors/french-tech-bfc.png",
-      },
-      {
-        name: "Google",
-        website: "https://www.google.com",
-        logoUrl: "/sponsors/google.png",
       },
       {
         name: "La poste",
@@ -92,11 +107,6 @@ const sponsors = [
         name: "Planet Bourgogne",
         website: "https://www.planetb.fr",
         logoUrl: "/sponsors/planet-bourgogne.png",
-      },
-      {
-        name: "YMAG",
-        website: "https://www.ymag.fr",
-        logoUrl: "/sponsors/ymag.png",
       },
     ],
   },
