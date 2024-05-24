@@ -34,6 +34,16 @@ const sponsors = [
       },
     ],
   },
+  {
+    name: "Sponsors Silver",
+    sponsors: [
+      {
+        name: "CPage",
+        website: "https://www.cpage.fr/",
+        logoUrl: "/sponsors/cpage.webp",
+      },
+    ],
+  },
   /*
   {
     name: "Sponsors",
@@ -92,11 +102,6 @@ const sponsors = [
         name: "Carsat BFC",
         website: "https://www.carsat-bfc.fr/",
         logoUrl: "/sponsors/carsat.webp",
-      },
-      {
-        name: "CPage",
-        website: "https://www.cpage.fr/",
-        logoUrl: "/sponsors/cpage.webp",
       },
       {
         name: "Inetum",
