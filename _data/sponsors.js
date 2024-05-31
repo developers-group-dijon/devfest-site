@@ -28,6 +28,11 @@ const sponsors = [
     name: "Sponsors Gold",
     sponsors: [
       {
+        name: "Lykhubs",
+        website: "https://www.lykhubs.com/",
+        logoUrl: "/sponsors/lykhubs.webp",
+      },
+      {
         name: "YMAG",
         website: "https://www.ymag.fr",
         logoUrl: "/sponsors/ymag.webp",
