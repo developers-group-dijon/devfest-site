@@ -43,6 +43,11 @@ const sponsors = [
     name: "Sponsors Silver",
     sponsors: [
       {
+        name: "Carsat BFC",
+        website: "https://www.carsat-bfc.fr/",
+        logoUrl: "/sponsors/carsat.webp",
+      },
+      {
         name: "CPage",
         website: "https://www.cpage.fr/",
         logoUrl: "/sponsors/cpage.webp",
@@ -102,11 +107,6 @@ const sponsors = [
         name: "Cadoles",
         website: "https://www.cadoles.com",
         logoUrl: "/sponsors/cadoles.webp",
-      },
-      {
-        name: "Carsat BFC",
-        website: "https://www.carsat-bfc.fr/",
-        logoUrl: "/sponsors/carsat.webp",
       },
       {
         name: "Inetum",
