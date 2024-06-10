@@ -22,6 +22,11 @@ const sponsors = [
         website: "https://www.google.com",
         logoUrl: "/sponsors/google.webp",
       },
+      {
+        name: "IUT Dijon Auxerre Nevers",
+        website: "https://iutdijon.u-bourgogne.fr/",
+        logoUrl: "/sponsors/iut.webp",
+      },
     ],
   },
   {
