@@ -52,6 +52,11 @@ const sponsors = [
         website: "https://www.cpage.fr/",
         logoUrl: "/sponsors/cpage.webp",
       },
+      {
+        name: "Les Docks numériques",
+        website: "https://www.lesdocks.net/",
+        logoUrl: "/sponsors/les-docks.webp",
+      },
     ],
   },
   /*
