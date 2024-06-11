@@ -48,6 +48,11 @@ const sponsors = [
     name: "Sponsors Silver",
     sponsors: [
       {
+        name: "Alteca",
+        website: "https://www.alteca.fr",
+        logoUrl: "/sponsors/alteca.webp",
+      },
+      {
         name: "Carsat BFC",
         website: "https://www.carsat-bfc.fr/",
         logoUrl: "/sponsors/carsat.webp",
@@ -103,11 +108,6 @@ const sponsors = [
   {
     name: "Village entreprise",
     sponsors: [
-      {
-        name: "Alteca",
-        website: "https://www.alteca.fr",
-        logoUrl: "/sponsors/alteca.webp",
-      },
       {
         name: "Atol CD",
         website: "https://www.atolcd.com",
