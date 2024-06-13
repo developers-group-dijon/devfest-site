@@ -33,6 +33,11 @@ const sponsors = [
     name: "Sponsors Gold",
     sponsors: [
       {
+        name: "DIIAGE",
+        website: "https://diiage.cucdb.fr",
+        logoUrl: "/sponsors/diiage.webp",
+      },
+      {
         name: "Lykhubs",
         website: "https://www.lykhubs.com/",
         logoUrl: "/sponsors/lykhubs.webp",
