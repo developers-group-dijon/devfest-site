@@ -77,6 +77,11 @@ const sponsors = [
         website: "https://www.lesdocks.net/",
         logoUrl: "/sponsors/les-docks.webp",
       },
+      {
+        name: "Planet Bourgogne",
+        website: "https://www.planetb.fr",
+        logoUrl: "/sponsors/planet-bourgogne.webp",
+      },
     ],
   },
   /*
@@ -127,11 +132,6 @@ const sponsors = [
         name: "Inetum",
         website: "https://www.inetum.com",
         logoUrl: "/sponsors/inetum.webp",
-      },
-      {
-        name: "Planet Bourgogne",
-        website: "https://www.planetb.fr",
-        logoUrl: "/sponsors/planet-bourgogne.webp",
       },
     ],
   },
