@@ -1,5 +1,5 @@
-const fs = require("node:fs");
-const { SocialId } = require("../_data/types");
+import fs from "node:fs";
+import { SocialId } from "../_data/types.js";
 
 /**
  * @param {string} userId
@@ -23,7 +23,7 @@ function socialLink(userId, socialId) {
  * @param {string} path
  * @returns {string}
  */
-function iconSvg(path) {
+export function iconSvg(path) {
   return fs
     .readFileSync(`node_modules/@fortawesome/fontawesome-free/svgs/${path}.svg`)
     .toString();
@@ -54,10 +54,10 @@ function socialIconSvg(socialId) {
 }
 
 /**
- * @param {import("../_data/types").Social} value
+ * @param {import("../_data/types.js").Social} value
  * @returns {string}
  */
-function social({ id, name, link }) {
+export function social({ id, name, link }) {
   const icon = socialIconSvg(id);
   const href = socialLink(link, id);
   return `<a class="social-icon" href="${href}" title="${name} ⋅ ${link}">${icon}</a>`;
@@ -66,9 +66,7 @@ function social({ id, name, link }) {
 /**
  * @type {{[key: string]: Function}}
  */
-const res = {
+export default {
   social,
   iconSvg,
 };
-
-module.exports = res;

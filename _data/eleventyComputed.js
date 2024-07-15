@@ -1,8 +1,8 @@
-const { nn, sortedEntries } = require("../_eleventy/utils");
+import { nn, sortedEntries } from "../_eleventy/utils.js";
 
 /**
  * @param {Date} date
- * @returns {import('./types').Day}
+ * @returns {import('./types.js').Day}
  */
 function buildDay(date) {
   return (
@@ -11,8 +11,8 @@ function buildDay(date) {
 }
 
 /**
- * @param {import('./types').WithRawEvent & import('./types').WithSessions } data
- * @returns {import('./types').Event}
+ * @param {import('./types.js').WithRawEvent & import('./types.js').WithSessions } data
+ * @returns {import('./types.js').Event}
  */
 function parseEvent(data) {
   [data.sessions];
@@ -25,8 +25,8 @@ function parseEvent(data) {
 }
 
 /**
- * @param {import('./types').WithSpeakers} data
- * @returns {import('./types').SpeakersMap}
+ * @param {import('./types.js').WithSpeakers} data
+ * @returns {import('./types.js').SpeakersMap}
  */
 function buildSpeakersMap(data) {
   const res = new Map();
@@ -36,8 +36,8 @@ function buildSpeakersMap(data) {
   return res;
 }
 /**
- * @param {import('./types').WithFormats} data
- * @returns {import('./types').FormatsMap}
+ * @param {import('./types.js').WithFormats} data
+ * @returns {import('./types.js').FormatsMap}
  */
 function buildFormatsMap(data) {
   const res = new Map();
@@ -48,8 +48,8 @@ function buildFormatsMap(data) {
 }
 
 /**
- * @param {import('./types').WithTracks} data
- * @returns {import('./types').TracksMap}
+ * @param {import('./types.js').WithTracks} data
+ * @returns {import('./types.js').TracksMap}
  */
 function buildTracksMap(data) {
   const res = new Map();
@@ -60,8 +60,8 @@ function buildTracksMap(data) {
 }
 
 /**
- * @param {import('./types').WithCategories} data
- * @returns {import('./types').CategoriesMap}
+ * @param {import('./types.js').WithCategories} data
+ * @returns {import('./types.js').CategoriesMap}
  */
 function buildCategoriesMap(data) {
   const res = new Map();
@@ -73,8 +73,8 @@ function buildCategoriesMap(data) {
 
 /**
  * RawSessions avec quelques ajouts : format des dates, le jour, le données de référence (speakers, …)
- * @param { import('./types').WithSpeakersMap & import('./types').WithRawSessions & import('./types').WithFormatsMap & import('./types').WithCategoriesMap & import('./types').WithTracksMap } data
- * @returns {import('./types').Session[]}
+ * @param { import('./types.js').WithSpeakersMap & import('./types.js').WithRawSessions & import('./types.js').WithFormatsMap & import('./types.js').WithCategoriesMap & import('./types.js').WithTracksMap } data
+ * @returns {import('./types.js').Session[]}
  */
 function parseSessions(data) {
   [data.formatsMap, data.categoriesMap, data.speakersMap, data.tracksMap];
@@ -103,16 +103,16 @@ function parseSessions(data) {
 /**
  * Calcule les slots d'une journée.
  * Il s'agit des  de début des sessions.
- * @param { import('./types').WithSessions } data
- * @returns {import('./types').SlotsByDay}
+ * @param { import('./types.js').WithSessions } data
+ * @returns {import('./types.js').SlotsByDay}
  */
 function buildSlots(data) {
   [data.sessions];
   // Identification des dates de début des sessions pour chaque jour
   // Pour ne pas avoir de dates de début en doublon, on passe par
-  // une Map avec comme clé le {@type {import('./types').Time}} (number)
+  // une Map avec comme clé le {@type {import('./types.js').Time}} (number)
   // des dates de début.
-  /** @type {Map<import("./types").Day, Map<number, Date>>} */
+  /** @type {Map<import("./types.js").Day, Map<number, Date>>} */
   const tmpMap = new Map();
   for (const session of data.sessions) {
     if (!tmpMap.has(session.day)) {
@@ -126,7 +126,7 @@ function buildSlots(data) {
 
   // On trie les entrées de la map (jour et date)
   // et on ne garde que les dates pour les slots
-  /** @type {import('./types').SlotsByDay} */
+  /** @type {import('./types.js').SlotsByDay} */
   const res = new Map(
     sortedEntries(tmpMap).map(([day, dateMap]) => [
       day,
@@ -137,7 +137,7 @@ function buildSlots(data) {
   return res;
 }
 
-module.exports = {
+export default {
   event: parseEvent,
   speakersMap: buildSpeakersMap,
   formatsMap: buildFormatsMap,

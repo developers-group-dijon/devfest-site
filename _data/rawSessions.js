@@ -16,6 +16,6 @@
  */
 
 /**
- * @type {import("./types").RawSession[]}
+ * @type {import("./types.js").RawSession[]}
  */
-module.exports = [];
+export default [];

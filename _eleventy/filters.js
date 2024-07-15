@@ -1,6 +1,8 @@
-const { Level, Language } = require("../_data/types");
+import { Level, Language } from "../_data/types.js";
 
-const markdownit = require("markdown-it")({ typographer: true, breaks: true });
+import markdownitConstr from "markdown-it";
+
+const markdownit = markdownitConstr({ typographer: true, breaks: true });
 
 const defaultDateFormat = new Intl.DateTimeFormat("fr-FR", {
   year: "numeric",
@@ -28,7 +30,7 @@ function dateFormat(value) {
 }
 
 /**
- * @param {import('../_data/types').Day} value
+ * @param {import('../_data/types.js').Day} value
  * @returns {string}
  */
 function dayFormat(value) {
@@ -54,7 +56,7 @@ function shortDateFormat(value) {
 }
 
 /**
- * @param {import("../_data/types").MdString} value
+ * @param {import("../_data/types.js").MdString} value
  * @returns {string}
  */
 function md(value) {
@@ -117,16 +119,16 @@ function dateKey(value) {
 }
 
 /**
- * @param {import("../_data/types").Session[]} value
+ * @param {import("../_data/types.js").Session[]} value
  * @param {Date} dateStart
- * @returns {import("../_data/types").Session[]}
+ * @returns {import("../_data/types.js").Session[]}
  */
 function filterByDateStart(value, dateStart) {
   return value.filter((e) => e.dateStart.getTime() === dateStart.getTime());
 }
 
 /**
- * @param {import("../_data/types").WithName[]} value
+ * @param {import("../_data/types.js").WithName[]} value
  * @returns {string[]}
  */
 function mapName(value) {
@@ -171,7 +173,7 @@ function formatLanguage(value) {
 
 /**
  * Calcule le nombre de slots que va occcuper une session.
- * @param {import('../_data/types').Session} session
+ * @param {import('../_data/types.js').Session} session
  * @param {Date[]} slots
  * @returns {number}
  */
@@ -188,7 +190,7 @@ function countSlots({ dateStart, duration }, slots) {
 /**
  * @type {{[key: string]: Function}}
  */
-const res = {
+export default {
   md,
   dateFormat,
   dayFormat,
@@ -205,5 +207,3 @@ const res = {
   formatLanguage,
   countSlots,
 };
-
-module.exports = res;

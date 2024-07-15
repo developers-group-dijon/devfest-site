@@ -4,9 +4,9 @@
  */
 
 /**
- * @type {import('./types').Category[]}
+ * @type {import('./types.js').Category[]}
  */
-module.exports = [
+export default [
   {
     id: "9b13aede-9e74-51a4-a3bb-128bec2c5cd5",
     name: "📱 Mobile",

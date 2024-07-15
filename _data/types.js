@@ -200,7 +200,7 @@
  * @readonly
  * @enum {string}
  */
-const SocialId = {
+export const SocialId = {
   LINKEDIN: "linkedin",
   GITHUB: "github",
   TWITTER: "twitter",
@@ -210,7 +210,7 @@ const SocialId = {
  * @readonly
  * @enum {string}
  */
-const Language = {
+export const Language = {
   FRENCH: "French",
   ENGLISH: "English",
 };
@@ -219,7 +219,7 @@ const Language = {
  * @readonly
  * @enum {string}
  */
-const Level = {
+export const Level = {
   ADVANCED: "advanced",
   INTERMEDIATE: "intermediate",
   BEGINNER: "beginner",
@@ -320,8 +320,4 @@ const Level = {
  * @property {SlotsByDay} slots
  */
 
-module.exports = {
-  SocialId,
-  Language,
-  Level,
-};
+export default {};

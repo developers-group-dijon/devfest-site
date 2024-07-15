@@ -10,11 +10,9 @@
  */
 
 /**
- * @type {import('./types').Speaker[]}
+ * @type {import('./types.js').Speaker[]}
  */
-const speakers = [];
-
-module.exports = speakers;
+export default [];
 
 /*
 const fs = require("node:fs");

@@ -19,9 +19,9 @@
  */
 
 /**
- * @type {import("./types").RawEvent}
+ * @type {import("./types.js").RawEvent}
  */
-const rawEvent = {
+export default {
   name: "DevFest Dijon 2024",
   dateStart: new Date("2024-12-06T08:00:00.000Z"),
   dateEnd: new Date("2024-12-06T17:00:00.000Z"),
@@ -98,5 +98,3 @@ const rawEvent = {
     },
   ],
 };
-
-module.exports = rawEvent;

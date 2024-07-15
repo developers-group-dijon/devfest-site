@@ -4,9 +4,9 @@
  */
 
 /**
- * @type {import('./types').Format[]}
+ * @type {import('./types.js').Format[]}
  */
-module.exports = [
+export default [
   {
     id: "c99a8450-75fc-582f-a7b5-997dd770f0ad",
     name: "⚡️ Short track",

@@ -1,60 +1,60 @@
 // @ts-ignore
-const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
-const filters = require("./_eleventy/filters");
-const shortcodes = require("./_eleventy/shortcodes");
+import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
+import filters from "./_eleventy/filters.js";
+import shortcodes from "./_eleventy/shortcodes.js";
 
-module.exports =
-  /**
-   * @param {import("@11ty/eleventy").UserConfig} eleventyConfig
-   */
-  function (eleventyConfig) {
-    ////
-    // Gestion des plugins
-    ////
+/**
+ * @param { import("@11ty/eleventy").UserConfig} eleventyConfig
+ * @returns {Promise<{pathPrefix: string, dir: Record<string,string>}>}
+ */
+export default async function (eleventyConfig) {
+  ////
+  // Gestion des plugins
+  ////
 
-    eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
-    ////
-    // Gestion des ressources statiques
-    ////
-    eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
+  ////
+  // Gestion des ressources statiques
+  ////
+  eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 
-    eleventyConfig.addPassthroughCopy({
-      _assets: "/assets",
-    });
-    eleventyConfig.addPassthroughCopy({
-      "./node_modules/@fontsource/poppins/latin.css":
-        "./assets/poppins/latin.css",
-      "./node_modules/@fontsource/poppins/latin-italic.css":
-        "./assets/poppins/latin-italic.css",
-      "./node_modules/@fontsource/poppins/files/poppins-latin-*":
-        "./assets/poppins/files/",
-    });
+  eleventyConfig.addPassthroughCopy({
+    _assets: "/assets",
+  });
+  eleventyConfig.addPassthroughCopy({
+    "./node_modules/@fontsource/poppins/latin.css":
+      "./assets/poppins/latin.css",
+    "./node_modules/@fontsource/poppins/latin-italic.css":
+      "./assets/poppins/latin-italic.css",
+    "./node_modules/@fontsource/poppins/files/poppins-latin-*":
+      "./assets/poppins/files/",
+  });
 
-    ////
-    // Filtres
-    ////
-    for (const filter in filters) {
-      eleventyConfig.addFilter(filter, filters[filter]);
-    }
+  ////
+  // Filtres
+  ////
+  for (const filter in filters) {
+    eleventyConfig.addFilter(filter, filters[filter]);
+  }
 
-    ////
-    // Shortcodes
-    ////
-    for (const shortcode in shortcodes) {
-      eleventyConfig.addShortcode(shortcode, shortcodes[shortcode]);
-    }
+  ////
+  // Shortcodes
+  ////
+  for (const shortcode in shortcodes) {
+    eleventyConfig.addShortcode(shortcode, shortcodes[shortcode]);
+  }
 
-    ////
-    // Configuration
-    ////
-    return {
-      pathPrefix: process.env.APP_PATH ?? "/",
-      dir: {
-        // Valeurs relatives au dossier "input" (par défaut la racine du projet)
-        layouts: "_layouts",
-        data: "_data",
-        input: ".",
-      },
-    };
+  ////
+  // Configuration
+  ////
+  return {
+    pathPrefix: process.env.APP_PATH ?? "/",
+    dir: {
+      // Valeurs relatives au dossier "input" (par défaut la racine du projet)
+      layouts: "_layouts",
+      data: "_data",
+      input: ".",
+    },
   };
+}

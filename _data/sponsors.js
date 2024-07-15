@@ -6,9 +6,9 @@
  */
 
 /**
- * @type {import("./types").SponsorType[]}
+ * @type {import("./types.js").SponsorType[]}
  */
-const sponsors = [
+export default [
   {
     name: "Partenaires de l'événement",
     sponsors: [
@@ -142,5 +142,3 @@ const sponsors = [
   },
 */
 ];
-
-module.exports = sponsors;

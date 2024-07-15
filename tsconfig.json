@@ -3,11 +3,12 @@
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Language and Environment */
-    "target": "es2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "target": "ES2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
 
     /* Modules */
-    "module": "commonjs" /* Specify what module code is generated. */,
+    "module": "NodeNext" /* Specify what module code is generated. */,
     "rootDir": "." /* Specify the root folder within your source files. */,
+    "moduleResolution": "NodeNext",
 
     /* JavaScript Support */
     "allowJs": true /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */,
@@ -22,7 +23,8 @@
     // "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
 
     /* Type Checking */
-    "strict": true /* Enable all strict type-checking options. */,
+    // FIXME: En attendant d'avoir un export valide dans (cf. https://github.com/11ty/eleventy/issues/3097#issuecomment-2222855540)
+    "strict": false /* Enable all strict type-checking options. */,
 
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */

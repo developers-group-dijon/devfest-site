@@ -4,9 +4,9 @@
  */
 
 /**
- * @type {import('./types').Track[]}
+ * @type {import('./types.js').Track[]}
  */
-const tracks = [
+export default [
   {
     id: "amphi-1",
     name: "Amphi 1",
@@ -20,5 +20,3 @@ const tracks = [
     name: "Amphi 3",
   },
 ];
-
-module.exports = tracks;

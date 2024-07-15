@@ -4,7 +4,7 @@
  * @param {T=} value
  * @returns {T}
  */
-function nn(value) {
+export function nn(value) {
   return /** @type {T} */ (value);
 }
 
@@ -14,11 +14,6 @@ function nn(value) {
  * @param {Map<K, V>} map
  * @returns {[K, V][]}
  */
-function sortedEntries(map) {
+export function sortedEntries(map) {
   return [...map.entries()].sort(([k1], [k2]) => k1 - k2);
 }
-
-module.exports = {
-  nn,
-  sortedEntries,
-};

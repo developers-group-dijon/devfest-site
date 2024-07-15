@@ -7,9 +7,9 @@
  */
 
 /**
- * @type {import('./types').Member[]}
+ * @type {import('./types.js').Member[]}
  */
-const team = [
+export default [
   {
     name: "Allan Cruchaudet",
     jobTitle: "Chargé de communication",
@@ -143,7 +143,5 @@ const team = [
     ],
   },
 ];
-
-module.exports = team;
 
 // convert img.png -resize "200x200" img.webp
