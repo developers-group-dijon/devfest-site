@@ -63,6 +63,11 @@ export default [
         logoUrl: "/sponsors/atolcd.webp",
       },
       {
+        name: "Cadoles",
+        website: "https://www.cadoles.com",
+        logoUrl: "/sponsors/cadoles.webp",
+      },
+      {
         name: "Carsat BFC",
         website: "https://www.carsat-bfc.fr/",
         logoUrl: "/sponsors/carsat.webp",
@@ -102,11 +107,6 @@ export default [
         name: "BeBoost",
         website: "https://www.beboost.com",
         logoUrl: "/sponsors/beboost.webp",
-      },
-      {
-        name: "Cadoles",
-        website: "https://www.cadoles.com",
-        logoUrl: "/sponsors/cadoles.webp",
       },
       {
         name: "French tech BFC",
