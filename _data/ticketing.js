@@ -10,9 +10,8 @@
 export default {
   comment:
     "inclut le petit-déjeuner, le repas le midi et le café pour la journée",
-  url: null,
+  url: "https://my.weezevent.com/devfest-dijon-2024",
   pricings: [
-    /*
     {
       id: "early",
       name: "Tarif Early",
@@ -30,6 +29,5 @@ export default {
       price: "20 €",
       comment: "Une pièce-justificative pourra être demandée",
     },
-*/
   ],
 };

@@ -24,7 +24,7 @@
 export default {
   name: "DevFest Dijon 2024",
   dateStart: new Date("2024-12-06T08:00:00.000Z"),
-  dateEnd: new Date("2024-12-06T17:00:00.000Z"),
+  dateEnd: new Date("2024-12-06T17:45:00.000Z"),
   visitors: "+400",
   callForPaper: "https://conference-hall.io/public/event/LvvYRcF5AIhpojdn2lkQ",
   // Lien pour devenir sponsor (mettre null pour ne pas afficher le lien)

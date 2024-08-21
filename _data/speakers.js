@@ -2,7 +2,8 @@
  * Inspiré des données JSON de OpenPlanner.fr
  * Chemin : speakers
  * Modifications :
- * - télécharger et faire une version optimisée des photos (128x128)
+ * - mettre un bel id (slug du nom)
+ * - télécharger et faire une version optimisée des photos (128x128) et modifier photoUrl
  * - ajuster les bio (Markdown possible)
  * - compléter jobTitle
  *
@@ -12,11 +13,274 @@
 /**
  * @type {import('./types.js').Speaker[]}
  */
-export default [];
+const speakers = [
+  {
+    id: "clemence-piteau",
+    name: "Clémence Piteau",
+    bio: "*Product designeuse indépendante et engagée*, j'explore de nouvelles pratiques dans le design pour mettre mon savoir au service d'un futur plus souhaitable pour l'environnement, la société et les individus.",
+    company: "CLEMTOPI",
+    photoUrl: "/avatars/clemence-piteau.webp",
+    socials: [
+      {
+        id: "mastodon",
+        name: "Mastodon",
+        link: "https://mastodon.design/@clem_topi",
+      },
+    ],
+  },
+  {
+    id: "simon-belbeoch",
+    name: "Simon Belbeoch",
+    bio: "Simon débute l’informatique dès son plus jeune âge en automatisant des scripts et en réalisant le site de la webradio associative auprès de laquelle il s’engage à 12 ans.\nIl développe sa passion lors de ses études en MIAGE ou il développe ses compétences en apprentissage sur de l’expertise technique chez Orange puis SFR.\nIl lance en parallèle Intuitive Communication une application libre et gratuite qui permet aux personnes en situation de handicap de communiquer à nouveau. Convaincu que le web est voué à perdurer il développe l’application au format web ce qui permettra à quelques dizaines de milliers de personnes sourdes d’utiliser l’application.\n\nPendant deux ans et demi Simon tente ensuite l’expérience entrepreneuriale en développant frankise, une solution web pour remettre les utilisateurs en avant dans le cadre des avis clients. Il rejoint ensuite Octo Technology ou il rejoint WebF pour lui permettre dans ses mission comme en R&D de travailler autour des PWA et sur l’architecture front.",
+    company: "Octo Technology",
+    photoUrl: "/avatars/simon-belbeoch.webp",
+    socials: [
+      { id: "github", link: "LiquidITGuy", name: "GitHub" },
+      { link: "liquidIT_fr", id: "twitter", name: "Twitter" },
+    ],
+  },
+  {
+    id: "virginie-pageaud",
+    name: "Virginie Pageaud",
+    bio: "Diplômée en 2010 d'un Master de cryptologie et sécurité informatique, j'ai travaillé 12 ans dans le secteur du paiement par carte bancaire pour les autoroutes, les transports en commun ou encore du don.  \n\nJ'aime particulièrement apprendre de nouvelles choses, et également transmettre et vulgariser les sujets qui me passionnent.",
+    photoUrl: "/avatars/virginie-pageaud.webp",
+    socials: [
+      { id: "github", name: "GitHub", link: "Fairy-wen" },
+      { id: "twitter", name: "Twitter", link: "La_Fee_Dragee" },
+    ],
+  },
+  {
+    id: "marine-sobas",
+    name: "Marine Sobas",
+    bio: "Après des études entre commerce et ingénierie, j'ai commencé ma carrière en data science puis je me suis ensuite orientée vers le développement full stack. Je suis actuellement tech lead engineering chez Dataiku, une entreprise qui développe un logiciel collaboratif pour faciliter l'adoption de l'IA en entreprise. \n\nPassionnée par les sujets pluridisciplinaires, je cherche à partager mes lectures et mes expériences à travers des présentations ou des blogposts.",
+    company: "Dataiku",
+    photoUrl: "/avatars/marine-sobas.webp",
+    socials: [
+      { id: "github", link: "Marsobad", name: "GitHub" },
+      { id: "twitter", name: "Twitter", link: "Marine_Sobas" },
+    ],
+  },
+  {
+    id: "paul-molin",
+    name: "Paul Molin",
+    bio: "Paul Molin is the CISO of the Theodo Group.\nAfter training in information systems security, he joins Theodo in 2013 and becomes passionate about web development. Very quickly, he specializes in security issues by helping Theodo teams to succeed in their post-production audits. He eventually becomes group CISO, and he is committed to creating a security culture in a developer company. He loves giving talks, especially to help developers understand the cybersecurity world. Convinced that it is developers who will change the world of cybersecurity, he leads trainings and develops tools to help them code flawlessly the first time.",
+    company: "Theodo",
+    photoUrl: "/avatars/paul-molin.webp",
+    socials: [
+      { name: "GitHub", id: "github", link: "Paulmolin" },
+      { link: "paulmolin42", name: "Twitter", id: "twitter" },
+    ],
+  },
+  {
+    id: "arnaud-pichery",
+    name: "Arnaud Pichery",
+    company: "Dataiku",
+    photoUrl: "/avatars/arnaud-pichery.webp",
+    socials: [],
+  },
+  {
+    id: "thibaut-cantet",
+    name: "Thibaut Cantet",
+    bio: "17 ans de développement, crafter, architecte et DDD adict",
+    company: "Néosoft",
+    photoUrl: "/avatars/thibaut-cantet.webp",
+    socials: [
+      { id: "github", link: "thibautcantet", name: "GitHub" },
+      { name: "Twitter", link: "thibautcantet", id: "twitter" },
+    ],
+  },
+  {
+    id: "adrien-nortain",
+    name: "Adrien Nortain",
+    bio: "Ex-Wavestone - Consulting, software architecture, coding\nEx-Bosch - Consulting, vendor product engineering\nEx-CGI - Expertise, architecture, projects tech lead\nCurrent-Zenika :) - CTO, consulting, architecture",
+    company: "Zenika",
+    photoUrl: "/avatars/adrien-nortain.webp",
+    socials: [
+      { id: "github", link: "LamSonFei", name: "GitHub" },
+      { name: "Twitter", link: "AdrienNortain", id: "twitter" },
+    ],
+  },
+  {
+    id: "julien-topcu",
+    name: "Julien Topçu",
+    bio: "Tech Coach chez Shodo, j'accompagne le développement de logiciels à forte valeur métier en usant de techniques issues du Domain-Driven Design, le tout propulsé en Xtreme Programming dans la philosophie Kanban #NoEstimates. Membre de la fondation OWASP, je sensibilise sur les techniques de sécurité applicative afin d'éviter de se faire hacker bien comme il faut.",
+    company: "Shodo",
+    companyLogoUrl: "",
+    photoUrl: "/avatars/julien-topcu.webp",
+    socials: [
+      { id: "github", link: "julien-topcu", name: "GitHub" },
+      { link: "JulienTopcu", id: "twitter", name: "Twitter" },
+    ],
+  },
+  {
+    id: "thanh-lan-doublier",
+    name: "Thanh Lan Doublier",
+    bio: "Après des études de droits, je suis tombée dans le développement web . Après quelques années en tant que développeuse  free-lance  RoR, mon état de sante s’est dégradée, ce qui m’a forcée à m’arrêter de coder pendant environ deux ans.\n\nAprès une formation orientée data science et une  alternance  chez Axa France, je suis actuellement Data engineer Mlops chez Second Brain une start-up  qui développe des solutions qui accompagnent les industriels pharmaceutiques dans leur processus de vente.\n\nLe code est un des éléments clef qui m’a aidé à accepter et avancer avec la maladie. C’est pour moi, un peu comme une baguette magique où tout peut devenir possible. Mais comme un grand pouvoir implique de grandes responsabilités,  il est parfois utile en tant que développeuse ou développeur de se questionner  sur nos pratiques et déconstruire nos biais.\n\nJe fais partie de l’organisation de Cloud Nord ( une conférence  orientée cloud à Lille ) et des Chtitedev ( un collectif de femmes de la tech)",
+    company: "Second brain",
+    photoUrl: "/avatars/thanh-lan-doublier.webp",
+    socials: [],
+  },
+  {
+    id: "thierno-diallo",
+    name: "Thierno Diallo",
+    bio: "Actuellement, je travaille en tant que Staff Engineer chez Axa France depuis 5 mois. J'ai travaillé en tant que Leader technique/ingénieur logiciel senior chez Axa France pendant 3 ans et demi. J'ai commencé chez Axa France il y a 4 ans.\n\nJe suis un ingénieur expérimenté avec une expérience avérée dans l'IT. Je suis compétent en Java/JEE/Spring/SpringBoot, Python, PostgreSQL, Webmethods, ODM, concepts SOA, modélisation statistique et Prolog. Professionnel de l'ingénierie solide avec un diplôme en Génie Informatique et Statistique axé sur l'ingénierie des systèmes et des réseaux, l'ingénierie logicielle et l'ingénierie financière de Polytechnique Lille.\n\nJ'ai précédemment travaillé pour la SNCF pendant 4 ans, et avant cela pour Capgemini pendant 2 ans et demi.",
+    company: "Axa France",
+    photoUrl: "/avatars/thierno-diallo.webp",
+    socials: [
+      { link: "thiernodialloAFA", name: "GitHub", id: "github" },
+      { id: "twitter", name: "Twitter", link: "DialloThierno29" },
+    ],
+  },
+  {
+    id: "thierry-chantier",
+    name: "Thierry Chantier",
+    bio: "Une passion née dans les lectures, le monde informatique et électronique m'a happé dès mon ZX Spectrum pour ne jamais me lâcher.\nDéveloppeur de métier, du jeu vidéo au monde du master data management, j'ai aussi touché aux univers de la QA et de la mise en production.\nJe suis maintenant Developer Advocate, chez OVHcloud, jonglant entre technique, communauté et transmission de savoirs.\n\nComme une passion mérite toujours qu'on la transmette, j'ai fondé Mixteen pour essayer d'aider les enfants à appréhender le monde numérique.\nCette envie de transmettre c'est aussi manifestée en m'amenant à prendre part à l'organisation de plusieurs MiXiT puis à cofonder le GDG Lyon.\nDe manière parallèle, j'essaie de partager également par le biais d'articles sur mon blog et de vidéos sur ma chaîne YouTube.\n\nEn résumé : \nhttps://noti.st/titimoby\n\nDans le détail : \nhttps://www.twitch.tv/titimoby\nhttps://mixteen.org/ \nhttps://tontoncodeur.fr/ \nhttps://www.youtube.com/thierrychantier\nhttps://gdg.community.dev/gdg-cloud-and-iot-lyon/",
+    photoUrl: "/avatars/thierry-chantier.webp",
+    socials: [
+      { name: "GitHub", link: "titimoby", id: "github" },
+      { link: "titimoby", id: "twitter", name: "Twitter" },
+    ],
+  },
+  {
+    id: "yann-jacquot",
+    name: "Yann Jacquot",
+    bio: "Yann is Senior Architect and Coach at Theodo in Paris since 2013.\n\nHe loves developing applications and solving problems, at the same time as much as possible, in domains such as: banking, marketplace, carpooling, insurance, energy, circular economy...\nHis main hobbies are cinema, motorcycles and games of all sorts.",
+    company: "Theodo",
+    photoUrl: "/avatars/yann-jacquot.webp",
+    socials: [{ name: "GitHub", id: "github", link: "yannj" }],
+  },
+  {
+    id: "nicolas-frankel",
+    name: "Nicolas Fränkel",
+    bio: "Developer Advocate with 15+ years experience consulting for many different customers, in a wide range of contexts (such as telecoms, banking, insurances, large retail and public sector). Usually working on Java/Java EE and Spring technologies, but with focused interests like Rich Internet Applications, Testing, CI/CD and DevOps. Currently working for Hazelcast. Also double as a teacher in universities and higher education schools, a trainer and triples as a book author.",
+    company: "Apache APISIX",
+    photoUrl: "/avatars/nicolas-frankel.webp",
+    socials: [
+      { name: "GitHub", id: "github", link: "nfrankel" },
+      { link: "nicolas_frankel", name: "Twitter", id: "twitter" },
+    ],
+  },
+  {
+    id: "alexis-chotard",
+    name: 'Alexis "Horgix" Chotard',
+    bio: 'Alexis "Horgix" Chotard est un ingénieur système et développeur travaillant à PayFit (https://payfit.fr).\n\nDéveloppeur de formation avec une expérience davantage tournée système et infrastructure, se retrouvant naturellement dans tous les sujets "DevOps" au sens large.\n\nPassionné d\'automatisation pour construire des systèmes autonomes, résilients et facilement maintenables.\nEngagé dans l\'écosystème "Cloud Native", amoureux de Rust, partisan de l\'opensource.',
+    photoUrl: "/avatars/alexis-chotard.webp",
+    socials: [
+      { name: "GitHub", id: "github", link: "Horgix" },
+      { link: "Horgix", id: "twitter", name: "Twitter" },
+    ],
+  },
+  {
+    id: "guillaume-blaquiere",
+    name: "Guillaume Blaquiere",
+    bio: "Guillaume est Google Developer Expert sur Cloud Platform et travaille chez Carrefour en tant que Architect Data Groupe. \nDéveloppeur Java depuis plus de 15 ans, et malgré des précédents postes à responsabilités, il a toujours conservé son envie de créer, de développer, de découvrir et de tester de nouvelles solutions, notamment dans le Cloud, le machine learning ou les langages Go et Python.\nPassionné d’innovation et certifié 3x Google Cloud, writer et speaker sur son temps libre, il est fasciné par le serverless et les problèmes “traditionnels” qu’il résout.\nPlus généralement, il aime aider les personnes bloquées sur Google Cloud. Vous pouvez le croiser sur Stack Overflow (guillaume-blaquiere), Medium (@guillaume-blaquiere) et Twitter (@gblaquiere)",
+    company: "Carrefour",
+    photoUrl: "/avatars/guillaume-blaquiere.webp",
+    socials: [
+      { link: "guillaumeblaquiere", id: "github", name: "GitHub" },
+      { id: "twitter", name: "Twitter", link: "gblaquiere" },
+    ],
+  },
+  {
+    id: "frederic-bisson",
+    name: "Frédéric Bisson",
+    bio: "Développeur web le jour, je remonte le temps des technologies pour découvrir comment on en est arrivé là.",
+    photoUrl: "/avatars/frederic-bisson.webp",
+    socials: [
+      { id: "github", link: "zigazou", name: "GitHub" },
+      { link: "zigazou", id: "twitter", name: "Twitter" },
+    ],
+  },
+  {
+    id: "dorian-lamande",
+    name: "Dorian Lamandé",
+    bio: "Dorian, à la fois formateur et leader d'équipe partage avec enthousiasme ses compétences humaines et techniques pour inspirer et guider chacun vers l'exploitation totale de leurs capacités.",
+    company: "Octo Technology",
+    photoUrl: "/avatars/dorian-lamande.webp",
+    socials: [{ id: "github", link: "dlamande", name: "GitHub" }],
+  },
+  {
+    id: "christophe-gigax",
+    name: "Christophe Gigax",
+    bio: "Passionné par l’informatique depuis plusieurs années maintenant, j’ai décidé d’en faire bien plus qu’un simple loisir : mon métier. Après un cursus de 5 ans à l’Exia.cesi de Strasbourg me permettant d’accéder à un diplôme de Manager des Systèmes d’Information, je suis aujourd’hui Cloud Solution Architect au sein de l’entreprise Hager Group, industriel spécialiste de la protection électrique pour particulier et résidentiel.\n\nCe cadre de travail privilégié me permet de mettre en oeuvre mes connaissances d’analyses, de conception et de développements dans les technologies Microsoft pour lesquelles j’ai une grande préférence.  Le web et la mobilité sont des sujets que j’apprécie tout particulièrement (ASP.NET Core, Angular, Azure, VueJS, REST API & GraphQL, PWA …), mais je m’efforce également de rester au contact des nouvelles technologies (IoT, Blockchain, Serverless, réalité virtuelle / augmentée …) et de constamment me mettre à niveau concernant les dernières techniques de développement.\n\nLa curiosité et l’expertise technique sont des facettes de mon métier qui me plaisent énormément. C’est ainsi que, tout naturellement, je suis présent sur les réseaux sociaux @ChristopheGigax afin de ne rater aucune news importante, et que je me suis spécialisé dans les technologies Microsoft grâce à des certifications acquises au cours de mon cursus (Azure Architect, Azure DevOps Expert et Azure Developer).\n\nDepuis le 1er Avril 2017, Microsoft m’a décerné le titre de MVP Microsoft – Visual Studio and Development Technologies. C’est un grand honneur pour moi de faire partie de cette grande famille, tant l’aspect communautaire et partage de connaissance est important à mes yeux.",
+    company: "Hager",
+    photoUrl: "/avatars/christophe-gigax.webp",
+    socials: [
+      { name: "GitHub", id: "github", link: "ChrisProlls" },
+      { name: "Twitter", link: "ChristopheGigax", id: "twitter" },
+    ],
+  },
+  {
+    id: "cedric-darbon",
+    name: "Cédric Darbon",
+    company: "Agaric IG",
+    photoUrl: "/avatars/cedric-darbon.webp",
+    socials: [],
+  },
+  {
+    id: "bertrand-delacretaz",
+    name: "Bertrand Delacrétaz",
+    bio: "Bertrand Delacretaz (@bdelacretaz) travaille comme Principal Scientist et Web Platform Advocate pour le groupe R&D de Adobe Research à Bâle, en Suisse, sur des systèmes de gestion de contenu et publication Web à grande échelle. Près de trente ans après avoir pressé ENTER pour la première fois sur un lien hypertexte, Bertrand reste passionné par les technologies du Web. La veille technologique autour du Web est une part importante de son activité, qu'il partage volontiers dans diverses conférences. Bertrand est aussi actif dans l'Open Source et siègre actuellement au comité de direction de la fondation Apache (\"Apache Software Foundation\") pour son douzième mandat.",
+    company: "Adobe & Apache",
+    photoUrl: "/avatars/bertrand-delacretaz.webp",
+    socials: [
+      { name: "GitHub", link: "bdelacretaz", id: "github" },
+      { id: "twitter", link: "bdelacretaz", name: "Twitter" },
+    ],
+  },
+  {
+    id: "sarah-ghidalia",
+    name: "Sarah Ghidalia",
+    company: "Laboratoire CIAD",
+    photoUrl: "/avatars/sarah-ghidalia.webp",
+    socials: [{ name: "GitHub", id: "github", link: "Mileem" }],
+  },
+  {
+    id: "marine-du-mesnil",
+    name: "Marine du Mesnil",
+    bio: "Head of Cybersecurity Tribe @Theodo, Marine du Mesnil s’intéresse tout particulièrement à la sécurité informatique et s’implique au sein de la guilde Sécurité de Theodo pour aider les développeurs à créer des produits conformes en les formant et en intervenant dans les différents projets. \n\nElle suit particulièrement les publications de l’OWASP et s’intéresse tout particulièrement au contrôle d’accès, devenu la cause principale de faille sur les sites internets et placé au Top 1 du nouveau Top 10 de l’OWASP.",
+    company: "Theodo",
+    photoUrl: "/avatars/marine-du-mesnil.webp",
+    socials: [
+      { link: "marine-mb", id: "github", name: "GitHub" },
+      { id: "twitter", link: "marine_mesnil", name: "Twitter" },
+    ],
+  },
+  {
+    id: "jacqueline-rwanyindo",
+    name: "Jacqueline Rwanyindo",
+    bio: "Software Engineer depuis cinq ans, Jacqueline a été plongée dans les pratiques _craft_ depuis sa première mission. Férue de partage, elle est active au sein de communautés tech ([Chtitedev](https://www.linkedin.com/company/chtitedev/), [Software Craft Lille](https://www.linkedin.com/company/software-craft-lille)).",
+    company: "Ippon Technologies",
+    companyLogoUrl: "",
+    photoUrl: "/avatars/jacqueline-rwanyindo.webp",
+    socials: [
+      { name: "GitHub", id: "github", link: "Ja-R" },
+      { id: "twitter", name: "Twitter", link: "jacqueline_rwa" },
+    ],
+  },
+  {
+    id: "julien-libert",
+    name: "Julien Libert",
+    bio: "Développeur Web depuis plus de 15 ans, j’aime coder, gérer des équipes et faire en sorte de garder une bonne cohérence dans mon code et une architecture de projet élaborée. \nJe passe la majorité de mon quotidien à jongler entre du Laravel, du VueJS, mais aussi de bons gros morceaux de code legacy (PHP, jQuery…). \n\nAprès une formation en informatique générale, c’est toujours le web et ses technos qui m’ont attirées. La véritable révélation s'est faite avec l’arrivée des frameworks (CSS, PHP, JS) qui ont commencé à structurer et donner des lignes directrices pour des projets plus ou moins complexes. Malgré les reproches qu’on peut parfois leur faire, ils permettent aux équipes de développement d’accélérer la production, d’éviter la redite de tâches laborieuses et ainsi se concentrer sur du code à forte valeur ajoutée pour les utilisateurs.\n\nActuellement Lead développeur chez Evoliz, j'ai dû aborder un framework dans un autre domaine : l’agilité dans la réalisation de projets, avec SCRUM. Notre philosophie : on essaie, on échoue, on améliore, on réussit, on améliore encore… Après 6 ans à leurs côtés, je me dis qu’on a tenté pas mal de choses, réussi sur certaines, échoué sur d’autres, et surtout acquis une modeste expérience sur divers sujets. C’est donc tout naturellement que me vient l’envie de partager tout cela avec d’autres",
+    company: "Evoliz",
+    photoUrl: "/avatars/julien-libert.webp",
+    socials: [],
+  },
+  {
+    id: "alexis-stefanski",
+    name: "Alexis Stefanski",
+    bio: "Tech lead at CircularX, and developer for 8 years, I've worked mainly in start-ups on SaaS projects wishing to expose an API to their customers.\n\n\nPassionate about photography, video and humor, it's above all people and interaction that motivate me.",
+    company: "CircularX",
+    photoUrl: "/avatars/alexis-stefanski.webp",
+    socials: [{ link: "AlexStef", id: "github", name: "GitHub" }],
+  },
+];
+
+export default speakers;
 
 /*
-const fs = require("node:fs");
-const Buffer = require('buffer').Buffer;
+const fs = await import("node:fs");
+const {Buffer} = await import('buffer');
 speakers.forEach(({ id, photoUrl }) => {
   if (!photoUrl) {
     return;
@@ -24,9 +288,11 @@ speakers.forEach(({ id, photoUrl }) => {
   fetch(photoUrl)
     .then((r) => r.arrayBuffer())
     .then((b) => {
-      fs.createWriteStream(`./_assets/avatars/${id}`).write(Buffer.from(b));
+      fs.createWriteStream(`./_assets/avatars/__${id}`).write(Buffer.from(b));
     });
 });
+*/
 
-# for f in *; do convert $f -resize "128x128" "$f.webp"; rm "$f" ; done
+/*
+# for f in __*; do convert $f -resize "128x128" "${f/__/}.webp"; rm "$f" ; done
 */
