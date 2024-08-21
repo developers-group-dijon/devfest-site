@@ -14,6 +14,8 @@ function socialLink(userId, socialId) {
       return `https://www.linkedin.com/in/${userId}`;
     case SocialId.TWITTER:
       return `https://twitter.com/${userId}`;
+    case SocialId.MASTODON:
+      return userId;
     default:
       throw new Error(`Réseau social non supporté : ${socialId}`);
   }
@@ -45,6 +47,9 @@ function socialIconSvg(socialId) {
       break;
     case SocialId.TWITTER:
       iconName = "x-twitter";
+      break;
+    case SocialId.MASTODON:
+      iconName = "mastodon";
       break;
     default:
       throw new Error(`Réseau social non supporté : ${socialId}`);
