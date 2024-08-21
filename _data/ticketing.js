@@ -6,7 +6,7 @@
  * - possibilité d'avoir un commentaire par tarif en plus du commentaire global
  */
 
-/** @typedef {import("./types.js").Ticketing} */
+/** @type {import("./types.js").Ticketing} */
 export default {
   comment:
     "inclut le petit-déjeuner, le repas le midi et le café pour la journée",

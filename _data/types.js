@@ -100,8 +100,8 @@
 /**
  * @typedef Ticketing
  * @property {?string} url
- * @property {?string} comment
- * @property {TicketPricing[]} princings
+ * @property {string=} comment
+ * @property {TicketPricing[]} pricings
  */
 
 /**
@@ -109,8 +109,8 @@
  * @property {string} id
  * @property {string} name
  * @property {string} price
- * @property {?string} comment
- * @property {?string} url
+ * @property {string=} comment
+ * @property {string=} url
  */
 
 ///////////////////////////////
@@ -158,24 +158,24 @@
 /**
  * @typedef Member
  * @property {string} name
- * @property {?string} jobTitle
- * @property {?string=} bio
- * @property {?string} company
- * @property {?string=} photoUrl
+ * @property {string=} jobTitle
+ * @property {string=} bio
+ * @property {string=} company
+ * @property {string=} photoUrl
  * @property {Social[]} socials
- * @property {?string=} companyLogoUrl
+ * @property {string=} companyLogoUrl
  */
 
 /**
  * @typedef Speaker
  * @property {string} id
  * @property {string} name
- * @property {?string} jobTitle
- * @property {?string} bio
- * @property {?string} company
- * @property {?string} photoUrl
+ * @property {string=} jobTitle
+ * @property {string=} bio
+ * @property {string=} company
+ * @property {string=} photoUrl
  * @property {Social[]} socials
- * @property {?string} companyLogoUrl
+ * @property {string=} companyLogoUrl
  */
 /**
  * @typedef WithSpeakersMap
@@ -204,6 +204,7 @@ export const SocialId = {
   LINKEDIN: "linkedin",
   GITHUB: "github",
   TWITTER: "twitter",
+  MASTODON: "mastodon",
 };
 
 /**
@@ -275,13 +276,13 @@ export const Level = {
  * @property {string} id
  * @property {Date} dateStart
  * @property {string} title
- * @property {?string} abstract
+ * @property {string=} abstract
  * @property {number} durationMinutes
- * @property {string[]} speakerIds
- * @property {?string} trackId
- * @property {string[]?} trackRange
- * @property {string} formatId
- * @property {string} categoryId
+ * @property {string[]=} speakerIds
+ * @property {string=} trackId
+ * @property {string[]=} trackRange
+ * @property {string=} formatId
+ * @property {string=} categoryId
  * @property {boolean=} hideTrackTitle
  * @property {Language=} language
  * @property {Level=} level
