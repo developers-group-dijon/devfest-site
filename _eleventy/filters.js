@@ -5,6 +5,7 @@ import markdownitConstr from "markdown-it";
 const markdownit = markdownitConstr({ typographer: true, breaks: true });
 
 const defaultDateFormat = new Intl.DateTimeFormat("fr-FR", {
+  timeZone: "Europe/Paris",
   year: "numeric",
   month: "long",
   day: "numeric",
@@ -12,11 +13,13 @@ const defaultDateFormat = new Intl.DateTimeFormat("fr-FR", {
 });
 
 const defaultDayFormat = new Intl.DateTimeFormat("fr-FR", {
+  timeZone: "Europe/Paris",
   day: "numeric",
   weekday: "long",
 });
 
 const defaultTimeFormat = new Intl.DateTimeFormat("fr-FR", {
+  timeZone: "Europe/Paris",
   hour: "numeric",
   minute: "2-digit",
 });
@@ -87,12 +90,20 @@ function subList(value, size) {
   return value.slice(0, size);
 }
 
+const hourDateTimeFormat = new Intl.DateTimeFormat("fr-FR", {
+  timeZone: "Europe/Paris",
+  hour: "numeric",
+});
+
 /**
  * @param {?Date} value
  * @returns {string}
  */
 function hours(value) {
-  return `${value?.getHours()}`;
+  return Number.parseInt(
+    hourDateTimeFormat.formatToParts(value).find((p) => p.type === "hour")
+      .value,
+  ).toString();
 }
 
 /**
