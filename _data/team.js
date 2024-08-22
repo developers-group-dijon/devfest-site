@@ -18,22 +18,6 @@ export default [
     socials: [{ id: "linkedin", name: "Linkedin", link: "allan-cruchaudet" }],
   },
   {
-    name: "Jérémy Colombet",
-    jobTitle: "Directeur technique",
-    company: "CiTech",
-    photoUrl: "/avatars/jeremy.webp",
-    socials: [{ id: "linkedin", name: "Linkedin", link: "jeremy-colombet" }],
-  },
-  {
-    name: "Sabrina Bonard",
-    jobTitle: "Développeuse mobile",
-    company: null,
-    photoUrl: "/avatars/sabrina.webp",
-    socials: [
-      { id: "linkedin", name: "Linkedin", link: "sabrina-bonard-917701bb" },
-    ],
-  },
-  {
     name: "Amélie Guittet",
     jobTitle: "Responsable communication",
     company: "Atol CD",
@@ -79,6 +63,12 @@ export default [
     photoUrl: "/avatars/xavier.webp",
     socials: [
       { id: "linkedin", name: "Linkedin", link: "xavier-calland-4471866" },
+      { id: "github", name: "GitHub", link: "xavier-calland" },
+      {
+        id: "mastodon",
+        name: "Mastodon",
+        link: "https://piaille.fr/@xcalland",
+      },
     ],
   },
   {
@@ -140,6 +130,16 @@ export default [
     photoUrl: "/avatars/fabrice.webp",
     socials: [
       { id: "linkedin", name: "Linkedin", link: "ubertosi-fabrice-11b763124" },
+    ],
+  },
+  {
+    name: "Yoann Rouquié",
+    jobTitle: "Développeur Javascript",
+    company: "O'Clock",
+    photoUrl: "/avatars/yoann.webp",
+    socials: [
+      { id: "linkedin", name: "Linkedin", link: "yoann-rouquie" },
+      { id: "github", name: "GitHub", link: "yoannrq" },
     ],
   },
 ];
