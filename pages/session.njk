@@ -27,7 +27,7 @@
     {%- for speaker in session.speakers %}
     <div class="speaker">
         <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="avatar">
-        <div><a class="speaker-name" href="/speaker/{{ speaker.id | slugify }}">{{ speaker.name }} ⋅ {{ speaker.company }}</a></div>
+        <div><a class="speaker-name" href="/speaker/{{ speaker.name | slugify }}">{{ speaker.name }} ⋅ {{ speaker.company }}</a></div>
     </div>
     {%- endfor -%}
 </div>
