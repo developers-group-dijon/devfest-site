@@ -8,15 +8,15 @@
  */
 export default [
   {
-    id: "amphi-1",
+    id: "amphi1",
     name: "Amphi « Philippe Le Hardi »",
   },
   {
-    id: "amphi-2",
+    id: "amphi2",
     name: "Amphi « Jean Sans Peur »",
   },
   {
-    id: "amphi-3",
+    id: "amphi3",
     name: "Amphi « Marie de Bourgogne »",
   },
 ];

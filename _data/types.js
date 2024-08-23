@@ -274,7 +274,7 @@ export const Level = {
 /**
  * @typedef RawSession
  * @property {string} id
- * @property {Date} dateStart
+ * @property {string} dateStartStr
  * @property {string} title
  * @property {string=} abstract
  * @property {number} durationMinutes
@@ -295,6 +295,7 @@ export const Level = {
 /**
  * @typedef SessionProperties
  * @property {Day} day
+ * @property {Date} dateStart
  * @property {Duration} duration
  * @property {Speaker[]} speakers
  * @property {Format} format

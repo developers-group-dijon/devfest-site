@@ -80,7 +80,7 @@ function parseSessions(data) {
   [data.formatsMap, data.categoriesMap, data.speakersMap, data.tracksMap];
 
   return data.rawSessions.map((session) => {
-    const dateStart = session.dateStart;
+    const dateStart = new Date(session.dateStartStr);
     return {
       ...session,
       hideTrackTitle: session.hideTrackTitle !== false,

@@ -1,7 +1,4 @@
 /**
- * Inspiré des données JSON de OpenPlanner.fr
- * Chemin : sponsors
- *
  * Chaque logo doit tenir dans une zone de 190x90, donc taille maximum 170x60
  */
 

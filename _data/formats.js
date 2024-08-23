@@ -13,8 +13,8 @@ export default [
     durationMinutes: 20,
   },
   {
-    durationMinutes: 50,
     id: "-conference",
     name: "📣 Conférence",
+    durationMinutes: 50,
   },
 ];
