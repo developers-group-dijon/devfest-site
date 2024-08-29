@@ -363,7 +363,7 @@ const speakers = [
     bio: null,
     company: "Agaric IG",
     jobTitle: null,
-    photoUrl: null,
+    photoUrl: "/avatars/cedric-darbon.webp",
     socials: [],
   },
   {
