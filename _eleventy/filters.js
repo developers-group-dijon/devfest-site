@@ -36,7 +36,11 @@ function dateFormat(value) {
  */
 function dayFormat(value) {
   return defaultDayFormat.format(
-    new Date(value / 10000, (value / 100) % 100, value % 100),
+    new Date(
+      Math.floor(value / 10000),
+      Math.floor((value % 10000) / 100) - 1,
+      value % 100,
+    ),
   );
 }
 
