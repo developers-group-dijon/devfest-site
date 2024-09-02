@@ -159,6 +159,15 @@ const speakers = [
     ],
   },
   {
+    id: "BhWigZ8fgcPOhUbEQ9lh",
+    name: "Nicolas Giraud",
+    bio: "Développeur passionné, Nicolas évolue depuis près de 15 ans essentiellement sur des projets Java (EE).\n\nAddict aux outils innovants et sensible aux pratiques agiles, c'est d'abord avec les notions de CD/CI qu'il aborde ces notions d'amélioration continue, puis plus récemment dans la mouvance DevOps, où il trouve refuge !\n\nC'est finalement dans un rôle de Tech lead (alias \"couteau suisse\") qu'il intervient, et tente (parfois avec succès) de faciliter la vie de ses co-developpeurs dans l'esprit bienveillant du Software Crafter.\n",
+    company: "Onepoint",
+    jobTitle: null,
+    photoUrl: "/avatars/nicolas-giraud.webp",
+    socials: [],
+  },
+  {
     id: "F2WldklOGjPxdFWZCN3p",
     name: "Julien Topçu",
     bio: "Tech Coach chez Shodo, j'accompagne le développement de logiciels à forte valeur métier en usant de techniques issues du Domain-Driven Design, le tout propulsé en Xtreme Programming dans la philosophie Kanban #NoEstimates. Membre de la fondation OWASP, je sensibilise sur les techniques de sécurité applicative afin d'éviter de se faire hacker bien comme il faut.",
@@ -338,24 +347,13 @@ const speakers = [
     ],
   },
   {
-    id: "mOwSJTe0CGWFzePxJZNC",
-    name: "Christophe Gigax",
-    bio: "Passionné par l’informatique depuis plusieurs années maintenant, j’ai décidé d’en faire bien plus qu’un simple loisir : mon métier. Après un cursus de 5 ans à l’Exia.cesi de Strasbourg me permettant d’accéder à un diplôme de Manager des Systèmes d’Information, je suis aujourd’hui Cloud Solution Architect au sein de l’entreprise Hager Group, industriel spécialiste de la protection électrique pour particulier et résidentiel.\n\nCe cadre de travail privilégié me permet de mettre en oeuvre mes connaissances d’analyses, de conception et de développements dans les technologies Microsoft pour lesquelles j’ai une grande préférence.  Le web et la mobilité sont des sujets que j’apprécie tout particulièrement (ASP.NET Core, Angular, Azure, VueJS, REST API & GraphQL, PWA …), mais je m’efforce également de rester au contact des nouvelles technologies (IoT, Blockchain, Serverless, réalité virtuelle / augmentée …) et de constamment me mettre à niveau concernant les dernières techniques de développement.\n\nLa curiosité et l’expertise technique sont des facettes de mon métier qui me plaisent énormément. C’est ainsi que, tout naturellement, je suis présent sur les réseaux sociaux @ChristopheGigax afin de ne rater aucune news importante, et que je me suis spécialisé dans les technologies Microsoft grâce à des certifications acquises au cours de mon cursus (Azure Architect, Azure DevOps Expert et Azure Developer).\n\nDepuis le 1er Avril 2017, Microsoft m’a décerné le titre de MVP Microsoft – Visual Studio and Development Technologies. C’est un grand honneur pour moi de faire partie de cette grande famille, tant l’aspect communautaire et partage de connaissance est important à mes yeux.",
-    company: "Hager",
+    id: "kLZuRrc0J8ikihMTGXxj",
+    name: "Charline Humeau",
+    bio: 'Charline travaille depuis 7 ans chez onepoint. Son sujet du moment? L\'accessibilité numérique ou comme le dit Tim Berners-Lee : "Mettre le Web et ses services à la disposition de tous les individus, quel que soit leur matériel ou logiciel, […] leur langue maternelle, ou leurs aptitudes physiques ou mentales".\nAu quotidien, elle concentre toutes ses compétences pour réaliser des applications Web modernes à forte valeur ajoutée et à large diffusion. ',
+    company: "Onepoint",
     jobTitle: null,
-    photoUrl: "/avatars/christophe-gigax.webp",
-    socials: [
-      {
-        id: "github",
-        name: "GitHub",
-        link: "ChrisProlls",
-      },
-      {
-        id: "twitter",
-        name: "Twitter",
-        link: "ChristopheGigax",
-      },
-    ],
+    photoUrl: "/avatars/charline-humeau.webp",
+    socials: [],
   },
   {
     id: "nhgsisuav0fMV2xC5xAy",

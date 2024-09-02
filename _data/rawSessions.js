@@ -86,21 +86,6 @@ export default [
     hideTrackTitle: false,
   },
   {
-    id: "3cQILrc8elAlCVy9s9bG",
-    title: "Game of Things : MQTT pour tous les gouverner",
-    abstract:
-      "Le standard MQTT est l'une des bases fondamentales de l'IoT moderne et est parfaitement adapté aux scénarios des objets connectés en offrant des fonctionnaltiés riches tout en restant léger. Mais au final, quelles en sont ses rouages ? Comment est-il devenu si populaire ? Qu'est ce qu'il fait que les autres ne font pas ?\n\nNous allons découvrir les arcanes du MQTT en abordant différents fondamentaux comme les Topics, les Quality of Service (QoS), les Retained Messages ou encore les Last Will et Testament messages qui permettent une panoplie de cas d'utilisation très riche juste avec le standard lui même. Nous aborderons rapidement les différences entre la version v3.1.1 et v5 qui introduit des subtilités intéressantes pour faciliter la vie du développeur. \n\nCette conférence offre une compréhension technique du protocole MQTT pour les développeurs et sera majoritairement axé sur des démo pour mieux appréhender les concepts.",
-    dateStartStr: "2024-12-06T11:00:00.000+01:00",
-    durationMinutes: 50,
-    speakerIds: ["mOwSJTe0CGWFzePxJZNC"],
-    trackId: "amphi1",
-    language: "French",
-    level: "intermediate",
-    formatId: "-conference",
-    categoryId: "-iot-and-hardware",
-    hideTrackTitle: false,
-  },
-  {
     id: "3rb92EY4gWzUQwDK3FlS",
     title: "Faire simple, la clé de la durabilité ?",
     abstract:
@@ -173,6 +158,21 @@ export default [
     level: "intermediate",
     formatId: "-short-track",
     categoryId: "-discovery",
+    hideTrackTitle: false,
+  },
+  {
+    id: "ICgHA6fBtTwIEU0sENUC",
+    title: "Cinq critères pour muscler vos échanges HTTP",
+    abstract:
+      "Vous utilisez REST, peut être même SOAP dans des projets plus historiques.\nMais connaissez-vous les alternatives à ces modes d'échange ?\nGraph QL, gRPC sont des exemples qui ont été adoptés plus récemment et qui enrichissent l'écosystème de nouvelles possibilités.\n\nQuelle est la solution la plus appropriée en fonction de votre contexte ?\nQuels sont les limites et inconvénients de chacun ?\n\nCharline et Nicolas, respectivement lead-front et lead-back, vous proposent cinq critères construits au fil de leurs expériences.\nCes clés vous aideront à choisir le mode de communication le plus adapté aux problématiques que vous avez à résoudre.\n",
+    dateStartStr: "2024-12-06T11:00:00.000+01:00",
+    durationMinutes: 50,
+    speakerIds: ["kLZuRrc0J8ikihMTGXxj", "BhWigZ8fgcPOhUbEQ9lh"],
+    trackId: "amphi1",
+    language: "French",
+    level: "intermediate",
+    formatId: "-conference",
+    categoryId: "-web",
     hideTrackTitle: false,
   },
   {
