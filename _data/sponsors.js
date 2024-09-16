@@ -85,6 +85,11 @@ export default [
         logoUrl: "/sponsors/les-docks.webp",
       },
       {
+        name: "Oslandia",
+        website: "https://oslandia.com/",
+        logoUrl: "/sponsors/oslandia.webp",
+      },
+      {
         name: "Planet Bourgogne",
         website: "https://www.planetb.fr",
         logoUrl: "/sponsors/planet-bourgogne.webp",
