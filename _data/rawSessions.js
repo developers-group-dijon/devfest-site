@@ -161,21 +161,6 @@ export default [
     hideTrackTitle: false,
   },
   {
-    id: "ICgHA6fBtTwIEU0sENUC",
-    title: "Cinq critères pour muscler vos échanges HTTP",
-    abstract:
-      "Vous utilisez REST, peut être même SOAP dans des projets plus historiques.\nMais connaissez-vous les alternatives à ces modes d'échange ?\nGraph QL, gRPC sont des exemples qui ont été adoptés plus récemment et qui enrichissent l'écosystème de nouvelles possibilités.\n\nQuelle est la solution la plus appropriée en fonction de votre contexte ?\nQuels sont les limites et inconvénients de chacun ?\n\nCharline et Nicolas, respectivement lead-front et lead-back, vous proposent cinq critères construits au fil de leurs expériences.\nCes clés vous aideront à choisir le mode de communication le plus adapté aux problématiques que vous avez à résoudre.\n",
-    dateStartStr: "2024-12-06T11:00:00.000+01:00",
-    durationMinutes: 50,
-    speakerIds: ["kLZuRrc0J8ikihMTGXxj", "BhWigZ8fgcPOhUbEQ9lh"],
-    trackId: "amphi1",
-    language: "French",
-    level: "intermediate",
-    formatId: "-conference",
-    categoryId: "-web",
-    hideTrackTitle: false,
-  },
-  {
     id: "LSWB8KbPTP7JWgAPp88g",
     title:
       "Dis papa! Comment ça marche l'IA générative ? ChatGPT et Dall-E sous le capot.",
@@ -274,7 +259,7 @@ export default [
     id: "aOugKtXlV9Sv3G21V0PJ",
     title: "L'Art de Tester une IA: arrêtons de naviguer à vue !",
     abstract:
-      "ester un programme classique, c'est comme faire un contrôle technique à sa voiture : c'est fastidieux mais assez prévisible. Par contre, tester une Intelligence Artificielle, surtout quand elle est basée sur du machine learning, c'est comme trouver sa position en mer avec un sextant et un compas : possible seulement pour les marins chevronnés avec une carte et de bonnes notions de maths ! Bien sûr il existe des «vanity metrics» comme les sacro-saintes exactitude (accuracy) et coefficient de détermination (R²) du modèle, secondée par leurs suivantes que sont: la précision, le rappel, le F1-score, le MSE, le RMSE, le MAPE, etc. Avec le développement des systèmes d’IA, d’autres métriques ont également vu le jour pour permettre d’évaluer leur explicabilité, leur temps de latence, leur stabilité, leur robustesse et même leur bilan carbone !\n\nToutefois, est-on réellement certain que toute ces évaluations vont nous permettre d’obtenir un résultat qui nous apporte de la valeur ? Qui respecte nos lois (ou celles inhérentes au monde de la physique) ? Comment s’assurer de la cohérence des modèles avec le monde qui nous entoure quand le simple ajout d’un pixel dans une image peut tout faire basculer ?\n\nL’évaluation des modèles est la pierre angulaire du pipeline de création d’un système d’apprentissage. Une bonne évaluation, à l’aide de benchmark adapté au contexte, permet de déployer plus sereinement en production des systèmes qui apportent de la valeur. Et après le déploiement, un processus de surveillance continue aide à se prémunir du *data-drift* et du *concept-drift*. \n\nParce qu'une IA, ça dérive plus vite qu'un bateau sans capitaine !",
+      "Tester un programme classique, c'est comme faire un contrôle technique à sa voiture : c'est fastidieux mais assez prévisible. Par contre, tester une Intelligence Artificielle, surtout quand elle est basée sur du machine learning, c'est comme trouver sa position en mer avec un sextant et un compas : possible seulement pour les marins chevronnés avec une carte et de bonnes notions de maths ! Bien sûr il existe des «vanity metrics» comme les sacro-saintes exactitude (accuracy) et coefficient de détermination (R²) du modèle, secondée par leurs suivantes que sont: la précision, le rappel, le F1-score, le MSE, le RMSE, le MAPE, etc. Avec le développement des systèmes d’IA, d’autres métriques ont également vu le jour pour permettre d’évaluer leur explicabilité, leur temps de latence, leur stabilité, leur robustesse et même leur bilan carbone !\n\nToutefois, est-on réellement certain que toute ces évaluations vont nous permettre d’obtenir un résultat qui nous apporte de la valeur ? Qui respecte nos lois (ou celles inhérentes au monde de la physique) ? Comment s’assurer de la cohérence des modèles avec le monde qui nous entoure quand le simple ajout d’un pixel dans une image peut tout faire basculer ?\n\nL’évaluation des modèles est la pierre angulaire du pipeline de création d’un système d’apprentissage. Une bonne évaluation, à l’aide de benchmark adapté au contexte, permet de déployer plus sereinement en production des systèmes qui apportent de la valeur. Et après le déploiement, un processus de surveillance continue aide à se prémunir du *data-drift* et du *concept-drift*. \n\nParce qu'une IA, ça dérive plus vite qu'un bateau sans capitaine !",
     dateStartStr: "2024-12-06T09:25:00.000+01:00",
     durationMinutes: 50,
     speakerIds: ["rzquAGiqcVkWvMUvT49U"],
@@ -283,6 +268,21 @@ export default [
     level: "intermediate",
     formatId: "-conference",
     categoryId: "-bigdata-ai",
+    hideTrackTitle: false,
+  },
+  {
+    id: "eglFSGcw0HSigqsXcEji",
+    title: "La Crypto Hardware, comment sécuriser nos devices ?",
+    abstract:
+      "CTO, lead dev, développeur.euse, vous ne connaissez pas Elixir, mais vous voulez découvrir ces bienfaits ?\n\nCTO, lead dev, développeur.euse, vous avez entendu parler d'Elixir, mais vous ne savez pas si ce langage est fait pour votre projet et votre équipe ?\n\nCTO, lead dev, développeur.euse, vous voulez adopter Elixir, mais vous ne savez comment commencer ?\n\nCe talk vous plongeras dans un retour d'expérience sur l’implantation d'Elixir dans un projet IoT complexe. Backend, web, monitoring, infrastructure, distribution, haute disponibilité, tolérance à la faute... qu'est ce que Elixir, Erlang et l'Open Telecom Platform peuvent apporter comme avantages (et défauts) à vos projets ? Comment démarrer demain et facilement un nouveau projet Elixir ?\n",
+    dateStartStr: "2024-12-06T11:30:00.000+01:00",
+    durationMinutes: 20,
+    speakerIds: ["OkCDf7MGhu64xOV13jyi"],
+    trackId: "amphi1",
+    language: "French",
+    level: "beginner",
+    formatId: "-short-track",
+    categoryId: "-discovery",
     hideTrackTitle: false,
   },
   {
@@ -358,6 +358,21 @@ export default [
     level: "beginner",
     formatId: "-conference",
     categoryId: "-pratiques-de-dev",
+    hideTrackTitle: false,
+  },
+  {
+    id: "nQJKoHhFKOjlF8ll2lya",
+    title: "La Crypto Hardware, comment sécuriser nos devices ?",
+    abstract:
+      "Les attaques cyber se font de plus en plus présentes : fisching, emails frauduleux etc...\nNous avons donc naturellement tendance à nous focaliser sur la sécurisation de nos SI, et c'est très bien !\n\nAttention pourtant, le matériel en tant que tel est une entrée d'attaque qu'il ne faut pas négliger.\nLes médias ont relaté de sombres histoires de vols de données par des étudiants internationaux...\n\nDes solutions existent !\n\nJe vous propose de vous présenter la sécurisation d'un device hardware vie Secure Element",
+    dateStartStr: "2024-12-06T11:00:00.000+01:00",
+    durationMinutes: 20,
+    speakerIds: ["GXqn9Y8juiJfoM8t6MXN"],
+    trackId: "amphi1",
+    language: "French",
+    level: "intermediate",
+    formatId: "-short-track",
+    categoryId: "-iot-and-hardware",
     hideTrackTitle: false,
   },
   {
