@@ -38,9 +38,9 @@ Les fichiers `js` dans le répertoire `_data`
 - Utilisées par Eleventy pour générer le contenu des pages
 - Inspirées de ce que fournit https://openplanner.fr (en JS pas JSON pour avoir la validation JSDoc)
 
-Le script `_data_gen/generate-from-openplanner.js` permet de générer certains fichiers JS de données à partir d'un fichier JSON exporté depuis OpenPlanner.
+Le script `_data_gen/generate-from-openplanner.js` permet de générer certains fichiers JS de données à partir de l'URL d'export JSON depuis OpenPlanner (version public).
 
-Pour exécuter le script : `node _data_gen/generate-from-openplanner.js openplanner.json`
+Pour exécuter le script : `node _data_gen/generate-from-openplanner.js https://storage.googleapis.com/conferencecenterr.appspot.com/events/<xxxxx>/<yyyyy>.json`
 
 ## Style, images et photos
 
