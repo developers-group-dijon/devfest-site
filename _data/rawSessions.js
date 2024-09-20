@@ -272,7 +272,7 @@ export default [
   },
   {
     id: "eglFSGcw0HSigqsXcEji",
-    title: "La Crypto Hardware, comment sécuriser nos devices ?",
+    title: "Adoptez Elixir: une chance pour votre entreprise ?",
     abstract:
       "CTO, lead dev, développeur.euse, vous ne connaissez pas Elixir, mais vous voulez découvrir ces bienfaits ?\n\nCTO, lead dev, développeur.euse, vous avez entendu parler d'Elixir, mais vous ne savez pas si ce langage est fait pour votre projet et votre équipe ?\n\nCTO, lead dev, développeur.euse, vous voulez adopter Elixir, mais vous ne savez comment commencer ?\n\nCe talk vous plongeras dans un retour d'expérience sur l’implantation d'Elixir dans un projet IoT complexe. Backend, web, monitoring, infrastructure, distribution, haute disponibilité, tolérance à la faute... qu'est ce que Elixir, Erlang et l'Open Telecom Platform peuvent apporter comme avantages (et défauts) à vos projets ? Comment démarrer demain et facilement un nouveau projet Elixir ?\n",
     dateStartStr: "2024-12-06T11:30:00.000+01:00",
