@@ -120,7 +120,7 @@ export default [
     title: "Tu connais ce type ?",
     abstract:
       "Après des années à arpenter les voies de sa stack favorite, on se surprend toujours à découvrir un comportement abscons au détour d’une ligne de code obscure. Plusieurs jours peuvent passer avant de réaliser qu’on ne comprenait pas vraiment des types de données manipulés en toute bonne foi.\n\nLes meilleures techniques de développement ne suffisent pas à vous mettre à l’abri d’un manque de connaissances sur un type de données.\n\nJe vous propose donc de faire le tour de quelques types parmi les plus connus et utilisés pour découvrir les pièges qu’on ne connaît pas assez, qu’on soit débutant·e ou expérimenté·e.\n\nBienvenue dans l’enfer du code, aucun langage n’est à l’abri !",
-    dateStartStr: "2024-12-06T14:00:00.000+01:00",
+    dateStartStr: "2024-12-06T16:30:00.000+01:00",
     durationMinutes: 50,
     speakerIds: ["cXI8Zuo4xrLrKneiwnUS"],
     trackId: "amphi3",
@@ -395,7 +395,7 @@ export default [
     title: "Les tendances en architecture : entre mythes et réalité",
     abstract:
       "Les différentes architectures se suivent et ne se ressemblent pas... vraiment ?\n\nDans ce talk, je vous propose de revisiter les différentes hypes sur les 20 dernières années, de voir ce qui tient encore aujourd'hui (et pourquoi) et surtout de démystifier les architectures logiciels et des systèmes d'information émergentes. \nTout cela en prenant le prenant le point de vue d'un/e architecte, faisant le lien entre la stratégie d'entreprise, ses métiers, son SI, son parc applicatif et ses infrastructures... Tout un programme ! \n\nNous décoderons notamment les dernières tendances avec cette perspective : Modulith, Cell-based Architecture, les architectures éco-conçues, la socio-technical architecture ou encore les fameux LLM / RAG si gourmands en ressources hardware.",
-    dateStartStr: "2024-12-06T16:30:00.000+01:00",
+    dateStartStr: "2024-12-06T14:00:00.000+01:00",
     durationMinutes: 50,
     speakerIds: ["BX00p9A5VCEXggie1bse"],
     trackId: "amphi3",
