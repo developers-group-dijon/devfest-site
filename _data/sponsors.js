@@ -24,6 +24,11 @@ export default [
         website: "https://iutdijon.u-bourgogne.fr/",
         logoUrl: "/sponsors/iut.webp",
       },
+      {
+        name: "French tech BFC",
+        website: "https://lafrenchtechbfc.fr/",
+        logoUrl: "/sponsors/french-tech-bfc.webp",
+      },
     ],
   },
   {
@@ -109,11 +114,6 @@ export default [
         name: "BeBoost",
         website: "https://www.beboost.com",
         logoUrl: "/sponsors/beboost.webp",
-      },
-      {
-        name: "French tech BFC",
-        website: "https://lafrenchtechbfc.fr/",
-        logoUrl: "/sponsors/french-tech-bfc.webp",
       },
       {
         name: "La poste",
