@@ -101,6 +101,16 @@ export default [
       },
     ],
   },
+  {
+    name: "Sponsors Bronze",
+    sponsors: [
+      {
+        name: "Holberton",
+        website: "https://www.holbertonschool.fr",
+        logoUrl: "/sponsors/holberton.webp",
+      },
+    ],
+  },
   /*
   {
     name: "Sponsors",
