@@ -40,6 +40,20 @@ export default {
       content:
         "Pour cette édition du DevFest nous vous invitons à venir découvrir les Ducs de Bourgogne. Vous en avez surement déjà entendu parler. Mais saviez-vous que sous leur règne, au moyen-âge, la Bourgogne était si puissante qu’ils ont failli détrôner le Roi et faire de Dijon la capitale de la France ?",
     },
+    {
+      title: "Nouveauté cette année sur le DevFest !",
+      content: `En collaboration avec les Docks Numériques, nous vous proposons de participer à une session de pitchs de startups numériques innovantes !
+
+L'objectif ?
+- Faciliter la rencontre entre startups numériques en quête de développeurs web et des développeurs ayant un esprit entrepreneurial, cherchant un projet ou un associé pour se lancer dans une aventure entrepreneuriale.
+
+Vous êtes ?
+- Développeur web ayant un projet entrepreneurial ou cherchant à rejoindre un projet existant.
+- Développeur web en recherche d'un associé pour lancer une startup.
+- Développeur web souhaitant participer à un projet entrepreneurial innovant.
+
+Participez à **« Qui veut être mon dév ‽ »**, RDV en **salle « Charles Le Téméraire » à 11h** !`,
+    },
   ],
   previousEditions: [
     {

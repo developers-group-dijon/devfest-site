@@ -19,4 +19,8 @@ export default [
     id: "amphi3",
     name: "Amphi « Marie de Bourgogne »",
   },
+  {
+    id: "salle-charles-le-temeraire-",
+    name: "Salle « Charles Le Téméraire »",
+  },
 ];

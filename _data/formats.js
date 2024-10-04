@@ -17,4 +17,9 @@ export default [
     name: "📣 Conférence",
     durationMinutes: 50,
   },
+  {
+    id: "-pitchs-de-startups-numeriques",
+    name: "🎙️ Pitchs de startups numériques",
+    durationMinutes: 60,
+  },
 ];

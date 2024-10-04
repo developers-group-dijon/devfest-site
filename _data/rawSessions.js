@@ -45,6 +45,7 @@ export default [
     title: "Accueil et lancement de la journée",
     dateStartStr: "2024-12-06T09:00:00.000+01:00",
     durationMinutes: 20,
+    trackRange: ["amphi1", "amphi3"],
   },
   // keynotes
   {
@@ -52,6 +53,7 @@ export default [
     title: "Remerciements et clôture de la journée",
     dateStartStr: "2024-12-06T17:25:00.000+01:00",
     durationMinutes: 20,
+    trackRange: ["amphi1", "amphi3"],
   },
   // sessions
   {
@@ -143,6 +145,21 @@ export default [
     level: "beginner",
     formatId: "-conference",
     categoryId: "-ux-ui",
+    hideTrackTitle: false,
+  },
+  {
+    id: "DDeXJLYZfCLtVIFXwzMv",
+    title: "Qui veut être mon dév ‽",
+    abstract:
+      "En collaboration avec les Docks Numériques, nous vous proposons de participer à une session de pitchs de startups numériques innovantes !\n\nL'objectif ?\n- Faciliter la rencontre entre startups numériques en quête de développeurs web et des développeurs ayant un esprit entrepreneurial, cherchant un projet ou un associé pour se lancer dans une aventure entrepreneuriale.\n\nVous êtes ?\n- Développeur web ayant un projet entrepreneurial ou cherchant à rejoindre un projet existant.\n- Développeur web en recherche dʼun associé pour lancer une startup.\n- Développeur web souhaitant participer à un projet entrepreneurial innovant.",
+    dateStartStr: "2024-12-06T11:00:00.000+01:00",
+    durationMinutes: 55,
+    speakerIds: [],
+    trackId: "salle-charles-le-temeraire-",
+    language: "French",
+    level: null,
+    formatId: "-pitchs-de-startups-numeriques",
+    categoryId: null,
     hideTrackTitle: false,
   },
   {
