@@ -11,7 +11,7 @@ eleventyComputed:
 <style>
    {%- for day, daySlot in slots %}
    .grid-day.day_{{ day }} {
-      grid-template-columns: [time] minmax(64px, 150px) {% for track in tracks %}[{{tracks[loop.index0 - 1].id if loop.index0 > 0 else "track" }} {{track.id}}] minmax(200px, 1fr) {% endfor %}[{{ tracks[tracks.length - 1].id }}-end track-end];
+      grid-template-columns: [time] minmax(64px, 150px) {% for track in tracks %}[{{(tracks[loop.index0 - 1].id + "-end") if loop.index0 > 0 else "track" }} {{track.id}}] minmax(200px, 1fr) {% endfor %}[{{ tracks[tracks.length - 1].id }}-end track-end];
       grid-template-rows: [track] auto {% for slot in daySlot -%}[slot_{{ slot | dateKey }}] auto {% endfor -%}[end];
    }
    {%- endfor %}
