@@ -209,6 +209,22 @@ export default [
     hideTrackTitle: false,
   },
   {
+    id: "QoZ4JS9ZBdurr0cJ6QQF",
+    title:
+      "Et si les tests unitaires faisaient la revue de code à votre place ?",
+    abstract:
+      "Les revues de code manuelles sont essentielles mais chronophages. Et si nous exploitions les tests unitaires pour automatiser ce processus ?\nPas besoin d'IA, juste de règles posées entre développeur pour améliorer nos revus et garantir l'architecture et les règles de codage de notre application !",
+    dateStartStr: "2024-12-06T11:30:00.000+01:00",
+    durationMinutes: 20,
+    speakerIds: ["ovR5jqnKjPV6MSd0sKay", "t865IUEyepZ0XVkqieoX"],
+    trackId: "amphi1",
+    language: "French",
+    level: "intermediate",
+    formatId: "-short-track",
+    categoryId: "-pratiques-de-dev",
+    hideTrackTitle: false,
+  },
+  {
     id: "S1SAr9UgIyi6AXMjLZ1H",
     title:
       "Quand l'IA s'appuie sur le champignon - Qu'est ce que les champignons nous apprennent sur l'intelligence artificielle ?",
@@ -285,21 +301,6 @@ export default [
     level: "intermediate",
     formatId: "-conference",
     categoryId: "-bigdata-ai",
-    hideTrackTitle: false,
-  },
-  {
-    id: "eglFSGcw0HSigqsXcEji",
-    title: "Adoptez Elixir: une chance pour votre entreprise ?",
-    abstract:
-      "CTO, lead dev, développeur.euse, vous ne connaissez pas Elixir, mais vous voulez découvrir ces bienfaits ?\n\nCTO, lead dev, développeur.euse, vous avez entendu parler d'Elixir, mais vous ne savez pas si ce langage est fait pour votre projet et votre équipe ?\n\nCTO, lead dev, développeur.euse, vous voulez adopter Elixir, mais vous ne savez comment commencer ?\n\nCe talk vous plongeras dans un retour d'expérience sur l’implantation d'Elixir dans un projet IoT complexe. Backend, web, monitoring, infrastructure, distribution, haute disponibilité, tolérance à la faute... qu'est ce que Elixir, Erlang et l'Open Telecom Platform peuvent apporter comme avantages (et défauts) à vos projets ? Comment démarrer demain et facilement un nouveau projet Elixir ?\n",
-    dateStartStr: "2024-12-06T11:30:00.000+01:00",
-    durationMinutes: 20,
-    speakerIds: ["OkCDf7MGhu64xOV13jyi"],
-    trackId: "amphi1",
-    language: "French",
-    level: "beginner",
-    formatId: "-short-track",
-    categoryId: "-discovery",
     hideTrackTitle: false,
   },
   {

@@ -197,15 +197,6 @@ const speakers = [
     socials: [],
   },
   {
-    id: "OkCDf7MGhu64xOV13jyi",
-    name: "Maxime Janvier",
-    bio: null,
-    company: "Hewlett Packard Entreprise",
-    jobTitle: null,
-    photoUrl: "/avatars/maxime-janvier.webp",
-    socials: [],
-  },
-  {
     id: "RY85IjnTCW48UV6Og0nw",
     name: "Thierno Diallo",
     bio: "Actuellement, je travaille en tant que Staff Engineer chez Axa France depuis 5 mois. J'ai travaillé en tant que Leader technique/ingénieur logiciel senior chez Axa France pendant 3 ans et demi. J'ai commencé chez Axa France il y a 4 ans.\n\nJe suis un ingénieur expérimenté avec une expérience avérée dans l'IT. Je suis compétent en Java/JEE/Spring/SpringBoot, Python, PostgreSQL, Webmethods, ODM, concepts SOA, modélisation statistique et Prolog. Professionnel de l'ingénierie solide avec un diplôme en Génie Informatique et Statistique axé sur l'ingénierie des systèmes et des réseaux, l'ingénierie logicielle et l'ingénierie financière de Polytechnique Lille.\n\nJ'ai précédemment travaillé pour la SNCF pendant 4 ans, et avant cela pour Capgemini pendant 2 ans et demi.",
@@ -365,6 +356,21 @@ const speakers = [
     socials: [],
   },
   {
+    id: "ovR5jqnKjPV6MSd0sKay",
+    name: "Alexandre Ruiz",
+    bio: "Passionné de développement depuis l'âge de 15ans, j'ai toujours souhaité aider et améliorer le quotidien des gens grâce aux outils informatiques ! Aujourd'hui, j'accompagne les équipes dans le développement d'outils utilisables par tous !\n\nEt depuis quelques années, je partage cette passion et mon expérience du terrain en occupant le rôle d'enseignant à l'IUT informatique !",
+    company: "Apside",
+    jobTitle: null,
+    photoUrl: "/avatars/alexandre-ruiz.webp",
+    socials: [
+      {
+        id: "twitter",
+        name: "Twitter",
+        link: "l_lexxx",
+      },
+    ],
+  },
+  {
     id: "pHGTjgKtqKoNcNPQS3vp",
     name: "Bertrand Delacrétaz",
     bio: "Bertrand Delacretaz (@bdelacretaz) travaille comme Principal Scientist et Web Platform Advocate pour le groupe R&D de Adobe Research à Bâle, en Suisse, sur des systèmes de gestion de contenu et publication Web à grande échelle. Près de trente ans après avoir pressé ENTER pour la première fois sur un lien hypertexte, Bertrand reste passionné par les technologies du Web. La veille technologique autour du Web est une part importante de son activité, qu'il partage volontiers dans diverses conférences. Bertrand est aussi actif dans l'Open Source et siègre actuellement au comité de direction de la fondation Apache (\"Apache Software Foundation\") pour son douzième mandat.",
@@ -436,6 +442,21 @@ const speakers = [
         id: "twitter",
         name: "Twitter",
         link: "jacqueline_rwa",
+      },
+    ],
+  },
+  {
+    id: "t865IUEyepZ0XVkqieoX",
+    name: "Julien Creach",
+    bio: "Tech lead - futur maitre Jedi du C#\n\nIngénieur en informatique industrielle et système embarqué de formation et en apprentissage dans la défense. Chez Apside depuis 2019 et Tech Lead, fervent défenseur du C# (en formation pour être maitre Jedi), et de la conteneurisation. J'ai à cœur de transmettre ce que j'ai pu apprendre afin d'en faire profiter un maximum mes collègues. Partisan du « c'est pas faux ! » plutôt que transmettre une fausse information. Et pour finir le principal le thé c’est la vie :D\n",
+    company: "Apside",
+    jobTitle: null,
+    photoUrl: "/avatars/julien-creach.webp",
+    socials: [
+      {
+        id: "github",
+        name: "GitHub",
+        link: "jcreach",
       },
     ],
   },
