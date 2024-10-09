@@ -17,7 +17,7 @@
         // Les données calculées (eleventyComputed) ne sont pas disponibles dans la pagination.
         // On travaille donc sur les rawSessions qu'on "résoud" ici
         session: function(data) { return (data.sessions || []).find((s) => s.id === data.rawSession.id) },
-        description: "{{ session.format.name }} ({{ session.durationMinutes }} minutes) ⋅ {{ session.category.name }} ⋅ {{ session.level | formatLevel }} ⋅ {{ session.language | formatLanguage }}\n{{ session.dateStart | shortDateFormat | capitalize }} à {{ session.dateStart | timeFormat }} ⋅ {{ session.tracks | mapName | join(', ') }}",
+        description: "{{ session.format.name }} ({{ session.durationMinutes }} minutes){{ (' ⋅ ' + session.category.name) if session.category.name }}{{ ' ⋅ ' + (session.level | formatLevel ) if session.level}}{{ ' ⋅ ' + (session.language | formatLanguage) if session.language }}\n{{ session.dateStart | shortDateFormat | capitalize }} à {{ session.dateStart | timeFormat }} ⋅ {{ session.tracks | mapName | join(', ') }}",
     },
 }
 ---
