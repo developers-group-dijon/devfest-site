@@ -12,7 +12,7 @@ eleventyComputed:
    {%- for day, daySlot in slots %}
    .grid-day.day_{{ day }} {
       grid-template-columns: [time] minmax(64px, 150px) {% for track in tracks %}[{{(tracks[loop.index0 - 1].id + "-end") if loop.index0 > 0 else "track" }} {{track.id}}] minmax(200px, 1fr) {% endfor %}[{{ tracks[tracks.length - 1].id }}-end track-end];
-      grid-template-rows: [track] auto {% for slot in daySlot -%}[slot_{{ slot | dateKey }}] auto {% endfor -%}[end];
+      grid-template-rows: [track] auto [tracksponsor] auto {% for slot in daySlot -%}[slot_{{ slot | dateKey }}] auto {% endfor -%}[end];
    }
    {%- endfor %}
 </style>
@@ -22,7 +22,13 @@ eleventyComputed:
       <a href="#{{ day }}"><h2 class="date" id="{{ day }}">{{ day | dayFormat | capitalize }}</h2></a>
       <div class="grid-day day_{{ day }}">
          {%- for track in tracks %}
-         <div class="track" style="grid-column: {{ track.id }}; grid-row: track">{{ track.name }}</div>
+         <div class="track {{ track.id }}" style="grid-column: {{ track.id }}; grid-row: track">{{ track.name }}</div>
+         {%- if track.sponsor -%}
+         {%- set sponsor = sponsorsMap.get(track.sponsor) -%}
+         <div class="tracksponsor {{ track.id }}" style="grid-column: {{ track.id }}; grid-row: tracksponsor">
+            <a class="sponsor" href="{{ sponsor.website }}" title="{{ sponsor.name }}"><img class="logo" src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt="Logo {{ sponsor.name}}"></a>
+         </div>
+         {%- endif -%}
          {%- endfor -%}
          {%- for slot in daySlot %}
          <div class="time" style="grid-column: time; grid-row: slot_{{ slot | dateKey }};">

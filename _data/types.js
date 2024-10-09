@@ -138,6 +138,7 @@
  * @typedef Track
  * @property {string} id
  * @property {string} name
+ * @property {string=} sponsor
  */
 /**
  * @typedef WithTracks
@@ -187,6 +188,14 @@
 /**
  * @typedef WithSpeakers
  * @property {Speaker[]} speakers
+ */
+
+/**
+ * @typedef {Map<string, Sponsor>} SponsorsMap
+ */
+/**
+ * @typedef WithSponsorTypes
+ * @property {SponsorType[]} sponsors
  */
 
 /**

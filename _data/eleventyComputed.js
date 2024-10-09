@@ -25,6 +25,20 @@ function parseEvent(data) {
 }
 
 /**
+ * @param {import('./types.js').WithSponsorTypes} data
+ * @returns {import('./types.js').SponsorsMap}
+ */
+function buildSponsorsMap(data) {
+  const res = new Map();
+  for (const sponsorType of data.sponsors) {
+    for (const s of sponsorType.sponsors) {
+      res.set(s.name, s);
+    }
+  }
+  return res;
+}
+
+/**
  * @param {import('./types.js').WithSpeakers} data
  * @returns {import('./types.js').SpeakersMap}
  */
@@ -145,4 +159,5 @@ export default {
   categoriesMap: buildCategoriesMap,
   sessions: parseSessions,
   slots: buildSlots,
+  sponsorsMap: buildSponsorsMap,
 };

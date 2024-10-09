@@ -64,6 +64,23 @@
   }
 }
 
+.sponsor {
+  display: block;
+  text-align: center;
+  border: 2px solid var(--primary-background-color);
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+}
+
+.sponsor:hover {
+  background-color: var(--gray-lighter-background-color);
+}
+
+.sponsor > .logo {
+  max-height: 3em;
+  vertical-align: middle;
+}
+
 .session .title {
   margin-bottom: 1rem;
   font-size: 1.2rem;
