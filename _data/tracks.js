@@ -1,6 +1,7 @@
 /**
  * Inspiré des données JSON de OpenPlanner.fr
  * Chemin : event.tracks
+ * - ajout de sponsor en facultatif pour ajouter le logo dans le programme
  */
 
 /**
@@ -25,5 +26,6 @@ export default [
   {
     id: "salle-charles-le-temeraire-",
     name: "Salle « Charles Le Téméraire »",
+    sponsor: "Les Docks numériques",
   },
 ];
