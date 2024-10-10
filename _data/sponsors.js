@@ -80,6 +80,11 @@ export default [
         logoUrl: "/sponsors/cpage.webp",
       },
       {
+        name: "ESEO",
+        website: "https://eseo.fr/",
+        logoUrl: "/sponsors/eseo.webp",
+      },
+      {
         name: "Infotel",
         website: "https://infotel.com/",
         logoUrl: "/sponsors/infotel.webp",
