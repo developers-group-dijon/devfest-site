@@ -25,6 +25,11 @@ export default [
         logoUrl: "/sponsors/iut.webp",
       },
       {
+        name: "AER BFC",
+        website: "https://aer-bfc.com",
+        logoUrl: "/sponsors/aer-bfc.webp",
+      },
+      {
         name: "French tech BFC",
         website: "https://lafrenchtechbfc.fr/",
         logoUrl: "/sponsors/french-tech-bfc.webp",
@@ -120,11 +125,6 @@ export default [
   {
     name: "Sponsors",
     sponsors: [
-      {
-        name: "AER BFC",
-        website: "https://aer-bfc.com",
-        logoUrl: "/sponsors/aer-bfc.webp",
-      },
       {
         name: "BeBoost",
         website: "https://www.beboost.com",
