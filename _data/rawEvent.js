@@ -52,6 +52,8 @@ Vous êtes ?
 - Développeur web en recherche d'un associé pour lancer une startup.
 - Développeur web souhaitant participer à un projet entrepreneurial innovant.
 
+Vous êtes une start-up et vous souhaitez pitcher : **[c'est par ici](https://form.jotform.com/242781928093062)**
+
 Participez à **« Qui veut être mon dév ‽ »**, RDV en **salle « Charles Le Téméraire » à 11h** !`,
     },
   ],
