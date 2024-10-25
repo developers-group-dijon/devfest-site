@@ -34,6 +34,11 @@ export default [
         website: "https://lafrenchtechbfc.fr/",
         logoUrl: "/sponsors/french-tech-bfc.webp",
       },
+      {
+        name: "Dijon Bourgogne Invest",
+        website: "https://www.dijonbourgogneinvest.fr/",
+        logoUrl: "/sponsors/dbi.webp",
+      },
     ],
   },
   {
