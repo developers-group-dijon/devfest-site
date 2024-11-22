@@ -150,8 +150,61 @@ export default [
   {
     id: "DDeXJLYZfCLtVIFXwzMv",
     title: "Qui veut être mon dév ‽",
-    abstract:
-      "En collaboration avec les Docks Numériques, nous vous proposons de participer à une session de pitchs de startups numériques innovantes !\n\nL'objectif ?\n- Faciliter la rencontre entre startups numériques en quête de développeurs web et des développeurs ayant un esprit entrepreneurial, cherchant un projet ou un associé pour se lancer dans une aventure entrepreneuriale.\n\nVous êtes ?\n- Développeur web ayant un projet entrepreneurial ou cherchant à rejoindre un projet existant.\n- Développeur web en recherche dʼun associé pour lancer une startup.\n- Développeur web souhaitant participer à un projet entrepreneurial innovant.\n\nVous êtes une start-up et vous souhaitez pitcher : **[c'est par ici](https://form.jotform.com/242781928093062)**\n\n![Logo qui veut être mond dev](/assets/qui-veut-etre-mon-dev.webp \"Qui veut être mon dév ‽\")",
+    abstract: `En collaboration avec les Docks Numériques, nous vous proposons de participer à une session de pitchs de startups numériques innovantes !
+
+L'objectif ?
+- Faciliter la rencontre entre startups numériques en quête de développeurs web et des développeurs ayant un esprit entrepreneurial, cherchant un projet ou un associé pour se lancer dans une aventure entrepreneuriale.
+
+Vous êtes ?
+- Développeur web ayant un projet entrepreneurial ou cherchant à rejoindre un projet existant.
+- Développeur web en recherche dʼun associé pour lancer une startup.
+- Développeur web souhaitant participer à un projet entrepreneurial innovant.
+
+Vous êtes une start-up et vous souhaitez pitcher : **[c'est par ici](https://form.jotform.com/242781928093062)**
+
+
+## Les startups présentes
+
+### [Strivee](https://strivee.app/)
+
+![strivee](/assets/qvemd/strivee.webp#float-left "Logo strivee")
+
+La mission de Strivee est de simplifier la vie des gérants de salle et coachs sportifs Préparateurs physiques / kinés, en mettant à disposition un outil simple d'utilisation qui s'adapte à leurs besoins, de manière à leur faire gagner du temps et à fidéliser/engager leur clientèle.
+
+### [Rethrow](https://www.linkedin.com/in/patrickmago-developpeurweb/)
+
+![rethrow](/assets/qvemd/rethrow.webp#float-left "Logo rethrow")
+
+Rethrow est une marketplace internationale entièrement dédiée à l'informatique vintage.
+Elle permet aux acheteurs et vendeurs, collectionneurs et passionnés d'effectuer des transactions en CtoC et de gérer leur collection sur la base d'un catalogue exhaustif de tous les matériels informatiques (ordinateurs, périphériques, logiciels...) des années 70/80/90.
+Elle intègre également des fonctionnalités IA telles que la reconnaissance de matériels ou le diagnostic de pannes pour faciliter les réparations
+
+### [Anthropi](https://anthropi.fr)
+
+![anthropi](/assets/qvemd/anthropi.webp#float-left "Logo anthropi")
+
+Startup Deeptech, AnthroPi développe ses propres outils de simulation à l'aide de technologies innovantes.
+Depuis sa création en 2017, AnthroPi ne cesse d'évoluer afin de répondre aux besoins des preneurs d'appels et par conséquent, à ceux des appelants.
+Le degré le plus élaboré de l'apprentissage est la simulation.
+Plus riche et immersive, notre simulation digitale d'appels sensibles vous place au cœur de la situation dans un environnement haute-fidélité. 
+Progrès technologique et facteur humain ne font qu'un chez AnthroPi.
+
+### [FP Santé](Https://rhomboid.fr)
+
+![rhomboid](/assets/qvemd/rhomboid.webp#float-left "Logo rhomboid")
+
+Notre mission est de digitaliser le monde de la formation continue des professionnels de santé et des professions réglementées.
+Rhomboid.fr révolutionne la recherche et l'accès aux formations (DPC, FIFPL, CPF) en kinésithérapie et physiothérapie francophones.
+
+### [PlugMyCity](https://www.tilkeo-renovation.fr/)
+
+![plugmycity](/assets/qvemd/plugmycity.webp#float-left "Logo plugmycity")
+
+PLUG MY CITY sera une plateforme d'inter-opérabilité entre les différents métiers de l'immobilier que les biens soient neufs ou anciens.
+PLUG MY CITY sera le tiers de confiance auprès des professionnels comme auprès du client final particulier.
+Il sera un acteur incontournable de la massification de la rénovation énergétique pour le parc ancien et un catalyseur de projets immobiliers à forte composante sociale et environnementale pour le neuf.
+
+![Logo qui veut être mond dev](/assets/qui-veut-etre-mon-dev.webp "Qui veut être mon dév ‽")`,
     dateStartStr: "2024-12-06T11:00:00.000+01:00",
     durationMinutes: 55,
     speakerIds: [],

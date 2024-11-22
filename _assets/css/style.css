@@ -78,6 +78,15 @@ a {
   color: inherit;
 }
 
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  text-decoration: underline;
+}
+
 a:hover {
   text-decoration: underline;
 }
@@ -246,4 +255,12 @@ a.cfp-link:hover {
   max-width: 800px;
   font-size: 1.3rem;
   font-weight: 400;
+}
+
+/* Utilisé pour la page "Qui veut être mon dev" */
+img[src$="#float-left"] {
+  display: block;
+  float: left;
+  margin-right: 1em;
+  margin-bottom: 1em;
 }
