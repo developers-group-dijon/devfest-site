@@ -373,7 +373,7 @@ const speakers = [
   {
     id: "pHGTjgKtqKoNcNPQS3vp",
     name: "Bertrand Delacrétaz",
-    bio: "Bertrand Delacretaz (@bdelacretaz) travaille comme Principal Scientist et Web Platform Advocate pour le groupe R&D de Adobe Research à Bâle, en Suisse, sur des systèmes de gestion de contenu et publication Web à grande échelle. Près de trente ans après avoir pressé ENTER pour la première fois sur un lien hypertexte, Bertrand reste passionné par les technologies du Web. La veille technologique autour du Web est une part importante de son activité, qu'il partage volontiers dans diverses conférences. Bertrand est aussi actif dans l'Open Source et siègre actuellement au comité de direction de la fondation Apache (\"Apache Software Foundation\") pour son douzième mandat.",
+    bio: "Bertrand Delacretaz (@bdelacretaz) travaille comme Principal Scientist et Web Platform Advocate pour le groupe R&D de Adobe Research à Bâle, en Suisse, sur des systèmes de gestion de contenu et publication Web à grande échelle. Près de trente ans après avoir pressé ENTER pour la première fois sur un lien hypertexte, Bertrand reste passionné par les technologies du Web. La veille technologique autour du Web est une part importante de son activité, qu'il partage volontiers dans diverses conférences. Bertrand est aussi actif dans l'Open Source et a siégé 14 ans au comité de direction de la fondation Apache (\"Apache Software Foundation\").",
     company: "Adobe & Apache",
     jobTitle: null,
     photoUrl: "/avatars/bertrand-delacretaz.webp",
