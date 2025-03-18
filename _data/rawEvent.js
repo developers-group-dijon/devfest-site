@@ -26,7 +26,7 @@ export default {
   dateStart: new Date("2024-12-06T08:00:00.000Z"),
   dateEnd: new Date("2024-12-06T17:45:00.000Z"),
   visitors: "+400",
-  callForPaper: "https://conference-hall.io/public/event/LvvYRcF5AIhpojdn2lkQ",
+  callForPaper: null,
   // Lien pour devenir sponsor (mettre null pour ne pas afficher le lien)
   sponsoringUrl: null,
   comments: [
