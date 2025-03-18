@@ -13,16 +13,9 @@ export default [
   {
     name: "Allan Cruchaudet",
     jobTitle: "Chargé de communication",
-    company: "Atol CD",
+    company: "Dijon Bourgogne Invest",
     photoUrl: "/avatars/allan.webp",
     socials: [{ id: "linkedin", name: "Linkedin", link: "allan-cruchaudet" }],
-  },
-  {
-    name: "Amélie Guittet",
-    jobTitle: "Responsable communication",
-    company: "Atol CD",
-    photoUrl: "/avatars/amelie.webp",
-    socials: [{ id: "linkedin", name: "Linkedin", link: "guittetamelie" }],
   },
   {
     name: "Guillaume Poittevin",
@@ -101,13 +94,6 @@ export default [
     ],
   },
   {
-    name: "Romy Fuentes",
-    jobTitle: "Chargée de communication",
-    company: "Atol CD",
-    photoUrl: "/avatars/romy.webp",
-    socials: [{ id: "linkedin", name: "Linkedin", link: "romy-fuentes" }],
-  },
-  {
     name: "Michel Girard",
     jobTitle: "Responsable de formation Numérique",
     company: "DIIAGE",
@@ -135,7 +121,7 @@ export default [
   {
     name: "Yoann Rouquié",
     jobTitle: "Développeur Javascript",
-    company: "O'Clock",
+    company: "APRR",
     photoUrl: "/avatars/yoann.webp",
     socials: [
       { id: "linkedin", name: "Linkedin", link: "yoann-rouquie" },
