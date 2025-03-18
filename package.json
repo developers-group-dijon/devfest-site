@@ -25,24 +25,24 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@types/debug": "^4.1.12",
     "@types/markdown-it": "^14.1.2",
-    "debug": "^4.3.7",
-    "eslint": "^9.13.0",
-    "eslint-plugin-compat": "^6.0.1",
-    "eslint-plugin-jsdoc": "^50.4.3",
-    "node-html-parser": "^6.1.13",
+    "debug": "^4.4.0",
+    "eslint": "^9.22.0",
+    "eslint-plugin-compat": "^6.0.2",
+    "eslint-plugin-jsdoc": "^50.6.8",
+    "node-html-parser": "^7.0.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^3.3.3",
-    "stylelint": "^16.10.0",
-    "stylelint-config-standard": "^36.0.1",
-    "stylelint-no-unsupported-browser-features": "^8.0.1",
-    "typescript": "^5.6.3"
+    "prettier": "^3.5.3",
+    "stylelint": "^16.16.0",
+    "stylelint-config-standard": "^37.0.0",
+    "stylelint-no-unsupported-browser-features": "^8.0.4",
+    "typescript": "^5.8.2"
   },
   "dependencies": {
-    "@fontsource/poppins": "^5.1.0",
-    "@fortawesome/fontawesome-free": "^6.6.0"
+    "@fontsource/poppins": "^5.2.5",
+    "@fortawesome/fontawesome-free": "^6.7.2"
   }
 }
