@@ -22,42 +22,31 @@
  * @type {import("./types.js").RawEvent}
  */
 export default {
-  name: "DevFest Dijon 2024",
-  dateStart: new Date("2024-12-06T08:00:00.000Z"),
-  dateEnd: new Date("2024-12-06T17:45:00.000Z"),
-  visitors: "+400",
-  callForPaper: "https://conference-hall.io/public/event/LvvYRcF5AIhpojdn2lkQ",
+  name: "DevFest Dijon 2025",
+  dateStart: new Date("2025-12-05T08:00:00.000Z"),
+  dateEnd: new Date("2025-12-05T18:00:00.000Z"),
+  visitors: "+500",
+  callForPaper: null,
+  // callForPaper: "https://conference-hall.io/public/event/LvvYRcF5AIhpojdn2lkQ",
   // Lien pour devenir sponsor (mettre null pour ne pas afficher le lien)
   sponsoringUrl: null,
   comments: [
     {
       title: "Le DevFest Dijon, c'est quoi ?",
       content:
-        "Le DevFest Dijon 2024 est la troisième édition de la plus grande conférence technique de Bourgogne-Franche-Comté destinée aux développeurs. Elle s'adresse aux étudiants, aux professionnels ou tout simplement curieux, passionnés de technologies.",
+        "Le DevFest Dijon 2025 est la quatrième édition de la plus grande conférence technique de Bourgogne-Franche-Comté destinée aux développeurs. Elle s'adresse aux étudiants, aux professionnels ou tout simplement curieux, passionnés de technologies.",
     },
     {
-      title: "DevFest 2024 : À la rencontre des Ducs de Bourgogne",
+      title: "DevFest 2025 : Sur les toits de Dijon",
       content:
-        "Pour cette édition du DevFest nous vous invitons à venir découvrir les Ducs de Bourgogne. Vous en avez surement déjà entendu parler. Mais saviez-vous que sous leur règne, au moyen-âge, la Bourgogne était si puissante qu’ils ont failli détrôner le Roi et faire de Dijon la capitale de la France ?",
-    },
-    {
-      title: "Nouveauté cette année sur le DevFest !",
-      content: `En collaboration avec les Docks Numériques, nous vous proposons de participer à une session de pitchs de startups numériques innovantes !
-
-L'objectif ?
-- Faciliter la rencontre entre startups numériques en quête de développeurs web et des développeurs ayant un esprit entrepreneurial, cherchant un projet ou un associé pour se lancer dans une aventure entrepreneuriale.
-
-Vous êtes ?
-- Développeur web ayant un projet entrepreneurial ou cherchant à rejoindre un projet existant.
-- Développeur web en recherche d'un associé pour lancer une startup.
-- Développeur web souhaitant participer à un projet entrepreneurial innovant.
-
-Vous êtes une start-up et vous souhaitez pitcher : **[c'est par ici](https://form.jotform.com/242781928093062)**
-
-Participez à **« Qui veut être mon dév ‽ »**, RDV en **salle « Charles Le Téméraire » à 11h** !`,
+        "Pour cette édition du DevFest nous prenons un peu de hauteur pour découvrir Dijon depuis ses toits. Une rencontre avec les motifs colorés des tuiles vernissées bourguignonnes",
     },
   ],
   previousEditions: [
+    {
+      name: "DevFest Dijon 2024",
+      url: "https://devfest-2024.developers-group-dijon.fr",
+    },
     {
       name: "DevFest Dijon 2023",
       url: "https://devfest-2023.developers-group-dijon.fr",
@@ -68,18 +57,18 @@ Participez à **« Qui veut être mon dév ‽ »**, RDV en **salle « Charles L
     },
   ],
   location: {
-    name: "IUT Dijon",
+    name: "UFR Sciences et Techniques",
     description:
       "Sur le campus de Dijon. Accessible avec la ligne A du tram et la ligne 5 en bus. En voiture, privilégier les parkings relais.",
-    address: "7 Boulevard Docteur Petitjean, 21000 Dijon",
-    url: "https://www.google.com/maps/dir/?api=1&destination=47.317764,5.0643906,17z",
+    address: "9 Avenue Alain Savary, 21000 Dijon",
+    url: "https://www.openstreetmap.org/directions?from=&to=47.31330201183376,5.072830779491891",
   },
   photosLink:
-    "https://drive.google.com/drive/folders/16oUIYp7uIUli_Z7sJhfEyKCDjZpaIAly/",
+    "https://drive.google.com/drive/folders/1jK8Y3qdiyp06EBZFeJ9d3--8Dv93BLNF/",
   team: {
     message:
-      "Le DevFest Dijon 2024 est organisé par le [Developers Group Dijon](https://developers-group-dijon.fr/), fier de cette troisième DevFest Dijon !",
-    why: "Le DevFest Dijon 2024 sera la troisième édition dijonnaise d’un événement qui rassemble des milliers de développeurs et de passionnés dans le monde entier chaque année pour penser les technologies de demain. Le DevFest est LE lieu unique pour partager et échanger autour de nombreux sujets tels que Web, Cloud, Mobile, objets connectés et bien plus encore",
+      "Le DevFest Dijon 2025 est organisé par le [Developers Group Dijon](https://developers-group-dijon.fr/), fier de proposer cette nouvelle édition !",
+    why: "Le DevFest Dijon 2025 sera la quatrième édition dijonnaise d'un événement qui rassemble des milliers de développeurs et de passionnés dans le monde entier chaque année pour penser les technologies de demain. Le DevFest est LE lieu unique pour partager et échanger autour de nombreux sujets tels que Web, Cloud, Mobile, objets connectés et bien plus encore",
   },
   // TODO: lien vers les réseaux
   aPropos: [
