@@ -61,7 +61,16 @@ export default {
     description:
       "Sur le campus de Dijon. Accessible avec la ligne A du tram et la ligne 5 en bus. En voiture, privilégier les parkings relais.",
     address: "9 Avenue Alain Savary, 21000 Dijon",
-    url: "https://www.openstreetmap.org/directions?from=&to=47.31330201183376,5.072830779491891",
+    center: {
+      lon: 5.072830779491891,
+      lat: 47.31330201183376,
+    },
+    bbox: {
+      lonMin: 5.0678032636642465,
+      lonMax: 5.076472163200379,
+      latMin: 47.31154756939846,
+      latMax: 47.31484998690421,
+    },
   },
   photosLink:
     "https://drive.google.com/drive/folders/1jK8Y3qdiyp06EBZFeJ9d3--8Dv93BLNF/",
