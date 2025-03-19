@@ -4,7 +4,6 @@ title: "Accueil"
 permalink: "/"
 background: "/background/hero-background.webp"
 bigLogo: "/images/hero-big-logo.webp"
-mapImage: "/images/map.webp"
 teamPhoto: "/images/team.webp"
 photos:
  - "/images/photo1.webp"
@@ -109,12 +108,11 @@ photos:
    {%- endfor %}
 </div>
 <div class="map-container">
-   <div class="map" style="background-image: url({{ (mapImage if mapImage else '/default-background.webp') | normalizeAssetUrl }});">
-   </div>
+   <iframe class="map" width="100%" src="https://www.openstreetmap.org/export/embed.html?bbox={{event.location.bbox.lonMin}},{{event.location.bbox.latMin}},{{event.location.bbox.lonMax}},{{event.location.bbox.latMax}}&layer=mapnik&marker=47.313021,5.072583" style="border: none"></iframe>
    <div class="location dark-zone">
       <h1>Le lieu : {{ event.location.name }}</h1>
       <div>{{ event.location.description  }}</div>
-      <a class="visible-link address" href="{{ event.location.url }}">{{ event.location.address  }}</a>
+      <a class="visible-link address" href="https://www.openstreetmap.org/directions?from=&to={{ event.location.center.lat }},{{ event.location.center.lon }}">{{ event.location.address  }}</a>
    </div>
 </div>
 <div>

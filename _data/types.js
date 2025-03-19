@@ -83,7 +83,22 @@
  * @property {string} name
  * @property {?MdString} description
  * @property {string} address
- * @property {string} url
+ * @property {LatLon} center
+ * @property {BBox} bbox
+ */
+
+/**
+ * @typedef LatLon
+ * @property {number} lat
+ * @property {number} lon
+ */
+
+/**
+ * @typedef BBox
+ * @property {number} latMin
+ * @property {number} lonMin
+ * @property {number} latMax
+ * @property {number} lonMax
  */
 
 /**
