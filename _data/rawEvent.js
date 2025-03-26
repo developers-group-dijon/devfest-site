@@ -57,7 +57,7 @@ export default {
     },
   ],
   location: {
-    name: "UFR Sciences et Techniques",
+    name: "UFR Sciences et Techniques - Dijon",
     description:
       "Sur le campus de Dijon. Accessible avec la ligne A du tram et la ligne 5 en bus. En voiture, privilégier les parkings relais.",
     address: "9 Avenue Alain Savary, 21000 Dijon",
