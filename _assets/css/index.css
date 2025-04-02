@@ -7,7 +7,7 @@
 }
 
 .hero-info {
-  height: 85vh !important;
+  min-height: 85vh !important;
   width: 100%;
   background: var(--index-header-gradient);
   padding-top: 15vh;

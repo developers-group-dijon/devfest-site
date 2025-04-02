@@ -173,7 +173,7 @@ body.scrolled .site-header .menu a.item.home-icon svg {
 a.cfp-link {
   font-weight: 600;
   font-size: 1rem;
-  display: block;
+  display: inline-block;
   padding: 0 1rem;
   text-transform: uppercase;
   border-radius: 0.5lh;
