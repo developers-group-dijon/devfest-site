@@ -26,8 +26,7 @@ export default {
   dateStart: new Date("2025-12-05T08:00:00.000Z"),
   dateEnd: new Date("2025-12-05T18:00:00.000Z"),
   visitors: "+500",
-  callForPaper: null,
-  // callForPaper: "https://conference-hall.io/public/event/LvvYRcF5AIhpojdn2lkQ",
+  callForPaper: "https://conference-hall.io/devfest-dijon-2025",
   // Lien pour devenir sponsor (mettre null pour ne pas afficher le lien)
   sponsoringUrl: null,
   comments: [
