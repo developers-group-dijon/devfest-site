@@ -28,7 +28,7 @@ export default {
   visitors: "+500",
   callForPaper: "https://conference-hall.io/devfest-dijon-2025",
   // Lien pour devenir sponsor (mettre null pour ne pas afficher le lien)
-  sponsoringUrl: null,
+  sponsoringUrl: "https://forms.gle/PkazPwvMpkNFe6Jp8",
   comments: [
     {
       title: "Le DevFest Dijon, c'est quoi ?",
