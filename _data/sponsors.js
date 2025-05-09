@@ -26,4 +26,54 @@ export default [
       },
     ],
   },
+  {
+    name: "Sponsors Gold",
+    sponsors: [
+      {
+        name: "Atol Conseils & Développments",
+        website: "https://www.atolcd.com/",
+        logoUrl: "/sponsors/atolcd.webp",
+      },
+      {
+        name: "DIIAGE",
+        website: "https://diiage.cucdb.fr",
+        logoUrl: "/sponsors/diiage.webp",
+      },
+    ],
+  },
+  {
+    name: "Sponsors Silver",
+    sponsors: [
+      {
+        name: "Carsat BFC",
+        website: "https://www.carsat-bfc.fr/",
+        logoUrl: "/sponsors/carsat.webp",
+      },
+      {
+        name: "CESI Dijon",
+        website: "https://dijon.cesi.fr/",
+        logoUrl: "/sponsors/cesi.webp",
+      },
+      {
+        name: "Infotel",
+        website: "https://infotel.com/",
+        logoUrl: "/sponsors/infotel.webp",
+      },
+      {
+        name: "Les Docks numériques",
+        website: "https://www.lesdocks.net/",
+        logoUrl: "/sponsors/les-docks.webp",
+      },
+    ],
+  },
+  {
+    name: "Sponsors Bronze",
+    sponsors: [
+      {
+        name: "French tech BFC",
+        website: "https://lafrenchtechbfc.fr/",
+        logoUrl: "/sponsors/french-tech-bfc.webp",
+      },
+    ],
+  },
 ];
