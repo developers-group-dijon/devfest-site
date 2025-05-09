@@ -74,6 +74,11 @@ export default [
         website: "https://lafrenchtechbfc.fr/",
         logoUrl: "/sponsors/french-tech-bfc.webp",
       },
+      {
+        name: "Holberton",
+        website: "https://www.holbertonschool.fr",
+        logoUrl: "/sponsors/holberton.webp",
+      },
     ],
   },
 ];
