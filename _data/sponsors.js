@@ -60,6 +60,11 @@ export default [
         logoUrl: "/sponsors/cesi.webp",
       },
       {
+        name: "Coda school Dijon",
+        website: "https://www.coda.school/campus/dijon/",
+        logoUrl: "/sponsors/coda.webp",
+      },
+      {
         name: "Infotel",
         website: "https://infotel.com/",
         logoUrl: "/sponsors/infotel.webp",
