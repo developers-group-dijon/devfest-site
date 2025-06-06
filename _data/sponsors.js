@@ -74,6 +74,11 @@ export default [
         website: "https://www.lesdocks.net/",
         logoUrl: "/sponsors/les-docks.webp",
       },
+      {
+        name: "YMAG",
+        website: "https://www.ymag.fr/",
+        logoUrl: "/sponsors/ymag.webp",
+      },
     ],
   },
   {
