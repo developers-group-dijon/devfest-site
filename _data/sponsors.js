@@ -50,6 +50,11 @@ export default [
         logoUrl: "/sponsors/alteca.webp",
       },
       {
+        name: "Capgemini",
+        website: "https://www.capgemini.com/",
+        logoUrl: "/sponsors/capgemini.webp",
+      },
+      {
         name: "Carsat BFC",
         website: "https://www.carsat-bfc.fr/",
         logoUrl: "/sponsors/carsat.webp",
