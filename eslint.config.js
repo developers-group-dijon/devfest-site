@@ -16,6 +16,14 @@ export default [
       "jsdoc/require-property-description": ["off"],
       "jsdoc/require-param-description": ["off"],
       "jsdoc/require-returns-description": ["off"],
+      "jsdoc/no-undefined-types": [
+        "error",
+        {
+          // Les enums "Language" et "Level" définis dans types.js ne sont pas reconnus par le plugin jsdoc.
+          // On les ajoute donc à la liste des types définis.
+          definedTypes: ["Language", "Level"],
+        },
+      ],
     },
   },
   {

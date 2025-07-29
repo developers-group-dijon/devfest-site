@@ -67,7 +67,6 @@ On distingue 2 types de contenu images.
 Dans tous les cas les fichiers sont référencés avec des URLs relatives au dossier `_assets` (par exemple `/avatar/foo.webp`)
 
 - Les données : référencés dans les fichiers `_data`
-
   - `_assets/avatars` pour les speakers et les membres de l'équipe organisatrice (taille recommandée 128x128)
   - `_assets/sponsors` pour les logos des sponsors (taille recommandée 300x150)
 

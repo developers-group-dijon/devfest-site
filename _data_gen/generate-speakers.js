@@ -57,8 +57,8 @@ export default async function generateSpeakers(rawData, dataPath, assetsPath) {
       throw new Error(response.statusText);
     }
 
-    await pipeline(response.body, fs.createWriteStream(tmpDest)),
-      spawnSync("convert", [tmpDest, "-resize", "128x128", dest]);
+    (await pipeline(response.body, fs.createWriteStream(tmpDest)),
+      spawnSync("convert", [tmpDest, "-resize", "128x128", dest]));
     fs.rmSync(tmpDest);
 
     return newUrl;
