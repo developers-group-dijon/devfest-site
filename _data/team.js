@@ -34,15 +34,6 @@ export default [
     ],
   },
   {
-    name: "Nicolas Le Pochat",
-    jobTitle: "Président fondateur",
-    company: "Gammeo",
-    photoUrl: "/avatars/nicolas.webp",
-    socials: [
-      { id: "linkedin", name: "Linkedin", link: "nicolas-le-pochat-4a883bb" },
-    ],
-  },
-  {
     name: "Adrien Gras",
     jobTitle: "Architecte solutions",
     company: "OwlNext",
@@ -81,33 +72,11 @@ export default [
     ],
   },
   {
-    name: "Jean-Philippe Benadjer",
-    jobTitle: "Infographiste",
-    company: "Atol CD",
-    photoUrl: "/avatars/jean-philippe.webp",
-    socials: [
-      {
-        id: "linkedin",
-        name: "Linkedin",
-        link: "jean-philippe-benadjer-144849bb",
-      },
-    ],
-  },
-  {
     name: "Michel Girard",
     jobTitle: "Responsable de formation Numérique",
     company: "DIIAGE",
     photoUrl: "/avatars/michel.webp",
     socials: [{ id: "linkedin", name: "Linkedin", link: "themoat" }],
-  },
-  {
-    name: "Laetitia Detalle",
-    jobTitle: "Coordinateur Pédagogique/Coach/Formateur",
-    company: "DIIAGE",
-    photoUrl: "/avatars/laetitia.webp",
-    socials: [
-      { id: "linkedin", name: "Linkedin", link: "laetitia-detalle-305590264" },
-    ],
   },
   {
     name: "Fabrice Ubertosi",
