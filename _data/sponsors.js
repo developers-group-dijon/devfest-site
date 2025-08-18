@@ -50,6 +50,11 @@ export default [
         logoUrl: "/sponsors/alteca.webp",
       },
       {
+        name: "Cadoles",
+        website: "https://www.cadoles.com",
+        logoUrl: "/sponsors/cadoles.webp",
+      },
+      {
         name: "Capgemini",
         website: "https://www.capgemini.com/",
         logoUrl: "/sponsors/capgemini.webp",
@@ -58,6 +63,11 @@ export default [
         name: "Carsat BFC",
         website: "https://www.carsat-bfc.fr/",
         logoUrl: "/sponsors/carsat.webp",
+      },
+      {
+        name: "CPage",
+        website: "https://www.cpage.fr/",
+        logoUrl: "/sponsors/cpage.webp",
       },
       {
         name: "CESI Dijon",
