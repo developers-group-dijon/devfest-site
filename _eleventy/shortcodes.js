@@ -2,26 +2,6 @@ import fs from "node:fs";
 import { SocialId } from "../_data/types.js";
 
 /**
- * @param {string} userId
- * @param {SocialId} socialId
- * @returns {string}
- */
-function socialLink(userId, socialId) {
-  switch (socialId) {
-    case SocialId.GITHUB:
-      return `https://github.com/${userId}`;
-    case SocialId.LINKEDIN:
-      return `https://www.linkedin.com/in/${userId}`;
-    case SocialId.TWITTER:
-      return `https://twitter.com/${userId}`;
-    case SocialId.MASTODON:
-      return userId;
-    default:
-      throw new Error(`Réseau social non supporté : ${socialId}`);
-  }
-}
-
-/**
  * @param {string} path
  * @returns {string}
  */
@@ -36,26 +16,31 @@ export function iconSvg(path) {
  * @returns {string}
  */
 function socialIconSvg(socialId) {
-  const base = "brands/";
   let iconName;
   switch (socialId) {
     case SocialId.GITHUB:
-      iconName = "github";
+      iconName = "brands/github";
       break;
     case SocialId.LINKEDIN:
-      iconName = "linkedin";
+      iconName = "brands/linkedin";
       break;
-    case SocialId.TWITTER:
-      iconName = "x-twitter";
+    case SocialId.X:
+      iconName = "brands/x-twitter";
       break;
     case SocialId.MASTODON:
-      iconName = "mastodon";
+      iconName = "brands/mastodon";
+      break;
+    case SocialId.BLUESKY:
+      iconName = "brands/bluesky";
+      break;
+    case SocialId.LINK:
+      iconName = "solid/link";
       break;
     default:
       throw new Error(`Réseau social non supporté : ${socialId}`);
   }
 
-  return iconSvg(`${base}${iconName}`);
+  return iconSvg(`${iconName}`);
 }
 
 /**
@@ -64,8 +49,7 @@ function socialIconSvg(socialId) {
  */
 export function social({ id, name, link }) {
   const icon = socialIconSvg(id);
-  const href = socialLink(link, id);
-  return `<a class="social-icon" href="${href}" title="${name} ⋅ ${link}">${icon}</a>`;
+  return `<a class="social-icon" href="${link}" title="${name} ⋅ ${link}">${icon}</a>`;
 }
 
 /**

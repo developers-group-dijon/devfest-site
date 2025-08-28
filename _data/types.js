@@ -227,8 +227,10 @@
 export const SocialId = {
   LINKEDIN: "linkedin",
   GITHUB: "github",
-  TWITTER: "twitter",
+  X: "x",
   MASTODON: "mastodon",
+  BLUESKY: "bluesky",
+  LINK: "link",
 };
 
 /**
@@ -236,8 +238,8 @@ export const SocialId = {
  * @enum {string}
  */
 export const Language = {
-  FRENCH: "French",
-  ENGLISH: "English",
+  FRENCH: "fr",
+  ENGLISH: "en",
 };
 
 /**
@@ -245,9 +247,9 @@ export const Language = {
  * @enum {string}
  */
 export const Level = {
-  ADVANCED: "advanced",
-  INTERMEDIATE: "intermediate",
-  BEGINNER: "beginner",
+  ADVANCED: "ADVANCED",
+  INTERMEDIATE: "INTERMEDIATE",
+  BEGINNER: "BEGINNER",
 };
 
 ///////////////////////////////
