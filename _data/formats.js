@@ -8,18 +8,18 @@
  */
 export default [
   {
-    id: "-short-track",
-    name: "⚡️ Short track",
-    durationMinutes: 20,
-  },
-  {
-    id: "-conference",
+    id: "cm8fxehjm00qaqr3mi6qly25m",
     name: "📣 Conférence",
     durationMinutes: 50,
   },
   {
-    id: "-pitchs-de-startups-numeriques",
-    name: "🎙️ Pitchs de startups numériques",
-    durationMinutes: 60,
+    id: "cm8fxewbi00qbqr3mdo7foy1h",
+    name: "⚡️ Short track",
+    durationMinutes: 20,
+  },
+  {
+    id: "cm8fxfxfc00qcqr3m410c87zu",
+    name: "💻 Atelier",
+    durationMinutes: 110,
   },
 ];

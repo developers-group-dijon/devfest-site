@@ -1,7 +1,6 @@
 /**
  * Inspiré des données JSON de OpenPlanner.fr
  * Chemin : event.tracks
- * - ajout de sponsor en facultatif pour ajouter le logo dans le programme
  */
 
 /**
@@ -9,23 +8,19 @@
  */
 export default [
   {
-    id: "amphi1",
-    name: "Amphi « Philippe Le Hardi »",
-    sponsor: "DIIAGE",
+    id: "niepce",
+    name: "Amphi. Niepce",
   },
   {
-    id: "amphi2",
-    name: "Amphi « Jean Sans Peur »",
-    sponsor: "Lykhubs",
+    id: "recoura",
+    name: "Amphi. Recoura",
   },
   {
-    id: "amphi3",
-    name: "Amphi « Marie de Bourgogne »",
-    sponsor: "YMAG",
+    id: "paris",
+    name: "Amphi. Paris",
   },
   {
-    id: "salle-charles-le-temeraire-",
-    name: "Salle « Charles Le Téméraire »",
-    sponsor: "Les Docks numériques",
+    id: "bernard",
+    name: "Amphi. Bernard",
   },
 ];
