@@ -54,7 +54,10 @@ export default async function generateSpeakers(rawData, dataPath, assetsPath) {
     const response = await fetch(photoUrl);
 
     if (!response.ok) {
-      throw new Error(response.statusText);
+      console.warn(
+        `Error lors de la récupération de la photo pour ${name} ${photoUrl}`,
+      );
+      return null;
     }
 
     (await pipeline(response.body, fs.createWriteStream(tmpDest)),
