@@ -20,6 +20,109 @@
  * @type {import("./types.js").RawSession[]}
  */
 export default [
+  // pauses
+  {
+    id: "pause matin",
+    title: "Pause",
+    dateStartStr: "2025-12-05T11:10:00.000+01:00",
+    durationMinutes: 20,
+    trackRange: ["niepce", "paris"],
+  },
+  {
+    id: "pause matin 2",
+    title: "Pause",
+    dateStartStr: "2025-12-05T11:15:00.000+01:00",
+    durationMinutes: 15,
+    trackId: "bernard",
+  },
+  {
+    id: "pause midi",
+    title: "Pause repas",
+    dateStartStr: "2025-12-05T12:20:00.000+01:00",
+    durationMinutes: 105,
+  },
+  {
+    id: "pause apres-midi",
+    title: "Pause",
+    dateStartStr: "2025-12-05T15:50:00.000+01:00",
+    durationMinutes: 20,
+    trackRange: ["niepce", "paris"],
+  },
+  {
+    id: "pause apres-midi 2",
+    title: "Pause",
+    dateStartStr: "2025-12-05T15:55:00.000+01:00",
+    durationMinutes: 15,
+    trackId: "bernard",
+  },
+  // keynotes
+  {
+    id: "keynote-debut",
+    title: "Accueil et lancement de la journée",
+    dateStartStr: "2025-12-05T09:00:00.000+01:00",
+    durationMinutes: 20,
+  },
+  // keynotes
+  {
+    id: "keynote-fin",
+    title: "Remerciements et clôture de la journée",
+    dateStartStr: "2025-12-05T17:55:00.000+01:00",
+    durationMinutes: 10,
+  },
+  // tremplin
+  {
+    id: "tremplin-1",
+    title: "Talk issu du tremplin",
+    abstract: "informations à venir…",
+    dateStartStr: "2025-12-05T15:10:00.000+00:00",
+    durationMinutes: 20,
+    speakerIds: [],
+    trackId: "paris",
+    language: "fr",
+    level: "BEGINNER",
+    formatId: "",
+    categoryId: "",
+    hideTrackTitle: false,
+  },
+  {
+    id: "tremplin-2",
+    title: "Talk issu du tremplin",
+    abstract: "informations à venir…",
+    dateStartStr: "2025-12-05T16:30:00.000+00:00",
+    durationMinutes: 20,
+    speakerIds: [],
+    trackId: "bernard",
+    language: "fr",
+    level: "BEGINNER",
+    formatId: "",
+    categoryId: "",
+    hideTrackTitle: false,
+  },
+  // qui veut être mon dev
+  {
+    id: "DDeXJLYZfCLtVIFXwzMv",
+    title: "Qui veut être mon dév ‽",
+    abstract: `En collaboration avec les Docks Numériques, nous vous proposons de participer à une session de pitchs de startups numériques innovantes !
+
+L'objectif ?
+- Faciliter la rencontre entre startups numériques en quête de développeurs web et des développeurs ayant un esprit entrepreneurial, cherchant un projet ou un associé pour se lancer dans une aventure entrepreneuriale.
+
+Vous êtes ?
+- Développeur web ayant un projet entrepreneurial ou cherchant à rejoindre un projet existant.
+- Développeur web en recherche dʼun associé pour lancer une startup.
+- Développeur web souhaitant participer à un projet entrepreneurial innovant.
+`,
+    dateStartStr: "2025-12-05T10:30:00.000+00:00",
+    durationMinutes: 20,
+    speakerIds: [],
+    trackId: "bernard",
+    language: "fr",
+    level: "BEGINNER",
+    formatId: "",
+    categoryId: "",
+    hideTrackTitle: false,
+  },
+  // sessions
   {
     id: "cm9jwj2cc013yo63mmmtm0vfx",
     title: "UX/UI s'il vous plaît, ne faites pas ça !",
