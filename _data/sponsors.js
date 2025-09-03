@@ -90,6 +90,11 @@ export default [
         logoUrl: "/sponsors/les-docks.webp",
       },
       {
+        name: "Planet Bourgogne",
+        website: "https://www.planetb.fr",
+        logoUrl: "/sponsors/planet-bourgogne.webp",
+      },
+      {
         name: "YMAG",
         website: "https://www.ymag.fr/",
         logoUrl: "/sponsors/ymag.webp",
