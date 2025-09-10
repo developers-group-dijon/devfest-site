@@ -128,7 +128,7 @@ Vous êtes ?
     title: "UX/UI s'il vous plaît, ne faites pas ça !",
     abstract:
       "## 🎤 Pitch\n\nDans ce talk, on va vider notre sac.  \nVous savez, ces moments où vous ouvrez Figma et que votre œil gauche commence à trembler ?  \nCes écrans où rien n’est aligné, ces parcours qui changent les règles à chaque clic ?  \nOui, on va parler de *ça*.\n\nParce qu’on les aime bien, nos UX/UI, mais parfois... ils nous testent. 😅  \nSi vous sentez que ça frotte un peu dans votre équipe, venez rire (et pleurer) ensemble !\n\n---\n\n## 🎯 Take away\n\n- Détecter les (très) mauvais patterns avant qu’ils n’atterrissent dans votre backlog  \n- Des idées concrètes pour transformer le facepalm en high five ✋",
-    dateStartStr: "2025-12-05T16:30:00.000+00:00",
+    dateStartStr: "2025-12-05T16:25:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["cm9jwhw4u013vo63mpy91wb74"],
     trackId: "niepce",
@@ -143,7 +143,7 @@ Vous êtes ?
     title: "Comment tester l'accessibilité d'un site internet ?",
     abstract:
       "Selon l'Observatoire du respect des obligations d'accessibilité, seulement 5% des sites web sont accessibles pour les personnes handicapées.\nDans cette conférence, nous explorons les six erreurs d'accessibilité les plus courantes sur un site web. Afin de les corriger, je vous présenterai des conseils simples à mettre en pratique en HTML et un peu de CSS.\nJe vous expliquerai aussi comment effectuer un test utilisateur avec un lecteur d'écran et le clavier afin de vérifier si sa page web est accessible ainsi que comment mettre en place des tests automatisés.",
-    dateStartStr: "2025-12-05T13:05:00.000+00:00",
+    dateStartStr: "2025-12-05T13:00:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cm9jzdorn0169o63mloy3mv0k"],
     trackId: "paris",
@@ -158,10 +158,10 @@ Vous êtes ?
     title: "L'artisanat logiciel à l'heure du numérique responsable",
     abstract:
       'Dans un monde numérique en pleine expansion, comment conjuguer la qualité logicielle avec un impact environnemental réduit ? \n\nCette session vous invite à explorer comment les valeurs et principes du Software Craftsmanship (artisanat logiciel) ouvrent la voie à un numérique plus responsable.\n\nÀ travers une brève introduction au numérique responsable, nous revisiterons chaque valeur du "**Manifesto for Software Craftsmanship**" sous cet angle, pour en tirer des leviers d’action concrets et immédiats. \n\nAu programme :\n- **Architecture Logicielle** : Concevoir des systèmes efficients et durables, appuyés par des référentiels qui nous guident.\n- **Pratiques de Développement** : Identifier les pratiques anti-gaspillage, favorisant un code de qualité tout en minimisant les ressources.\n- **Communauté de Pratiques** : Créer un espace pour échanger et adopter de nouvelles pratiques à impact positif.\n- **Outils de Facilitation** : Remettre en question nos idées et pratiques pour construire un numérique plus conscient.\n\nRejoignez-moi pour découvrir comment chaque ligne de code peut contribuer à une technologie plus responsable et donc un avenir durable pour toutes et tous !',
-    dateStartStr: "2025-12-05T15:10:00.000+00:00",
+    dateStartStr: "2025-12-05T16:25:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["cm9n0w1i501ruo63maqfnft7g"],
-    trackId: "recoura",
+    trackId: "bernard",
     language: "fr",
     level: "BEGINNER",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
@@ -173,7 +173,7 @@ Vous êtes ?
     title: "L'IOT pour 5 ans et + : atelier d'initiation sur carte micro:bit",
     abstract:
       "La carte micro:bit est une mini carte programmable créée en 2015 par la BBC avec pour objectif d'en distribuer aux écoliers britanniques afin de les initier au développement en bloc, javascript ou python.\nPeu chère, aux performances limitées, elle est dotées de plusieurs entrées / sorties permettant différents usages :\nDécouverte et apprentissage de l'informatique\nPrototypage / IoT\nEntrainement et perfectionnement au développement (kata, tests)\nPratique de l'algorithmie avec contraintes fortes (peu de mémoire, peu de cpu)\nEt surtout s'amuser\n\nVenez prendre en main cette petite carte très efficace, voir ses possibilités et imaginer ce que vous pouvez en faire.\nNous coderons ensemble un mini snake, nous jouerons avec les entrées / sorties et nous ferons même des katas d'algo.\n\nAprès cette session, vous n'aurez qu'une seule envie, continuer à coder sur la carte.",
-    dateStartStr: "2025-12-05T13:05:00.000+00:00",
+    dateStartStr: "2025-12-05T13:00:00.000+00:00",
     durationMinutes: 110,
     speakerIds: ["cm9sjc10w02k7o63mbzci7k7l", "cm9sjc11i02k9o63m9ptdk92q"],
     trackId: "bernard",
@@ -234,7 +234,7 @@ Vous êtes ?
     title: "Ce que les IDE ne veulent pas que vous sachiez!",
     abstract:
       "De nos jours, les développeurs utilisent des IDE hyper complets, avec des centaines de fonctionnalités pré-configurées pour une prise en main simple et rapide. Mais vous êtes-vous déjà demandé comment ces outils fonctionnent vraiment ? Par exemple : Comment fonctionne la coloration syntaxique ? Comment trouve-t-il les utilisations de vos fonctions ou classes ? Comment détecte-t-il les erreurs dans votre code ? Et comment fonctionne l'autocomplétion ?\n\nSi vous aimez comprendre comment les choses fonctionnent sous le capot, ce talk est fait pour vous !\n\nNous allons explorer et configurer un IDE *from scratch*, en utilisant Neovim. Neovim est un éditeur de texte basé sur Vim, avec l'avantage de pouvoir ajouter des plugins pour le transformer en un véritable IDE sans jamais quitter le terminal ! (Le rêve de tout développeur !)\n\nÀ la fin de ce talk, vous pourrez :\n- Voir les IDE sous un autre angle, loin de la boîte noire\n- Configurer un IDE de base, entièrement dans votre terminal, avec Neovim",
-    dateStartStr: "2025-12-05T15:35:00.000+00:00",
+    dateStartStr: "2025-12-05T15:30:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmbkqaf8602zyp93mm8ah86cd"],
     trackId: "recoura",
@@ -264,7 +264,7 @@ Vous êtes ?
     title: "Une petite histoire du DevSecOps avec Trivy 🔎🔗",
     abstract:
       "Face à l'augmentation des cybermenaces, il est devenu **important et stratégique de protéger** les applications et leurs infrastructures. \nDans ce cas, le **DevSecOps** permet d’intégrer la sécurité dès les premières étapes du cycle de développement et de faire des livraisons rapides et plutôt \"sécure\".\n\nCependant, l’intégration de la sécurité dès le début du cycle de développement **peut être un défi**. Comment démarrer ? Comment s’y prendre ? Quels process pouvons-nous mettre en place ? Quels sont les bons repères ? Et enfin quels outils du monde de la sécurité peuvent être fiables et facilement intégrables dans un CICD ? \n\nUne petite histoire du DevSecOps avec Trivy est **un retour d’expérience sur l’intégration et l’utilisation d’un scanner de sécurité open source** dans le cas de la **création d’images Docker personnalisée** pour une équipe de développement.\nDans cette histoire présentée **sous forme de démo live**, nous verrons ensemble le fort potentiel de l’outil Trivy et comment celui-ci s’intègre aisément dans un process de création d’image Docker jusqu’à leur livraison.\n\nEn partant de la conception d'une image (Dockerfile) et en passant par l'analyse des composants systèmes (librairie système, outils natifs ou installés) d'images personnalisées (Phase Post build image) , puis en passant par **la génération et de l'analyse des SBOMS** (Software Bill Of Materials) et en terminant par **la génération automatisée d'un rapport des failles de sécurités** des images et de leurs dépendances sous différents formats (Markdown, Word,etc.).\n\nNous terminerons en parlant de **l'intégration des SBOMS et de leur analyse via Trivy Server** directement dans l'outil **Dependency Track**\n\nTout, tout, tout, vous saurez tout sur le **shifting left security** avec Trivy ! (ou presque)",
-    dateStartStr: "2025-12-05T15:35:00.000+00:00",
+    dateStartStr: "2025-12-05T15:30:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmbl5zokj03hgp93m66xbf2z8"],
     trackId: "bernard",
@@ -341,7 +341,7 @@ Vous êtes ?
       "Lovable at first sight : affirmer la personnalité de son produit pour créer le coup de cœur",
     abstract:
       "Imaginez un produit qui, dès le premier regard, vous captive. Un produit qui semble parler votre langue, comprendre vos besoins, et surtout, déclenche une émotion immédiate : le coup de cœur.\n\nDans un marché saturé, où chaque innovation est rapidement imitée, la véritable différenciation ne repose plus seulement sur les fonctionnalités. Elle réside dans l’âme du produit, dans sa capacité à séduire par sa personnalité.\n\nMais affirmer la personnalité d'un produit n'est pas une mince affaire et chaque acteur du projet a son rôle à jouer, qu'il soit designer, développeur ou autre.\n\nDans ce talk, je veux montrer pourquoi et comment, en tant qu'équipe,  affirmer la personnalité de votre produit peut provoquer une réaction émotionnelle immédiate chez vos utilisateurs qui sera le début d'une relation plus durable.",
-    dateStartStr: "2025-12-05T15:10:00.000+00:00",
+    dateStartStr: "2025-12-05T15:05:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["cmc0clqw606whpc3maflao56b"],
     trackId: "niepce",
@@ -356,7 +356,7 @@ Vous êtes ?
     title: "La classification par similarité : Comment se passer des LLM",
     abstract:
       "A l’heure où les LLM prennent la plus grande part de marché des solutions d’IA, ils sont vus comme des solveurs généraux sur toute tâche impliquant du langage naturel. Seulement, cela soulève plusieurs problématiques. Ces modèles représentant une taille mémoire conséquente et une puissance de calcul démesurée, le client se trouve dépendant du fournisseur, de ses conditions en termes de sécurité des données, de disponibilité et de fluctuation des prix. De plus, pour des tâches longues ils se montrent parfois lents et assez opaques quant aux traitements effectués.\nLa classification de plaintes utilisateurs entre pleinement dans ce contexte. De nombreuses solutions existent, mais peu offrent une facilité de mise en place ainsi qu’un contrôle sur les modèles et les données qui sont ou seront déployés. Aussi, ceux-ci requièrent généralement des données labellisées et homogènes, qui ne sont pas toujours disponibles en conditions réelles.\nCette présentation vient traiter d’une situation courante chez le client : Une grande quantité de données non labellisées dans une entreprise pour laquelle la protection des données est un enjeu majeur. La solution proposée devait donc présenter ces caractéristiques clés :\n-\tApprentissage non supervisé\n-\tFaible en coût et s’appuyant sur des options gratuites et open source\n-\tExécution locale\nEn outre, le temps total d’exécution s’en trouve fortement réduit et la consommation d’énergie nécessaire à l’exécution est négligeable en comparaison à un LLM, justifiant le développement d’une solution à part entière.\nPour cela, j’utilise des modèles de vectorisation ouverts, dont la particularité est de rapprocher les mots dont la sémantique est similaire. Plusieurs possibilités s’offrent alors, selon ce que le métier aura mis à disposition : catégories déjà définies, messages partiellement labellisés... Le processus ensuite mis en place peut mettre en œuvre des algorithmes de clustering, ou un simple système de récupération vectorielle à travers des vector stores. Le rapprochement a déjà été fait par le modèle, le reste du traitement dépend alors des exigences et des spécificités de chaque projet. La solution ici proposée s’appuie donc sur des outils déjà bien répandus et montre une forte robustesse au changement, notamment l’ajout de catégories.",
-    dateStartStr: "2025-12-05T16:30:00.000+00:00",
+    dateStartStr: "2025-12-05T16:25:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["cmb7htz0r012kog3mqcsz380j", "cmc4lqonj0028m73mo0b45y9c"],
     trackId: "paris",
@@ -371,7 +371,7 @@ Vous êtes ?
     title: "Comment hacker le contrôle d'accès de mon entreprise ?",
     abstract:
       "De plus en plus d'employeurs utilisent le contrôle d'accès pour autoriser leurs employés à pénétrer dans les locaux. Petit problème : la plupart du temps, les systèmes qui semblent sécurisants ne sont pour autant pas toujours sécurisés. Avec le manque de connaissances hardware, le sujet tombe vite dans les points à traiter ... Je vous propose de vous montrer les failles du système et surtout comment se prémunir en utilisant les bonnes technologies.",
-    dateStartStr: "2025-12-05T16:30:00.000+00:00",
+    dateStartStr: "2025-12-05T16:25:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["cmcahhw4z005anz3m641hh7x0"],
     trackId: "recoura",
@@ -387,10 +387,10 @@ Vous êtes ?
       "Quand une licorne trébuche : hériter d’un projet legacy, bâtir un changement",
     abstract:
       "Imaginez une licorne flamboyante. Le temps passe et, peu à peu, certaines pratiques de conception et de développement sont mises de côté. Les investissements s'amenuisent, les technologies prennent du retard, et des vulnérabilités de sécurité émergent.\nEt devinez quoi ? C'est à vous de prendre en main cette licorne atypique.\n \nVous vous demandez sûrement : vais-je m’ennuyer ? Vais-je perdre mon temps ? Est-ce un piège ou une opportunité ?\nEt si, au contraire, cette mission était une véritable mine d’or pour booster vos compétences, expérimenter des idées, et même… innover ?\n \nForte de mes expériences, je vous partagerai des conseils pratiques pour en sortir grandi. Ensemble, nous découvrirons comment dépasser ces doutes et transformer cette licorne expérimentée en un tremplin pour votre carrière.\nAlors, qui parmi vous relèvera ce défi pour bâtir l’après ?",
-    dateStartStr: "2025-12-05T16:30:00.000+00:00",
+    dateStartStr: "2025-12-05T15:05:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["cmcand41y00alnz3m8yp005us"],
-    trackId: "bernard",
+    trackId: "recoura",
     language: "fr",
     level: "BEGINNER",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
@@ -402,7 +402,7 @@ Vous êtes ?
     title: "Context-Driven Development : penser avant de coder",
     abstract:
       'On vous a dit de tout tester, de tout découper en microservices, de tout CI/CD-er… Mais on vous a rarement demandé : dans quel contexte ? \nCette conférence vous propose une autre grille de lecture : celle du pragmatisme contextualisé, où le meilleur choix n’est pas universel, mais spécifique.\n\nOn parlera de ces "bonnes pratiques" souvent appliquées machinalement, parfois contre-productives.\n\nParce qu’au fond, vos choix techniques méritent mieux qu’un post LinkedIn avec 3 000 likes...\n\nEn bonus, un détour par le Cloud du Cœur, une initiative des Restos du Cœur, où les choix technologiques ne sont pas drivés par la hype, mais par le contexte, les contraintes réelles, et l’impact concret.\n\nMoins de buzzwords, plus de bon sens. Parce que coder, c’est décider, et toute décision a besoin de son contexte.',
-    dateStartStr: "2025-12-05T13:05:00.000+00:00",
+    dateStartStr: "2025-12-05T13:00:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmcas4pba00dcnz3mkh6m5121"],
     trackId: "recoura",
@@ -418,7 +418,7 @@ Vous êtes ?
       "Le secret des 10x devs enfin révélé (spoiler : c’est pas du talent)",
     abstract:
       "Tu crois que les 10x devs sont des génies solitaires tombés dans l’optimisation quand ils étaient petits ?\nEt si je te disais qu’en réalité, c’est souvent juste une question de rigueur, de process, et… de gestion de notifications Slack ?\n\nDans ce talk, je t’explique pourquoi le mythe du “crack” te dessert (oui, toi, jeune padawan), et je te donne 10 habitudes simples et puissantes pour hacker ta productivité comme les pros.\nAvec de l’humour, des memes, et (presque) aucune mention de ChatGPT.",
-    dateStartStr: "2025-12-05T15:35:00.000+00:00",
+    dateStartStr: "2025-12-05T15:30:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmcbvmw6x006bpb3mpfb4u293"],
     trackId: "niepce",
@@ -433,7 +433,7 @@ Vous êtes ?
     title: "CSR, SSR, SSG, ISR... SOS ! Le guide de survie du rendu web",
     abstract:
       "**Chaque jour, un nouveau framework JavaScript sort avec sa méthode de rendu révolutionnaire, et pourtant on n'a toujours pas trouvé LA solution parfaite.**\n\nEntre CSR, SSR, SSG, ISR, streaming HTML, hydration et autres acronymes mystérieux, le rendu web est devenu un véritable casse-tête. Chaque framework promet LA solution ultime, mais au final : les sites sont toujours plus lourds, les utilisateurs attendent plus longtemps, et les équipes passent plus de temps à configurer qu'à développer.\n\n**Le vrai enjeu ?** Nous avons perdu de vue l'essentiel : afficher du contenu rapidement et efficacement. Entre la course aux nouveautés et la complexité croissante, on oublie parfois que la performance web, c'est avant tout une question de simplicité.\nCette présentation démystifie les méthodes de rendu actuelles avec des explications claires et des exemples concrets. \n\n**Vous découvrirez :**\n* Les vrais avantages et inconvénients de chaque approche\n* Un guide pratique pour choisir la méthode adaptée à votre projet\n* Pourquoi la simplicité est souvent la meilleure solution (et comment l'appliquer)\n\n**Objectif : reprendre le contrôle de vos choix techniques et offrir une meilleure expérience à vos utilisateurs !**",
-    dateStartStr: "2025-12-05T14:00:00.000+00:00",
+    dateStartStr: "2025-12-05T13:55:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmcbzm93y007spb3mkeqp3faj"],
     trackId: "niepce",
@@ -448,7 +448,7 @@ Vous êtes ?
     title: "Les équipes distribuées, ça peut marcher?",
     abstract:
       "Est-il nécessaire de passer le plus clair de son temps dans des réunions vidéo pour qu'une équipe distribuée fonctionne? Les communautés Open Source démontrent que la réponse et non, et les techniques de collaboration qu'elles ont développé s'appliquent aussi bien en entreprise.\n\nSur la base d'exemples concrets, réussite ou échecs, ainsi que de plus de 20 ans d'expérience dans ce domaine, vous découvrirez comment les techniques de prise de décisions asynchrone, la communication claire et concise, l'attention aux éléments multi-culturels et la bienveillance dans les relations sont déterminants pour une collaboration efficace à distance.\n\nCes techniques s'appliquent à tout type de projet, mais il n'y a pas de solution unique. Mieux comprendre les principes et outils de base vous aidera à adapter nos recommendations à votre propre environmment.",
-    dateStartStr: "2025-12-05T13:05:00.000+00:00",
+    dateStartStr: "2025-12-05T13:00:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmcd8jqax0058o83mnnxjes8a"],
     trackId: "niepce",
@@ -463,7 +463,7 @@ Vous êtes ?
     title: "Construire des logiciels fiables basés sur des APIs douteuses",
     abstract:
       "Qui n'a jamais écrit un hack pour gérer les défaillances d'une API externe ?\n\nLes deux causes principales de panne logicielle sont les erreurs humaines et les services externes. Consommant bon nombre d'APIs externes de qualité… variable, notre qualité de service dépend souvent de celle des services tiers, qu'on ne maîtrise pas (ou pas complètement). Et in fine, nos clients nous jugent (à raison) sur la disponibilité du service final.\n\nCe talk présente un retour d'expérience de notre évolution depuis une approche ad hoc vers une solution structurée, répétable (et open-source). Comment nous sommes passé, en prod, du petit hack dans un coin à un service dédié, montrant les avantages et les inconvénients de chaque approche, et les alternatives existantes.",
-    dateStartStr: "2025-12-05T14:00:00.000+00:00",
+    dateStartStr: "2025-12-05T13:55:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmchd14d000gcth3mwbbxo4iv"],
     trackId: "recoura",
@@ -478,7 +478,7 @@ Vous êtes ?
     title: "Les coulisses de JavaScript : ce qu’on utilise sans comprendre 🎭",
     abstract:
       "Bienvenue dans les coulisses d’un des plus grand spectacle du développement web : **JavaScript 🪄** Sur scène, tout semble magique : les animations captivent, les promesses sont tenues, et tout s’exécute sans accroc. Mais derrière le rideau, une véritable troupe travaille sans relâche pour donner vie à ce spectacle.\n\nDans cette visite guidée, nous vous invitons à lever le rideau sur la mécanique de JavaScript : son engine, la scope chain, son incontournable event loop, les contextes d’exécution, et bien sûr, ses fameuses promesses. Ces concepts vous sont peut-être familiers, mais n’est-il pas temps d’un peu mieux les comprendre ?\n\nPrenez vos billets et plongez avec nous dans les rouages fascinants de JavaScript 🎟️",
-    dateStartStr: "2025-12-05T15:35:00.000+00:00",
+    dateStartStr: "2025-12-05T15:30:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmbo3grzx0034qt3mahf7d1vp", "cmch9e1cl00fsth3mcz6w1dox"],
     trackId: "paris",
@@ -524,7 +524,7 @@ Vous êtes ?
       "Tout déléguer, mais à quel prix ? Les vrais chiffres derrière un bon outillage",
     abstract:
       "_\"Combien ça coûte de complètement outiller le cycle de vie d'une application et les développeurs travaillant dessus ?\"_ —  Vous aurez la réponse en sortant de ce talk !\n\n**Déléguer un maximum** à des services managés & SaaS tout ce qui n'est pas de la logique métier, c'est sans l'ombre d'un doute très pratique et plein d'avantages… mais combien ça coûte vraiment au bout du compte ?\n\nChez PayFit, licorne scale-up française disposant de forts moyens d'investissements, nous avons eu la chance de pouvoir faire le pari de joyeusement déléguer tout ce que nous pouvions, et de nous acheter une certaine tranquillité d'esprit. Dans ce talk, venez découvrir **les vrais chiffres de PayFit en tout transparence**, y compris le coût \"par développeur\" — un exercice trop rarement fait !\n\nDe l'hébergement des applications à l'outillage des développeurs en passant par l'automatisation du cycle de vie d'une application, nous parlerons des coûts d'AWS, CircleCI, Raenovate, Datadog, Launchdarkly, GitHub (et Copilot), licences d'IDE, et plus généralement des …  **81 (!) outils tiers** sur lesquels PayFit repose, ce panorama se voulant aussi exhaustif que possible.\n\nAu-delà des coûts unitaires, nous explorerons également comment maintenir un certain contrôle et éviter un flagrant gâchis de moyens sans pour autant nuire à l'efficacité et au confort.",
-    dateStartStr: "2025-12-05T14:00:00.000+00:00",
+    dateStartStr: "2025-12-05T13:55:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmcjjxzp101dmoe3mhpuj78ip"],
     trackId: "paris",
