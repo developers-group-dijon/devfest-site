@@ -10,24 +10,24 @@
 export default {
   comment:
     "inclut le petit-déjeuner, le repas le midi et le café pour la journée",
-  url: null, //"https://my.weezevent.com/devfest-dijon-2025",
+  url: "https://my.weezevent.com/devfest-dijon-2025",
   pricings: [
-    // {
-    //   id: "early",
-    //   name: "Tarif Early",
-    //   price: "25 €",
-    //   comment: "Seulement 100 places !",
-    // },
-    // {
-    //   id: "standard",
-    //   name: "Tarif standard",
-    //   price: "35 €",
-    // },
-    // {
-    //   id: "etudiant",
-    //   name: "Tarif étudiant",
-    //   price: "20 €",
-    //   comment: "Une pièce-justificative pourra être demandée",
-    // },
+    {
+      id: "early",
+      name: "Tarif Early",
+      price: "27 €",
+      comment: "Seulement 100 places !",
+    },
+    {
+      id: "standard",
+      name: "Tarif standard",
+      price: "37 €",
+    },
+    {
+      id: "etudiant",
+      name: "Tarif étudiant",
+      price: "20 €",
+      comment: "Une pièce justificative pourra être demandée",
+    },
   ],
 };
