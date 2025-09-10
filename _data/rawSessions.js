@@ -39,19 +39,19 @@ export default [
     id: "pause midi",
     title: "Pause repas",
     dateStartStr: "2025-12-05T12:20:00.000+01:00",
-    durationMinutes: 105,
+    durationMinutes: 100,
   },
   {
     id: "pause apres-midi",
     title: "Pause",
-    dateStartStr: "2025-12-05T15:50:00.000+01:00",
+    dateStartStr: "2025-12-05T15:45:00.000+01:00",
     durationMinutes: 20,
     trackRange: ["niepce", "paris"],
   },
   {
     id: "pause apres-midi 2",
     title: "Pause",
-    dateStartStr: "2025-12-05T15:55:00.000+01:00",
+    dateStartStr: "2025-12-05T15:50:00.000+01:00",
     durationMinutes: 15,
     trackId: "bernard",
   },
@@ -66,7 +66,7 @@ export default [
   {
     id: "keynote-fin",
     title: "Remerciements et clôture de la journée",
-    dateStartStr: "2025-12-05T17:55:00.000+01:00",
+    dateStartStr: "2025-12-05T17:50:00.000+01:00",
     durationMinutes: 10,
   },
   // tremplin
@@ -74,7 +74,7 @@ export default [
     id: "tremplin-1",
     title: "Talk issu du tremplin",
     abstract: "informations à venir…",
-    dateStartStr: "2025-12-05T15:10:00.000+00:00",
+    dateStartStr: "2025-12-05T15:05:00.000+00:00",
     durationMinutes: 20,
     speakerIds: [],
     trackId: "paris",
@@ -88,7 +88,7 @@ export default [
     id: "tremplin-2",
     title: "Talk issu du tremplin",
     abstract: "informations à venir…",
-    dateStartStr: "2025-12-05T15:10:00.000+00:00",
+    dateStartStr: "2025-12-05T15:05:00.000+00:00",
     durationMinutes: 20,
     speakerIds: [],
     trackId: "bernard",
@@ -128,7 +128,7 @@ Vous êtes ?
     title: "UX/UI s'il vous plaît, ne faites pas ça !",
     abstract:
       "## 🎤 Pitch\n\nDans ce talk, on va vider notre sac.  \nVous savez, ces moments où vous ouvrez Figma et que votre œil gauche commence à trembler ?  \nCes écrans où rien n’est aligné, ces parcours qui changent les règles à chaque clic ?  \nOui, on va parler de *ça*.\n\nParce qu’on les aime bien, nos UX/UI, mais parfois... ils nous testent. 😅  \nSi vous sentez que ça frotte un peu dans votre équipe, venez rire (et pleurer) ensemble !\n\n---\n\n## 🎯 Take away\n\n- Détecter les (très) mauvais patterns avant qu’ils n’atterrissent dans votre backlog  \n- Des idées concrètes pour transformer le facepalm en high five ✋",
-    dateStartStr: "2025-12-05T16:25:00.000+00:00",
+    dateStartStr: "2025-12-05T15:30:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["cm9jwhw4u013vo63mpy91wb74"],
     trackId: "niepce",
@@ -158,7 +158,7 @@ Vous êtes ?
     title: "L'artisanat logiciel à l'heure du numérique responsable",
     abstract:
       'Dans un monde numérique en pleine expansion, comment conjuguer la qualité logicielle avec un impact environnemental réduit ? \n\nCette session vous invite à explorer comment les valeurs et principes du Software Craftsmanship (artisanat logiciel) ouvrent la voie à un numérique plus responsable.\n\nÀ travers une brève introduction au numérique responsable, nous revisiterons chaque valeur du "**Manifesto for Software Craftsmanship**" sous cet angle, pour en tirer des leviers d’action concrets et immédiats. \n\nAu programme :\n- **Architecture Logicielle** : Concevoir des systèmes efficients et durables, appuyés par des référentiels qui nous guident.\n- **Pratiques de Développement** : Identifier les pratiques anti-gaspillage, favorisant un code de qualité tout en minimisant les ressources.\n- **Communauté de Pratiques** : Créer un espace pour échanger et adopter de nouvelles pratiques à impact positif.\n- **Outils de Facilitation** : Remettre en question nos idées et pratiques pour construire un numérique plus conscient.\n\nRejoignez-moi pour découvrir comment chaque ligne de code peut contribuer à une technologie plus responsable et donc un avenir durable pour toutes et tous !',
-    dateStartStr: "2025-12-05T16:25:00.000+00:00",
+    dateStartStr: "2025-12-05T15:30:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["cm9n0w1i501ruo63maqfnft7g"],
     trackId: "bernard",
@@ -234,7 +234,7 @@ Vous êtes ?
     title: "Ce que les IDE ne veulent pas que vous sachiez!",
     abstract:
       "De nos jours, les développeurs utilisent des IDE hyper complets, avec des centaines de fonctionnalités pré-configurées pour une prise en main simple et rapide. Mais vous êtes-vous déjà demandé comment ces outils fonctionnent vraiment ? Par exemple : Comment fonctionne la coloration syntaxique ? Comment trouve-t-il les utilisations de vos fonctions ou classes ? Comment détecte-t-il les erreurs dans votre code ? Et comment fonctionne l'autocomplétion ?\n\nSi vous aimez comprendre comment les choses fonctionnent sous le capot, ce talk est fait pour vous !\n\nNous allons explorer et configurer un IDE *from scratch*, en utilisant Neovim. Neovim est un éditeur de texte basé sur Vim, avec l'avantage de pouvoir ajouter des plugins pour le transformer en un véritable IDE sans jamais quitter le terminal ! (Le rêve de tout développeur !)\n\nÀ la fin de ce talk, vous pourrez :\n- Voir les IDE sous un autre angle, loin de la boîte noire\n- Configurer un IDE de base, entièrement dans votre terminal, avec Neovim",
-    dateStartStr: "2025-12-05T15:30:00.000+00:00",
+    dateStartStr: "2025-12-05T15:55:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmbkqaf8602zyp93mm8ah86cd"],
     trackId: "recoura",
@@ -264,7 +264,7 @@ Vous êtes ?
     title: "Une petite histoire du DevSecOps avec Trivy 🔎🔗",
     abstract:
       "Face à l'augmentation des cybermenaces, il est devenu **important et stratégique de protéger** les applications et leurs infrastructures. \nDans ce cas, le **DevSecOps** permet d’intégrer la sécurité dès les premières étapes du cycle de développement et de faire des livraisons rapides et plutôt \"sécure\".\n\nCependant, l’intégration de la sécurité dès le début du cycle de développement **peut être un défi**. Comment démarrer ? Comment s’y prendre ? Quels process pouvons-nous mettre en place ? Quels sont les bons repères ? Et enfin quels outils du monde de la sécurité peuvent être fiables et facilement intégrables dans un CICD ? \n\nUne petite histoire du DevSecOps avec Trivy est **un retour d’expérience sur l’intégration et l’utilisation d’un scanner de sécurité open source** dans le cas de la **création d’images Docker personnalisée** pour une équipe de développement.\nDans cette histoire présentée **sous forme de démo live**, nous verrons ensemble le fort potentiel de l’outil Trivy et comment celui-ci s’intègre aisément dans un process de création d’image Docker jusqu’à leur livraison.\n\nEn partant de la conception d'une image (Dockerfile) et en passant par l'analyse des composants systèmes (librairie système, outils natifs ou installés) d'images personnalisées (Phase Post build image) , puis en passant par **la génération et de l'analyse des SBOMS** (Software Bill Of Materials) et en terminant par **la génération automatisée d'un rapport des failles de sécurités** des images et de leurs dépendances sous différents formats (Markdown, Word,etc.).\n\nNous terminerons en parlant de **l'intégration des SBOMS et de leur analyse via Trivy Server** directement dans l'outil **Dependency Track**\n\nTout, tout, tout, vous saurez tout sur le **shifting left security** avec Trivy ! (ou presque)",
-    dateStartStr: "2025-12-05T15:30:00.000+00:00",
+    dateStartStr: "2025-12-05T15:55:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmbl5zokj03hgp93m66xbf2z8"],
     trackId: "bernard",
@@ -356,7 +356,7 @@ Vous êtes ?
     title: "La classification par similarité : Comment se passer des LLM",
     abstract:
       "A l’heure où les LLM prennent la plus grande part de marché des solutions d’IA, ils sont vus comme des solveurs généraux sur toute tâche impliquant du langage naturel. Seulement, cela soulève plusieurs problématiques. Ces modèles représentant une taille mémoire conséquente et une puissance de calcul démesurée, le client se trouve dépendant du fournisseur, de ses conditions en termes de sécurité des données, de disponibilité et de fluctuation des prix. De plus, pour des tâches longues ils se montrent parfois lents et assez opaques quant aux traitements effectués.\nLa classification de plaintes utilisateurs entre pleinement dans ce contexte. De nombreuses solutions existent, mais peu offrent une facilité de mise en place ainsi qu’un contrôle sur les modèles et les données qui sont ou seront déployés. Aussi, ceux-ci requièrent généralement des données labellisées et homogènes, qui ne sont pas toujours disponibles en conditions réelles.\nCette présentation vient traiter d’une situation courante chez le client : Une grande quantité de données non labellisées dans une entreprise pour laquelle la protection des données est un enjeu majeur. La solution proposée devait donc présenter ces caractéristiques clés :\n-\tApprentissage non supervisé\n-\tFaible en coût et s’appuyant sur des options gratuites et open source\n-\tExécution locale\nEn outre, le temps total d’exécution s’en trouve fortement réduit et la consommation d’énergie nécessaire à l’exécution est négligeable en comparaison à un LLM, justifiant le développement d’une solution à part entière.\nPour cela, j’utilise des modèles de vectorisation ouverts, dont la particularité est de rapprocher les mots dont la sémantique est similaire. Plusieurs possibilités s’offrent alors, selon ce que le métier aura mis à disposition : catégories déjà définies, messages partiellement labellisés... Le processus ensuite mis en place peut mettre en œuvre des algorithmes de clustering, ou un simple système de récupération vectorielle à travers des vector stores. Le rapprochement a déjà été fait par le modèle, le reste du traitement dépend alors des exigences et des spécificités de chaque projet. La solution ici proposée s’appuie donc sur des outils déjà bien répandus et montre une forte robustesse au changement, notamment l’ajout de catégories.",
-    dateStartStr: "2025-12-05T16:25:00.000+00:00",
+    dateStartStr: "2025-12-05T15:30:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["cmb7htz0r012kog3mqcsz380j", "cmc4lqonj0028m73mo0b45y9c"],
     trackId: "paris",
@@ -371,7 +371,7 @@ Vous êtes ?
     title: "Comment hacker le contrôle d'accès de mon entreprise ?",
     abstract:
       "De plus en plus d'employeurs utilisent le contrôle d'accès pour autoriser leurs employés à pénétrer dans les locaux. Petit problème : la plupart du temps, les systèmes qui semblent sécurisants ne sont pour autant pas toujours sécurisés. Avec le manque de connaissances hardware, le sujet tombe vite dans les points à traiter ... Je vous propose de vous montrer les failles du système et surtout comment se prémunir en utilisant les bonnes technologies.",
-    dateStartStr: "2025-12-05T16:25:00.000+00:00",
+    dateStartStr: "2025-12-05T15:30:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["cmcahhw4z005anz3m641hh7x0"],
     trackId: "recoura",
@@ -418,7 +418,7 @@ Vous êtes ?
       "Le secret des 10x devs enfin révélé (spoiler : c’est pas du talent)",
     abstract:
       "Tu crois que les 10x devs sont des génies solitaires tombés dans l’optimisation quand ils étaient petits ?\nEt si je te disais qu’en réalité, c’est souvent juste une question de rigueur, de process, et… de gestion de notifications Slack ?\n\nDans ce talk, je t’explique pourquoi le mythe du “crack” te dessert (oui, toi, jeune padawan), et je te donne 10 habitudes simples et puissantes pour hacker ta productivité comme les pros.\nAvec de l’humour, des memes, et (presque) aucune mention de ChatGPT.",
-    dateStartStr: "2025-12-05T15:30:00.000+00:00",
+    dateStartStr: "2025-12-05T15:55:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmcbvmw6x006bpb3mpfb4u293"],
     trackId: "niepce",
@@ -478,7 +478,7 @@ Vous êtes ?
     title: "Les coulisses de JavaScript : ce qu’on utilise sans comprendre 🎭",
     abstract:
       "Bienvenue dans les coulisses d’un des plus grand spectacle du développement web : **JavaScript 🪄** Sur scène, tout semble magique : les animations captivent, les promesses sont tenues, et tout s’exécute sans accroc. Mais derrière le rideau, une véritable troupe travaille sans relâche pour donner vie à ce spectacle.\n\nDans cette visite guidée, nous vous invitons à lever le rideau sur la mécanique de JavaScript : son engine, la scope chain, son incontournable event loop, les contextes d’exécution, et bien sûr, ses fameuses promesses. Ces concepts vous sont peut-être familiers, mais n’est-il pas temps d’un peu mieux les comprendre ?\n\nPrenez vos billets et plongez avec nous dans les rouages fascinants de JavaScript 🎟️",
-    dateStartStr: "2025-12-05T15:30:00.000+00:00",
+    dateStartStr: "2025-12-05T15:55:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmbo3grzx0034qt3mahf7d1vp", "cmch9e1cl00fsth3mcz6w1dox"],
     trackId: "paris",
