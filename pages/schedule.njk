@@ -16,6 +16,11 @@ eleventyComputed:
    }
    {%- endfor %}
 </style>
+{%- if event.sessionsDraft -%}
+<div class="draft-warning full-width">
+Le planning présenté est une version provisoire qui est susceptible d'évoluer.
+</div>
+{%- endif -%}
 <div class="schedule-page full-width">
    {%- for day, daySlot in slots %}
    <div class="day">

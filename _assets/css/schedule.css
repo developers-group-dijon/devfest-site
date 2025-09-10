@@ -127,3 +127,14 @@
   height: 2rem;
   vertical-align: middle;
 }
+
+.draft-warning {
+  padding: 1rem;
+  border: 2px solid var(--default-primary-color);
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  background-color: var(--light-primary-color);
+  color: var(--gray-light-background-color);
+  font-weight: normal;
+}

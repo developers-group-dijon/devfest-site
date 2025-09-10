@@ -44,6 +44,7 @@
  * @property {Link[]} aPropos
  * @property {Link[]} contact
  * @property {string?} sponsoringUrl
+ * @property {boolean?} sessionsDraft
  * @property {Link[]} resources
  * @property {string} photosLink
  * @property {string?} callForPaper
