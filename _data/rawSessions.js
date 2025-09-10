@@ -88,7 +88,7 @@ export default [
     id: "tremplin-2",
     title: "Talk issu du tremplin",
     abstract: "informations à venir…",
-    dateStartStr: "2025-12-05T16:30:00.000+00:00",
+    dateStartStr: "2025-12-05T15:10:00.000+00:00",
     durationMinutes: 20,
     speakerIds: [],
     trackId: "bernard",
@@ -387,7 +387,7 @@ Vous êtes ?
       "Quand une licorne trébuche : hériter d’un projet legacy, bâtir un changement",
     abstract:
       "Imaginez une licorne flamboyante. Le temps passe et, peu à peu, certaines pratiques de conception et de développement sont mises de côté. Les investissements s'amenuisent, les technologies prennent du retard, et des vulnérabilités de sécurité émergent.\nEt devinez quoi ? C'est à vous de prendre en main cette licorne atypique.\n \nVous vous demandez sûrement : vais-je m’ennuyer ? Vais-je perdre mon temps ? Est-ce un piège ou une opportunité ?\nEt si, au contraire, cette mission était une véritable mine d’or pour booster vos compétences, expérimenter des idées, et même… innover ?\n \nForte de mes expériences, je vous partagerai des conseils pratiques pour en sortir grandi. Ensemble, nous découvrirons comment dépasser ces doutes et transformer cette licorne expérimentée en un tremplin pour votre carrière.\nAlors, qui parmi vous relèvera ce défi pour bâtir l’après ?",
-    dateStartStr: "2025-12-05T15:10:00.000+00:00",
+    dateStartStr: "2025-12-05T16:30:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["cmcand41y00alnz3m8yp005us"],
     trackId: "bernard",
