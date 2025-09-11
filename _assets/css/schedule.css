@@ -18,6 +18,25 @@
 }
 
 .grid-day > div.session:hover {
+  border-color: var(--default-primary-color);
+  box-shadow:
+    0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 3px 1px -2px rgb(0 0 0 / 12%),
+    0 1px 5px 0 rgb(0 0 0 / 20%);
+  transition: box-shadow 0.25s;
+}
+
+.session .title {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.grid-day > div.session:hover .title {
+  color: var(--default-primary-color);
+}
+
+.session.pause {
   background-color: var(--gray-lighter-background-color);
 }
 
@@ -79,12 +98,6 @@
 .sponsor > .logo {
   max-height: 3em;
   vertical-align: middle;
-}
-
-.session .title {
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  font-weight: 400;
 }
 
 .session .abstract {

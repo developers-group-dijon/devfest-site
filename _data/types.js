@@ -313,6 +313,7 @@ export const Level = {
  * @property {boolean=} hideTrackTitle
  * @property {Language=} language
  * @property {Level=} level
+ * @property {string=} styleClass
  */
 /**
  * @typedef WithRawSessions

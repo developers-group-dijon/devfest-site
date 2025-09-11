@@ -27,6 +27,7 @@ export default [
     dateStartStr: "2025-12-05T11:10:00.000+01:00",
     durationMinutes: 20,
     trackRange: ["niepce", "paris"],
+    styleClass: "pause",
   },
   {
     id: "pause matin 2",
@@ -34,12 +35,14 @@ export default [
     dateStartStr: "2025-12-05T11:15:00.000+01:00",
     durationMinutes: 15,
     trackId: "bernard",
+    styleClass: "pause",
   },
   {
     id: "pause midi",
     title: "Pause repas",
     dateStartStr: "2025-12-05T12:20:00.000+01:00",
     durationMinutes: 100,
+    styleClass: "pause",
   },
   {
     id: "pause apres-midi",
@@ -47,6 +50,7 @@ export default [
     dateStartStr: "2025-12-05T15:45:00.000+01:00",
     durationMinutes: 20,
     trackRange: ["niepce", "paris"],
+    styleClass: "pause",
   },
   {
     id: "pause apres-midi 2",
@@ -54,6 +58,7 @@ export default [
     dateStartStr: "2025-12-05T15:50:00.000+01:00",
     durationMinutes: 15,
     trackId: "bernard",
+    styleClass: "pause",
   },
   // keynotes
   {
@@ -82,6 +87,7 @@ export default [
     level: "BEGINNER",
     formatId: "",
     categoryId: "",
+
     hideTrackTitle: false,
   },
   {
@@ -96,6 +102,7 @@ export default [
     level: "BEGINNER",
     formatId: "",
     categoryId: "",
+
     hideTrackTitle: false,
   },
   // qui veut être mon dev
@@ -120,6 +127,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "",
     categoryId: "",
+
     hideTrackTitle: false,
   },
   // sessions
@@ -136,6 +144,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
     categoryId: "cm90vct7x04v3qo3mvwyo6rej",
+
     hideTrackTitle: false,
   },
   {
@@ -151,6 +160,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxk82t00qhqr3m2gwuiaq2",
+
     hideTrackTitle: false,
   },
   {
@@ -166,6 +176,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
     categoryId: "cm8fxk82t00qhqr3m2gwuiaq2",
+
     hideTrackTitle: false,
   },
   {
@@ -181,6 +192,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxfxfc00qcqr3m410c87zu",
     categoryId: "cm90v7wak04v1qo3m74nkqbjj",
+
     hideTrackTitle: false,
   },
   {
@@ -197,6 +209,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxjv3o00qgqr3mngl0n2li",
+
     hideTrackTitle: false,
   },
   {
@@ -212,6 +225,7 @@ Vous êtes ?
     level: "ADVANCED",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxiayr00qdqr3meoylp50p",
+
     hideTrackTitle: false,
   },
   {
@@ -227,6 +241,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxjmkl00qfqr3m1nist70w",
+
     hideTrackTitle: false,
   },
   {
@@ -242,6 +257,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
+
     hideTrackTitle: false,
   },
   {
@@ -257,6 +273,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxiayr00qdqr3meoylp50p",
+
     hideTrackTitle: false,
   },
   {
@@ -272,6 +289,7 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxjmkl00qfqr3m1nist70w",
+
     hideTrackTitle: false,
   },
   {
@@ -287,6 +305,7 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
+
     hideTrackTitle: false,
   },
   {
@@ -302,6 +321,7 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxj4cj00qeqr3m3xph6k7n",
+
     hideTrackTitle: false,
   },
   {
@@ -317,6 +337,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
+
     hideTrackTitle: false,
   },
   {
@@ -333,6 +354,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxfxfc00qcqr3m410c87zu",
     categoryId: "cm8fxiayr00qdqr3meoylp50p",
+
     hideTrackTitle: false,
   },
   {
@@ -349,6 +371,7 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
     categoryId: "cm90vct7x04v3qo3mvwyo6rej",
+
     hideTrackTitle: false,
   },
   {
@@ -364,6 +387,7 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
     categoryId: "cm90v97ub04v2qo3mb56jezst",
+
     hideTrackTitle: false,
   },
   {
@@ -379,6 +403,7 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
     categoryId: "cm90v7wak04v1qo3m74nkqbjj",
+
     hideTrackTitle: false,
   },
   {
@@ -395,6 +420,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
+
     hideTrackTitle: false,
   },
   {
@@ -410,6 +436,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
+
     hideTrackTitle: false,
   },
   {
@@ -426,6 +453,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
+
     hideTrackTitle: false,
   },
   {
@@ -441,6 +469,7 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxiayr00qdqr3meoylp50p",
+
     hideTrackTitle: false,
   },
   {
@@ -456,6 +485,7 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
+
     hideTrackTitle: false,
   },
   {
@@ -471,6 +501,7 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxjmkl00qfqr3m1nist70w",
+
     hideTrackTitle: false,
   },
   {
@@ -486,6 +517,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxiayr00qdqr3meoylp50p",
+
     hideTrackTitle: false,
   },
   {
@@ -501,6 +533,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
+
     hideTrackTitle: false,
   },
   {
@@ -516,6 +549,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
+
     hideTrackTitle: false,
   },
   {
@@ -532,6 +566,7 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
+
     hideTrackTitle: false,
   },
 ];
