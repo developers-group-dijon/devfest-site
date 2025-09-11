@@ -134,6 +134,18 @@ function dateKey(value) {
 }
 
 /**
+ * @param {Date} lastTime
+ * @param {?Date} prevTime
+ * @returns {?number}
+ */
+function minutesBeetween(lastTime, prevTime) {
+  if (!prevTime) {
+    return undefined;
+  }
+  return (lastTime.getTime() - prevTime.getTime()) / 1000 / 60;
+}
+
+/**
  * @param {import("../_data/types.js").Session[]} value
  * @param {Date} dateStart
  * @returns {import("../_data/types.js").Session[]}
@@ -221,4 +233,5 @@ export default {
   formatLevel,
   formatLanguage,
   countSlots,
+  minutesBeetween,
 };

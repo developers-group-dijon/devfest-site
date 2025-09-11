@@ -37,8 +37,11 @@ Le planning présenté est une version provisoire qui est susceptible d'évoluer
          {%- endfor -%}
          {%- for slot in daySlot %}
          <div class="time" style="grid-column: time; grid-row: slot_{{ slot | dateKey }};">
+            {%- set minutesAfterPrev = slot | minutesBeetween(daySlot[loop.index0 - 1]) %}
+            {%- if loop.first or  minutesAfterPrev > 5 -%}
             <span class="hours">{{ slot | hours }}</span>
             <span class="minutes">{{ slot | minutes }}</span>
+            {%- endif -%}
          </div>
          {%- for session in sessions | filterByDateStart(slot) %}
             {%- set column = (session.trackRange[0]+" / "+session.trackRange[1]+"-end") if session.trackRange else (session.trackId | default ("track / -1")) %}
