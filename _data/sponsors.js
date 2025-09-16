@@ -115,6 +115,11 @@ export default [
         logoUrl: "/sponsors/aer-bfc.webp",
       },
       {
+        name: "Da Viking Code",
+        website: "https://davikingcode.com/",
+        logoUrl: "/sponsors/da-viking-code.webp",
+      },
+      {
         name: "French tech BFC",
         website: "https://lafrenchtechbfc.fr/",
         logoUrl: "/sponsors/french-tech-bfc.webp",
