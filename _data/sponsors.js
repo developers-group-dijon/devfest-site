@@ -35,6 +35,11 @@ export default [
         logoUrl: "/sponsors/atolcd.webp",
       },
       {
+        name: "BPCE Solutions Informatiques",
+        website: "https://www.bpce-si.fr/",
+        logoUrl: "/sponsors/bpce-si.webp",
+      },
+      {
         name: "DIIAGE",
         website: "https://diiage.cucdb.fr",
         logoUrl: "/sponsors/diiage.webp",
