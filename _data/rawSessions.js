@@ -144,7 +144,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
     categoryId: "cm90vct7x04v3qo3mvwyo6rej",
-
     hideTrackTitle: false,
   },
   {
@@ -160,7 +159,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxk82t00qhqr3m2gwuiaq2",
-
     hideTrackTitle: false,
   },
   {
@@ -176,7 +174,21 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
     categoryId: "cm8fxk82t00qhqr3m2gwuiaq2",
-
+    hideTrackTitle: false,
+  },
+  {
+    id: "cm9sayfd8027io63mgq4ei7dn",
+    title: "La potion magique pour faire progresser ta carrière",
+    abstract:
+      "La recette de la potion magique ne se transmet qu'aux seuls druides, normalement. Mais exceptionnellement, le conseil des druides de la forêt des Carnutes m'a autorisé à vous révéler quelques uns des ingrédients qui constituent ce breuvage.\n\nIl est même possible que je vous indique l'ingrédient secret !",
+    dateStartStr: "2025-12-05T15:05:00.000+00:00",
+    durationMinutes: 20,
+    speakerIds: ["cm9savh3v027co63mlkterzhq"],
+    trackId: "niepce",
+    language: "fr",
+    level: "BEGINNER",
+    formatId: "cm8fxewbi00qbqr3mdo7foy1h",
+    categoryId: "cm8fxjv3o00qgqr3mngl0n2li",
     hideTrackTitle: false,
   },
   {
@@ -192,7 +204,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxfxfc00qcqr3m410c87zu",
     categoryId: "cm90v7wak04v1qo3m74nkqbjj",
-
     hideTrackTitle: false,
   },
   {
@@ -209,7 +220,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxjv3o00qgqr3mngl0n2li",
-
     hideTrackTitle: false,
   },
   {
@@ -225,7 +235,6 @@ Vous êtes ?
     level: "ADVANCED",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxiayr00qdqr3meoylp50p",
-
     hideTrackTitle: false,
   },
   {
@@ -241,7 +250,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxjmkl00qfqr3m1nist70w",
-
     hideTrackTitle: false,
   },
   {
@@ -257,7 +265,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
-
     hideTrackTitle: false,
   },
   {
@@ -273,7 +280,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxiayr00qdqr3meoylp50p",
-
     hideTrackTitle: false,
   },
   {
@@ -289,7 +295,6 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxjmkl00qfqr3m1nist70w",
-
     hideTrackTitle: false,
   },
   {
@@ -305,7 +310,6 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
-
     hideTrackTitle: false,
   },
   {
@@ -321,7 +325,6 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxj4cj00qeqr3m3xph6k7n",
-
     hideTrackTitle: false,
   },
   {
@@ -337,7 +340,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
-
     hideTrackTitle: false,
   },
   {
@@ -354,24 +356,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxfxfc00qcqr3m410c87zu",
     categoryId: "cm8fxiayr00qdqr3meoylp50p",
-
-    hideTrackTitle: false,
-  },
-  {
-    id: "cmc0clqw906wipc3mmm7e5itp",
-    title:
-      "Lovable at first sight : affirmer la personnalité de son produit pour créer le coup de cœur",
-    abstract:
-      "Imaginez un produit qui, dès le premier regard, vous captive. Un produit qui semble parler votre langue, comprendre vos besoins, et surtout, déclenche une émotion immédiate : le coup de cœur.\n\nDans un marché saturé, où chaque innovation est rapidement imitée, la véritable différenciation ne repose plus seulement sur les fonctionnalités. Elle réside dans l’âme du produit, dans sa capacité à séduire par sa personnalité.\n\nMais affirmer la personnalité d'un produit n'est pas une mince affaire et chaque acteur du projet a son rôle à jouer, qu'il soit designer, développeur ou autre.\n\nDans ce talk, je veux montrer pourquoi et comment, en tant qu'équipe,  affirmer la personnalité de votre produit peut provoquer une réaction émotionnelle immédiate chez vos utilisateurs qui sera le début d'une relation plus durable.",
-    dateStartStr: "2025-12-05T15:05:00.000+00:00",
-    durationMinutes: 20,
-    speakerIds: ["cmc0clqw606whpc3maflao56b"],
-    trackId: "niepce",
-    language: "fr",
-    level: "INTERMEDIATE",
-    formatId: "cm8fxewbi00qbqr3mdo7foy1h",
-    categoryId: "cm90vct7x04v3qo3mvwyo6rej",
-
     hideTrackTitle: false,
   },
   {
@@ -381,13 +365,12 @@ Vous êtes ?
       "A l’heure où les LLM prennent la plus grande part de marché des solutions d’IA, ils sont vus comme des solveurs généraux sur toute tâche impliquant du langage naturel. Seulement, cela soulève plusieurs problématiques. Ces modèles représentant une taille mémoire conséquente et une puissance de calcul démesurée, le client se trouve dépendant du fournisseur, de ses conditions en termes de sécurité des données, de disponibilité et de fluctuation des prix. De plus, pour des tâches longues ils se montrent parfois lents et assez opaques quant aux traitements effectués.\nLa classification de plaintes utilisateurs entre pleinement dans ce contexte. De nombreuses solutions existent, mais peu offrent une facilité de mise en place ainsi qu’un contrôle sur les modèles et les données qui sont ou seront déployés. Aussi, ceux-ci requièrent généralement des données labellisées et homogènes, qui ne sont pas toujours disponibles en conditions réelles.\nCette présentation vient traiter d’une situation courante chez le client : Une grande quantité de données non labellisées dans une entreprise pour laquelle la protection des données est un enjeu majeur. La solution proposée devait donc présenter ces caractéristiques clés :\n-\tApprentissage non supervisé\n-\tFaible en coût et s’appuyant sur des options gratuites et open source\n-\tExécution locale\nEn outre, le temps total d’exécution s’en trouve fortement réduit et la consommation d’énergie nécessaire à l’exécution est négligeable en comparaison à un LLM, justifiant le développement d’une solution à part entière.\nPour cela, j’utilise des modèles de vectorisation ouverts, dont la particularité est de rapprocher les mots dont la sémantique est similaire. Plusieurs possibilités s’offrent alors, selon ce que le métier aura mis à disposition : catégories déjà définies, messages partiellement labellisés... Le processus ensuite mis en place peut mettre en œuvre des algorithmes de clustering, ou un simple système de récupération vectorielle à travers des vector stores. Le rapprochement a déjà été fait par le modèle, le reste du traitement dépend alors des exigences et des spécificités de chaque projet. La solution ici proposée s’appuie donc sur des outils déjà bien répandus et montre une forte robustesse au changement, notamment l’ajout de catégories.",
     dateStartStr: "2025-12-05T15:30:00.000+00:00",
     durationMinutes: 20,
-    speakerIds: ["cmb7htz0r012kog3mqcsz380j", "cmc4lqonj0028m73mo0b45y9c"],
+    speakerIds: ["cmc4lqonj0028m73mo0b45y9c", "cmb7htz0r012kog3mqcsz380j"],
     trackId: "paris",
     language: "fr",
     level: "INTERMEDIATE",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
     categoryId: "cm90v97ub04v2qo3mb56jezst",
-
     hideTrackTitle: false,
   },
   {
@@ -403,7 +386,6 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
     categoryId: "cm90v7wak04v1qo3m74nkqbjj",
-
     hideTrackTitle: false,
   },
   {
@@ -420,7 +402,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
-
     hideTrackTitle: false,
   },
   {
@@ -436,7 +417,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
-
     hideTrackTitle: false,
   },
   {
@@ -453,7 +433,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
-
     hideTrackTitle: false,
   },
   {
@@ -469,7 +448,6 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxiayr00qdqr3meoylp50p",
-
     hideTrackTitle: false,
   },
   {
@@ -485,7 +463,6 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
-
     hideTrackTitle: false,
   },
   {
@@ -501,7 +478,6 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxjmkl00qfqr3m1nist70w",
-
     hideTrackTitle: false,
   },
   {
@@ -511,13 +487,12 @@ Vous êtes ?
       "Bienvenue dans les coulisses d’un des plus grand spectacle du développement web : **JavaScript 🪄** Sur scène, tout semble magique : les animations captivent, les promesses sont tenues, et tout s’exécute sans accroc. Mais derrière le rideau, une véritable troupe travaille sans relâche pour donner vie à ce spectacle.\n\nDans cette visite guidée, nous vous invitons à lever le rideau sur la mécanique de JavaScript : son engine, la scope chain, son incontournable event loop, les contextes d’exécution, et bien sûr, ses fameuses promesses. Ces concepts vous sont peut-être familiers, mais n’est-il pas temps d’un peu mieux les comprendre ?\n\nPrenez vos billets et plongez avec nous dans les rouages fascinants de JavaScript 🎟️",
     dateStartStr: "2025-12-05T15:55:00.000+00:00",
     durationMinutes: 50,
-    speakerIds: ["cmbo3grzx0034qt3mahf7d1vp", "cmch9e1cl00fsth3mcz6w1dox"],
+    speakerIds: ["cmch9e1cl00fsth3mcz6w1dox", "cmbo3grzx0034qt3mahf7d1vp"],
     trackId: "paris",
     language: "fr",
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxiayr00qdqr3meoylp50p",
-
     hideTrackTitle: false,
   },
   {
@@ -533,7 +508,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
-
     hideTrackTitle: false,
   },
   {
@@ -549,13 +523,12 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
-
     hideTrackTitle: false,
   },
   {
     id: "cmcjl2hu701g1oe3myt1d3npm",
     title:
-      "Tout déléguer, mais à quel prix ? Les vrais chiffres derrière un bon outillage",
+      "Tout déléguer, mais à quel prix ? Les vrais chiffres derrière un bon outllage",
     abstract:
       "_\"Combien ça coûte de complètement outiller le cycle de vie d'une application et les développeurs travaillant dessus ?\"_ —  Vous aurez la réponse en sortant de ce talk !\n\n**Déléguer un maximum** à des services managés & SaaS tout ce qui n'est pas de la logique métier, c'est sans l'ombre d'un doute très pratique et plein d'avantages… mais combien ça coûte vraiment au bout du compte ?\n\nChez PayFit, licorne scale-up française disposant de forts moyens d'investissements, nous avons eu la chance de pouvoir faire le pari de joyeusement déléguer tout ce que nous pouvions, et de nous acheter une certaine tranquillité d'esprit. Dans ce talk, venez découvrir **les vrais chiffres de PayFit en tout transparence**, y compris le coût \"par développeur\" — un exercice trop rarement fait !\n\nDe l'hébergement des applications à l'outillage des développeurs en passant par l'automatisation du cycle de vie d'une application, nous parlerons des coûts d'AWS, CircleCI, Raenovate, Datadog, Launchdarkly, GitHub (et Copilot), licences d'IDE, et plus généralement des …  **81 (!) outils tiers** sur lesquels PayFit repose, ce panorama se voulant aussi exhaustif que possible.\n\nAu-delà des coûts unitaires, nous explorerons également comment maintenir un certain contrôle et éviter un flagrant gâchis de moyens sans pour autant nuire à l'efficacité et au confort.",
     dateStartStr: "2025-12-05T13:55:00.000+00:00",
@@ -566,7 +539,6 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
-
     hideTrackTitle: false,
   },
 ];

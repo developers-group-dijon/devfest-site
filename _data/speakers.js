@@ -62,6 +62,35 @@ const speakers = [
     ],
   },
   {
+    id: "cm9savh3v027co63mlkterzhq",
+    name: "David Pilato",
+    bio: "David est évangéliste (devrel) chez Elastic depuis 2013. Il anime la communauté française autour d'#Elasticsearch et organise des [BBLs](https://david.pilato.fr/blog/2024-08-01-free-lunches-for-opensource-engineers/) au sein des entreprises. Egalement auteur du projet [FSCrawler](https://fscrawler.readthedocs.io/) qui permet d'indexer des documents pdf, open office, etc. dans elasticsearch en utilisant Apache Tika.\n\nSon autre passion se situe au niveau du Deejaying qu'il a commencé à ses 12 ans, pour la radio locale de son collège et assez rapidement pour des soirées locales sur La Rochelle. Il exerce toujours sous le nom de [DJ Elky](https://www.instagram.com/dj_elky/) pour des sets House, Funk & Electro Chic lors d'évènements privés et dans quelques bars & spots parisiens.",
+    company: "elastic",
+    photoUrl: "/avatars/david-pilato.webp",
+    socials: [
+      {
+        id: "github",
+        name: "github",
+        link: "https://github.com/dadoonet",
+      },
+      {
+        id: "x",
+        name: "x",
+        link: "https://x.com/dadoonet",
+      },
+      {
+        id: "link",
+        name: "link",
+        link: "https://david.pilato.fr/",
+      },
+      {
+        id: "instagram",
+        name: "instagram",
+        link: "https://www.instagram.com/dj_elky/",
+      },
+    ],
+  },
+  {
     id: "cm9sjc10w02k7o63mbzci7k7l",
     name: "Thomas Cami",
     bio: "Développeur curieux et touche à tout, doublé d'un musicien qui a abandonné la scène pour bidouiller des synthétiseurs à coup de Rust et de fer à souder.",
@@ -314,20 +343,6 @@ const speakers = [
     ],
   },
   {
-    id: "cmc0clqw606whpc3maflao56b",
-    name: "Chantal Khin",
-    bio: "Diplômée de l'ESAG Penninghen en conception graphique, j'ai été Directrice Artistique en agence pendant 10 ans. En quête de sens, c'est à la porte de TheodoApps que j'ai frappé il y a 6 ans pour devenir Lead Product Designer et aller à la rencontre des utilisateurs. C'est aujourd'hui par une approche émotionnelle et créative que je m’efforce d'avoir un impact positif sur la vie des gens, tout en répondant aux enjeux de mes clients. \n\nwww.linkedin.com/in/chantalkhin",
-    company: "Theodo Apps",
-    photoUrl: "/avatars/chantal-khin.webp",
-    socials: [
-      {
-        id: "linkedin",
-        name: "linkedin",
-        link: "https://www.linkedin.com/in/chantalkhin/",
-      },
-    ],
-  },
-  {
     id: "cmc4lqonj0028m73mo0b45y9c",
     name: "Alexandre Azouri",
     bio: "Je suis un jeune ingénieur en intelligence artificielle et machine learning basé à Lyon. Diplômé de Polytech Lyon de l'UCBL, je suis passionné par ces nouvelles technologies ainsi que leur application dans de nombreux domaines. J'ai eu l'occasion de travailler sur des projets de détection de cancer et d'agents LLM pour du service client respectant la RGPD.",
@@ -339,6 +354,7 @@ const speakers = [
   {
     id: "cmcahhw4z005anz3m641hh7x0",
     name: "Vincent Thivent",
+    bio: "Gérant de la société ODALID, nous fabriquons des systèmes  de contrôle d’accès, télébillétique et Iot. (Hardware/ Firmware/ Software). Je suis passionné d'électronique, je souhaite vous partagé la magie du contactless lié à la cryptographie. https://odalid.com",
     company: "ODALID",
     photoUrl: "/avatars/vincent-thivent.webp",
     socials: [],
@@ -346,7 +362,7 @@ const speakers = [
   {
     id: "cmcand41y00alnz3m8yp005us",
     name: "Flora Njofang",
-    bio: "Passionnée de la tech depuis près de 10 ans, Flora NJOFANG est Engineering Manager chez AXA France. Dans son quotidien, elle prend plaisir à aligner la stratégie Tech et besoin métier pour maximiser l'impact de leurs actions. Curieuse et avide d'échanges, elle adore apprendre et partager des innovations qui font la différence.",
+    bio: "Dans la tech depuis plus de 10 ans, Flora NJOFANG est Engineering Manager chez AXA France. Dans son quotidien, elle prend plaisir à aligner la stratégie Tech et besoin métier pour maximiser l'impact de leurs actions. Curieuse et avide d'échanges, elle adore apprendre et partager des innovations qui font la différence.",
     company: "AXA France",
     jobTitle: null,
     photoUrl: "/avatars/flora-njofang.webp",
