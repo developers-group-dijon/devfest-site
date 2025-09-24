@@ -232,6 +232,7 @@ export const SocialId = {
   MASTODON: "mastodon",
   BLUESKY: "bluesky",
   LINK: "link",
+  INSTAGRAM: "instagram",
 };
 
 /**
