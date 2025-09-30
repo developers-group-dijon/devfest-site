@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/reject-any-type */
 import fs from "node:fs";
 import formats from "../_data/formats.js";
 

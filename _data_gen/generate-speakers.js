@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/reject-any-type */
 import fs from "node:fs";
 import { spawnSync } from "node:child_process";
 import { pipeline } from "node:stream/promises";

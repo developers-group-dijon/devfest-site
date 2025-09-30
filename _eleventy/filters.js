@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/reject-function-type */
 import { Level, Language } from "../_data/types.js";
 
 import markdownitConstr from "markdown-it";

@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/reject-function-type */
 import fs from "node:fs";
 import { SocialId } from "../_data/types.js";
 
