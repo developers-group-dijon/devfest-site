@@ -10,17 +10,17 @@ export default [
   {
     id: "niepce",
     name: "Amphi. Niepce",
-    sponsor: "Atol Conseils & Développments"
+    sponsor: "Atol Conseils & Développments",
   },
   {
     id: "recoura",
     name: "Amphi. Recoura",
-    sponsor: "BPCE Solutions Informatiques"
+    sponsor: "BPCE Solutions Informatiques",
   },
   {
     id: "paris",
     name: "Amphi. Paris",
-    sponsor: "DIIAGE"
+    sponsor: "DIIAGE",
   },
   {
     id: "bernard",
