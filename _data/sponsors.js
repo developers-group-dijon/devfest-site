@@ -90,6 +90,16 @@ export default [
         logoUrl: "/sponsors/eseo.webp",
       },
       {
+        name: "Hara Consulting",
+        website: "https://hara-consulting.com/",
+        logoUrl: "/sponsors/hara.webp",
+      },
+      {
+        name: "Inetum",
+        website: "https://www.inetum.com/fr",
+        logoUrl: "/sponsors/inetum.webp",
+      },
+      {
         name: "Infotel",
         website: "https://infotel.com/",
         logoUrl: "/sponsors/infotel.webp",
