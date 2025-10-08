@@ -30,6 +30,11 @@ export default [
     name: "Sponsors Gold",
     sponsors: [
       {
+        name: "APRR",
+        website: "https://www.aprr.com/",
+        logoUrl: "/sponsors/aprr.webp",
+      },
+      {
         name: "Atol Conseils & Développments",
         website: "https://www.atolcd.com/",
         logoUrl: "/sponsors/atolcd.webp",
