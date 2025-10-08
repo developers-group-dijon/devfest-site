@@ -213,7 +213,6 @@ const speakers = [
     name: "Aymeric Lamboley",
     bio: "# Parcours professionnel :\n2014 - : Dirigeant et directeur technique de l’entreprise Da Viking Code, Dijon.\n2013 : Développeur Interactif Freelance (jeux, applications mobiles et web).\n2010 - 2012 : Développeur web (back/front) à l’agence Swad en apprentissage, Annecy\n2009 : Stage de 3 mois orienté Flash/AS3 chez Turbulent Média Inc, Montréal, Canada.\n\n# Formation :\n2021 : Accompagner son équipe avec éthique et bienveillance au service du projet collectif.\n2010 - 2012 : Concepteur Réalisateur Multimédia Gobelins, option Développement à Annecy.\n2009 - 2010 : Université Technologique de Belfort-Montbéliard, Génie Informatique.\n2007 - 2009 : IUT Services et Réseaux de Communication, Montbéliard.\n2007 : Baccalauréat S, Belfort.",
     company: "Da Viking Code",
-    jobTitle: null,
     photoUrl: "/avatars/aymeric-lamboley.webp",
     socials: [
       {
@@ -357,7 +356,13 @@ const speakers = [
     bio: "Gérant de la société ODALID, nous fabriquons des systèmes  de contrôle d’accès, télébillétique et Iot. (Hardware/ Firmware/ Software). Je suis passionné d'électronique, je souhaite vous partagé la magie du contactless lié à la cryptographie. https://odalid.com",
     company: "ODALID",
     photoUrl: "/avatars/vincent-thivent.webp",
-    socials: [],
+    socials: [
+      {
+        id: "linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/in/vincentthivent/",
+      },
+    ],
   },
   {
     id: "cmcand41y00alnz3m8yp005us",
