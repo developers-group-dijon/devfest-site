@@ -120,7 +120,7 @@ Vous êtes ?
 - Développeur web souhaitant participer à un projet entrepreneurial innovant.
 `,
     dateStartStr: "2025-12-05T10:30:00.000+00:00",
-    durationMinutes: 20,
+    durationMinutes: 50,
     speakerIds: [],
     trackId: "bernard",
     language: "fr",
