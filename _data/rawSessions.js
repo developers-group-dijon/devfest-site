@@ -528,7 +528,7 @@ Vous êtes ?
   {
     id: "cmcjl2hu701g1oe3myt1d3npm",
     title:
-      "Tout déléguer, mais à quel prix ? Les vrais chiffres derrière un bon outllage",
+      "Tout déléguer, mais à quel prix ? Les vrais chiffres derrière un bon outillage",
     abstract:
       "_\"Combien ça coûte de complètement outiller le cycle de vie d'une application et les développeurs travaillant dessus ?\"_ —  Vous aurez la réponse en sortant de ce talk !\n\n**Déléguer un maximum** à des services managés & SaaS tout ce qui n'est pas de la logique métier, c'est sans l'ombre d'un doute très pratique et plein d'avantages… mais combien ça coûte vraiment au bout du compte ?\n\nChez PayFit, licorne scale-up française disposant de forts moyens d'investissements, nous avons eu la chance de pouvoir faire le pari de joyeusement déléguer tout ce que nous pouvions, et de nous acheter une certaine tranquillité d'esprit. Dans ce talk, venez découvrir **les vrais chiffres de PayFit en tout transparence**, y compris le coût \"par développeur\" — un exercice trop rarement fait !\n\nDe l'hébergement des applications à l'outillage des développeurs en passant par l'automatisation du cycle de vie d'une application, nous parlerons des coûts d'AWS, CircleCI, Raenovate, Datadog, Launchdarkly, GitHub (et Copilot), licences d'IDE, et plus généralement des …  **81 (!) outils tiers** sur lesquels PayFit repose, ce panorama se voulant aussi exhaustif que possible.\n\nAu-delà des coûts unitaires, nous explorerons également comment maintenir un certain contrôle et éviter un flagrant gâchis de moyens sans pour autant nuire à l'efficacité et au confort.",
     dateStartStr: "2025-12-05T13:55:00.000+00:00",
