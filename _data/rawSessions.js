@@ -299,17 +299,17 @@ Vous êtes ?
   },
   {
     id: "cmbrys9k502adqt3mr87ftkdc",
-    title: "Souffrance au travail : comment l’industrie agile y contribue",
+    title: "Le bien-être: le nouvel enjeu du software development ? ❤️💻",
     abstract:
-      "Experts et praticiens du travail sont unanimes : le travail est devenu un lieu de souffrance. Pour preuve, un rapport de l’Assurance Maladie de 2018 indique que le nombre de demandes de reconnaissance de maladies psychiques a été multiplié par plus de 5 en 5 ans et que 50% des dossiers transmis sont d’origine professionnelle. Si durant l’essor industriel le travail abrutissait, il rend aujourd’hui fou. Nous verrons au sein de cette conférence les causes de cette situation et comment l’industrie agile, soit les personnes participant à l'implémentation de l'agilité en entreprise, malgré des intentions initiales contraires, contribue à cette triste réalité.",
+      "Le **bien-être** au travail devient un sujet **de plus en plus évoqué** dans les entreprises.\n\nDu code à la mise en production, quels sont **les impacts de nos pratiques actuelles** sur notre bien-être ? Quels constats pouvons-nous faire en 2025 ? 🤔\n\nPrenons conscience des **conséquences de notre quotidien de travail sur notre charge cognitive**. Mais également, sur notre motivation ou sur nos capacités de concentration. 🧠 ⚡\n\nConstatons ensemble les **impacts positifs de la maintenance de code** sur votre charge mentale. Observons comment votre **contexte de travail et le leadership peuvent influencer votre capacité de concentration** et votre productivité. Et voyons si des opportunités de 2025, **comme la GenIA ou le DevEx**, ont réellement leur place pour donner les moyens à une organisation de soutenir et soulager les équipes. Le tout agrémenté de sources et d’études pour argumenter la mise en œuvre de ces pratiques.\n\nLe bien-être devient **une nécessité** pour les entreprises, **et non plus une option** 👍",
     dateStartStr: "2025-12-05T10:30:00.000+00:00",
     durationMinutes: 50,
-    speakerIds: ["cmbrys9k202acqt3m7vgd53ax"],
+    speakerIds: ["cmbl5zokj03hgp93m66xbf2z8"],
     trackId: "niepce",
     language: "fr",
     level: "INTERMEDIATE",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
-    categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
+    categoryId: "cm8fxjv3o00qgqr3mngl0n2li",
     hideTrackTitle: false,
   },
   {
