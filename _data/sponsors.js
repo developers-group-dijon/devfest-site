@@ -65,11 +65,6 @@ export default [
         logoUrl: "/sponsors/cadoles.webp",
       },
       {
-        name: "Capgemini",
-        website: "https://www.capgemini.com/",
-        logoUrl: "/sponsors/capgemini.webp",
-      },
-      {
         name: "Carsat BFC",
         website: "https://www.carsat-bfc.fr/",
         logoUrl: "/sponsors/carsat.webp",
@@ -118,6 +113,11 @@ export default [
         name: "Planet Bourgogne",
         website: "https://www.planetb.fr",
         logoUrl: "/sponsors/planet-bourgogne.webp",
+      },
+      {
+        name: "Sogeti",
+        website: "https://www.fr.sogeti.com/",
+        logoUrl: "/sponsors/sogeti.webp",
       },
       {
         name: "YMAG",
