@@ -52,59 +52,6 @@ export default [
     trackRange: ["niepce", "paris"],
     styleClass: "pause",
   },
-  {
-    id: "pause apres-midi 2",
-    title: "Pause",
-    dateStartStr: "2025-12-05T15:50:00.000+01:00",
-    durationMinutes: 15,
-    trackId: "bernard",
-    styleClass: "pause",
-  },
-  // keynotes
-  {
-    id: "keynote-debut",
-    title: "Accueil et lancement de la journée",
-    dateStartStr: "2025-12-05T09:00:00.000+01:00",
-    durationMinutes: 20,
-  },
-  // keynotes
-  {
-    id: "keynote-fin",
-    title: "Remerciements et clôture de la journée",
-    dateStartStr: "2025-12-05T17:50:00.000+01:00",
-    durationMinutes: 10,
-  },
-  // tremplin
-  {
-    id: "tremplin-1",
-    title: "Talk issu du tremplin",
-    abstract: "informations à venir…",
-    dateStartStr: "2025-12-05T15:05:00.000+00:00",
-    durationMinutes: 20,
-    speakerIds: [],
-    trackId: "paris",
-    language: "fr",
-    level: "BEGINNER",
-    formatId: "",
-    categoryId: "",
-
-    hideTrackTitle: false,
-  },
-  {
-    id: "tremplin-2",
-    title: "Talk issu du tremplin",
-    abstract: "informations à venir…",
-    dateStartStr: "2025-12-05T15:05:00.000+00:00",
-    durationMinutes: 20,
-    speakerIds: [],
-    trackId: "bernard",
-    language: "fr",
-    level: "BEGINNER",
-    formatId: "",
-    categoryId: "",
-
-    hideTrackTitle: false,
-  },
   // qui veut être mon dev
   {
     id: "DDeXJLYZfCLtVIFXwzMv",
@@ -539,6 +486,38 @@ Vous êtes ?
     level: "BEGINNER",
     formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
+    hideTrackTitle: false,
+  },
+  {
+    id: "fXIJgu4wpakpLsQKbx12",
+    title:
+      "IA générative et réchauffement climatique : comment réduire la facture ?",
+    abstract:
+      "L'IA générative fascine, mais elle chauffe… et pas seulement les GPU. \nDerrière ses prouesses se cache une empreinte écologique massive : data centers énergivores, entraînements XXL, matériaux rares, et aussi une adoption massive…\n\nLors de cette présentation, nous passerons en revue le véritable coût écologique de l'IA tout au long de sa chaîne de valeur, et surtout, nous identifierons des leviers concrets pour concevoir des systèmes plus responsables, sans sacrifier leur performance.\n\nL'objectif : comprendre l'impact de l'IA générative sur l'environnement et repartir avec des bonnes pratiques actionnables pour réduire son empreinte.",
+    dateStartStr: "2025-12-05T15:05:00.000+00:00",
+    durationMinutes: 20,
+    speakerIds: ["KGRPXfOs9WZCnLlVwuHn", "eBdoNVOIDz36RTZJoml2"],
+    trackId: "paris",
+    language: "fr",
+    level: "INTERMEDIATE",
+    formatId: "cm8fxewbi00qbqr3mdo7foy1h",
+    categoryId: "cm8fxk82t00qhqr3m2gwuiaq2",
+    hideTrackTitle: false,
+  },
+  {
+    id: "VTTGLQDHLnJmYtKZY8GX",
+    title:
+      "Et si vos données SQL devenaient un assistant IA pour vos utilisateurs ?",
+    abstract:
+      "Vos bases de données SQL regorgent d'informations précieuses : données métier, suivi opérationnel, données clients… Mais trop souvent, elles restent réservées à quelques personnes expertes capables de manier SQL, ou accessibles uniquement via des interfaces parfois rigides et peu intuitives. Imaginez que n'importe quel collaborateur ou même client puisse y accéder simplement, en posant une question en langage naturel.\nC'est à partir de cette idée qu'un agent conversationnel a été créé : il transforme une requête libre en une réponse claire, contextualisée et directement issue de la base de données.\nDans ce talk, je reviendrai sur les grandes étapes de l'architecture : comment passer du langage naturel à une requête SQL fiable, comment gérer les erreurs les plus courantes, et surtout comment assurer des réponses utiles et rapides. Je partagerai également les principaux défis rencontrés et les leviers que j'ai mis en place pour améliorer la robustesse et la performance de l'agent.\nUn retour d'expérience concret pour toutes celles et ceux qui veulent donner une nouvelle voix à leurs données SQL et transformer ce capital dormant en un véritable levier de valeur, que ce soit en interne pour leurs équipes ou en externe pour leurs clients.",
+    dateStartStr: "2025-12-05T15:05:00.000+00:00",
+    durationMinutes: 20,
+    speakerIds: ["Z1ENzl4J9ubwck0zoQPw"],
+    trackId: "bernard",
+    language: "fr",
+    level: "BEGINNER",
+    formatId: "cm8fxewbi00qbqr3mdo7foy1h",
+    categoryId: "cm90v97ub04v2qo3mb56jezst",
     hideTrackTitle: false,
   },
 ];

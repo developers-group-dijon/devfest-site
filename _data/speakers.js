@@ -15,6 +15,36 @@
  */
 const speakers = [
   {
+    id: "KGRPXfOs9WZCnLlVwuHn",
+    name: "Arielle Villa-Massone",
+    bio: null,
+    company: "OCTO Technology",
+    jobTitle: "Green AI & MLOps",
+    photoUrl: "/avatars/arielle-villa-massone.webp",
+    socials: [
+      {
+        id: "linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/in/ariellevillamassone/",
+      },
+    ],
+  },
+  {
+    id: "Z1ENzl4J9ubwck0zoQPw",
+    name: "Thibault Boutet",
+    bio: null,
+    company: null,
+    jobTitle: "AI Engineer | Machine Learning Engineer",
+    photoUrl: "/avatars/thibault-boutet.webp",
+    socials: [
+      {
+        id: "linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/in/thibault-boutet/",
+      },
+    ],
+  },
+  {
     id: "cm9jwhw4u013vo63mpy91wb74",
     name: "Dorian Lamandé",
     bio: "Dorian, à la fois formateur et leader d'équipe partage avec enthousiasme ses compétences humaines et techniques pour inspirer et guider chacun vers l'exploitation totale de leurs capacités.",
@@ -525,6 +555,21 @@ const speakers = [
         id: "x",
         name: "x",
         link: "https://x.com/Horgix",
+      },
+    ],
+  },
+  {
+    id: "eBdoNVOIDz36RTZJoml2",
+    name: "Emilie Greff",
+    bio: null,
+    company: "OCTO Technology",
+    jobTitle: "Machine Learning Engineer",
+    photoUrl: "/avatars/emilie-greff.webp",
+    socials: [
+      {
+        id: "linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/in/thibault-boutet/",
       },
     ],
   },
