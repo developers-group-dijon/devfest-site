@@ -15,17 +15,17 @@
  */
 const speakers = [
   {
-    id: "KGRPXfOs9WZCnLlVwuHn",
-    name: "Arielle Villa-Massone",
+    id: "UxbZKeJnjcSVnmJB2tHv",
+    name: "Théo Moreau",
     bio: null,
     company: "OCTO Technology",
-    jobTitle: "Green AI & MLOps",
-    photoUrl: "/avatars/arielle-villa-massone.webp",
+    jobTitle: "Data scientist",
+    photoUrl: "/avatars/theo-moreau.webp",
     socials: [
       {
         id: "linkedin",
         name: "linkedin",
-        link: "https://www.linkedin.com/in/ariellevillamassone/",
+        link: "https://www.linkedin.com/in/th%C3%A9o-moreau-53842a234/",
       },
     ],
   },
@@ -555,21 +555,6 @@ const speakers = [
         id: "x",
         name: "x",
         link: "https://x.com/Horgix",
-      },
-    ],
-  },
-  {
-    id: "eBdoNVOIDz36RTZJoml2",
-    name: "Emilie Greff",
-    bio: null,
-    company: "OCTO Technology",
-    jobTitle: "Machine Learning Engineer",
-    photoUrl: "/avatars/emilie-greff.webp",
-    socials: [
-      {
-        id: "linkedin",
-        name: "linkedin",
-        link: "https://www.linkedin.com/in/thibault-boutet/",
       },
     ],
   },

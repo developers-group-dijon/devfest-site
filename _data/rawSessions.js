@@ -489,19 +489,18 @@ Vous êtes ?
     hideTrackTitle: false,
   },
   {
-    id: "fXIJgu4wpakpLsQKbx12",
+    id: "f3z3JEMn83zSS0MrC9KZ",
     title:
-      "IA générative et réchauffement climatique : comment réduire la facture ?",
-    abstract:
-      "L'IA générative fascine, mais elle chauffe… et pas seulement les GPU. \nDerrière ses prouesses se cache une empreinte écologique massive : data centers énergivores, entraînements XXL, matériaux rares, et aussi une adoption massive…\n\nLors de cette présentation, nous passerons en revue le véritable coût écologique de l'IA tout au long de sa chaîne de valeur, et surtout, nous identifierons des leviers concrets pour concevoir des systèmes plus responsables, sans sacrifier leur performance.\n\nL'objectif : comprendre l'impact de l'IA générative sur l'environnement et repartir avec des bonnes pratiques actionnables pour réduire son empreinte.",
+      "Devenez l'enquêteur intraitable qui réduit le coût de vos anomalies visuelles",
+    abstract: null,
     dateStartStr: "2025-12-05T15:05:00.000+00:00",
     durationMinutes: 20,
-    speakerIds: ["KGRPXfOs9WZCnLlVwuHn", "eBdoNVOIDz36RTZJoml2"],
+    speakerIds: ["UxbZKeJnjcSVnmJB2tHv"],
     trackId: "paris",
     language: "fr",
     level: "INTERMEDIATE",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
-    categoryId: "cm8fxk82t00qhqr3m2gwuiaq2",
+    categoryId: "cm90v97ub04v2qo3mb56jezst",
     hideTrackTitle: false,
   },
   {
