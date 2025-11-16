@@ -492,7 +492,8 @@ Vous êtes ?
     id: "f3z3JEMn83zSS0MrC9KZ",
     title:
       "Devenez l'enquêteur intraitable qui réduit le coût de vos anomalies visuelles",
-    abstract: null,
+    abstract:
+      "Bob, détective des pixels, traque tout ce qui cloche : un produit défectueux dans une usine, une image violente sur un réseau social, ou encore une zone suspecte sur une radio médicale. Trois univers, un même enjeu : détecter automatiquement l'anomalie avant qu'elle ne coûte — que ce soit en argent, en sécurité ou en santé.\n\nEn ce moment, son urgence est industrielle : une chaîne de production de vis, où reflets, ombres et parasites visuels brouillent les pistes. Comment distinguer le vrai défaut du simple bruit ?\nBob, fidèle aux méthodes traditionnelles, se perd encore dans les fausses alertes. Puis, il mise sur les Vision Transformers qui s'avèrent plus efficaces.\n\nDans cette session, vous suivrez l'enquête de Bob pour comprendre comment automatiser la détection d'anomalies. Vous découvrirez comment un algorithme peut comprendre une image, et deux méthodes qui permettent de détecter des anomalies visuelles. Puis, nous terminerons l'enquête en confrontant et évaluant ces méthodes afin de dégager celle qui offre la précision la plus implacable.\n\nÀ l'issue de cette session, vous repartirez avec l'œil d'un détective : les anomalies se cachent dans tous les sujets qui vous entourent — et vous ne les verrez plus de la même façon.",
     dateStartStr: "2025-12-05T15:05:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["UxbZKeJnjcSVnmJB2tHv"],
