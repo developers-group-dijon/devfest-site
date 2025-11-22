@@ -324,7 +324,7 @@ Vous êtes ?
     id: "cmc2fdl9100i9ol3myoikun9h",
     title: "Rendre ses tests concis et évolutifs grâce à JUnit & cie",
     abstract:
-      "Après avoir développé une nouvelle fonctionnalité, on passe souvent par une phase de refactoring pour essayer de trouver une meilleure implémentation. Mais peut-être qu’on oublie parfois d’améliorer aussi les tests ?\n\nUne fois écrits, ces tests serviront non seulement à détecter de potentiels bugs, mais aussi à documenter un comportement et à apporter de la confiance à l’équipe lors des développements suivants. Pour remplir ces fonctions cruciales, une suite de tests doit être lisible, compréhensible, rapidement exécutable, et doit pouvoir être enrichie le plus simplement possible.\n\nVoyons comment tirer parti d’outils tels que JUnit 5, AssertJ ou Spring Test pour atteindre ces objectifs !",
+      "Après avoir développé une nouvelle fonctionnalité, on passe souvent par une phase de refactoring pour essayer de trouver une meilleure implémentation. Mais peut-être qu’on oublie parfois d’améliorer aussi les tests ?\n\nUne fois écrits, ces tests serviront non seulement à détecter de potentiels bugs, mais aussi à documenter un comportement et à apporter de la confiance à l’équipe lors des développements suivants. Pour remplir ces fonctions cruciales, une suite de tests doit être lisible, compréhensible, rapidement exécutable, et doit pouvoir être enrichie le plus simplement possible.\n\nVoyons comment tirer parti d’outils tels que JUnit, AssertJ ou Spring Test pour atteindre ces objectifs !",
     dateStartStr: "2025-12-05T13:00:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmc2fdl8y00i8ol3mtdv7rhil"],
