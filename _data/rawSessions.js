@@ -245,10 +245,10 @@ Vous êtes ?
     hideTrackTitle: false,
   },
   {
-    id: "cmbrys9k502adqt3mr87ftkdc",
+    id: "cmbl60hms03hjp93mvwtbdyfz",
     title: "Le bien-être: le nouvel enjeu du software development ? ❤️💻",
     abstract:
-      "Le **bien-être** au travail devient un sujet **de plus en plus évoqué** dans les entreprises.\n\nDu code à la mise en production, quels sont **les impacts de nos pratiques actuelles** sur notre bien-être ? Quels constats pouvons-nous faire en 2025 ? 🤔\n\nPrenons conscience des **conséquences de notre quotidien de travail sur notre charge cognitive**. Mais également, sur notre motivation ou sur nos capacités de concentration. 🧠 ⚡\n\nConstatons ensemble les **impacts positifs de la maintenance de code** sur votre charge mentale. Observons comment votre **contexte de travail et le leadership peuvent influencer votre capacité de concentration** et votre productivité. Et voyons si des opportunités de 2025, **comme la GenIA ou le DevEx**, ont réellement leur place pour donner les moyens à une organisation de soutenir et soulager les équipes. Le tout agrémenté de sources et d’études pour argumenter la mise en œuvre de ces pratiques.\n\nLe bien-être devient **une nécessité** pour les entreprises, **et non plus une option** 👍",
+      "Le **bien-être** au travail devient un sujet **de plus en plus évoqué** dans les entreprises. \n\nDu code à la mise en production, quels sont **les impacts de nos pratiques actuelles** sur notre bien-être ? Quels constats pouvons-nous faire en 2025 ? 🤔\n\nPrenons conscience des **conséquences de notre quotidien de travail sur notre charge cognitive**. Mais également, sur notre motivation ou sur nos capacités de concentration. 🧠 ⚡\n\nConstatons ensemble les **impacts positifs de la maintenance de code** sur votre charge mentale. Observons comment votre **contexte de travail et le leadership peuvent influencer votre capacité de concentration** et votre productivité. Et voyons si des opportunités de 2025, **comme la GenIA ou le DevEx**, ont réellement leur place pour donner les moyens à une organisation de soutenir et soulager les équipes. Le tout agrémenté de sources et d’études pour argumenter la mise en œuvre de ces pratiques. \n\nLe bien-être devient **une nécessité** pour les entreprises, **et non plus une option** 👍",
     dateStartStr: "2025-12-05T10:30:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmbl5zokj03hgp93m66xbf2z8"],
@@ -309,7 +309,7 @@ Vous êtes ?
     id: "cmc4lqonq0029m73mjzvn23or",
     title: "La classification par similarité : Comment se passer des LLM",
     abstract:
-      "A l’heure où les LLM prennent la plus grande part de marché des solutions d’IA, ils sont vus comme des solveurs généraux sur toute tâche impliquant du langage naturel. Seulement, cela soulève plusieurs problématiques. Ces modèles représentant une taille mémoire conséquente et une puissance de calcul démesurée, le client se trouve dépendant du fournisseur, de ses conditions en termes de sécurité des données, de disponibilité et de fluctuation des prix. De plus, pour des tâches longues ils se montrent parfois lents et assez opaques quant aux traitements effectués.\nLa classification de plaintes utilisateurs entre pleinement dans ce contexte. De nombreuses solutions existent, mais peu offrent une facilité de mise en place ainsi qu’un contrôle sur les modèles et les données qui sont ou seront déployés. Aussi, ceux-ci requièrent généralement des données labellisées et homogènes, qui ne sont pas toujours disponibles en conditions réelles.\nCette présentation vient traiter d’une situation courante chez le client : Une grande quantité de données non labellisées dans une entreprise pour laquelle la protection des données est un enjeu majeur. La solution proposée devait donc présenter ces caractéristiques clés :\n-\tApprentissage non supervisé\n-\tFaible en coût et s’appuyant sur des options gratuites et open source\n-\tExécution locale\nEn outre, le temps total d’exécution s’en trouve fortement réduit et la consommation d’énergie nécessaire à l’exécution est négligeable en comparaison à un LLM, justifiant le développement d’une solution à part entière.\nPour cela, j’utilise des modèles de vectorisation ouverts, dont la particularité est de rapprocher les mots dont la sémantique est similaire. Plusieurs possibilités s’offrent alors, selon ce que le métier aura mis à disposition : catégories déjà définies, messages partiellement labellisés... Le processus ensuite mis en place peut mettre en œuvre des algorithmes de clustering, ou un simple système de récupération vectorielle à travers des vector stores. Le rapprochement a déjà été fait par le modèle, le reste du traitement dépend alors des exigences et des spécificités de chaque projet. La solution ici proposée s’appuie donc sur des outils déjà bien répandus et montre une forte robustesse au changement, notamment l’ajout de catégories.",
+      "A l’heure où les LLM prennent la plus grande part de marché des solutions d’IA, ils sont vus comme des solveurs généraux sur toute tâche impliquant du langage naturel. Seulement, cela soulève plusieurs problématiques. Ces modèles représentant une taille mémoire conséquente et une puissance de calcul démesurée, le client se trouve dépendant du fournisseur, de ses conditions en termes de sécurité des données, de disponibilité et de fluctuation des prix. De plus, pour des tâches longues ils se montrent parfois lents et assez opaques quant aux traitements effectués.\nLa classification de plaintes utilisateurs entre pleinement dans ce contexte. De nombreuses solutions existent, mais peu offrent une facilité de mise en place ainsi qu’un contrôle sur les modèles et les données qui sont ou seront déployés. Aussi, ceux-ci requièrent généralement des données labellisées et homogènes, qui ne sont pas toujours disponibles en conditions réelles.\nCette présentation vient traiter d’une situation courante chez le client : Une grande quantité de données non labellisées dans une entreprise pour laquelle la protection des données est un enjeu majeur. La solution proposée devait donc présenter ces caractéristiques clés :\n\n* Apprentissage non supervisé\n* Faible en coût et s’appuyant sur des options gratuites et open source\n* Exécution locale\n* En outre, le temps total d’exécution s’en trouve fortement réduit et la consommation d’énergie nécessaire à l’exécution est négligeable en comparaison à un LLM, justifiant le développement d’une solution à part entière.\n* Pour cela, j’utilise des modèles de vectorisation ouverts, dont la particularité est de rapprocher les mots dont la sémantique est similaire. Plusieurs possibilités s’offrent alors, selon ce que le métier aura mis à disposition : catégories déjà définies, messages partiellement labellisés… Le processus ensuite mis en place peut mettre en œuvre des algorithmes de clustering, ou un simple système de récupération vectorielle à travers des vector stores. Le rapprochement a déjà été fait par le modèle, le reste du traitement dépend alors des exigences et des spécificités de chaque projet. La solution ici proposée s’appuie donc sur des outils déjà bien répandus et montre une forte robustesse au changement, notamment l’ajout de catégories.\n\n",
     dateStartStr: "2025-12-05T15:30:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["cmc4lqonj0028m73mo0b45y9c", "cmb7htz0r012kog3mqcsz380j"],
@@ -318,6 +318,21 @@ Vous êtes ?
     level: "INTERMEDIATE",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
     categoryId: "cm90v97ub04v2qo3mb56jezst",
+    hideTrackTitle: false,
+  },
+  {
+    id: "cmc2fdl9100i9ol3myoikun9h",
+    title: "Rendre ses tests concis et évolutifs grâce à JUnit & cie",
+    abstract:
+      "Après avoir développé une nouvelle fonctionnalité, on passe souvent par une phase de refactoring pour essayer de trouver une meilleure implémentation. Mais peut-être qu’on oublie parfois d’améliorer aussi les tests ?\n\nUne fois écrits, ces tests serviront non seulement à détecter de potentiels bugs, mais aussi à documenter un comportement et à apporter de la confiance à l’équipe lors des développements suivants. Pour remplir ces fonctions cruciales, une suite de tests doit être lisible, compréhensible, rapidement exécutable, et doit pouvoir être enrichie le plus simplement possible.\n\nVoyons comment tirer parti d’outils tels que JUnit 5, AssertJ ou Spring Test pour atteindre ces objectifs !",
+    dateStartStr: "2025-12-05T13:00:00.000+00:00",
+    durationMinutes: 50,
+    speakerIds: ["cmc2fdl8y00i8ol3mtdv7rhil"],
+    trackId: "recoura",
+    language: "fr",
+    level: "INTERMEDIATE",
+    formatId: "cm8fxehjm00qaqr3mi6qly25m",
+    categoryId: "cm8fxj4cj00qeqr3m3xph6k7n",
     hideTrackTitle: false,
   },
   {
@@ -348,21 +363,6 @@ Vous êtes ?
     language: "fr",
     level: "BEGINNER",
     formatId: "cm8fxewbi00qbqr3mdo7foy1h",
-    categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
-    hideTrackTitle: false,
-  },
-  {
-    id: "cmcas5i0q00dhnz3m8b7mi6oa",
-    title: "Context-Driven Development : penser avant de coder",
-    abstract:
-      'On vous a dit de tout tester, de tout découper en microservices, de tout CI/CD-er… Mais on vous a rarement demandé : dans quel contexte ? \nCette conférence vous propose une autre grille de lecture : celle du pragmatisme contextualisé, où le meilleur choix n’est pas universel, mais spécifique.\n\nOn parlera de ces "bonnes pratiques" souvent appliquées machinalement, parfois contre-productives.\n\nParce qu’au fond, vos choix techniques méritent mieux qu’un post LinkedIn avec 3 000 likes...\n\nEn bonus, un détour par le Cloud du Cœur, une initiative des Restos du Cœur, où les choix technologiques ne sont pas drivés par la hype, mais par le contexte, les contraintes réelles, et l’impact concret.\n\nMoins de buzzwords, plus de bon sens. Parce que coder, c’est décider, et toute décision a besoin de son contexte.',
-    dateStartStr: "2025-12-05T13:00:00.000+00:00",
-    durationMinutes: 50,
-    speakerIds: ["cmcas4pba00dcnz3mkh6m5121"],
-    trackId: "recoura",
-    language: "fr",
-    level: "BEGINNER",
-    formatId: "cm8fxehjm00qaqr3mi6qly25m",
     categoryId: "cm8fxkkdc00qiqr3m4btxoakk",
     hideTrackTitle: false,
   },
@@ -493,7 +493,7 @@ Vous êtes ?
     title:
       "Devenez l'enquêteur intraitable qui réduit le coût de vos anomalies visuelles",
     abstract:
-      "Bob, détective des pixels, traque tout ce qui cloche : un produit défectueux dans une usine, une image violente sur un réseau social, ou encore une zone suspecte sur une radio médicale. Trois univers, un même enjeu : détecter automatiquement l'anomalie avant qu'elle ne coûte — que ce soit en argent, en sécurité ou en santé.\n\nEn ce moment, son urgence est industrielle : une chaîne de production de vis, où reflets, ombres et parasites visuels brouillent les pistes. Comment distinguer le vrai défaut du simple bruit ?\nBob, fidèle aux méthodes traditionnelles, se perd encore dans les fausses alertes. Puis, il mise sur les Vision Transformers qui s'avèrent plus efficaces.\n\nDans cette session, vous suivrez l'enquête de Bob pour comprendre comment automatiser la détection d'anomalies. Vous découvrirez comment un algorithme peut comprendre une image, et deux méthodes qui permettent de détecter des anomalies visuelles. Puis, nous terminerons l'enquête en confrontant et évaluant ces méthodes afin de dégager celle qui offre la précision la plus implacable.\n\nÀ l'issue de cette session, vous repartirez avec l'œil d'un détective : les anomalies se cachent dans tous les sujets qui vous entourent — et vous ne les verrez plus de la même façon.",
+      "Bob, détective des pixels, traque tout ce qui cloche : un produit défectueux dans une usine, une image violente sur un réseau social, ou encore une zone suspecte sur une radio médicale. Trois univers, un même enjeu : détecter automatiquement l’anomalie avant qu’elle ne coûte — que ce soit en argent, en sécurité ou en santé.\n\nEn ce moment, son urgence est industrielle : une chaîne de production de vis, où reflets, ombres et parasites visuels brouillent les pistes. Comment distinguer le vrai défaut du simple bruit ?\nBob, fidèle aux méthodes traditionnelles, se perd encore dans les fausses alertes. Puis, il mise sur les Vision Transformers qui s’avèrent plus efficaces.\n\nDans cette session, vous suivrez l’enquête de Bob pour comprendre comment automatiser la détection d’anomalies. Vous découvrirez comment un algorithme peut comprendre une image, et deux méthodes qui permettent de détecter des anomalies visuelles. Puis, nous terminerons l’enquête en confrontant et évaluant ces méthodes afin de dégager celle qui offre la précision la plus implacable.\n\nÀ l’issue de cette session, vous repartirez avec l’œil d’un détective : les anomalies se cachent dans tous les sujets qui vous entourent — et vous ne les verrez plus de la même façon.\n",
     dateStartStr: "2025-12-05T15:05:00.000+00:00",
     durationMinutes: 20,
     speakerIds: ["UxbZKeJnjcSVnmJB2tHv"],

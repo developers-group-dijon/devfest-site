@@ -358,6 +358,31 @@ const speakers = [
     ],
   },
   {
+    id: "cmc2fdl8y00i8ol3mtdv7rhil",
+    name: "Juliette de Rancourt",
+    bio: "Juliette has been a full-stack developer for 6 years, building web applications in various functional contexts and contributing to the JUnit 5 framework.\nBesides seeking to deliver useful, well-crafted software to end-users, she enjoys leveraging testing tools to make test suites pleasant to read and convenient to write.",
+    company: "SHODO",
+    jobTitle: null,
+    photoUrl: "/avatars/juliette-de-rancourt.webp",
+    socials: [
+      {
+        id: "github",
+        name: "github",
+        link: "https://github.com/juliette-derancourt",
+      },
+      {
+        id: "bluesky",
+        name: "bluesky",
+        link: "https://bsky.app/profile/jderancourt.bsky.social",
+      },
+      {
+        id: "linkedin",
+        name: "linkedin",
+        link: "https://fr.linkedin.com/in/juliette-de-rancourt",
+      },
+    ],
+  },
+  {
     id: "cmc4lqonj0028m73mo0b45y9c",
     name: "Alexandre Azouri",
     bio: "Je suis un jeune ingénieur en intelligence artificielle et machine learning basé à Lyon. Diplômé de Polytech Lyon de l'UCBL, je suis passionné par ces nouvelles technologies ainsi que leur application dans de nombreux domaines. J'ai eu l'occasion de travailler sur des projets de détection de cancer et d'agents LLM pour du service client respectant la RGPD.",
@@ -392,25 +417,6 @@ const speakers = [
         id: "linkedin",
         name: "linkedin",
         link: "https://www.linkedin.com/in/flora-njofang-3513b3164",
-      },
-    ],
-  },
-  {
-    id: "cmcas4pba00dcnz3mkh6m5121",
-    name: "Julien Briault",
-    bio: "Ingénieur Réseau / SRE chez Deezer la journée, et manager d’infrastructure bénévole aux Restos du Cœur le soir, je suis un peu le Batman de l’IT : un clavier pour le boulot, un autre pour les Restos.\n\nPassionné par l’informatique, j’ai décidé d'ajouter un peu d’humanité sur un métier souvent déconnecté de la réalité … ! À côté de ça, je suis DJ et producteur de musique – donc si vous me croisez en festival, je ne déploie pas un serveur, je mixe.",
-    company: "Deezer & Restos du Coeur",
-    photoUrl: "/avatars/julien-briault.webp",
-    socials: [
-      {
-        id: "github",
-        name: "github",
-        link: "https://github.com/juhnny5",
-      },
-      {
-        id: "x",
-        name: "x",
-        link: "https://x.com/ju_hnny5",
       },
     ],
   },
