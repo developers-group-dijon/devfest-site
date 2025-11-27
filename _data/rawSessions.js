@@ -52,6 +52,28 @@ export default [
     trackRange: ["niepce", "paris"],
     styleClass: "pause",
   },
+  {
+    id: "pause apres-midi 2",
+    title: "Pause",
+    dateStartStr: "2025-12-05T15:50:00.000+01:00",
+    durationMinutes: 15,
+    trackId: "bernard",
+    styleClass: "pause",
+  },
+  // keynotes
+  {
+    id: "keynote-debut",
+    title: "Accueil et lancement de la journée",
+    dateStartStr: "2025-12-05T09:00:00.000+01:00",
+    durationMinutes: 20,
+  },
+  // keynotes
+  {
+    id: "keynote-fin",
+    title: "Remerciements et clôture de la journée",
+    dateStartStr: "2025-12-05T17:50:00.000+01:00",
+    durationMinutes: 10,
+  },
   // qui veut être mon dev
   {
     id: "DDeXJLYZfCLtVIFXwzMv",
