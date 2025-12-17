@@ -10,7 +10,7 @@
 export default {
   comment:
     "inclut le petit-déjeuner, le repas le midi et le café pour la journée",
-  url: "https://my.weezevent.com/devfest-dijon-2025",
+  url: null,
   pricings: [
     {
       id: "early",
