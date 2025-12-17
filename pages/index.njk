@@ -89,13 +89,21 @@ photos:
       {%- endif %}
       <div class="pricings">
       {%- for pricing in ticketing.pricings %}
+         {%- if pricing.url | default(ticketing.url) %}
          <a class="pricing" href="{{ pricing.url | default(ticketing.url) }}">
+         {%- else %}
+         <div class="pricing">
+         {%- endif %}
             <div class="pricing-name">{{ pricing.name }}</div>
             <div class="pricing-price">{{ pricing.price }}</div>
             <div class="pricing-ticketing-comment">{{ ticketing.comment }}</div>
             <div class="pricing-comment">{{ pricing.comment }}</div>
+         {%- if pricing.url | default(ticketing.url) %}
             <div class="pricing-action visible-link">Acheter</div>
          </a>
+         {%- else %}
+         </div>
+         {%- endif %}
       {%- endfor %}
       </div>
    </div>
