@@ -488,12 +488,12 @@ const speakers = [
       {
         id: "github",
         name: "github",
-        link: "https://github.com/CruuzAzul",
+        link: "https://github.com/mickaelalvs",
       },
       {
         id: "x",
         name: "x",
-        link: "https://x.com/CruuzAzul",
+        link: "https://x.com/mickaelalvs",
       },
     ],
   },
