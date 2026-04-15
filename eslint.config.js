@@ -1,21 +1,43 @@
+import { defineConfig } from "eslint/config";
 import js from "@eslint/js";
 import { includeIgnoreFile } from "@eslint/compat";
+import jsd from "eslint-plugin-jsdoc";
 import depend from "eslint-plugin-depend";
-import jsdoc from "eslint-plugin-jsdoc";
+import { createNodeResolver, importX } from "eslint-plugin-import-x";
 import globals from "globals";
 import { fileURLToPath } from "node:url";
 
-export default [
+export default defineConfig([
   includeIgnoreFile(fileURLToPath(new URL(".gitignore", import.meta.url))),
-  js.configs.recommended,
-  jsdoc.configs["flat/recommended"],
-  depend.configs["flat/recommended"],
   {
+    linterOptions: {
+      reportUnusedDisableDirectives: "error",
+      reportUnusedInlineConfigs: "error",
+    },
+  },
+  {
+    files: ["**/*.js"],
+    plugins: {
+      js,
+      jsd,
+      depend,
+      "import-x": importX,
+    },
+    settings: {
+      "import-x/resolver-next": [createNodeResolver()],
+    },
+    extends: [
+      "js/recommended",
+      "jsd/flat/recommended",
+      "depend/flat/recommended",
+      "import-x/flat/recommended",
+    ],
     rules: {
       "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "jsdoc/require-property-description": ["off"],
       "jsdoc/require-param-description": ["off"],
       "jsdoc/require-returns-description": ["off"],
+      "import-x/no-extraneous-dependencies": ["error"],
       "jsdoc/no-undefined-types": [
         "error",
         {
@@ -25,9 +47,6 @@ export default [
         },
       ],
     },
-  },
-  {
-    ignores: ["_site"],
   },
   {
     files: ["**/*.js"],
@@ -46,4 +65,7 @@ export default [
       },
     },
   },
-];
+  {
+    ignores: ["_site"],
+  },
+]);

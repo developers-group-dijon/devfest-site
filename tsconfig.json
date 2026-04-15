@@ -3,7 +3,9 @@
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Language and Environment */
-    "target": "ES2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "target": "es2024" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+
+    "types": ["node"],
 
     /* Modules */
     "module": "NodeNext" /* Specify what module code is generated. */,
