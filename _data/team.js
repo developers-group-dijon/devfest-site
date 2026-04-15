@@ -11,13 +11,6 @@
  */
 export default [
   {
-    name: "Allan Cruchaudet",
-    jobTitle: "Chargé de communication",
-    company: "Dijon Bourgogne Invest",
-    photoUrl: "/avatars/allan.webp",
-    socials: [{ id: "linkedin", name: "Linkedin", link: "allan-cruchaudet" }],
-  },
-  {
     name: "Guillaume Poittevin",
     jobTitle: "Senior Solutions Architect",
     company: "Capgemini",
@@ -96,6 +89,44 @@ export default [
       { id: "linkedin", name: "Linkedin", link: "yoann-rouquie" },
       { id: "github", name: "GitHub", link: "yoannrq" },
     ],
+  },
+  {
+    name: "Yoan Thirion",
+    jobTitle: "Référent pédagogique",
+    company: "Coda Dijon",
+    photoUrl: "/avatars/yoan.webp",
+    socials: [
+      { id: "linkedin", name: "Linkedin", link: "yoanthirion" },
+      { id: "github", name: "GitHub", link: "ythirion" },
+    ],
+  },
+  {
+    name: "Jérémy Colombet",
+    company: "Garganttua",
+    photoUrl: "/avatars/jeremy.webp",
+    socials: [{ id: "linkedin", name: "Linkedin", link: "jeremy-colombet" }],
+  },
+  {
+    name: "Guillaume Lerouxel",
+    photoUrl: "/avatars/guillaume-l.webp",
+    socials: [{ id: "linkedin", name: "Linkedin", link: "guillaumelerouxel" }],
+  },
+  {
+    name: "Vincent Rozier",
+    photoUrl: "/avatars/vincent.webp",
+    jobTitle:
+      "Responsable de service développement logiciel pour l'Assurance Retraite",
+    company: "Carsat BFC",
+    socials: [
+      { id: "linkedin", name: "Linkedin", link: "vincent-rozier-aba86427" },
+    ],
+  },
+  {
+    name: "Hussein Loubani",
+    photoUrl: "/avatars/hussein.webp",
+    jobTitle: "Computer Vision & Robotics Researcher",
+    company: "CIAD",
+    socials: [{ id: "linkedin", name: "Linkedin", link: "hussein-loubani" }],
   },
 ];
 

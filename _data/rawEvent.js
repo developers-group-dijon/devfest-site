@@ -22,27 +22,31 @@
  * @type {import("./types.js").RawEvent}
  */
 export default {
-  name: "DevFest Dijon 2025",
-  dateStart: new Date("2025-12-05T08:00:00.000Z"),
-  dateEnd: new Date("2025-12-05T18:00:00.000Z"),
-  visitors: "+500",
-  callForPaper: "https://conference-hall.io/devfest-dijon-2025",
+  name: "DevFest Dijon 2026",
+  dateStart: new Date("2026-12-04T08:00:00.000Z"),
+  dateEnd: new Date("2026-12-04T18:00:00.000Z"),
+  visitors: "+600",
+  callForPaper: "https://conference-hall.io/devfest-dijon-2026",
   // Lien pour devenir sponsor (mettre null pour ne pas afficher le lien)
-  sponsoringUrl: "https://forms.gle/PkazPwvMpkNFe6Jp8",
+  sponsoringUrl: null,
   sessionsDraft: false,
   comments: [
     {
       title: "Le DevFest Dijon, c'est quoi ?",
       content:
-        "Le DevFest Dijon 2025 est la quatrième édition de la plus grande conférence technique de Bourgogne-Franche-Comté destinée aux développeurs. Elle s'adresse aux étudiants, aux professionnels ou tout simplement curieux, passionnés de technologies.",
+        "Le DevFest Dijon 2026 est la cinquième édition de la plus grande conférence technique de Bourgogne-Franche-Comté destinée aux développeurs. Elle s'adresse aux étudiants, aux professionnels ou tout simplement curieux, passionnés de technologies.",
     },
     {
-      title: "DevFest 2025 : Sur les toits de Dijon",
+      title: "DevFest 2026",
       content:
-        "Pour cette édition du DevFest nous prenons un peu de hauteur pour découvrir Dijon depuis ses toits. Une rencontre avec les motifs colorés des tuiles vernissées bourguignonnes",
+        "Pour cetté édition, on vous réserve quelques surprises, un peu de patience…",
     },
   ],
   previousEditions: [
+    {
+      name: "DevFest Dijon 2025",
+      url: "https://devfest-2025.developers-group-dijon.fr",
+    },
     {
       name: "DevFest Dijon 2024",
       url: "https://devfest-2024.developers-group-dijon.fr",
@@ -76,8 +80,8 @@ export default {
     "https://drive.google.com/drive/folders/1jK8Y3qdiyp06EBZFeJ9d3--8Dv93BLNF/",
   team: {
     message:
-      "Le DevFest Dijon 2025 est organisé par le [Developers Group Dijon](https://developers-group-dijon.fr/), fier de proposer cette nouvelle édition !",
-    why: "Le DevFest Dijon 2025 sera la quatrième édition dijonnaise d'un événement qui rassemble des milliers de développeurs et de passionnés dans le monde entier chaque année pour penser les technologies de demain. Le DevFest est LE lieu unique pour partager et échanger autour de nombreux sujets tels que Web, Cloud, Mobile, objets connectés et bien plus encore",
+      "Le DevFest Dijon 2026 est organisé par le [Developers Group Dijon](https://developers-group-dijon.fr/), fier de proposer cette nouvelle édition !",
+    why: "Le DevFest Dijon 2026 sera la cinquième édition dijonnaise d'un événement qui rassemble des milliers de développeurs et de passionnés dans le monde entier chaque année pour penser les technologies de demain. Le DevFest est LE lieu unique pour partager et échanger autour de nombreux sujets tels que Web, Cloud, Mobile, objets connectés et bien plus encore",
   },
   // TODO: lien vers les réseaux
   aPropos: [
