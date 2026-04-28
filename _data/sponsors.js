@@ -28,14 +28,62 @@ export default [
   },
   {
     name: "Sponsors Gold",
-    sponsors: [],
+    sponsors: [
+      {
+        name: "Atol Conseils & Développments",
+        website: "https://www.atolcd.com/",
+        logoUrl: "/sponsors/atolcd.webp",
+      },
+      {
+        name: "BPCE Solutions Informatiques",
+        website: "https://www.bpce-si.fr/",
+        logoUrl: "/sponsors/bpce-si.webp",
+      },
+      {
+        name: "DIIAGE",
+        website: "https://diiage.cucdb.fr",
+        logoUrl: "/sponsors/diiage.webp",
+      },
+      {
+        name: "Infotel",
+        website: "https://infotel.com/",
+        logoUrl: "/sponsors/infotel.webp",
+      },
+    ],
   },
   {
     name: "Sponsors Silver",
-    sponsors: [],
+    sponsors: [
+      {
+        name: "CPage",
+        website: "https://www.cpage.fr/",
+        logoUrl: "/sponsors/cpage.webp",
+      },
+      {
+        name: "CESI Dijon",
+        website: "https://dijon.cesi.fr/",
+        logoUrl: "/sponsors/cesi.webp",
+      },
+      {
+        name: "Coda Dijon",
+        website: "https://www.coda.school/campus/dijon/",
+        logoUrl: "/sponsors/coda.webp",
+      },
+      {
+        name: "Steerway",
+        website: "https://steerway.dev/",
+        logoUrl: "/sponsors/steerway.webp",
+      },
+    ],
   },
   {
     name: "Sponsors Bronze",
-    sponsors: [],
+    sponsors: [
+      {
+        name: "Holberton",
+        website: "https://www.holbertonschool.fr",
+        logoUrl: "/sponsors/holberton.webp",
+      },
+    ],
   },
 ];
