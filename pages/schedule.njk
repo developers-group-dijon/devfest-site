@@ -4,6 +4,7 @@ layout: page.njk
 title: Le programme
 image: "/background/sessions.webp"
 css: "/css/schedule.css"
+js: "/js/schedule-favorites.js"
 eleventyComputed:
    description: Cette année, le {{ event.name }} se déroulera sur {{ tracks.length }} scènes de façon simultanée. Découvrez le programme et sélectionnez vos talks favoris pour créer votre programme sur mesure !
 ---
@@ -16,6 +17,15 @@ eleventyComputed:
    }
    {%- endfor %}
 </style>
+<aside class="schedule-help full-width" data-help-key="schedule-favorites" hidden>
+   <div class="schedule-help-icon">{% iconSvg 'solid/circle-info' %}</div>
+   <div class="schedule-help-content">
+      <span class="schedule-help-title">Composez votre planning personnel.</span><br>
+      Cliquez sur le signet d'une session pour l'ajouter à vos favoris. Votre sélection est conservée dans ce navigateur.<br>
+      Vous pouvez la partager via un lien depuis <a href="/favoris/">Mon planning</a>.
+   </div>
+   <button class="schedule-help-dismiss" type="button" aria-label="Masquer cette aide">×</button>
+</aside>
 {%- if event.sessionsDraft -%}
 <div class="draft-warning full-width">
 Le planning présenté est une version provisoire qui est susceptible d'évoluer.
@@ -45,7 +55,10 @@ Le planning présenté est une version provisoire qui est susceptible d'évoluer
          </div>
          {%- for session in sessions | filterByDateStart(slot) %}
             {%- set column = (session.trackRange[0]+" / "+session.trackRange[1]+"-end") if session.trackRange else (session.trackId | default ("track / -1")) %}
-         <div class="{{ session.styleClass }} session" style="grid-column: {{ column }} ; grid-row: slot_{{ session.dateStart | dateKey }} / span {{ session | countSlots(daySlot) }}">
+         <div class="{{ session.styleClass }} session" {% if not session.hideTrackTitle %}data-session-id="{{ session.id }}"{% endif %} style="grid-column: {{ column }} ; grid-row: slot_{{ session.dateStart | dateKey }} / span {{ session | countSlots(daySlot) }}">
+            {%- if not session.hideTrackTitle %}
+            <button class="session-fav" type="button" aria-pressed="false" aria-label="Ajouter aux favoris" title="Ajouter aux favoris"><span class="star-off">{% iconSvg 'regular/bookmark' %}</span><span class="star-on">{% iconSvg 'solid/bookmark' %}</span></button>
+            {%- endif %}
             <div class="title">
                {%- if session.hideTrackTitle -%}
                {{ session.title }}

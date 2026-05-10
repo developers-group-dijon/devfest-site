@@ -102,6 +102,7 @@ body.scrolled .site-header {
     0 2px 2px 0 rgb(0 0 0 / 14%),
     0 3px 1px -2px rgb(0 0 0 / 12%),
     0 1px 5px 0 rgb(0 0 0 / 20%);
+  z-index: 10;
 }
 
 .site-header .menu a.item {
@@ -135,7 +136,21 @@ a.social-icon:hover svg {
   display: none;
 }
 
-@media (max-width: 600px) {
+.site-header .menu a.item .planning-icon,
+.site-header .menu a.item .schedule-icon,
+.site-header .menu a.item .speakers-icon {
+  display: none;
+}
+
+.site-header .menu a.item .planning-icon svg,
+.site-header .menu a.item .schedule-icon svg,
+.site-header .menu a.item .speakers-icon svg {
+  height: 1rem;
+  fill: currentcolor;
+  vertical-align: middle;
+}
+
+@media (max-width: 900px) {
   .site-header .menu a.item {
     padding: 0 0.5rem;
   }
@@ -147,6 +162,43 @@ a.social-icon:hover svg {
   .site-header .menu a.item.home-icon {
     display: inline;
   }
+
+  .site-header .menu a.item .planning-icon,
+  .site-header .menu a.item .schedule-icon,
+  .site-header .menu a.item .speakers-icon {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .site-header .menu a.item .planning-label,
+  .site-header .menu a.item .schedule-label,
+  .site-header .menu a.item .speakers-label {
+    display: none;
+  }
+}
+
+.site-header .menu a.item .fav-count {
+  display: inline-block;
+  min-width: 1.4rem;
+  padding: 0 0.4rem;
+  margin-left: 0.3rem;
+  border-radius: 1rem;
+  background: var(--default-primary-color);
+  color: var(--primary-inv-text-color);
+  font-size: 0.75rem;
+  line-height: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.site-header .menu a.item .fav-count[hidden] {
+  display: none;
+}
+
+body.scrolled .site-header .menu a.item .fav-count {
+  background: var(--default-primary-color);
+  color: var(--primary-inv-text-color);
 }
 
 .site-header .menu a.item.ticketing-link {
@@ -160,6 +212,7 @@ a.social-icon:hover svg {
 
 .site-header .menu a.item:hover {
   background-color: rgb(0 0 0 / 10%);
+  text-decoration: none;
 }
 
 body.scrolled .site-header .menu a.item {

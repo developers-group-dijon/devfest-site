@@ -12,9 +12,57 @@
 }
 
 .grid-day > div.session {
+  position: relative;
   border: 1px solid var(--divider-color);
   border-radius: 0.2rem;
   padding: 0.5rem;
+}
+
+.session-fav {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--secondary-text-color);
+  opacity: 0.55;
+  transition:
+    opacity 0.2s,
+    color 0.2s;
+}
+
+.session-fav:hover,
+.session-fav:focus {
+  opacity: 1;
+  color: var(--default-primary-color);
+}
+
+.session-fav svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: currentcolor;
+  pointer-events: none;
+}
+
+.session-fav .star-on {
+  display: none;
+}
+
+.session-fav[aria-pressed="true"] {
+  opacity: 1;
+  color: var(--default-primary-color);
+}
+
+.session-fav[aria-pressed="true"] .star-off {
+  display: none;
+}
+
+.session-fav[aria-pressed="true"] .star-on {
+  display: inline;
 }
 
 .grid-day > div.session:hover {
@@ -27,6 +75,7 @@
 }
 
 .session .title {
+  padding-right: 2.2rem;
   margin-bottom: 1rem;
   font-size: 1.2rem;
   font-weight: 400;
@@ -150,4 +199,68 @@
   background-color: var(--light-primary-color);
   color: var(--gray-light-background-color);
   font-weight: normal;
+  z-index: 1;
+}
+
+.schedule-help {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--default-primary-color);
+  background: rgb(199 77 161 / 8%);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  z-index: 1;
+}
+
+.schedule-help[hidden] {
+  display: none;
+}
+
+.schedule-help-title,
+.schedule-help-content a {
+  font-weight: 400;
+}
+
+.schedule-help-icon {
+  display: inline-flex;
+  align-items: center;
+  height: 1.4em;
+}
+
+.schedule-help-icon svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: var(--default-primary-color);
+}
+
+.schedule-help-content a {
+  color: var(--default-primary-color);
+  text-decoration: underline;
+}
+
+.schedule-help-dismiss {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--secondary-text-color);
+  font-family: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.schedule-help-dismiss:hover,
+.schedule-help-dismiss:focus {
+  background: rgb(0 0 0 / 6%);
+  color: var(--primary-text-color);
 }

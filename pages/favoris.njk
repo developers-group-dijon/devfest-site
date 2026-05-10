@@ -1,0 +1,84 @@
+---
+permalink: /favoris/
+layout: page.njk
+title: Mon planning
+image: "/background/sessions.webp"
+css: "/css/favoris.css"
+js: "/js/favoris.js"
+eleventyComputed:
+   description: Retrouvez ici les sessions que vous avez ajoutées à vos favoris. Le planning est conservé dans votre navigateur ; un permalien permet de le partager entre appareils.
+---
+
+<div class="full-width">
+   <div class="fav-preview-banner" hidden>
+      <div>
+         <strong>Vous consultez un planning partagé.</strong>
+         <span class="fav-preview-text">Ce planning n'est pas enregistré dans ce navigateur.</span>
+         <span class="fav-preview-dropped" hidden></span>
+      </div>
+      <button class="fav-import-button" type="button">Enregistrer dans le navigateur</button>
+   </div>
+   <div class="fav-toolbar" hidden>
+      <button class="fav-share-button" type="button" aria-label="Partager mon planning">{% iconSvg 'solid/share-nodes' %}<span>Partager</span></button>
+      <span class="fav-share-feedback" hidden role="status">Lien copié dans le presse-papier</span>
+   </div>
+   <div class="fav-local-dropped" hidden role="status"></div>
+   <div class="fav-empty" hidden>
+      <p>Vous n'avez encore ajouté aucune session à vos favoris.</p>
+      <p><a class="visible-link" href="/schedule/">Découvrir le programme</a></p>
+   </div>
+   <noscript>
+      <p>Cette page nécessite JavaScript pour afficher votre sélection de favoris (les données sont stockées dans votre navigateur).</p>
+   </noscript>
+   {%- for day, daySlot in slots %}
+   <section class="fav-day" data-day="{{ day }}" hidden>
+      <h2 class="fav-day-title">{{ day | dayFormat | capitalize }}</h2>
+      <div class="fav-day-list">
+         {%- for slot in daySlot %}
+         {%- for session in sessions | filterByDateStart(slot) %}
+         {%- if not session.hideTrackTitle %}
+         <article class="fav-card" data-session-id="{{ session.id }}" data-day="{{ session.day }}" data-start="{{ session.dateStart | dateKey }}" data-duration="{{ session.duration }}" hidden>
+            <div class="fav-card-time">
+               <span class="fav-card-start">{{ session.dateStart | timeFormat }}</span>
+               <span class="fav-card-duration">{{ session.durationMinutes }} min</span>
+            </div>
+            <div class="fav-card-body">
+               <span class="fav-card-conflict-badge" hidden>Conflit</span>
+               <h3 class="fav-card-title"><a href="/session/{{ session.id | slugify }}">{{ session.title }}</a></h3>
+               <div class="fav-card-meta">
+                  {%- for track in session.tracks -%}
+                  {%- if not loop.first %} ⋅ {% endif -%}{{ track.name }}
+                  {%- endfor -%}
+                  {%- if session.level %} ⋅ {{ session.level | formatLevel }}{% endif -%}
+                  {%- if session.language %} ⋅ {{ session.language | formatLanguage }}{% endif -%}
+                  {%- if session.category.name %} ⋅ {{ session.category.name }}{% endif -%}
+               </div>
+               {%- if session.speakers.length %}
+               <div class="fav-card-speakers">
+                  {%- for speaker in session.speakers -%}
+                  {%- if not loop.first %}, {% endif -%}{{ speaker.name }}{% if speaker.company %} ({{ speaker.company }}){% endif -%}
+                  {%- endfor -%}
+               </div>
+               {%- endif %}
+               <button class="fav-card-remove" type="button" aria-label="Retirer des favoris" data-session-id="{{ session.id }}">Retirer</button>
+            </div>
+         </article>
+         {%- endif -%}
+         {%- endfor -%}
+         {%- endfor %}
+      </div>
+   </section>
+   {%- endfor %}
+
+   <div class="fav-modal" hidden role="dialog" aria-modal="true" aria-labelledby="fav-modal-title">
+      <div class="fav-modal-content">
+         <h2 id="fav-modal-title">Importer ce planning</h2>
+         <p>Vous avez déjà des favoris enregistrés. Que souhaitez-vous faire ?</p>
+         <div class="fav-modal-actions">
+            <button type="button" class="fav-modal-merge">Fusionner avec mes favoris</button>
+            <button type="button" class="fav-modal-replace">Remplacer mes favoris</button>
+            <button type="button" class="fav-modal-cancel">Annuler</button>
+         </div>
+      </div>
+   </div>
+</div>

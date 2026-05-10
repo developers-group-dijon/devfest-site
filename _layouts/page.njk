@@ -16,3 +16,6 @@ layout: base.njk
 <div class="centered-content page-content">
   {{ content | safe }}
 </div>
+{%- if js %}
+<script type="module" src="{{ js | normalizeAssetUrl }}"></script>
+{%- endif %}

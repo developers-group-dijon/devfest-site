@@ -29,15 +29,16 @@ icons:
     <link rel="stylesheet" type="text/css" href="{{ '/poppins/latin-italic.css' | normalizeAssetUrl }}">
     <link rel="stylesheet" type="text/css" href="{{ '/poppins/latin.css' | normalizeAssetUrl }}">
   </head>
-  <body>
+  <body data-edition="{{ event.name | slugify }}">
     <header class="site-header">
       <nav class="centered-content">
         <a href="/" class="site-logo" title="Retour à la page d'accueil"><img src="{{ brandLogo | normalizeAssetUrl }}" alt="Logo {{ event.name }}"></a>
         <div class="menu">
           <a class="item home-icon" href="/" title="Retour à la page d'accueil">{% iconSvg 'solid/house' %}</a>
           <a class="item home" href="/">Accueil</a>
-          {% if speakers.length > 0 %}<a class="item" href="/speakers/">Speakers</a>{% endif %}
-          {% if event.sessionCount > 0 %}<a class="item" href="/schedule/">Programme</a>{% endif %}
+          {% if speakers.length > 0 %}<a class="item" href="/speakers/" title="Speakers"><span class="speakers-icon">{% iconSvg 'solid/user' %}</span><span class="speakers-label">Speakers</span></a>{% endif %}
+          {% if event.sessionCount > 0 %}<a class="item" href="/schedule/" title="Programme"><span class="schedule-icon">{% iconSvg 'solid/calendar' %}</span><span class="schedule-label">Programme</span></a>{% endif %}
+          {% if event.sessionCount > 0 %}<a class="item planning" href="/favoris/" title="Mon planning"><span class="planning-icon">{% iconSvg 'solid/bookmark' %}</span><span class="planning-label">Mon planning</span> <span class="fav-count" hidden>0</span></a>{% endif %}
           {% if ticketing.url %}<a class="item ticketing-link" href="{{ ticketing.url}}">Billetterie</a>{% endif %}
           {% if event.sponsoringUrl %}<a class="item ticketing-link" href="{{ event.sponsoringUrl }}">Devenir sponsor</a>{% endif %}
         </div>
@@ -74,6 +75,8 @@ icons:
         <div class="centered-content">{{ event.name }}<a href="https://developers-group-dijon.fr/">Fait avec ❤ par le Developers Group Dijon</a></div>
       </div>
     </footer>
+    <script type="application/json" id="sessions-manifest">{{ rawSessions | sessionIds | dump | safe }}</script>
     <script src="{{ '/js/site.js' | normalizeAssetUrl }}" ></script>
+    <script type="module" src="{{ '/js/header-favorites.js' | normalizeAssetUrl }}"></script>
   </body>
 </html>

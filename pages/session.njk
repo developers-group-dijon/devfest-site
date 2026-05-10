@@ -12,6 +12,7 @@
     layout: "page.njk",
     image: "/background/sessions.webp",
     css: "/css/session.css",
+    js: "/js/session-favorites.js",
     eleventyComputed: {
         title: "{{ rawSession.title | safe }}",
         // Les données calculées (eleventyComputed) ne sont pas disponibles dans la pagination.
@@ -21,7 +22,10 @@
     },
 }
 ---
-<div class="main-content">{{ session.abstract | md | safe }}</div>
+<div class="main-content">
+    <button class="session-fav-large" type="button" aria-pressed="false" data-session-id="{{ rawSession.id }}" aria-label="Ajouter aux favoris"><span class="star-off">{% iconSvg 'regular/bookmark' %}</span><span class="star-on">{% iconSvg 'solid/bookmark' %}</span><span class="label">Ajouter aux favoris</span></button>
+    {{ session.abstract | md | safe }}
+</div>
 
 <div class="aside">
     {%- for speaker in session.speakers %}

@@ -200,6 +200,19 @@ function formatLanguage(value) {
 }
 
 /**
+ * Liste les ids des sessions qui ont une page de détail dédiée
+ * (= éligibles aux favoris). Utilisé pour injecter le manifeste
+ * inline lu par `_assets/js/favorites.js`.
+ * @param {import("../_data/types.js").RawSession[]} value
+ * @returns {string[]}
+ */
+function sessionIds(value) {
+  return value
+    .filter((session) => session.hideTrackTitle === false)
+    .map((session) => session.id);
+}
+
+/**
  * Calcule le nombre de slots que va occcuper une session.
  * @param {import('../_data/types.js').Session} session
  * @param {Date[]} slots
@@ -235,4 +248,5 @@ export default {
   formatLanguage,
   countSlots,
   minutesBeetween,
+  sessionIds,
 };
