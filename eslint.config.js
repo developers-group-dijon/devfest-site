@@ -66,6 +66,24 @@ export default defineConfig([
     },
   },
   {
+    // Les tests unitaires ont des fixtures volontairement partielles ;
+    // on ne force pas la JSDoc complète sur les helpers locaux.
+    files: ["_test/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+      },
+    },
+    rules: {
+      "jsdoc/require-jsdoc": "off",
+      "jsdoc/require-param": "off",
+      "jsdoc/require-returns": "off",
+      "jsdoc/check-types": "off",
+      "jsdoc/tag-lines": "off",
+    },
+  },
+  {
     ignores: ["_site"],
   },
 ]);

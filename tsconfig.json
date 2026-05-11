@@ -31,6 +31,6 @@
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "exclude": ["_site"],
+  "exclude": ["_site", "_test"],
   "include": [".eleventy.js", "_*/**/*.js"]
 }
