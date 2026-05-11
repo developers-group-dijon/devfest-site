@@ -33,13 +33,13 @@ icons:
     <a class="skip-link" href="#main">Aller au contenu</a>
     <header class="site-header">
       <nav class="centered-content">
-        <a href="/" class="site-logo" title="Retour à la page d'accueil"><img src="{{ brandLogo | normalizeAssetUrl }}" alt="Logo {{ event.name }}"></a>
+        <a href="/" class="site-logo" aria-label="Retour à l'accueil"><img src="{{ brandLogo | normalizeAssetUrl }}" alt=""></a>
         <div class="menu">
-          <a class="item home-icon" href="/" title="Retour à la page d'accueil">{% iconSvg 'solid/house' %}</a>
+          <a class="item home-icon" href="/" aria-label="Accueil">{% iconSvg 'solid/house' %}</a>
           <a class="item home" href="/">Accueil</a>
-          {% if speakers.length > 0 %}<a class="item" href="/speakers/" title="Speakers"><span class="speakers-icon">{% iconSvg 'solid/user' %}</span><span class="speakers-label">Speakers</span></a>{% endif %}
-          {% if event.sessionCount > 0 %}<a class="item" href="/schedule/" title="Programme"><span class="schedule-icon">{% iconSvg 'solid/calendar' %}</span><span class="schedule-label">Programme</span></a>{% endif %}
-          {% if event.sessionCount > 0 %}<a class="item planning" href="/favoris/" title="Mon planning"><span class="planning-icon">{% iconSvg 'solid/bookmark' %}</span><span class="planning-label">Mon planning</span> <span class="fav-count" hidden>0</span></a>{% endif %}
+          {% if speakers.length > 0 %}<a class="item" href="/speakers/"><span class="speakers-icon">{% iconSvg 'solid/user' %}</span><span class="speakers-label">Speakers</span></a>{% endif %}
+          {% if event.sessionCount > 0 %}<a class="item" href="/schedule/"><span class="schedule-icon">{% iconSvg 'solid/calendar' %}</span><span class="schedule-label">Programme</span></a>{% endif %}
+          {% if event.sessionCount > 0 %}<a class="item planning" href="/favoris/"><span class="planning-icon">{% iconSvg 'solid/bookmark' %}</span><span class="planning-label">Mon planning</span> <span class="fav-count" hidden>0</span></a>{% endif %}
           {% if ticketing.url %}<a class="item ticketing-link" href="{{ ticketing.url}}">Billetterie</a>{% endif %}
           {% if event.sponsoringUrl %}<a class="item ticketing-link" href="{{ event.sponsoringUrl }}">Devenir sponsor</a>{% endif %}
         </div>
@@ -52,28 +52,28 @@ icons:
           <div class="site-links-group">
             <div class="site-links-group-title">À propos</div>
             {%- for link in event.aPropos %}
-            <a href="{{ link.url }}">{{ link.name }}</a>
+            <a href="{{ link.url }}"{% if link.url.startsWith("http") %} rel="noopener"{% endif %}>{{ link.name }}</a>
             {%- endfor -%}
             {%- for link in event.previousEditions %}
-            <a href="{{ link.url }}">{{ link.name }}</a>
+            <a href="{{ link.url }}"{% if link.url.startsWith("http") %} rel="noopener"{% endif %}>{{ link.name }}</a>
             {%- endfor -%}
           </div>
           <div class="site-links-group">
             <div class="site-links-group-title">Ressources</div>
             {%- for link in event.resources %}
-            <a href="{{ link.url }}">{{ link.name }}</a>
+            <a href="{{ link.url }}"{% if link.url.startsWith("http") %} rel="noopener"{% endif %}>{{ link.name }}</a>
             {%- endfor -%}
           </div>
           <div class="site-links-group">
             <div class="site-links-group-title">Contact</div>
             {%- for link in event.contact %}
-            <a href="{{ link.url }}">{{ link.name }}</a>
+            <a href="{{ link.url }}"{% if link.url.startsWith("http") %} rel="noopener"{% endif %}>{{ link.name }}</a>
             {%- endfor -%}
           </div>
         </div>
       </div>
       <div class="site-copyright">
-        <div class="centered-content">{{ event.name }}<a href="https://developers-group-dijon.fr/">Fait avec ❤ par le Developers Group Dijon</a></div>
+        <div class="centered-content">{{ event.name }}<a href="https://developers-group-dijon.fr/" rel="noopener">Fait avec ❤ par le Developers Group Dijon</a></div>
       </div>
     </footer>
     <script type="application/json" id="sessions-manifest">{{ rawSessions | sessionIds | dump | safe }}</script>

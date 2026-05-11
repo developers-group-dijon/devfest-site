@@ -18,7 +18,7 @@
 ---
 
 <div class="main-content">
-    <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="avatar">
+    <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="">
     <div class="job_title">{{ speaker.bio | md | safe }}</div>
     <div class="socials">
         {%- for social in speaker.socials %}

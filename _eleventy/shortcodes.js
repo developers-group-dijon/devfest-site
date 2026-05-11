@@ -7,9 +7,10 @@ import { SocialId } from "../_data/types.js";
  * @returns {string}
  */
 export function iconSvg(path) {
-  return fs
+  const svg = fs
     .readFileSync(`node_modules/@fortawesome/fontawesome-free/svgs/${path}.svg`)
     .toString();
+  return svg.replace("<svg ", '<svg aria-hidden="true" focusable="false" ');
 }
 
 /**
@@ -53,7 +54,7 @@ function socialIconSvg(socialId) {
  */
 export function social({ id, name, link }) {
   const icon = socialIconSvg(id);
-  return `<a class="social-icon" href="${link}" title="${name} ⋅ ${link}">${icon}</a>`;
+  return `<a class="social-icon" href="${link}" aria-label="${name}" title="${name} ⋅ ${link}">${icon}</a>`;
 }
 
 /**

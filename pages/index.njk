@@ -20,7 +20,7 @@ photos:
 <div class="hero-info-image" style="background-image: url('{{ background | normalizeAssetUrl}}')">
    <div class="hero-info">
       <div class="hero-logo-title-wrapper">
-         <img class="big-logo" src="{{ bigLogo | normalizeAssetUrl }}" alt="logo {{ event.name }}">
+         <img class="big-logo" src="{{ bigLogo | normalizeAssetUrl }}" alt="">
          <h1 class="hero-title">
             {%- if (event.dayCount === 1) -%}
                {{ event.dateStart | dateFormat | capitalize }}
@@ -62,7 +62,7 @@ photos:
          {# Speakers en mode masqué #}
          {%- for speaker in speakers %}
          <div class="speaker" data-to-hide>
-            <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="avatar">
+            <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="">
             <div class="speaker-name">{{ speaker.name }}</div>
             <div>{{ speaker.company }}</div>
          </div>
@@ -70,7 +70,7 @@ photos:
          {# Placeholders pour les speakers #}
          {%- for i in range(0, 4) %}
          <div class="speaker" data-to-remove>
-            <img class="avatar" src="{{ '/default-avatar.webp' | normalizeAssetUrl }}" alt="avatar">
+            <img class="avatar" src="{{ '/default-avatar.webp' | normalizeAssetUrl }}" alt="">
             <div class="speaker-name">…</div>
             <div>…</div>
          </div>
@@ -90,7 +90,7 @@ photos:
       <div class="pricings">
       {%- for pricing in ticketing.pricings %}
          {%- if pricing.url | default(ticketing.url) %}
-         <a class="pricing" href="{{ pricing.url | default(ticketing.url) }}">
+         <a class="pricing" rel="noopener" href="{{ pricing.url | default(ticketing.url) }}">
          {%- else %}
          <div class="pricing">
          {%- endif %}
@@ -122,7 +122,7 @@ photos:
    <div class="location dark-zone">
       <h1>Le lieu : {{ event.location.name }}</h1>
       <div>{{ event.location.description  }}</div>
-      <a class="visible-link address" href="https://www.openstreetmap.org/directions?from=&to={{ event.location.center.lat }},{{ event.location.center.lon }}">{{ event.location.address  }}</a>
+      <a class="visible-link address" href="https://www.openstreetmap.org/directions?from=&to={{ event.location.center.lat }},{{ event.location.center.lon }}" rel="noopener">{{ event.location.address  }}</a>
    </div>
 </div>
 <div>
@@ -147,7 +147,7 @@ photos:
          <h2>{{ sponsorType.name }}</h2>
          <div class="sponsors">
             {%- for sponsor in sponsorType.sponsors %}
-            <a class="sponsor" href="{{ sponsor.website }}" title="{{ sponsor.name }}"><img class="logo" src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt="Logo {{ sponsor.name}}"></a>
+            <a class="sponsor" href="{{ sponsor.website }}" rel="noopener" aria-label="Site web de {{ sponsor.name }}" title="{{ sponsor.name }}"><img class="logo" src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt=""></a>
             {%- endfor %}
          </div>
       </div>
