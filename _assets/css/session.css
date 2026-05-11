@@ -7,12 +7,18 @@
   margin-bottom: 1rem;
 }
 
+.session-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .session-fav-large {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  margin-bottom: 1.5rem;
   border: 1px solid var(--default-primary-color);
   border-radius: 1.5rem;
   background: transparent;
@@ -24,6 +30,37 @@
   transition:
     background-color 0.2s,
     color 0.2s;
+}
+
+.session-feedback-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--default-primary-color);
+  border-radius: 1.5rem;
+  background: transparent;
+  color: var(--default-primary-color);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.session-feedback-large:hover,
+.session-feedback-large:focus {
+  background: var(--default-primary-color);
+  color: var(--primary-inv-text-color);
+  text-decoration: none;
+}
+
+.session-feedback-large svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: currentcolor;
 }
 
 .session-fav-large:hover,
@@ -41,6 +78,10 @@
 
 .session-fav-large .star-on {
   display: none;
+}
+
+.session-fav-large .star-off {
+  display: inline-flex;
 }
 
 .session-fav-large[aria-pressed="true"] {

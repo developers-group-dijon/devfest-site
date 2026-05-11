@@ -48,6 +48,7 @@
  * @property {Link[]} resources
  * @property {string} photosLink
  * @property {string?} callForPaper
+ * @property {string=} openfeedbackId identifiant de l'édition sur OpenFeedback (https://openfeedback.io)
  */
 
 /**
@@ -330,6 +331,7 @@ export const Level = {
  * @property {Format} format
  * @property {Category} category
  * @property {Track[]} tracks
+ * @property {string=} feedbackUrl URL OpenFeedback calculée pour la session
  * @typedef {RawSession & SessionProperties} Session
  */
 /**

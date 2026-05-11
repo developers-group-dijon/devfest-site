@@ -252,6 +252,43 @@
   margin-bottom: 0.5rem;
 }
 
+.fav-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.fav-card-feedback {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--default-primary-color);
+  border-radius: 1rem;
+  color: var(--default-primary-color);
+  font-family: inherit;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.fav-card-feedback:hover,
+.fav-card-feedback:focus {
+  background: var(--default-primary-color);
+  color: var(--primary-inv-text-color);
+  text-decoration: none;
+}
+
+.fav-card-feedback svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: currentcolor;
+}
+
 .fav-card-remove {
   padding: 0.2rem 0.7rem;
   border: 1px solid var(--divider-color);

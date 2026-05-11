@@ -23,6 +23,7 @@
  */
 export default {
   name: "DevFest Dijon 2026",
+  openfeedbackId: "devfest-dijon-2025",
   dateStart: new Date("2026-12-04T08:00:00.000Z"),
   dateEnd: new Date("2026-12-04T18:00:00.000Z"),
   visitors: "+600",

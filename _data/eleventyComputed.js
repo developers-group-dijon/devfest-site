@@ -11,6 +11,14 @@ function buildDay(date) {
 }
 
 /**
+ * @param {Date} date
+ * @returns {string} "YYYY-MM-DD"
+ */
+function dayToIsoDate(date) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+}
+
+/**
  * @param {import('./types.js').WithRawEvent & import('./types.js').WithSessions } data
  * @returns {import('./types.js').Event}
  */
@@ -87,11 +95,18 @@ function buildCategoriesMap(data) {
 
 /**
  * RawSessions avec quelques ajouts : format des dates, le jour, le données de référence (speakers, …)
- * @param { import('./types.js').WithSpeakersMap & import('./types.js').WithRawSessions & import('./types.js').WithFormatsMap & import('./types.js').WithCategoriesMap & import('./types.js').WithTracksMap } data
+ * @param { import('./types.js').WithSpeakersMap & import('./types.js').WithRawSessions & import('./types.js').WithFormatsMap & import('./types.js').WithCategoriesMap & import('./types.js').WithTracksMap & import('./types.js').WithRawEvent } data
  * @returns {import('./types.js').Session[]}
  */
 function parseSessions(data) {
-  [data.formatsMap, data.categoriesMap, data.speakersMap, data.tracksMap];
+  [
+    data.formatsMap,
+    data.categoriesMap,
+    data.speakersMap,
+    data.tracksMap,
+    data.rawEvent,
+  ];
+  const openfeedbackId = data.rawEvent.openfeedbackId;
 
   return data.rawSessions.map((session) => {
     const dateStart = new Date(session.dateStartStr);
@@ -110,6 +125,9 @@ function parseSessions(data) {
           : session.trackRange != null
             ? session.trackRange.map((t) => nn(data.tracksMap.get(t)))
             : [],
+      feedbackUrl: openfeedbackId
+        ? `https://openfeedback.io/${openfeedbackId}/${dayToIsoDate(dateStart)}/${session.id}`
+        : undefined,
     };
   });
 }

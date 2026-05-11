@@ -57,7 +57,12 @@ Le planning présenté est une version provisoire qui est susceptible d'évoluer
             {%- set column = (session.trackRange[0]+" / "+session.trackRange[1]+"-end") if session.trackRange else (session.trackId | default ("track / -1")) %}
          <div class="{{ session.styleClass }} session" {% if not session.hideTrackTitle %}data-session-id="{{ session.id }}"{% endif %} style="grid-column: {{ column }} ; grid-row: slot_{{ session.dateStart | dateKey }} / span {{ session | countSlots(daySlot) }}">
             {%- if not session.hideTrackTitle %}
-            <button class="session-fav" type="button" aria-pressed="false" aria-label="Ajouter aux favoris" title="Ajouter aux favoris"><span class="star-off">{% iconSvg 'regular/bookmark' %}</span><span class="star-on">{% iconSvg 'solid/bookmark' %}</span></button>
+            <div class="session-actions-grid">
+               {%- if session.feedbackUrl %}
+               <a class="session-feedback" href="{{ session.feedbackUrl }}" target="_blank" rel="noopener" aria-label="Donner mon avis sur cette session" title="Donner mon avis">{% iconSvg 'regular/comment-dots' %}</a>
+               {%- endif %}
+               <button class="session-fav" type="button" aria-pressed="false" aria-label="Ajouter aux favoris" title="Ajouter aux favoris"><span class="star-off">{% iconSvg 'regular/bookmark' %}</span><span class="star-on">{% iconSvg 'solid/bookmark' %}</span></button>
+            </div>
             {%- endif %}
             <div class="title">
                {%- if session.hideTrackTitle -%}
