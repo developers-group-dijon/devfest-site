@@ -39,4 +39,26 @@
         <div><a class="speaker-name" href="/speaker/{{ speaker.name | slugify }}">{{ speaker.name }} ⋅ {{ speaker.company }}</a></div>
     </div>
     {%- endfor -%}
+    {%- set concurrent = sessions | concurrentSessions(session) %}
+    {%- if concurrent.length %}
+    <section class="concurrent-sessions" aria-labelledby="concurrent-sessions-title">
+        <h2 id="concurrent-sessions-title">En même temps</h2>
+        {%- for other in concurrent %}
+        <div class="concurrent-session">
+            <button class="session-fav" type="button" aria-pressed="false" data-session-id="{{ other.id }}" aria-label="Ajouter aux favoris" title="Ajouter aux favoris"><span class="star-off">{% iconSvg 'regular/bookmark' %}</span><span class="star-on">{% iconSvg 'solid/bookmark' %}</span></button>
+            <a class="concurrent-session-link" href="/session/{{ other.id | slugify }}">
+                <div class="concurrent-session-meta">{{ other.dateStart | timeFormat }} ⋅ {{ other.tracks | mapName | join(', ') }}</div>
+                <div class="concurrent-session-title">{{ other.title }}</div>
+                {%- if other.speakers.length %}
+                <div class="concurrent-session-speakers">
+                    {%- for speaker in other.speakers -%}
+                    {{ speaker.name }}{{ ', ' if not loop.last }}
+                    {%- endfor -%}
+                </div>
+                {%- endif %}
+            </a>
+        </div>
+        {%- endfor %}
+    </section>
+    {%- endif %}
 </div>

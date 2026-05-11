@@ -213,6 +213,34 @@ function sessionIds(value) {
 }
 
 /**
+ * Sessions qui se déroulent en même temps que la session courante (chevauchement
+ * temporel), en excluant la session elle-même et les sessions qui occupent
+ * toutes les pistes (pauses, keynotes…).
+ * @param {import('../_data/types.js').Session[]} sessions
+ * @param {import('../_data/types.js').Session} currentSession
+ * @returns {import('../_data/types.js').Session[]}
+ */
+function concurrentSessions(sessions, currentSession) {
+  const start = currentSession.dateStart.getTime();
+  const end = start + currentSession.duration;
+  return sessions
+    .filter(
+      (s) =>
+        s.id !== currentSession.id &&
+        !s.hideTrackTitle &&
+        s.dateStart.getTime() < end &&
+        s.dateStart.getTime() + s.duration > start,
+    )
+    .sort((a, b) => {
+      const byDate = a.dateStart.getTime() - b.dateStart.getTime();
+      if (byDate !== 0) return byDate;
+      const trackA = a.tracks[0]?.id ?? "";
+      const trackB = b.tracks[0]?.id ?? "";
+      return String(trackA).localeCompare(String(trackB));
+    });
+}
+
+/**
  * Calcule le nombre de slots que va occcuper une session.
  * @param {import('../_data/types.js').Session} session
  * @param {Date[]} slots
@@ -249,4 +277,5 @@ export default {
   countSlots,
   minutesBeetween,
   sessionIds,
+  concurrentSessions,
 };

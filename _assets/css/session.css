@@ -96,3 +96,103 @@
 .session-fav-large[aria-pressed="true"] .star-on {
   display: inline-flex;
 }
+
+.concurrent-sessions {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-top: 1px solid var(--divider-color);
+}
+
+.concurrent-sessions h2 {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  color: var(--default-primary-color);
+}
+
+.concurrent-session {
+  position: relative;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--gray-lighter-background-color);
+  transition: background-color 0.2s;
+}
+
+.concurrent-session:hover,
+.concurrent-session:focus-within {
+  background: var(--gray-light-background-color);
+}
+
+.concurrent-session-link {
+  display: block;
+  padding: 0.75rem 2.5rem 0.75rem 0.75rem;
+  color: var(--primary-text-color);
+  text-decoration: none;
+}
+
+.concurrent-session-link:hover,
+.concurrent-session-link:focus {
+  text-decoration: none;
+}
+
+.concurrent-session .session-fav {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--secondary-text-color);
+  opacity: 0.55;
+  transition:
+    opacity 0.2s,
+    color 0.2s;
+}
+
+.concurrent-session .session-fav:hover,
+.concurrent-session .session-fav:focus {
+  opacity: 1;
+  color: var(--default-primary-color);
+}
+
+.concurrent-session .session-fav svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: currentcolor;
+  pointer-events: none;
+}
+
+.concurrent-session .session-fav .star-on {
+  display: none;
+}
+
+.concurrent-session .session-fav[aria-pressed="true"] {
+  opacity: 1;
+  color: var(--default-primary-color);
+}
+
+.concurrent-session .session-fav[aria-pressed="true"] .star-off {
+  display: none;
+}
+
+.concurrent-session .session-fav[aria-pressed="true"] .star-on {
+  display: inline;
+}
+
+.concurrent-session-meta {
+  font-size: 0.85rem;
+  color: var(--secondary-text-color);
+  margin-bottom: 0.25rem;
+}
+
+.concurrent-session-title {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.concurrent-session-speakers {
+  font-size: 0.9rem;
+  color: var(--secondary-text-color);
+}
