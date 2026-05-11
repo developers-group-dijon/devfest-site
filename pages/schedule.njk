@@ -64,7 +64,7 @@ Le planning présenté est une version provisoire qui est susceptible d'évoluer
          {%- if track.sponsor -%}
          {%- set sponsor = sponsorsMap.get(track.sponsor) -%}
          <div class="tracksponsor {{ track.id }}" style="grid-column: {{ track.id }}; grid-row: tracksponsor">
-            <a class="sponsor" href="{{ sponsor.website }}" aria-label="Site web de {{ sponsor.name }}" title="{{ sponsor.name }}"><img class="logo" src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt=""></a>
+            <a class="sponsor" href="{{ sponsor.website }}" aria-label="Site web de {{ sponsor.name }}" title="{{ sponsor.name }}"><img class="logo" src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt="" loading="lazy" decoding="async"></a>
          </div>
          {%- endif -%}
          {%- endfor -%}
@@ -104,7 +104,7 @@ Le planning présenté est une version provisoire qui est susceptible d'évoluer
                <div class="speaker-title">Speakers</div>
                {%- for speaker in session.speakers -%}
                <div class="speaker">
-                  <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="">
+                  <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async">
                   <a class="speaker-name" href="/speaker/{{ speaker.name | slugify }}">{{ speaker.name }} ⋅ {{ speaker.company }}</a>
                </div>
                {%- endfor %}

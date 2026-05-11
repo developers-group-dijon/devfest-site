@@ -20,7 +20,7 @@ photos:
 <div class="hero-info-image" style="background-image: url('{{ background | normalizeAssetUrl}}')">
    <div class="hero-info">
       <div class="hero-logo-title-wrapper">
-         <img class="big-logo" src="{{ bigLogo | normalizeAssetUrl }}" alt="">
+         <img class="big-logo" src="{{ bigLogo | normalizeAssetUrl }}" alt="" fetchpriority="high" decoding="async">
          <h1 class="hero-title">
             {%- if (event.dayCount === 1) -%}
                {{ event.dateStart | dateFormat | capitalize }}
@@ -62,7 +62,7 @@ photos:
          {# Speakers en mode masqué #}
          {%- for speaker in speakers %}
          <div class="speaker" data-to-hide>
-            <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="">
+            <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async">
             <div class="speaker-name">{{ speaker.name }}</div>
             <div>{{ speaker.company }}</div>
          </div>
@@ -70,7 +70,7 @@ photos:
          {# Placeholders pour les speakers #}
          {%- for i in range(0, 4) %}
          <div class="speaker" data-to-remove>
-            <img class="avatar" src="{{ '/default-avatar.webp' | normalizeAssetUrl }}" alt="">
+            <img class="avatar" src="{{ '/default-avatar.webp' | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async">
             <div class="speaker-name">…</div>
             <div>…</div>
          </div>
@@ -127,7 +127,7 @@ photos:
 </div>
 <div>
    <div class="centered-content team-info">
-      <img class="team-photo" src="{{ teamPhoto | normalizeAssetUrl }}" alt="Photo de l'équipe organisatrice">
+      <img class="team-photo" src="{{ teamPhoto | normalizeAssetUrl }}" alt="Photo de l'équipe organisatrice" loading="lazy" decoding="async">
       <div>
          <h1>Pourquoi un Devfest à Dijon ?</h1>
          <div>{{ event.team.why | md | safe }}</div>
@@ -147,7 +147,7 @@ photos:
          <h2>{{ sponsorType.name }}</h2>
          <div class="sponsors">
             {%- for sponsor in sponsorType.sponsors %}
-            <a class="sponsor" href="{{ sponsor.website }}" rel="noopener" aria-label="Site web de {{ sponsor.name }}" title="{{ sponsor.name }}"><img class="logo" src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt=""></a>
+            <a class="sponsor" href="{{ sponsor.website }}" rel="noopener" aria-label="Site web de {{ sponsor.name }}" title="{{ sponsor.name }}"><img class="logo" src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt="" loading="lazy" decoding="async"></a>
             {%- endfor %}
          </div>
       </div>
