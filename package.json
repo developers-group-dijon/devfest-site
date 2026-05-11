@@ -3,6 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "postinstall": "puppeteer browsers install chrome --no-color",
     "clean": "rm -rf _site",
     "build:eleventy": "ELEVENTY_PRODUCTION=true eleventy",
     "check:prettier": "prettier --check .",
@@ -21,7 +22,10 @@
     "clean-build": "run-s clean build",
     "clean-serve-noinc": "run-s clean serve-noinc",
     "serve-noinc": "eleventy --serve",
-    "serve": "eleventy --serve --incremental"
+    "serve": "eleventy --serve --incremental",
+    "audit:perf": "node _audit/audit-perf.js",
+    "audit:a11y": "start-server-and-test 'http-server _site -p 8088 -s -c-1' http://localhost:8088 'pa11y-ci --sitemap http://localhost:8088/sitemap.xml --threshold 999'",
+    "audit": "run-s build audit:perf audit:a11y"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
@@ -29,6 +33,7 @@
     "@commitlint/config-conventional": "^21.0.0",
     "@eslint/compat": "^2.1.0",
     "@eslint/js": "^10.0.1",
+    "@lhci/cli": "^0.15.1",
     "@types/debug": "^4.1.13",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.6.2",
@@ -38,10 +43,13 @@
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-jsdoc": "^62.9.0",
     "globals": "^17.6.0",
+    "http-server": "^14.1.1",
     "markdown-it": "^14.1.1",
     "node-html-parser": "^7.1.0",
     "npm-run-all": "^4.1.5",
+    "pa11y-ci": "^4.1.0",
     "prettier": "^3.8.3",
+    "start-server-and-test": "^3.0.4",
     "stylelint": "^17.11.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-no-unsupported-browser-features": "^8.1.1",

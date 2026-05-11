@@ -29,6 +29,19 @@ jobs:
         run: npm run check
       - name: Build site
         run: npm run clean-build
+      - name: Audit perf + a11y
+        env:
+          LHCI_NUMBER_OF_RUNS: "3"
+        run: |
+          npm run audit:perf
+          npm run audit:a11y
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/
+          retention-days: 7
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
