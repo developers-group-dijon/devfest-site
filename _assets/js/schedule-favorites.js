@@ -2,6 +2,7 @@
 // Synchronise leur état avec le module core (et donc avec la page session
 // et le compteur du header) via l'événement "favorites:change".
 import { has, toggle, onChange } from "./favorites.js";
+import "./schedule-filters.js";
 
 /**
  * @param {HTMLButtonElement} button

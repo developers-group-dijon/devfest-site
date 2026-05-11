@@ -124,8 +124,7 @@
 
 .date {
   /* Pour que l'ancre ne soit pas masquée par le header */
-  padding-top: 64px;
-  margin-top: -64px;
+  scroll-margin-top: 64px;
 }
 
 .time {
@@ -232,7 +231,6 @@
   background-color: var(--light-primary-color);
   color: var(--gray-light-background-color);
   font-weight: normal;
-  z-index: 1;
 }
 
 .schedule-help {
@@ -246,7 +244,6 @@
   background: rgb(199 77 161 / 8%);
   font-size: 0.95rem;
   line-height: 1.4;
-  z-index: 1;
 }
 
 .schedule-help[hidden] {
@@ -296,4 +293,123 @@
 .schedule-help-dismiss:focus {
   background: rgb(0 0 0 / 6%);
   color: var(--primary-text-color);
+}
+
+.session[hidden] {
+  display: none;
+}
+
+.schedule-filters-collapse {
+  margin-bottom: 1rem;
+  border: 1px solid var(--divider-color);
+  border-radius: 0.3rem;
+  background: var(--card-background-color, transparent);
+}
+
+.schedule-filters-collapse > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+  user-select: none;
+}
+
+.schedule-filters-collapse > summary::-webkit-details-marker {
+  display: none;
+}
+
+.schedule-filters-collapse > summary svg {
+  width: 1em;
+  height: 1em;
+}
+
+.schedule-filters-collapse > summary::after {
+  content: "▾";
+  margin-left: auto;
+  color: var(--secondary-text-color);
+  transition: transform 0.15s;
+}
+
+.schedule-filters-collapse[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+.schedule-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: flex-end;
+  padding: 0 0.75rem 0.75rem;
+}
+
+.schedule-filters .filter-group {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.schedule-filters legend,
+.schedule-filters label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.filter-chip {
+  border: 1px solid var(--divider-color);
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.filter-chip:hover,
+.filter-chip:focus {
+  border-color: var(--default-primary-color);
+}
+
+.filter-chip[aria-pressed="true"] {
+  background: var(--default-primary-color);
+  color: #fff;
+  border-color: var(--default-primary-color);
+}
+
+.filter-search input {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--divider-color);
+  border-radius: 0.2rem;
+  font: inherit;
+  min-width: 14rem;
+}
+
+.filter-reset {
+  border: 0;
+  background: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--secondary-text-color);
+  font: inherit;
+}
+
+.filter-reset:hover,
+.filter-reset:focus {
+  color: var(--primary-text-color);
+}
+
+.filter-empty {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--secondary-text-color);
 }

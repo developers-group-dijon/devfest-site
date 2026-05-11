@@ -31,6 +31,29 @@ eleventyComputed:
 Le planning présenté est une version provisoire qui est susceptible d'évoluer.
 </div>
 {%- endif -%}
+<details class="schedule-filters-collapse full-width">
+   <summary>{% iconSvg 'solid/filter' %}<span>Filtrer le programme</span></summary>
+   <form class="schedule-filters" role="search" aria-label="Filtres du programme">
+      <fieldset class="filter-group">
+         <legend>Format</legend>
+         {%- for format in formats %}
+         <button type="button" class="filter-chip" data-filter="format" data-value="{{ format.id }}" aria-pressed="false">{{ format.name }}</button>
+         {%- endfor %}
+      </fieldset>
+      <fieldset class="filter-group">
+         <legend>Catégorie</legend>
+         {%- for category in categories %}
+         <button type="button" class="filter-chip" data-filter="category" data-value="{{ category.id }}" aria-pressed="false">{{ category.name }}</button>
+         {%- endfor %}
+      </fieldset>
+      <div class="filter-group filter-search">
+         <label for="schedule-search">Recherche</label>
+         <input id="schedule-search" type="search" placeholder="Titre, abstract, speaker…" autocomplete="off">
+      </div>
+      <button type="button" class="filter-reset" hidden>Réinitialiser</button>
+      <p class="filter-empty" hidden role="status" aria-live="polite">Aucune session ne correspond à vos filtres.</p>
+   </form>
+</details>
 <div class="schedule-page full-width">
    {%- for day, daySlot in slots %}
    <div class="day">
@@ -55,7 +78,7 @@ Le planning présenté est une version provisoire qui est susceptible d'évoluer
          </div>
          {%- for session in sessions | filterByDateStart(slot) %}
             {%- set column = (session.trackRange[0]+" / "+session.trackRange[1]+"-end") if session.trackRange else (session.trackId | default ("track / -1")) %}
-         <div class="{{ session.styleClass }} session" {% if not session.hideTrackTitle %}data-session-id="{{ session.id }}"{% endif %} style="grid-column: {{ column }} ; grid-row: slot_{{ session.dateStart | dateKey }} / span {{ session | countSlots(daySlot) }}">
+         <div class="{{ session.styleClass }} session" {% if not session.hideTrackTitle %}data-session-id="{{ session.id }}" data-format-id="{{ session.format.id }}" data-category-id="{{ session.category.id }}"{% endif %} style="grid-column: {{ column }} ; grid-row: slot_{{ session.dateStart | dateKey }} / span {{ session | countSlots(daySlot) }}">
             {%- if not session.hideTrackTitle %}
             <div class="session-actions-grid">
                {%- if session.feedbackUrl %}
