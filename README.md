@@ -86,18 +86,27 @@ Dans tous les cas les fichiers sont référencés avec des URLs relatives au dos
 
 # Nouvelle édition du site
 
-- _Archiver_ la version actuelle
-  - Nouveau site dans projet le hosting du projet `devfest-dijon` dans la console Firebase (idéalement pour que ce soit simple de s'y retrouver le site est au format `devfest-dijon-<année>`)
-  - Modifier `_data/site.json` pour indiquer la bonne URL d'accès
-  - Définir les règle en local (`target` → `site`)
-    - dans `.firebaserc` : `firebase target:apply hosting devfest-dijon-<année> devfest-dijon-<année>`, à noter le premier paramètre est le nom de la branche (ce sera le `target` dans firebase) et le second le site_id dans firebase.
-    - dans `firebase.json` en ajoutant un élément de la partie `hosting` (`{"target": "devfest-dijon-<année>", "public": "_site", "ignore": ["firebase.json", "**/.*", "**/node_modules/**"] }` où le target est le nom de la branche)
-  - Créer un nouvelles branche Git du nom du `target` (du coup toujours `devfest-dijon-<année>`)
-  - Pousser la branche sur Github
-  - Configurer l'alias DNS `https://devfest-dijon-<année>.web.app` → `https://devfest-<année>.developers-group-dijon.fr/`
-  - Ajouter un domaine personnalisé pour le site dans la console firebase
-- Mettre à jour le code sur `main`
-  - cf. [Personnaliser le contenu du site](#personnaliser-le-contenu-du-site)
+Depuis la branche `main` propre, lancer :
+
+```sh
+npm run new-edition <année>
+```
+
+(exemple : `npm run new-edition 2027` pour préparer l'édition 2027 et archiver l'édition courante).
+
+Le script :
+
+- Crée la branche `devfest-dijon-<année-courante>` (archive) et y met à jour `_data/site.json` vers l'URL d'archive `https://devfest-<année-courante>.developers-group-dijon.fr/`.
+- Sur `main` : ajoute le mapping `target` → `site` dans `.firebaserc` et l'entrée `hosting` correspondante dans `firebase.json`, met à jour `_data/rawEvent.js` (nom, dates, `previousEditions`, `callForPaper: null`, `sponsoringUrl: null`), et vide les fichiers OpenPlanner (`rawSessions.js`, `speakers.js`, `formats.js`, `categories.js`, `tracks.js`).
+- Crée 2 commits locaux (pas de `git push` automatique).
+
+À la fin, le script affiche en sortie les étapes manuelles restantes :
+
+1. **Créer le site Firebase pour l'archive** (interactif, console ou `firebase hosting:sites:create devfest-dijon-<année>`).
+2. **Configurer le DNS et le domaine personnalisé** dans la console Firebase pour `devfest-<année>.developers-group-dijon.fr`.
+3. **Pousser les deux branches** sur GitHub (`git push origin devfest-dijon-<année>` et `git push origin main`).
+4. **Éditer les contenus éditoriaux** sur `main` : `_data/rawEvent.js` (visitors, comments, team, dates exactes), `_data/sponsors.js`, `_data/ticketing.js`, assets visuels (logos, photos).
+5. **Régénérer les données quand l'export OpenPlanner est prêt** : `node _data_gen/generate-from-openplanner.js <url-json-export>`.
 
 # Contribuer et outils de développement
 
