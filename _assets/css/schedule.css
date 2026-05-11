@@ -382,7 +382,7 @@
 
 .filter-chip[aria-pressed="true"] {
   background: var(--default-primary-color);
-  color: #fff;
+  color: var(--primary-inv-text-color);
   border-color: var(--default-primary-color);
 }
 

@@ -30,6 +30,7 @@ icons:
     <link rel="stylesheet" type="text/css" href="{{ '/poppins/latin.css' | normalizeAssetUrl }}">
   </head>
   <body data-edition="{{ event.name | slugify }}">
+    <a class="skip-link" href="#main">Aller au contenu</a>
     <header class="site-header">
       <nav class="centered-content">
         <a href="/" class="site-logo" title="Retour à la page d'accueil"><img src="{{ brandLogo | normalizeAssetUrl }}" alt="Logo {{ event.name }}"></a>
@@ -44,7 +45,7 @@ icons:
         </div>
       </nav>
     </header>
-    <main>{{ content | safe }}</main>
+    <main id="main" tabindex="-1">{{ content | safe }}</main>
     <footer class="site-footer">
       <div class="site-links">
         <div class="centered-content">
