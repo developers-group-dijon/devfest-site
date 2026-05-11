@@ -55,6 +55,16 @@ export default [
     name: "Sponsors Silver",
     sponsors: [
       {
+        name: "Alteca",
+        website: "https://www.alteca.fr",
+        logoUrl: "/sponsors/alteca.webp",
+      },
+      {
+        name: "Cadoles",
+        website: "https://www.cadoles.com",
+        logoUrl: "/sponsors/cadoles.webp",
+      },
+      {
         name: "CPage",
         website: "https://www.cpage.fr/",
         logoUrl: "/sponsors/cpage.webp",
@@ -70,9 +80,29 @@ export default [
         logoUrl: "/sponsors/coda.webp",
       },
       {
+        name: "Hara Consulting",
+        website: "https://hara-consulting.com/",
+        logoUrl: "/sponsors/hara.webp",
+      },
+      {
+        name: "Les Docks numériques",
+        website: "https://www.lesdocks.net/",
+        logoUrl: "/sponsors/les-docks.webp",
+      },
+      {
+        name: "Planet Bourgogne",
+        website: "https://www.planetb.fr",
+        logoUrl: "/sponsors/planet-bourgogne.webp",
+      },
+      {
         name: "Steerway",
         website: "https://steerway.dev/",
         logoUrl: "/sponsors/steerway.webp",
+      },
+      {
+        name: "YMAG / Septeo",
+        website: "https://www.ymag.fr/",
+        logoUrl: "/sponsors/ymag.webp",
       },
     ],
   },
