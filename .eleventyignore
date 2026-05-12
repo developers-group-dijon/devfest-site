@@ -1,5 +1,6 @@
-README.md
-LICENSE.md
+*.md
 _test
 _audit
 _scripts
+.lighthouseci
+.pa11yciresult

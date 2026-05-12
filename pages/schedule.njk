@@ -33,7 +33,7 @@ Le planning présenté est une version provisoire qui est susceptible d'évoluer
 {%- endif -%}
 <details class="schedule-filters-collapse full-width">
    <summary>{% iconSvg 'solid/filter' %}<span>Filtrer le programme</span></summary>
-   <form class="schedule-filters" role="search" aria-label="Filtres du programme">
+   <div class="schedule-filters" role="search" aria-label="Filtres du programme">
       <fieldset class="filter-group">
          <legend>Format</legend>
          {%- for format in formats %}
@@ -52,7 +52,7 @@ Le planning présenté est une version provisoire qui est susceptible d'évoluer
       </div>
       <button type="button" class="filter-reset" hidden>Réinitialiser</button>
       <p class="filter-empty" hidden role="status" aria-live="polite">Aucune session ne correspond à vos filtres.</p>
-   </form>
+   </div>
 </details>
 <div class="schedule-page full-width">
    {%- for day, daySlot in slots %}
@@ -64,7 +64,7 @@ Le planning présenté est une version provisoire qui est susceptible d'évoluer
          {%- if track.sponsor -%}
          {%- set sponsor = sponsorsMap.get(track.sponsor) -%}
          <div class="tracksponsor {{ track.id }}" style="grid-column: {{ track.id }}; grid-row: tracksponsor">
-            <a class="sponsor" href="{{ sponsor.website }}" aria-label="Site web de {{ sponsor.name }}" title="{{ sponsor.name }}"><img class="logo" src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt="" loading="lazy" decoding="async"></a>
+            <a class="sponsor" href="{{ sponsor.website }}" aria-label="Site web de {{ sponsor.name }}" title="{{ sponsor.name }}"><img class="logo" src="{{ sponsor.logoUrl | normalizeAssetUrl }}" alt="Site web de {{ sponsor.name }}" loading="lazy" decoding="async"></a>
          </div>
          {%- endif -%}
          {%- endfor -%}
