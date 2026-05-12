@@ -29,7 +29,8 @@ export default {
   visitors: "+600",
   callForPaper: "https://conference-hall.io/devfest-dijon-2026",
   // Lien pour devenir sponsor (mettre null pour ne pas afficher le lien)
-  sponsoringUrl: null,
+  sponsoringUrl:
+    "https://docs.google.com/presentation/d/1bDu4-5X4TEStf0OMfO3yclkxhLzl5tzNpU6cxFsiLfE/edit?usp=sharing",
   sessionsDraft: false,
   comments: [
     {
