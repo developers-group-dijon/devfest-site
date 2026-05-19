@@ -84,6 +84,10 @@
   }
 }
 
+.event-info a {
+  text-decoration: underline;
+}
+
 .stats {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
