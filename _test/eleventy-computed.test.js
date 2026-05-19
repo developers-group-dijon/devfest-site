@@ -195,6 +195,97 @@ describe("sessions (parseSessions)", () => {
     const sessions = computed.sessions(data);
     assert.equal(sessions[0].feedbackUrl, undefined);
   });
+
+  // Cas limites : on fige ici le comportement actuel face à des données
+  // partielles ou incohérentes (typiquement un export OpenPlanner qui
+  // change ou un nettoyage manuel raté). `nn()` étant un cast non-lançant
+  // (cf. `_eleventy/utils.js`), une référence introuvable produit
+  // `undefined` plutôt qu'une erreur — comportement à connaître quand on
+  // touche au pipeline.
+  describe("cas limites", () => {
+    test("speakerIds = [] → speakers = []", () => {
+      const data = buildData([
+        {
+          ...fixtureRawSessions[0],
+          id: "no-speakers",
+          speakerIds: [],
+        },
+      ]);
+      const [session] = computed.sessions(data);
+      assert.deepEqual(session.speakers, []);
+    });
+
+    test("speakerIds absent → speakers = undefined (chaînage optionnel)", () => {
+      const data = buildData([
+        {
+          ...fixtureRawSessions[0],
+          id: "no-speakers-field",
+          speakerIds: undefined,
+        },
+      ]);
+      const [session] = computed.sessions(data);
+      assert.equal(session.speakers, undefined);
+    });
+
+    test("ni trackId ni trackRange → tracks = []", () => {
+      const data = buildData([
+        {
+          id: "no-track",
+          title: "T",
+          dateStartStr: "2024-11-22T09:00:00Z",
+          durationMinutes: 50,
+          speakerIds: [],
+          formatId: "fmt-conf",
+          categoryId: "cat-web",
+          hideTrackTitle: false,
+        },
+      ]);
+      const [session] = computed.sessions(data);
+      assert.deepEqual(session.tracks, []);
+    });
+
+    test("formatId introuvable dans formatsMap → format = undefined (cast silencieux)", () => {
+      const data = buildData([
+        {
+          ...fixtureRawSessions[0],
+          id: "unknown-format",
+          formatId: "fmt-inexistant",
+        },
+      ]);
+      const [session] = computed.sessions(data);
+      assert.equal(session.format, undefined);
+    });
+
+    test("categoryId introuvable → category = undefined", () => {
+      const data = buildData([
+        {
+          ...fixtureRawSessions[0],
+          id: "unknown-cat",
+          categoryId: "cat-inexistante",
+        },
+      ]);
+      const [session] = computed.sessions(data);
+      assert.equal(session.category, undefined);
+    });
+
+    test("dateStartStr invalide → dateStart = Invalid Date, day = NaN", () => {
+      // Comportement actuel : la session est créée mais corrompue. Si OpenPlanner
+      // pousse une date pourrie, le pipeline NE plante PAS — on retrouve juste
+      // des NaN qui se propagent. Ce test sert de filet de sécurité pour
+      // détecter une régression vers (ou loin de) ce comportement.
+      const data = buildData([
+        {
+          ...fixtureRawSessions[0],
+          id: "bad-date",
+          dateStartStr: "not a date",
+        },
+      ]);
+      const [session] = computed.sessions(data);
+      assert.ok(session.dateStart instanceof Date);
+      assert.ok(Number.isNaN(session.dateStart.getTime()));
+      assert.ok(Number.isNaN(session.day));
+    });
+  });
 });
 
 describe("slots (buildSlots)", () => {

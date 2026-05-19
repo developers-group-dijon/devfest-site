@@ -139,7 +139,7 @@ function dateKey(value) {
  * @param {?Date} prevTime
  * @returns {?number}
  */
-function minutesBeetween(lastTime, prevTime) {
+function minutesBetween(lastTime, prevTime) {
   if (!prevTime) {
     return undefined;
   }
@@ -275,7 +275,7 @@ export default {
   formatLevel,
   formatLanguage,
   countSlots,
-  minutesBeetween,
+  minutesBetween,
   sessionIds,
   concurrentSessions,
 };

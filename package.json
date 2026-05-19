@@ -13,7 +13,7 @@
     "check:stylelint": "BROWSERSLIST_ENV=run stylelint '_assets/**/*.css'",
     "check:jsdoc": "node_modules/.bin/tsc",
     "check:commit": "commitlint --to HEAD",
-    "check:test": "node --test _test/**/*.test.js",
+    "check:test": "TZ=Europe/Paris node --test _test/**/*.test.js",
     "check": "run-p check:*",
     "fix:prettier": "prettier --write .",
     "fix:eslint": "eslint --fix .",

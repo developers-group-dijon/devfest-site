@@ -12,13 +12,31 @@
 // id="sessions-manifest">[...]</script>`). Sans manifeste (par exemple
 // si la balise est absente), le filtrage est désactivé pour éviter
 // une régression silencieuse qui ferait disparaître tous les favoris.
+//
+// La logique pure (parsing, filtrage, toggle, encode/decode hash, build
+// share URL) vit dans `./favorites-utils.js` et est testée séparément
+// sans DOM ni localStorage.
+
+import {
+  parseManifest,
+  parseStorageRaw,
+  filterKnown,
+  toggleId,
+  cleanIncoming,
+  dedup,
+  decodeHash,
+  buildShareUrl as buildShareUrlPure,
+} from "./favorites-utils.js";
 
 const STORAGE_KEY_PREFIX = "devfest-favorites:";
 const HASH_PARAM = "fav";
 const CHANGE_EVENT = "favorites:change";
 
 /** @type {?Set<string>} null = manifeste absent, on ne filtre pas */
-const KNOWN_IDS = loadManifest();
+const KNOWN_IDS = (() => {
+  const node = document.getElementById("sessions-manifest");
+  return parseManifest(node?.textContent ?? null);
+})();
 
 /**
  * Nombre d'ids du `localStorage` retirés au chargement du module
@@ -30,45 +48,13 @@ const INIT_DROPPED = (() => {
   if (!KNOWN_IDS) {
     return 0;
   }
-  const raw = readStorageRaw();
-  const filtered = filterKnown(raw);
+  const raw = parseStorageRaw(readStorageString());
+  const filtered = filterKnown(raw, KNOWN_IDS);
   if (filtered.length !== raw.length) {
     writeStorage(filtered);
   }
   return raw.length - filtered.length;
 })();
-
-/**
- * @returns {?Set<string>}
- */
-function loadManifest() {
-  try {
-    const node = document.getElementById("sessions-manifest");
-    if (!node || !node.textContent) {
-      return null;
-    }
-    const parsed = JSON.parse(node.textContent);
-    if (!Array.isArray(parsed)) {
-      return null;
-    }
-    return new Set(parsed.filter((id) => typeof id === "string" && id));
-  } catch {
-    return null;
-  }
-}
-
-/**
- * Filtre une liste d'ids contre le manifeste. Si le manifeste est
- * absent (lecture impossible), retourne la liste telle quelle.
- * @param {string[]} ids
- * @returns {string[]}
- */
-function filterKnown(ids) {
-  if (!KNOWN_IDS) {
-    return ids;
-  }
-  return ids.filter((id) => KNOWN_IDS.has(id));
-}
 
 /**
  * @returns {string}
@@ -79,22 +65,13 @@ function storageKey() {
 }
 
 /**
- * Lit la liste brute du localStorage, sans filtrage.
- * @returns {string[]}
+ * @returns {?string}
  */
-function readStorageRaw() {
+function readStorageString() {
   try {
-    const raw = window.localStorage.getItem(storageKey());
-    if (!raw) {
-      return [];
-    }
-    const parsed = JSON.parse(raw);
-    if (parsed && Array.isArray(parsed.ids)) {
-      return parsed.ids.filter((id) => typeof id === "string" && id.length > 0);
-    }
-    return [];
+    return window.localStorage.getItem(storageKey());
   } catch {
-    return [];
+    return null;
   }
 }
 
@@ -132,7 +109,7 @@ export function knownIds() {
  * @returns {string[]}
  */
 export function list() {
-  return filterKnown(readStorageRaw());
+  return filterKnown(parseStorageRaw(readStorageString()), KNOWN_IDS);
 }
 
 /**
@@ -158,9 +135,7 @@ export function has(id) {
  * @returns {string[]} nouvelle liste après bascule
  */
 export function toggle(id) {
-  const current = list();
-  const idx = current.indexOf(id);
-  const next = idx === -1 ? [...current, id] : current.filter((x) => x !== id);
+  const next = toggleId(list(), id);
   writeStorage(next);
   emitChange(next);
   return next;
@@ -171,8 +146,7 @@ export function toggle(id) {
  * @returns {string[]}
  */
 export function set(ids) {
-  const cleaned = ids.filter((id) => typeof id === "string" && id);
-  const next = [...new Set(filterKnown(cleaned))];
+  const next = dedup(filterKnown(cleanIncoming(ids), KNOWN_IDS));
   writeStorage(next);
   emitChange(next);
   return next;
@@ -183,8 +157,10 @@ export function set(ids) {
  * @returns {string[]}
  */
 export function merge(ids) {
-  const cleaned = ids.filter((id) => typeof id === "string" && id);
-  const next = [...new Set([...list(), ...filterKnown(cleaned)])];
+  const next = dedup([
+    ...list(),
+    ...filterKnown(cleanIncoming(ids), KNOWN_IDS),
+  ]);
   writeStorage(next);
   emitChange(next);
   return next;
@@ -198,26 +174,7 @@ export function merge(ids) {
  * @returns {?{ ids: string[], dropped: number }}
  */
 export function readHash() {
-  const hash = window.location.hash.startsWith("#")
-    ? window.location.hash.slice(1)
-    : window.location.hash;
-  if (!hash) {
-    return null;
-  }
-  const params = new URLSearchParams(hash);
-  const raw = params.get(HASH_PARAM);
-  if (raw == null) {
-    return null;
-  }
-  if (raw === "") {
-    return { ids: [], dropped: 0 };
-  }
-  const decoded = raw
-    .split(",")
-    .map((id) => decodeURIComponent(id.trim()))
-    .filter((id) => id.length > 0);
-  const filtered = filterKnown(decoded);
-  return { ids: filtered, dropped: decoded.length - filtered.length };
+  return decodeHash(window.location.hash, HASH_PARAM, KNOWN_IDS);
 }
 
 /**
@@ -236,9 +193,7 @@ export function clearHash() {
  * @returns {string}
  */
 export function buildShareUrl(ids, pagePath = "/favoris/") {
-  const encoded = ids.map((id) => encodeURIComponent(id)).join(",");
-  const base = `${window.location.origin}${pagePath}`;
-  return encoded ? `${base}#${HASH_PARAM}=${encoded}` : base;
+  return buildShareUrlPure(ids, window.location.origin, pagePath, HASH_PARAM);
 }
 
 /**

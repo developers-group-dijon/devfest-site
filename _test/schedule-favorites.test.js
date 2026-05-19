@@ -67,25 +67,15 @@ describe("schedule-favorites", () => {
     assert.equal(btn.getAttribute("aria-label"), "Ajouter aux favoris");
   });
 
-  test("toggle d'une session synchronise l'état des autres cards de la même session", async () => {
-    // On ne peut pas avoir deux cards du même id dans un même DOM normalement,
-    // mais le code écoute "favorites:change" pour rafraîchir TOUTES les cards.
-    // Simulons-le en ré-émettant l'événement et en vérifiant le refresh.
+  test("ne plante pas en présence d'une .session.pause sans bouton fav", async () => {
+    // La pause est dans le HTML — si le module tentait de lier un
+    // bouton fav inexistant, `load()` lèverait. Vérification implicite
+    // mais utile : c'est ce qui garantit la robustesse en prod.
     await load();
-    const btn1 = favButton("s1");
-    const btn2 = favButton("s2");
-    btn1.dispatchEvent(new globalThis.window.Event("click", { bubbles: true }));
-    // s2 doit rester false (pas favori)
-    assert.equal(btn1.getAttribute("aria-pressed"), "true");
-    assert.equal(btn2.getAttribute("aria-pressed"), "false");
-  });
-
-  test("les pauses (sans data-session-id) n'ont pas de bouton fav lié", async () => {
-    await load();
-    // Pas d'erreur même si la .session.pause n'a pas de bouton
-    const pauseDiv = globalThis.document.querySelector(".session.pause");
-    assert.ok(pauseDiv);
-    assert.equal(pauseDiv.querySelector("button.session-fav"), null);
+    // Sanity-check : un bouton normal continue de fonctionner.
+    const btn = favButton("s1");
+    btn.dispatchEvent(new globalThis.window.Event("click", { bubbles: true }));
+    assert.equal(btn.getAttribute("aria-pressed"), "true");
   });
 });
 

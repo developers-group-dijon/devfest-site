@@ -1,40 +1,54 @@
 // Filtres côté client de la page programme : format, catégorie, recherche texte.
 // Masque les cellules de la grille via l'attribut `hidden`. Les pauses/keynotes
 // (sans `data-session-id`) restent toujours visibles.
+//
+// La logique de filtrage elle-même est dans `./schedule-filters-utils.js`
+// (pure, testable sans DOM). Ce module se contente d'extraire les
+// descripteurs depuis le DOM, d'écouter les interactions UI et de
+// répercuter le résultat sur l'attribut `hidden` des cards.
 
-/** @type {{ format: Set<string>, category: Set<string>, q: string }} */
+import {
+  normalize,
+  filterSessions,
+  hasActiveFilters,
+} from "./schedule-filters-utils.js";
+
+/** @type {import("./schedule-filters-utils.js").FilterState} */
 const state = { format: new Set(), category: new Set(), q: "" };
 
 /**
- * Met le texte en minuscule et retire les diacritiques pour permettre une
- * recherche tolérante aux accents.
- * @param {string} value
- * @returns {string}
+ * @typedef CardEntry
+ * @property {HTMLElement} element
+ * @property {import("./schedule-filters-utils.js").SessionDescriptor} desc
  */
-function normalize(value) {
-  return value
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/\p{Diacritic}/gu, "");
-}
+
+/** @type {CardEntry[]} */
+let cards = [];
 
 /**
- * @param {Element} card
- * @returns {boolean}
+ * Recense les cartes filtrables et capture leur descripteur. Appelé
+ * une seule fois au DOMContentLoaded — le contenu textuel des sessions
+ * ne change pas après build.
  */
-function matches(card) {
-  const formatId = card.getAttribute("data-format-id");
-  const categoryId = card.getAttribute("data-category-id");
-  if (state.format.size && (!formatId || !state.format.has(formatId))) {
-    return false;
-  }
-  if (state.category.size && (!categoryId || !state.category.has(categoryId))) {
-    return false;
-  }
-  if (state.q && !normalize(card.textContent ?? "").includes(state.q)) {
-    return false;
-  }
-  return true;
+function collectCards() {
+  cards = [...document.querySelectorAll(".session[data-session-id]")].flatMap(
+    (element) => {
+      if (!(element instanceof HTMLElement)) {
+        return [];
+      }
+      return [
+        {
+          element,
+          desc: {
+            id: element.getAttribute("data-session-id") ?? "",
+            formatId: element.getAttribute("data-format-id"),
+            categoryId: element.getAttribute("data-category-id"),
+            text: element.textContent ?? "",
+          },
+        },
+      ];
+    },
+  );
 }
 
 /**
@@ -42,24 +56,25 @@ function matches(card) {
  * l'affichage du bouton "Réinitialiser" et du message d'absence de résultat.
  */
 function apply() {
-  let visibleCount = 0;
-  document.querySelectorAll(".session[data-session-id]").forEach((card) => {
-    if (matches(card)) {
-      card.removeAttribute("hidden");
-      visibleCount++;
+  const visible = filterSessions(
+    cards.map((c) => c.desc),
+    state,
+  );
+  for (const { element, desc } of cards) {
+    if (visible.has(desc.id)) {
+      element.removeAttribute("hidden");
     } else {
-      card.setAttribute("hidden", "");
+      element.setAttribute("hidden", "");
     }
-  });
-  const anyActive =
-    state.format.size > 0 || state.category.size > 0 || state.q.length > 0;
+  }
+  const anyActive = hasActiveFilters(state);
   const reset = document.querySelector(".filter-reset");
   const empty = document.querySelector(".filter-empty");
   if (reset instanceof HTMLElement) {
     reset.toggleAttribute("hidden", !anyActive);
   }
   if (empty instanceof HTMLElement) {
-    empty.toggleAttribute("hidden", !anyActive || visibleCount > 0);
+    empty.toggleAttribute("hidden", !anyActive || visible.size > 0);
   }
 }
 
@@ -125,6 +140,7 @@ function bindReset(button, input) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+  collectCards();
   document.querySelectorAll("button.filter-chip").forEach((chip) => {
     if (chip instanceof HTMLButtonElement) {
       bindChip(chip);

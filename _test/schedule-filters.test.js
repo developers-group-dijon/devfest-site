@@ -1,51 +1,51 @@
-// Tests unitaires du module UI _assets/js/schedule-filters.js.
-// Le module attache des listeners au DOMContentLoaded. On simule cet
-// événement après l'import, sur un DOM minimal qui contient des chips,
-// un input search et un bouton reset.
+// Tests d'intégration jsdom de _assets/js/schedule-filters.js.
+// La logique pure de filtrage (matching format/catégorie/recherche, OR/AND,
+// normalisation des accents) est testée séparément dans
+// `schedule-filters-utils.test.js`. Ce fichier ne garde que ce qui dépend
+// vraiment du DOM : reset, message d'absence, exclusion des pauses,
+// accessibilité (aria-pressed).
 
 import { test, describe, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import { setupDOM, teardownDOM } from "./_helpers/dom.js";
+import { installFakeTimers } from "./_helpers/timers.js";
 
+/** @type {?ReturnType<typeof installFakeTimers>} */
+let fakeTimers = null;
+
+// HTML minimal pour les 4 tests qui restent (reset, message empty,
+// pauses intactes, aria-pressed) : 1 chip Format, 1 input, 1 bouton
+// reset, 1 .filter-empty, 1 session matchante, 1 session non
+// matchante (pour avoir quelque chose à masquer/restaurer), 1 pause.
 const HTML = `<!doctype html><html><body data-edition="test">
-  <form class="schedule-filters" role="search">
-    <fieldset><legend>Format</legend>
-      <button type="button" class="filter-chip" data-filter="format" data-value="fmt-conf" aria-pressed="false">Conf</button>
-      <button type="button" class="filter-chip" data-filter="format" data-value="fmt-short" aria-pressed="false">Short</button>
-    </fieldset>
-    <fieldset><legend>Catégorie</legend>
-      <button type="button" class="filter-chip" data-filter="category" data-value="cat-web" aria-pressed="false">Web</button>
-      <button type="button" class="filter-chip" data-filter="category" data-value="cat-ia" aria-pressed="false">IA</button>
-    </fieldset>
-    <input id="schedule-search" type="search">
-    <button type="button" class="filter-reset" hidden>Reset</button>
-    <p class="filter-empty" hidden></p>
-  </form>
-  <div class="grid-day">
-    <div class="session" data-session-id="s1" data-format-id="fmt-conf" data-category-id="cat-web">
-      <div class="title">Build cool stuff with Node</div>
-      <div class="speakers">Alice Wonderland</div>
-    </div>
-    <div class="session" data-session-id="s2" data-format-id="fmt-short" data-category-id="cat-ia">
-      <div class="title">Deep learning intro</div>
-      <div class="speakers">Bob Builder</div>
-    </div>
-    <div class="session" data-session-id="s3" data-format-id="fmt-conf" data-category-id="cat-ia">
-      <div class="title">LLMs en production</div>
-      <div class="speakers">Charlie Chaplin</div>
-    </div>
-    <div class="session pause"><div class="title">Pause café</div></div>
+  <button type="button" class="filter-chip" data-filter="format" data-value="fmt-conf" aria-pressed="false">Conf</button>
+  <input id="schedule-search" type="search">
+  <button type="button" class="filter-reset" hidden>Reset</button>
+  <p class="filter-empty" hidden></p>
+  <div class="session" data-session-id="s1" data-format-id="fmt-conf">s1</div>
+  <div class="session" data-session-id="s2" data-format-id="fmt-other">s2</div>
+  <div class="session pause">Pause</div>
   </body></html>`;
 
 /**
  * Charge le module et déclenche DOMContentLoaded pour activer les bindings.
+ * Installe aussi des fake timers afin de flusher le debounce de la recherche
+ * de manière déterministe (cf. `flushSearch` ci-dessous).
  */
 async function load() {
   setupDOM(HTML);
+  fakeTimers = installFakeTimers();
   await import(`../_assets/js/schedule-filters.js?bust=${Math.random()}`);
   globalThis.window.dispatchEvent(
     new globalThis.window.Event("DOMContentLoaded"),
   );
+}
+
+/**
+ * Exécute immédiatement le callback du debounce posé par le champ de recherche.
+ */
+function flushSearch() {
+  fakeTimers?.flush();
 }
 
 function visibleSessionIds() {
@@ -62,55 +62,10 @@ function clickChip(filter, value) {
 }
 
 describe("schedule-filters", () => {
-  afterEach(teardownDOM);
-
-  test("aucun filtre actif : toutes les sessions sont visibles", async () => {
-    await load();
-    assert.deepEqual(visibleSessionIds().sort(), ["s1", "s2", "s3"]);
-  });
-
-  test("clic sur un chip Format filtre par ce format (OR au sein du groupe)", async () => {
-    await load();
-    clickChip("format", "fmt-conf");
-    assert.deepEqual(visibleSessionIds().sort(), ["s1", "s3"]);
-
-    clickChip("format", "fmt-short");
-    assert.deepEqual(visibleSessionIds().sort(), ["s1", "s2", "s3"]);
-  });
-
-  test("filtres Format ET Catégorie combinés en AND", async () => {
-    await load();
-    clickChip("format", "fmt-conf");
-    clickChip("category", "cat-ia");
-    // s3 : fmt-conf + cat-ia → seul à matcher
-    assert.deepEqual(visibleSessionIds(), ["s3"]);
-  });
-
-  test("reclic sur un chip actif le désactive", async () => {
-    await load();
-    clickChip("format", "fmt-conf");
-    clickChip("format", "fmt-conf");
-    assert.deepEqual(visibleSessionIds().sort(), ["s1", "s2", "s3"]);
-  });
-
-  test("recherche texte matche dans le contenu (titre + speaker)", async () => {
-    await load();
-    const search = globalThis.document.getElementById("schedule-search");
-    search.value = "node";
-    search.dispatchEvent(new globalThis.window.Event("input"));
-    await new Promise((r) => setTimeout(r, 150)); // debounce 120ms
-    assert.deepEqual(visibleSessionIds(), ["s1"]);
-  });
-
-  test("recherche tolérante aux accents", async () => {
-    await load();
-    const search = globalThis.document.getElementById("schedule-search");
-    search.value = "cafe";
-    search.dispatchEvent(new globalThis.window.Event("input"));
-    await new Promise((r) => setTimeout(r, 150));
-    // pauses (sans data-session-id) ne sont jamais filtrées, donc visible_count = 0
-    // mais le test vérifie que les sessions sans match disparaissent
-    assert.deepEqual(visibleSessionIds(), []);
+  afterEach(() => {
+    fakeTimers?.restore();
+    fakeTimers = null;
+    teardownDOM();
   });
 
   test("le bouton Reset apparaît dès qu'un filtre est actif et restaure tout", async () => {
@@ -118,26 +73,22 @@ describe("schedule-filters", () => {
     const reset = globalThis.document.querySelector(".filter-reset");
     assert.ok(reset.hasAttribute("hidden"));
 
-    clickChip("format", "fmt-conf");
+    clickChip("format", "fmt-conf"); // s2 (fmt-other) doit être masquée
     assert.ok(!reset.hasAttribute("hidden"));
+    assert.deepEqual(visibleSessionIds(), ["s1"]);
 
     reset.dispatchEvent(new globalThis.window.Event("click"));
-    assert.deepEqual(visibleSessionIds().sort(), ["s1", "s2", "s3"]);
+    assert.deepEqual(visibleSessionIds().sort(), ["s1", "s2"]);
     assert.ok(reset.hasAttribute("hidden"));
   });
 
   test("message 'aucune session' visible si filtre actif sans résultat", async () => {
     await load();
     const empty = globalThis.document.querySelector(".filter-empty");
-    clickChip("format", "fmt-conf");
-    clickChip("format", "fmt-short");
-    clickChip("category", "cat-web");
-    // Tous formats + cat-web → s1 (fmt-conf + cat-web)
-    // Pour viser zéro résultat, on combine avec un texte improbable :
     const search = globalThis.document.getElementById("schedule-search");
-    search.value = "zzzzzz";
+    search.value = "zzzzzz"; // aucun match
     search.dispatchEvent(new globalThis.window.Event("input"));
-    await new Promise((r) => setTimeout(r, 150));
+    flushSearch();
     assert.ok(!empty.hasAttribute("hidden"));
     assert.deepEqual(visibleSessionIds(), []);
   });

@@ -60,11 +60,29 @@ describe("formatLanguage", () => {
 });
 
 describe("dayFormat", () => {
-  test("formate un Day (YYYYMMDD number) en français", () => {
+  test("formate un Day (YYYYMMDD number) en français — jour de semaine + jour du mois", () => {
     // 22 novembre 2024 (vendredi)
-    const result = filters.dayFormat(20241122);
-    assert.match(result, /vendredi/);
-    assert.match(result, /22/);
+    assert.equal(filters.dayFormat(20241122), "vendredi 22");
+  });
+});
+
+describe("dateFormat / timeFormat / shortDateFormat", () => {
+  // Toutes ces sorties dépendent du locale fr-FR + timezone Europe/Paris,
+  // fixés via Intl.DateTimeFormat dans `_eleventy/filters.js`.
+  const sampleDate = new Date("2024-11-22T08:00:00Z"); // 09:00 Paris (vendredi)
+
+  test("dateFormat : jour-mois-année avec jour de semaine", () => {
+    assert.equal(filters.dateFormat(sampleDate), "vendredi 22 novembre 2024");
+  });
+
+  test("timeFormat : heure:minute (TZ Europe/Paris)", () => {
+    assert.equal(filters.timeFormat(sampleDate), "9:00");
+    const half = new Date("2024-11-22T08:30:00Z");
+    assert.equal(filters.timeFormat(half), "9:30");
+  });
+
+  test("shortDateFormat : alias de dayFormat à partir d'une Date", () => {
+    assert.equal(filters.shortDateFormat(sampleDate), "vendredi 22");
   });
 });
 
@@ -102,17 +120,17 @@ describe("hours / minutes / dateKey", () => {
   });
 });
 
-describe("minutesBeetween", () => {
+describe("minutesBetween", () => {
   test("calcule l'écart en minutes entre deux dates", () => {
     const a = new Date("2024-11-22T09:00:00Z");
     const b = new Date("2024-11-22T09:25:00Z");
-    assert.equal(filters.minutesBeetween(b, a), 25);
+    assert.equal(filters.minutesBetween(b, a), 25);
   });
 
   test("retourne undefined si prev absent", () => {
     const a = new Date("2024-11-22T09:00:00Z");
-    assert.equal(filters.minutesBeetween(a, null), undefined);
-    assert.equal(filters.minutesBeetween(a, undefined), undefined);
+    assert.equal(filters.minutesBetween(a, null), undefined);
+    assert.equal(filters.minutesBetween(a, undefined), undefined);
   });
 });
 
@@ -146,66 +164,156 @@ describe("mapName", () => {
 });
 
 describe("sessionIds", () => {
-  test("ne garde que les sessions non hideTrackTitle", () => {
+  test("ne garde que les sessions avec hideTrackTitle strictement === false", () => {
+    // Le manifeste sert à filtrer les favoris : les sessions sans page de
+    // détail (pauses, keynotes) ne doivent pas y figurer. La comparaison
+    // est volontairement stricte (=== false) pour exclure les sessions
+    // dont le flag n'a pas été défini explicitement.
     const raw = [
       { id: "s1", hideTrackTitle: false },
       { id: "s2", hideTrackTitle: true },
       { id: "s3", hideTrackTitle: false },
+      { id: "s4" }, // pas de flag → exclue
+      { id: "s5", hideTrackTitle: undefined }, // explicitement undefined → exclue
     ];
     assert.deepEqual(filters.sessionIds(raw), ["s1", "s3"]);
   });
 });
 
 describe("concurrentSessions", () => {
-  test("repère les sessions qui chevauchent dans le temps", () => {
-    const current = {
-      id: "current",
-      dateStart: new Date("2024-11-22T09:00:00Z"),
-      duration: 50 * 60 * 1000,
-      hideTrackTitle: false,
-      tracks: [{ id: "t1" }],
+  /**
+   * Fabrique une session avec une durée par défaut de 50 minutes.
+   * @param {string} id
+   * @param {string} startISO
+   * @param {{durationMin?: number, hideTrackTitle?: boolean, trackId?: string}} [opts]
+   */
+  function makeSession(id, startISO, opts = {}) {
+    return {
+      id,
+      dateStart: new Date(startISO),
+      duration: (opts.durationMin ?? 50) * 60 * 1000,
+      hideTrackTitle: opts.hideTrackTitle ?? false,
+      tracks: [{ id: opts.trackId ?? "t1" }],
     };
-    const sessions = [
-      current,
-      {
-        id: "overlap-start",
-        dateStart: new Date("2024-11-22T09:30:00Z"),
-        duration: 50 * 60 * 1000,
-        hideTrackTitle: false,
-        tracks: [{ id: "t2" }],
-      },
-      {
-        id: "before",
-        dateStart: new Date("2024-11-22T08:00:00Z"),
-        duration: 50 * 60 * 1000,
-        hideTrackTitle: false,
-        tracks: [{ id: "t3" }],
-      },
-      {
-        id: "pause-hidden",
-        dateStart: new Date("2024-11-22T09:00:00Z"),
-        duration: 50 * 60 * 1000,
-        hideTrackTitle: true,
-        tracks: [],
-      },
-    ];
+  }
 
-    const res = filters.concurrentSessions(sessions, current);
+  // Session courante de référence : 09:00 → 09:50.
+  const current = makeSession("current", "2024-11-22T09:00:00Z", {
+    trackId: "tA",
+  });
+
+  test("repère les sessions qui commencent pendant la session courante", () => {
+    const overlapStart = makeSession("overlap-start", "2024-11-22T09:30:00Z", {
+      trackId: "tB",
+    });
+    const res = filters.concurrentSessions([current, overlapStart], current);
     assert.deepEqual(
       res.map((s) => s.id),
       ["overlap-start"],
     );
   });
 
-  test("exclut la session elle-même", () => {
-    const current = {
-      id: "self",
+  test("repère les sessions qui finissent pendant la session courante", () => {
+    // 08:30 + 50 min = 09:20 → chevauche 09:00–09:50
+    const overlapEnd = makeSession("overlap-end", "2024-11-22T08:30:00Z", {
+      trackId: "tB",
+    });
+    const res = filters.concurrentSessions([current, overlapEnd], current);
+    assert.deepEqual(
+      res.map((s) => s.id),
+      ["overlap-end"],
+    );
+  });
+
+  test("repère les sessions qui englobent la session courante", () => {
+    // 08:30 → 10:30 (120 min) englobe entièrement 09:00 → 09:50
+    const englobante = makeSession("englobante", "2024-11-22T08:30:00Z", {
+      durationMin: 120,
+      trackId: "tB",
+    });
+    const res = filters.concurrentSessions([current, englobante], current);
+    assert.deepEqual(
+      res.map((s) => s.id),
+      ["englobante"],
+    );
+  });
+
+  test("repère les sessions entièrement incluses dans la session courante", () => {
+    // 09:10 → 09:30 (20 min) entièrement dans 09:00 → 09:50
+    const incluse = makeSession("incluse", "2024-11-22T09:10:00Z", {
+      durationMin: 20,
+      trackId: "tB",
+    });
+    const res = filters.concurrentSessions([current, incluse], current);
+    assert.deepEqual(
+      res.map((s) => s.id),
+      ["incluse"],
+    );
+  });
+
+  test("écarte une session adjacente avant (sa fin == début de la courante)", () => {
+    // 08:10 + 50 min = 09:00 → frontière exacte, NE chevauche PAS
+    const adjBefore = makeSession("adj-before", "2024-11-22T08:10:00Z", {
+      trackId: "tB",
+    });
+    assert.deepEqual(
+      filters.concurrentSessions([current, adjBefore], current),
+      [],
+    );
+  });
+
+  test("écarte une session adjacente après (son début == fin de la courante)", () => {
+    // 09:50 → 10:40 — frontière exacte, NE chevauche PAS
+    const adjAfter = makeSession("adj-after", "2024-11-22T09:50:00Z", {
+      trackId: "tB",
+    });
+    assert.deepEqual(
+      filters.concurrentSessions([current, adjAfter], current),
+      [],
+    );
+  });
+
+  test("écarte les sessions hideTrackTitle (pauses, keynotes)", () => {
+    const pause = {
+      id: "pause-hidden",
       dateStart: new Date("2024-11-22T09:00:00Z"),
       duration: 50 * 60 * 1000,
-      hideTrackTitle: false,
-      tracks: [{ id: "t1" }],
+      hideTrackTitle: true,
+      tracks: [],
     };
+    assert.deepEqual(filters.concurrentSessions([current, pause], current), []);
+  });
+
+  test("exclut la session elle-même", () => {
     assert.deepEqual(filters.concurrentSessions([current], current), []);
+  });
+
+  test("tri : par dateStart croissant", () => {
+    const late = makeSession("late", "2024-11-22T09:40:00Z", { trackId: "tB" });
+    const early = makeSession("early", "2024-11-22T09:10:00Z", {
+      trackId: "tC",
+    });
+    const res = filters.concurrentSessions([current, late, early], current);
+    assert.deepEqual(
+      res.map((s) => s.id),
+      ["early", "late"],
+    );
+  });
+
+  test("tri : à dateStart identique, par tracks[0].id alphabétique", () => {
+    // Deux sessions concurrentes commencent exactement au même horodatage —
+    // la branche localeCompare de _eleventy/filters.js doit départager.
+    const tBeta = makeSession("beta", "2024-11-22T09:10:00Z", {
+      trackId: "tBeta",
+    });
+    const tAlpha = makeSession("alpha", "2024-11-22T09:10:00Z", {
+      trackId: "tAlpha",
+    });
+    const res = filters.concurrentSessions([current, tBeta, tAlpha], current);
+    assert.deepEqual(
+      res.map((s) => s.id),
+      ["alpha", "beta"],
+    );
   });
 });
 

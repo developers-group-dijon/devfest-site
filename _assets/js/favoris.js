@@ -17,25 +17,7 @@ import {
   buildShareUrl,
   initialDropped,
 } from "./favorites.js";
-
-/**
- * @param {number} count
- * @param {"hash"|"local"} source
- * @returns {string}
- */
-function droppedMessage(count, source) {
-  const plural = count > 1;
-  if (source === "hash") {
-    return `${count} session${plural ? "s" : ""} du lien ${
-      plural ? "sont introuvables" : "est introuvable"
-    } et ${plural ? "ont" : "a"} été ignoré${plural ? "es" : "e"}.`;
-  }
-  return `${count} session${plural ? "s" : ""} de votre planning ${
-    plural ? "n'existent plus" : "n'existe plus"
-  } dans le programme et ${plural ? "ont" : "a"} été retiré${
-    plural ? "es" : "e"
-  } de vos favoris.`;
-}
+import { droppedMessage, selectDayCards } from "./favoris-utils.js";
 
 /** @type {?string[]} ids issus du permalien (`#fav=...`), null si pas de hash */
 let previewIds = null;
@@ -63,35 +45,6 @@ function readCard(element) {
     return null;
   }
   return { element, id, start, end: start + duration };
-}
-
-/**
- * Regroupe des cartes triées par début en clusters de chevauchement.
- * Deux cartes sont dans le même cluster si l'une chevauche au moins
- * une autre du cluster.
- * @param {Card[]} sortedCards
- * @returns {Card[][]}
- */
-function buildConflictClusters(sortedCards) {
-  /** @type {Card[][]} */
-  const clusters = [];
-  /** @type {Card[]} */
-  let current = [];
-  let currentEnd = -Infinity;
-  for (const card of sortedCards) {
-    if (current.length === 0 || card.start < currentEnd) {
-      current.push(card);
-      currentEnd = Math.max(currentEnd, card.end);
-    } else {
-      clusters.push(current);
-      current = [card];
-      currentEnd = card.end;
-    }
-  }
-  if (current.length > 0) {
-    clusters.push(current);
-  }
-  return clusters;
 }
 
 /**
@@ -151,34 +104,36 @@ function applySelection(favIds) {
     }
     unwrapConflicts(list);
 
+    // Lecture du DOM → liste de cartes typées. La fonction pure
+    // `selectDayCards` fait ensuite tout le travail métier.
     /** @type {Card[]} */
-    const visibleCards = [];
+    const allCards = [];
     list.querySelectorAll(".fav-card").forEach((cardElt) => {
       const card = readCard(cardElt);
-      if (!card) {
-        return;
-      }
-      if (favIds.has(card.id)) {
-        cardElt.removeAttribute("hidden");
-        visibleCards.push(card);
-      } else {
-        cardElt.setAttribute("hidden", "");
+      if (card) {
+        allCards.push(card);
       }
     });
+    const { visible, conflictClusters } = selectDayCards(allCards, favIds);
+    const visibleIds = new Set(visible.map((c) => c.id));
 
-    visibleCards.sort((a, b) => a.start - b.start);
-    const clusters = buildConflictClusters(visibleCards);
-    for (const cluster of clusters) {
-      if (cluster.length > 1) {
-        wrapCluster(cluster, list);
+    // Application au DOM : visibilité par card, wrap des clusters,
+    // visibilité de la section, total agrégé.
+    for (const card of allCards) {
+      if (visibleIds.has(card.id)) {
+        card.element.removeAttribute("hidden");
+      } else {
+        card.element.setAttribute("hidden", "");
       }
     }
-
-    if (visibleCards.length === 0) {
+    for (const cluster of conflictClusters) {
+      wrapCluster(cluster, list);
+    }
+    if (visible.length === 0) {
       section.setAttribute("hidden", "");
     } else {
       section.removeAttribute("hidden");
-      visibleTotal += visibleCards.length;
+      visibleTotal += visible.length;
     }
   });
 

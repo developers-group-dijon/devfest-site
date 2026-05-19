@@ -1,10 +1,18 @@
-// Tests unitaires du module core favoris (_assets/js/favorites.js).
-// Le module lit document/localStorage au moment de son chargement
-// (notamment KNOWN_IDS et INIT_DROPPED). On doit donc préparer le DOM
-// AVANT chaque import et utiliser un import dynamique avec cache-bust
-// pour ré-évaluer le module dans des scénarios différents.
+// Tests d'intégration du module core favoris (_assets/js/favorites.js).
+// La logique pure (parsing, filtrage, toggle, decode hash, build URL)
+// est testée dans `favorites-utils.test.js`. Ce fichier ne garde que
+// les comportements qui dépendent vraiment de l'environnement navigateur :
+// - lecture/écriture localStorage scopée par édition
+// - lecture de `<script id="sessions-manifest">` au chargement
+// - purge automatique au chargement (INIT_DROPPED)
+// - intégration window.location.hash / origin / history
+// - événement `favorites:change` dispatché sur `document`
+//
+// Le module lit document/localStorage au moment de son chargement.
+// On prépare donc le DOM AVANT chaque import et on cache-bust pour
+// ré-évaluer le module dans des scénarios différents.
 
-import { test, describe, beforeEach, afterEach } from "node:test";
+import { test, describe, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import { setupDOM, teardownDOM } from "./_helpers/dom.js";
 
@@ -91,13 +99,6 @@ describe("favorites - filtrage par manifeste (knownIds)", () => {
     assert.equal(fav.initialDropped(), 1);
   });
 
-  test("knownIds() retourne le manifeste comme Set", async () => {
-    const fav = await loadModule({ manifest: ["a", "b", "c"] });
-    const known = fav.knownIds();
-    assert.ok(known.has("a"));
-    assert.equal(known.size, 3);
-  });
-
   test("sans manifeste, ne filtre rien et knownIds() est un Set vide", async () => {
     const fav = await loadModule({ stored: ["foo", "bar"] });
     assert.deepEqual(fav.list(), ["foo", "bar"]);
@@ -119,16 +120,6 @@ describe("favorites - permalien (readHash, clearHash, buildShareUrl)", () => {
     assert.equal(res.dropped, 1); // "b" filtré
   });
 
-  test("readHash() sans hash retourne null", async () => {
-    const fav = await loadModule({ manifest: ["a"] });
-    assert.equal(fav.readHash(), null);
-  });
-
-  test("readHash() #fav= (vide) retourne ids: []", async () => {
-    const fav = await loadModule({ manifest: ["a"], hash: "#fav=" });
-    assert.deepEqual(fav.readHash(), { ids: [], dropped: 0 });
-  });
-
   test("clearHash() retire #fav=... de l'URL", async () => {
     const fav = await loadModule({ manifest: ["a"], hash: "#fav=a" });
     assert.equal(globalThis.window.location.hash, "#fav=a");
@@ -136,22 +127,16 @@ describe("favorites - permalien (readHash, clearHash, buildShareUrl)", () => {
     assert.equal(globalThis.window.location.hash, "");
   });
 
-  test("buildShareUrl construit l'URL absolue avec hash encodé", async () => {
+  test("buildShareUrl utilise window.location.origin", async () => {
     const fav = await loadModule({ manifest: ["a", "b"] });
-    const url = fav.buildShareUrl(["a", "b"]);
-    assert.equal(url, "http://localhost/favoris/#fav=a,b");
-  });
-
-  test("buildShareUrl avec liste vide retourne juste la base", async () => {
-    const fav = await loadModule({ manifest: [] });
-    assert.equal(fav.buildShareUrl([]), "http://localhost/favoris/");
+    assert.equal(
+      fav.buildShareUrl(["a", "b"]),
+      "http://localhost/favoris/#fav=a,b",
+    );
   });
 });
 
 describe("favorites - événement favorites:change", () => {
-  beforeEach(() => {
-    // setup minimal réutilisé
-  });
   afterEach(teardownDOM);
 
   test("toggle déclenche un favorites:change avec la nouvelle liste", async () => {
