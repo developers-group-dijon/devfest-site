@@ -8,19 +8,19 @@
  */
 export default [
   {
-    id: "niepce",
-    name: "Amphi. Niepce",
+    id: "amphi-paris",
+    name: "« Bien-être au travail »",
   },
   {
-    id: "recoura",
-    name: "Amphi. Recoura",
+    id: "amphi-bernard",
+    name: "« Responsable / Accessibilité »",
   },
   {
-    id: "paris",
-    name: "Amphi. Paris",
+    id: "amphi-recoura",
+    name: "« Autour du code : archi, test, packaging, run »",
   },
   {
-    id: "bernard",
-    name: "Amphi. Bernard",
+    id: "amphi-niepce",
+    name: "« Tech / dev »",
   },
 ];
