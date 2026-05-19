@@ -41,6 +41,9 @@ function socialIconSvg(socialId) {
     case SocialId.INSTAGRAM:
       iconName = "brands/instagram";
       break;
+    case SocialId.YOUTUBE:
+      iconName = "brands/youtube";
+      break;
     default:
       throw new Error(`Réseau social non supporté : ${socialId}`);
   }

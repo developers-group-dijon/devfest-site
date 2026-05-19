@@ -8,17 +8,17 @@
  */
 export default [
   {
-    id: "cm8fxehjm00qaqr3mi6qly25m",
+    id: "cmnd2nkpn00du01pf943n1bfc",
     name: "📣 Conférence",
     durationMinutes: 50,
   },
   {
-    id: "cm8fxewbi00qbqr3mdo7foy1h",
+    id: "cmnd2nkpn00dv01pfj5fi0f0s",
     name: "⚡️ Short track",
     durationMinutes: 20,
   },
   {
-    id: "cm8fxfxfc00qcqr3m410c87zu",
+    id: "cmnd2nkpn00dw01pfktyb71ph",
     name: "💻 Atelier",
     durationMinutes: 110,
   },

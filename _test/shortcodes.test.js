@@ -45,6 +45,7 @@ describe("social", () => {
     { id: SocialId.BLUESKY, expectedSvg: "brands/bluesky" },
     { id: SocialId.LINK, expectedSvg: "solid/link" },
     { id: SocialId.INSTAGRAM, expectedSvg: "brands/instagram" },
+    { id: SocialId.YOUTUBE, expectedSvg: "brands/youtube" },
   ];
 
   // Confirme que CASES couvre tous les SocialId déclarés — protège contre

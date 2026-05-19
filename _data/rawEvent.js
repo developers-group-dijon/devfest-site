@@ -39,9 +39,9 @@ export default {
         "Le DevFest Dijon 2026 est la cinquième édition de la plus grande conférence technique de Bourgogne-Franche-Comté destinée aux développeurs. Elle s'adresse aux étudiants, aux professionnels ou tout simplement curieux, passionnés de technologies.",
     },
     {
-      title: "DevFest 2026",
+      title: "Une expérience pensée pour favoriser le partage",
       content:
-        "Pour cetté édition, on vous réserve quelques surprises, un peu de patience…",
+        "En 2026, le DevFest Dijon évolue pour offrir une expérience qui va bien au-delà d'une succession de conférences. Cette vision s'incarne dans notre nouvelle signature : **« Cité du code et du partage »**.\n\nLe DevFest Dijon est avant tout un lieu de rencontres, où les conférences se prolongent par **des échanges, des découvertes et de nouvelles connexions**. Inspirée de l'esprit d'une cité, cette identité guidera les prochaines éditions pour faire du DevFest un rendez-vous toujours plus **chaleureux, collaboratif et enrichissant**.\n\n**Préparez votre journée**\nGrâce au [programme interactif](./favoris), vous pourrez consulter les conférences en amont, sélectionner celles qui vous intéressent et construire votre parcours personnalisé avant même le début de l'événement.",
     },
   ],
   previousEditions: [
