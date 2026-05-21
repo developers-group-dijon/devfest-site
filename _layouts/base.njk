@@ -39,9 +39,9 @@ icons:
           <a class="item home" href="/">Accueil</a>
           {% if speakers.length > 0 %}<a class="item" href="/speakers/"><span class="speakers-icon">{% iconSvg 'solid/user' %}</span><span class="speakers-label">Speakers</span></a>{% endif %}
           {% if event.sessionCount > 0 %}<a class="item" href="/schedule/"><span class="schedule-icon">{% iconSvg 'solid/calendar' %}</span><span class="schedule-label">Programme</span></a>{% endif %}
-          {% if event.sessionCount > 0 %}<a class="item planning" href="/favoris/"><span class="planning-icon">{% iconSvg 'solid/bookmark' %}</span><span class="planning-label">Mon planning</span> <span class="fav-count" hidden>0</span></a>{% endif %}
-          {% if ticketing.url %}<a class="item ticketing-link" href="{{ ticketing.url}}">Billetterie</a>{% endif %}
-          {% if event.sponsoringUrl %}<a class="item ticketing-link" href="{{ event.sponsoringUrl }}">Devenir sponsor</a>{% endif %}
+          {% if event.sessionCount > 0 %}<a class="item planning" href="/favoris/"><span class="planning-icon">{% iconSvg 'solid/bookmark' %}</span><span class="planning-label">Mon&nbsp;planning</span> <span class="fav-count" hidden>0</span></a>{% endif %}
+          {% if ticketing.url %}<a class="item ticketing-link" href="{{ ticketing.url}}"><span class="ticket-icon">{% iconSvg 'solid/ticket' %}</span><span class="ticket-label">Billetterie</span></a>{% endif %}
+          {% if event.sponsoringUrl %}<a class="item ticketing-link" href="{{ event.sponsoringUrl }}"><span class="sponsor-icon">{% iconSvg 'solid/euro' %}</span><span class="sponsor-label">Devenir&nbsp;sponsor</span></a>{% endif %}
         </div>
       </nav>
     </header>

@@ -138,12 +138,16 @@ a.social-icon:hover svg {
 
 .site-header .menu a.item .planning-icon,
 .site-header .menu a.item .schedule-icon,
+.site-header .menu a.item .ticket-icon,
+.site-header .menu a.item .sponsor-icon,
 .site-header .menu a.item .speakers-icon {
   display: none;
 }
 
 .site-header .menu a.item .planning-icon svg,
 .site-header .menu a.item .schedule-icon svg,
+.site-header .menu a.item .ticket-icon svg,
+.site-header .menu a.item .sponsor-icon svg,
 .site-header .menu a.item .speakers-icon svg {
   height: 1rem;
   fill: currentcolor;
@@ -165,6 +169,8 @@ a.social-icon:hover svg {
 
   .site-header .menu a.item .planning-icon,
   .site-header .menu a.item .schedule-icon,
+  .site-header .menu a.item .ticket-icon,
+  .site-header .menu a.item .sponsor-icon,
   .site-header .menu a.item .speakers-icon {
     display: inline-flex;
     align-items: center;
@@ -172,6 +178,8 @@ a.social-icon:hover svg {
 
   .site-header .menu a.item .planning-label,
   .site-header .menu a.item .schedule-label,
+  .site-header .menu a.item .ticket-label,
+  .site-header .menu a.item .sponsor-label,
   .site-header .menu a.item .speakers-label {
     display: none;
   }
@@ -181,7 +189,6 @@ a.social-icon:hover svg {
   display: inline-block;
   min-width: 1.4rem;
   padding: 0 0.4rem;
-  margin-left: 0.3rem;
   border-radius: 1rem;
   background: var(--default-primary-color);
   color: var(--primary-inv-text-color);
@@ -198,15 +205,6 @@ a.social-icon:hover svg {
 
 body.scrolled .site-header .menu a.item .fav-count {
   background: var(--default-primary-color);
-  color: var(--primary-inv-text-color);
-}
-
-.site-header .menu a.item.ticketing-link {
-  box-shadow:
-    0 2px 2px 0 rgb(0 0 0 / 14%),
-    0 3px 1px -2px rgb(0 0 0 / 12%),
-    0 1px 5px 0 rgb(0 0 0 / 20%);
-  transition: box-shadow 0.25s;
   color: var(--primary-inv-text-color);
 }
 
@@ -245,16 +243,27 @@ a.cfp-link:hover {
   background: var(--dark-primary-color);
 }
 
-.site-header .menu a.ticketing-link {
-  border-radius: 0.5lh;
-  background: var(--default-primary-color);
-  line-height: 2em;
-  align-self: center;
-  color: var(--primary-inv-text-color) !important;
-}
+@media (min-width: 900px) {
+  .site-header .menu a.ticketing-link {
+    border-radius: 0.5lh;
+    background: var(--default-primary-color);
+    line-height: 2em;
+    align-self: center;
+    color: var(--primary-inv-text-color) !important;
+  }
 
-.site-header .menu a.ticketing-link:hover {
-  background: var(--dark-primary-color);
+  .site-header .menu a.ticketing-link:hover {
+    background: var(--dark-primary-color);
+  }
+
+  .site-header .menu a.item.ticketing-link {
+    box-shadow:
+      0 2px 2px 0 rgb(0 0 0 / 14%),
+      0 3px 1px -2px rgb(0 0 0 / 12%),
+      0 1px 5px 0 rgb(0 0 0 / 20%);
+    transition: box-shadow 0.25s;
+    color: var(--primary-inv-text-color);
+  }
 }
 
 .site-links {
