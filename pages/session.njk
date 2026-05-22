@@ -26,7 +26,7 @@
     <div class="session-actions">
         <button class="session-fav-large" type="button" aria-pressed="false" data-session-id="{{ rawSession.id }}" aria-label="Ajouter aux favoris"><span class="star-off">{% iconSvg 'regular/bookmark' %}</span><span class="star-on">{% iconSvg 'solid/bookmark' %}</span><span class="label">Ajouter aux favoris</span></button>
         {%- if session.feedbackUrl %}
-        <a class="session-feedback-large" href="{{ session.feedbackUrl }}" target="_blank" rel="noopener">{% iconSvg 'regular/comment-dots' %}<span>Donner mon avis</span></a>
+        <a class="session-feedback-large" href="{{ session.feedbackUrl }}" target="_blank" rel="noopener noreferrer">{% iconSvg 'regular/comment-dots' %}<span>Donner mon avis</span></a>
         {%- endif %}
     </div>
     {{ session.abstract | md | safe }}

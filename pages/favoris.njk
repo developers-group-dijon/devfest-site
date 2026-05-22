@@ -62,7 +62,7 @@ eleventyComputed:
                {%- endif %}
                <div class="fav-card-actions">
                   {%- if session.feedbackUrl %}
-                  <a class="fav-card-feedback" href="{{ session.feedbackUrl }}" target="_blank" rel="noopener">{% iconSvg 'regular/comment-dots' %}<span>Donner mon avis</span></a>
+                  <a class="fav-card-feedback" href="{{ session.feedbackUrl }}" target="_blank" rel="noopener noreferrer">{% iconSvg 'regular/comment-dots' %}<span>Donner mon avis</span></a>
                   {%- endif %}
                   <button class="fav-card-remove" type="button" aria-label="Retirer des favoris" data-session-id="{{ session.id }}">Retirer</button>
                </div>

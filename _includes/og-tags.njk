@@ -1,0 +1,30 @@
+{#
+  Meta Open Graph + Twitter Cards + canonical.
+  Hérite du contexte global (titre, description, image, page.url, site.url,
+  event.name). Image relative préfixée par site.url pour produire des URL
+  absolues exigées par les crawlers OG.
+
+  Variables consommées :
+    - title         (front-matter de la page)
+    - description   (front-matter, fallback sur event.name)
+    - image         (front-matter, fallback sur le brand-logo)
+    - page.url      (variable Eleventy, chemin de la page courante)
+    - site.url      (depuis _data/site.json)
+    - event.name    (depuis _data/rawEvent.js)
+#}
+{%- set ogTitle = (event.name + " ⋅ " + title) if title else event.name -%}
+{%- set ogDescription = description | default(event.name) | striptags | truncate(200) -%}
+{%- set ogImage = site.url + ((image if image else "/brand-logo.webp") | normalizeAssetUrl) -%}
+{%- set ogUrl = site.url + page.url -%}
+<link rel="canonical" href="{{ ogUrl }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ event.name }}">
+<meta property="og:title" content="{{ ogTitle }}">
+<meta property="og:description" content="{{ ogDescription }}">
+<meta property="og:image" content="{{ ogImage }}">
+<meta property="og:url" content="{{ ogUrl }}">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ ogTitle }}">
+<meta name="twitter:description" content="{{ ogDescription }}">
+<meta name="twitter:image" content="{{ ogImage }}">
