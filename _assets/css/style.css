@@ -1,3 +1,12 @@
+/* Anneau de focus visible cohérent sur tous les éléments interactifs
+   atteints au clavier. `currentColor` garantit le contraste quel que
+   soit le fond (texte sombre sur fond clair = outline sombre ; texte
+   blanc sur fond magenta = outline blanc). */
+:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+}
+
 /* Permet aux règles `@container page scroll-state(...)` ci-dessous de
    détecter si la page est scrollée, sans aucun JS. Sur les navigateurs
    qui ne supportent pas encore `scroll-state` (Safari, Firefox, Chrome
@@ -229,6 +238,30 @@ body.scrolled .site-header .menu a.item {
 
 body.scrolled .site-header .menu a.item.home-icon svg {
   fill: var(--primary-text-color);
+}
+
+/* Équivalent CSS pur des règles `body.scrolled X` ci-dessus : appliqué
+   automatiquement par le navigateur dès que la page n'est plus tout en
+   haut, sans aucun JS. Sur les navigateurs sans `scroll-state`, ce bloc
+   est ignoré et c'est la classe `body.scrolled` (posée par le fallback
+   JS dans site.js) qui prend le relais. */
+@container page not scroll-state(scrolled: top) {
+  .site-header {
+    background-color: var(--default-background-color);
+    box-shadow:
+      0 2px 2px 0 rgb(0 0 0 / 14%),
+      0 3px 1px -2px rgb(0 0 0 / 12%),
+      0 1px 5px 0 rgb(0 0 0 / 20%);
+    z-index: 10;
+  }
+
+  .site-header .menu a.item {
+    color: var(--primary-text-color);
+  }
+
+  .site-header .menu a.item.home-icon svg {
+    fill: var(--primary-text-color);
+  }
 }
 
 a.cfp-link {
