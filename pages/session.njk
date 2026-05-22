@@ -28,7 +28,9 @@
         ogImage: "{{ (session.speakers[0].photoUrl if (session.speakers[0] and session.speakers[0].photoUrl) else '/default-avatar.webp') }}",
         ogType: "article",
         ogCard: "summary",
-        ogArticleAuthor: "{{ session.speakers | mapName | join(', ') }}",
+        // Les balises article:author sont émises par la macro og-tags en bouclant
+        // directement sur `session.speakers` (une balise par speaker, conformément
+        // à la spec OG qui attend une URL de profil par auteur).
     },
 }
 ---

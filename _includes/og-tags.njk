@@ -14,7 +14,10 @@
     - ogCard                                          (default summary_large_image
                                                        pour website, summary sinon)
     - ogProfileFirstName / ogProfileLastName          (si ogType="profile")
-    - ogArticleAuthor                                 (si ogType="article")
+    - session.speakers[]                              (si ogType="article" : couplage
+                                                       implicite avec pages/session.njk
+                                                       — émet une balise article:author
+                                                       par speaker, URL absolue de profil)
     - page.url, site.url, event.name
 #}
 {%- set _title = ogTitle | default(event.name + " ⋅ " + title) -%}
@@ -38,8 +41,10 @@
 {%- if _type == "profile" and ogProfileLastName %}
 <meta property="profile:last_name" content="{{ ogProfileLastName }}">
 {%- endif %}
-{%- if _type == "article" and ogArticleAuthor %}
-<meta property="article:author" content="{{ ogArticleAuthor }}">
+{%- if _type == "article" and session and session.speakers %}
+{%- for author in session.speakers %}
+<meta property="article:author" content="{{ site.url }}/speaker/{{ author.name | slugify }}/">
+{%- endfor %}
 {%- endif %}
 <meta name="twitter:card" content="{{ _card }}">
 <meta name="twitter:title" content="{{ _title }}">
