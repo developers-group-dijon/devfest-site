@@ -22,14 +22,25 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     _assets: "/assets",
   });
-  eleventyConfig.addPassthroughCopy({
+  // Sous-ensemble Poppins : seuls les poids effectivement utilisés en CSS
+  // (200,300,400,500,600) + 700 pour le <strong> par défaut du Markdown
+  // + 400 italic pour le <em>. Les autres @font-face restent déclarés
+  // dans latin.css mais ne sont jamais demandés par le navigateur faute
+  // de règle qui les référence.
+  const poppinsFiles = {
     "./node_modules/@fontsource/poppins/latin.css":
       "./assets/poppins/latin.css",
     "./node_modules/@fontsource/poppins/latin-italic.css":
       "./assets/poppins/latin-italic.css",
-    "./node_modules/@fontsource/poppins/files/poppins-latin-*":
-      "./assets/poppins/files/",
-  });
+    "./node_modules/@fontsource/poppins/files/poppins-latin-400-italic.woff2":
+      "./assets/poppins/files/poppins-latin-400-italic.woff2",
+  };
+  for (const weight of [200, 300, 400, 500, 600, 700]) {
+    const name = `poppins-latin-${weight}-normal.woff2`;
+    poppinsFiles[`./node_modules/@fontsource/poppins/files/${name}`] =
+      `./assets/poppins/files/${name}`;
+  }
+  eleventyConfig.addPassthroughCopy(poppinsFiles);
 
   ////
   // Filtres
