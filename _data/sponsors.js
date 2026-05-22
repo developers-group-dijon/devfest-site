@@ -95,6 +95,11 @@ export default [
         logoUrl: "/sponsors/planet-bourgogne.webp",
       },
       {
+        name: "Sogeti",
+        website: "https://www.fr.sogeti.com/",
+        logoUrl: "/sponsors/sogeti.webp",
+      },
+      {
         name: "Steerway",
         website: "https://steerway.dev/",
         logoUrl: "/sponsors/steerway.webp",
@@ -109,6 +114,11 @@ export default [
   {
     name: "Sponsors Bronze",
     sponsors: [
+      {
+        name: "AER BFC",
+        website: "https://aer-bfc.com/",
+        logoUrl: "/sponsors/aer-bfc.webp",
+      },
       {
         name: "Holberton",
         website: "https://www.holbertonschool.fr",
