@@ -9,10 +9,12 @@
   Variables consommées :
     - ogTitle               || `event.name + " ⋅ " + title`
     - ogDescription         || description           || event.name
-    - ogImage               || "/images/hero-big-logo.webp"   (logo de l'événement
-                                                       par défaut sur toutes les pages,
-                                                       plus identifiable que les
-                                                       bannières/avatars trop petits)
+    - ogImage               || "/og/default.webp"     (image partagée 1200×630
+                                                       générée au build par
+                                                       _scripts/generate-og.js,
+                                                       composant le fond skyline
+                                                       hero-background.webp et le
+                                                       logo hero-big-logo.webp)
     - ogType                                          (default "website")
     - ogCard                                          (default "summary_large_image")
     - session.speakers[]                              (si ogType="article" : couplage
@@ -27,8 +29,8 @@
 #}
 {%- set _title = ogTitle | default(event.name + " ⋅ " + title) -%}
 {%- set _desc = (ogDescription | default(description) | default(event.name)) | excerpt(200) -%}
-{%- set _imgRaw = ogImage | default("/images/hero-big-logo.webp") -%}
-{%- set _img = _imgRaw if _imgRaw.startsWith("http") else site.url + (_imgRaw | normalizeAssetUrl) -%}
+{%- set _imgRaw = ogImage | default("/og/default.webp") -%}
+{%- set _img = _imgRaw if _imgRaw.startsWith("http") else site.url + (_imgRaw) -%}
 {%- set _type = ogType | default("website") -%}
 {%- set _card = ogCard | default("summary_large_image") -%}
 {%- set _url = site.url + page.url -%}
