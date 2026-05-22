@@ -18,9 +18,12 @@
     - ogProfileFirstName / ogProfileLastName          (si ogType="profile")
     - session.speakers[]                              (si ogType="article" : couplage
                                                        implicite avec pages/session.njk
-                                                       — émet une balise article:author
-                                                       par speaker, contenant son nom
-                                                       complet en texte)
+                                                       — émet une unique balise
+                                                       article:author concaténant les
+                                                       noms des speakers, séparés par
+                                                       ", " ; les balises multiples sont
+                                                       parfois mal interprétées par
+                                                       certains crawlers)
     - page.url, site.url, event.name
 #}
 {%- set _title = ogTitle | default(event.name + " ⋅ " + title) -%}
@@ -44,10 +47,8 @@
 {%- if _type == "profile" and ogProfileLastName %}
 <meta property="profile:last_name" content="{{ ogProfileLastName }}">
 {%- endif %}
-{%- if _type == "article" and session and session.speakers %}
-{%- for author in session.speakers %}
-<meta property="article:author" content="{{ author.name }}">
-{%- endfor %}
+{%- if _type == "article" and session and session.speakers and session.speakers.length %}
+<meta property="article:author" content="{{ session.speakers | mapName | join(', ') }}">
 {%- endif %}
 <meta name="twitter:card" content="{{ _card }}">
 <meta name="twitter:title" content="{{ _title }}">
