@@ -13,15 +13,13 @@
         title: "{{ speaker.name }}",
         description: "{{ speaker.jobTitle }} {{ speaker.company }}",
         speakerSessions: function(data) { return (data.sessions || []).filter((s) => (s.speakerIds || []).includes(data.speaker.id)); },
-        // Meta sociales : le nom du speaker seul, la bio tronquée comme description.
-        // L'image OG hérite du logo de l'événement défini par défaut dans og-tags.njk.
-        // og:type=profile permet aux lecteurs OG d'enrichir la carte (LinkedIn affiche
-        // le nom comme contact).
+        // Meta sociales : le nom complet du speaker comme titre, la bio tronquée
+        // comme description. L'image OG hérite du logo de l'événement défini par
+        // défaut dans og-tags.njk. og:type=profile permet aux lecteurs OG de
+        // reconnaître une fiche personnelle.
         ogTitle: "{{ speaker.name }}",
         ogDescription: "{{ speaker.bio | excerpt(200) }}",
         ogType: "profile",
-        ogProfileFirstName: function(data) { return (data.speaker.name || "").split(" ")[0] || ""; },
-        ogProfileLastName: function(data) { return (data.speaker.name || "").split(" ").slice(1).join(" "); },
     },
 }
 ---

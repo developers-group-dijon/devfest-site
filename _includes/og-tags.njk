@@ -15,7 +15,6 @@
                                                        bannières/avatars trop petits)
     - ogType                                          (default "website")
     - ogCard                                          (default "summary_large_image")
-    - ogProfileFirstName / ogProfileLastName          (si ogType="profile")
     - session.speakers[]                              (si ogType="article" : couplage
                                                        implicite avec pages/session.njk
                                                        — émet une unique balise
@@ -41,12 +40,6 @@
 <meta property="og:image" content="{{ _img }}">
 <meta property="og:url" content="{{ _url }}">
 <meta property="og:locale" content="fr_FR">
-{%- if _type == "profile" and ogProfileFirstName %}
-<meta property="profile:first_name" content="{{ ogProfileFirstName }}">
-{%- endif %}
-{%- if _type == "profile" and ogProfileLastName %}
-<meta property="profile:last_name" content="{{ ogProfileLastName }}">
-{%- endif %}
 {%- if _type == "article" and session and session.speakers and session.speakers.length %}
 <meta property="article:author" content="{{ session.speakers | mapName | join(', ') }}">
 {%- endif %}
