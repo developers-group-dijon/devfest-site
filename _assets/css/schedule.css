@@ -448,3 +448,13 @@
   margin: 0;
   color: var(--secondary-text-color);
 }
+
+/* Différer le rendu des jours hors viewport : chaque .day contient une
+   grille de 30+ sessions complexes. Le navigateur peut sauter leur
+   layout/paint tant qu'ils ne croisent pas la viewport, sans pour autant
+   les retirer du DOM (filterByDateStart côté schedule-filters reste
+   capable de matcher toutes les sessions). */
+.schedule-page .day {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1200px;
+}
