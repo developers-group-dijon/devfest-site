@@ -73,7 +73,7 @@ body.scrolled .site-header .site-logo > img {
 }
 
 /* Équivalent CSS pur (cf. la section scroll-state dans style.css). */
-@container page not scroll-state(scrolled: top) {
+@container page scroll-state(scrollable: top) {
   .site-header .site-logo > img {
     display: inline;
   }

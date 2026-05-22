@@ -244,8 +244,14 @@ body.scrolled .site-header .menu a.item.home-icon svg {
    automatiquement par le navigateur dès que la page n'est plus tout en
    haut, sans aucun JS. Sur les navigateurs sans `scroll-state`, ce bloc
    est ignoré et c'est la classe `body.scrolled` (posée par le fallback
-   JS dans site.js) qui prend le relais. */
-@container page not scroll-state(scrolled: top) {
+   JS dans site.js) qui prend le relais.
+
+   `scrollable: top` matche dès qu'il existe du contenu accessible en
+   scrollant vers le haut — autrement dit dès qu'on n'est plus tout en
+   haut. À ne pas confondre avec `scrolled: top` qui décrit la direction
+   du *dernier* scroll (et qui, à l'affichage initial, vaut false faute
+   d'historique → un `not scrolled: top` matcherait à tort). */
+@container page scroll-state(scrollable: top) {
   .site-header {
     background-color: var(--default-background-color);
     box-shadow:
