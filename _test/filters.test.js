@@ -60,6 +60,17 @@ describe("excerpt", () => {
       "Première ligne Deuxième ligne",
     );
   });
+
+  test("décode les entités HTML basiques pour rester idempotent", () => {
+    // markdown-it encode `&` en `&amp;` à la sortie. Sans décodage, un second
+    // passage du filtre (cf. og-tags.njk qui ré-applique excerpt) produirait
+    // `&amp;amp;`. Le décodage en sortie garantit excerpt(excerpt(x)) === excerpt(x).
+    assert.equal(filters.excerpt("R&D Strategy"), "R&D Strategy");
+    assert.equal(
+      filters.excerpt(filters.excerpt("R&D Strategy")),
+      "R&D Strategy",
+    );
+  });
 });
 
 describe("normalizeAssetUrl", () => {

@@ -1,30 +1,47 @@
 {#
   Meta Open Graph + Twitter Cards + canonical.
-  Hérite du contexte global (titre, description, image, page.url, site.url,
-  event.name). Image relative préfixée par site.url pour produire des URL
-  absolues exigées par les crawlers OG.
+  Hérite du contexte global. Les variables `ogX` (front-matter ou
+  eleventyComputed) sont consultées en priorité, avec fallback sur les
+  variables génériques (`title`, `description`, `image`). Permet aux
+  pages session/speaker de fournir des meta enrichies sans toucher au
+  rendu visuel de la page.
 
   Variables consommées :
-    - title         (front-matter de la page)
-    - description   (front-matter, fallback sur event.name)
-    - image         (front-matter, fallback sur le brand-logo)
-    - page.url      (variable Eleventy, chemin de la page courante)
-    - site.url      (depuis _data/site.json)
-    - event.name    (depuis _data/rawEvent.js)
+    - ogTitle               || `event.name + " ⋅ " + title`
+    - ogDescription         || description           || event.name
+    - ogImage               || image                 || "/brand-logo.webp"
+    - ogType                                          (default "website")
+    - ogCard                                          (default summary_large_image
+                                                       pour website, summary sinon)
+    - ogProfileFirstName / ogProfileLastName          (si ogType="profile")
+    - ogArticleAuthor                                 (si ogType="article")
+    - page.url, site.url, event.name
 #}
-{%- set ogTitle = (event.name + " ⋅ " + title) if title else event.name -%}
-{%- set ogDescription = description | default(event.name) | striptags | truncate(200) -%}
-{%- set ogImage = site.url + ((image if image else "/brand-logo.webp") | normalizeAssetUrl) -%}
-{%- set ogUrl = site.url + page.url -%}
-<link rel="canonical" href="{{ ogUrl }}">
-<meta property="og:type" content="website">
+{%- set _title = ogTitle | default(event.name + " ⋅ " + title) -%}
+{%- set _desc = (ogDescription | default(description) | default(event.name)) | excerpt(200) -%}
+{%- set _imgRaw = ogImage | default(image) | default("/brand-logo.webp") -%}
+{%- set _img = _imgRaw if _imgRaw.startsWith("http") else site.url + (_imgRaw | normalizeAssetUrl) -%}
+{%- set _type = ogType | default("website") -%}
+{%- set _card = ogCard | default("summary_large_image" if _type == "website" else "summary") -%}
+{%- set _url = site.url + page.url -%}
+<link rel="canonical" href="{{ _url }}">
+<meta property="og:type" content="{{ _type }}">
 <meta property="og:site_name" content="{{ event.name }}">
-<meta property="og:title" content="{{ ogTitle }}">
-<meta property="og:description" content="{{ ogDescription }}">
-<meta property="og:image" content="{{ ogImage }}">
-<meta property="og:url" content="{{ ogUrl }}">
+<meta property="og:title" content="{{ _title }}">
+<meta property="og:description" content="{{ _desc }}">
+<meta property="og:image" content="{{ _img }}">
+<meta property="og:url" content="{{ _url }}">
 <meta property="og:locale" content="fr_FR">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ ogTitle }}">
-<meta name="twitter:description" content="{{ ogDescription }}">
-<meta name="twitter:image" content="{{ ogImage }}">
+{%- if _type == "profile" and ogProfileFirstName %}
+<meta property="profile:first_name" content="{{ ogProfileFirstName }}">
+{%- endif %}
+{%- if _type == "profile" and ogProfileLastName %}
+<meta property="profile:last_name" content="{{ ogProfileLastName }}">
+{%- endif %}
+{%- if _type == "article" and ogArticleAuthor %}
+<meta property="article:author" content="{{ ogArticleAuthor }}">
+{%- endif %}
+<meta name="twitter:card" content="{{ _card }}">
+<meta name="twitter:title" content="{{ _title }}">
+<meta name="twitter:description" content="{{ _desc }}">
+<meta name="twitter:image" content="{{ _img }}">

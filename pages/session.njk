@@ -19,6 +19,16 @@
         // On travaille donc sur les rawSessions qu'on "résoud" ici
         session: function(data) { return (data.sessions || []).find((s) => s.id === data.rawSession.id) },
         description: "{{ session.format.name }} ({{ session.durationMinutes }} minutes){{ (' ⋅ ' + session.category.name) if session.category.name }}{{ ' ⋅ ' + (session.level | formatLevel ) if session.level}}{{ ' ⋅ ' + (session.language | formatLanguage) if session.language }}\n{{ session.dateStart | shortDateFormat | capitalize }} à {{ session.dateStart | timeFormat }} ⋅ {{ session.tracks | mapName | join(', ') }}",
+        // Meta sociales : le titre du talk seul (event.name reste exposé via og:site_name),
+        // l'abstract tronqué comme description (plus engageant que les métadonnées techniques),
+        // et la photo du premier speaker comme image (visuel humain, plutôt qu'une bannière
+        // générique). twitter:card en `summary` car l'avatar est carré.
+        ogTitle: "{{ session.title | safe }}",
+        ogDescription: "{{ session.abstract | excerpt(200) }}",
+        ogImage: "{{ (session.speakers[0].photoUrl if (session.speakers[0] and session.speakers[0].photoUrl) else '/default-avatar.webp') }}",
+        ogType: "article",
+        ogCard: "summary",
+        ogArticleAuthor: "{{ session.speakers | mapName | join(', ') }}",
     },
 }
 ---
