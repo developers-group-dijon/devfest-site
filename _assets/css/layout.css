@@ -55,7 +55,7 @@ main:focus {
   height: 64px;
   position: fixed;
   top: 0;
-  width: 100vw;
+  width: 100dvw;
 }
 
 @media (max-width: 600px) {

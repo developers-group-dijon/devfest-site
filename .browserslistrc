@@ -2,8 +2,9 @@
   defaults
   # On exclut quelques navigateurs présents dans "defaults" qui ne sont
   # pas notre cible et qui bloquent quelques features CSS
-  not kaios 2.5 # gap, minmax, rgba
+  not kaios > 0 # gap, minmax, rgba, dvh/dvw
   not and_qq > 0 # minmax
+  not and_uc > 0 # dvh/dvw
   # https://www.spacebar.news/stop-using-opera-browser/
   not opera > 0
   not op_mob > 0

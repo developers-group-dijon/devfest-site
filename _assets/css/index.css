@@ -7,7 +7,7 @@
 }
 
 .hero-info {
-  min-height: 85vh !important;
+  min-height: 85dvh !important;
   width: 100%;
   background: var(--index-header-gradient);
   padding-top: 15vh;
@@ -19,7 +19,7 @@
 @media (max-width: 600px) {
   .hero-info {
     height: auto !important;
-    min-height: 100vh !important;
+    min-height: 100dvh !important;
   }
 
   .big-logo {
