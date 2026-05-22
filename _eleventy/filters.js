@@ -75,6 +75,33 @@ function md(value) {
 }
 
 /**
+ * Génère un résumé en texte brut à partir d'un texte Markdown, à destination
+ * des meta sociales (og:description, twitter:description). Le markdown est
+ * rendu en HTML, les balises strippées, les whitespaces normalisés, puis le
+ * résultat est tronqué au dernier mot avant maxLen avec un ellipsis.
+ * @param {?string=} value
+ * @param {number=} maxLen
+ * @returns {string}
+ */
+function excerpt(value, maxLen = 200) {
+  if (value == null) {
+    return "";
+  }
+  const plain = markdownit
+    .render(value)
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (plain.length <= maxLen) {
+    return plain;
+  }
+  const cut = plain.slice(0, maxLen);
+  const lastSpace = cut.lastIndexOf(" ");
+  const head = lastSpace > 0 ? cut.slice(0, lastSpace) : cut;
+  return `${head}…`;
+}
+
+/**
  * @param {string} value
  * @returns {string}
  */
@@ -261,6 +288,7 @@ function countSlots({ dateStart, duration }, slots) {
  */
 export default {
   md,
+  excerpt,
   dateFormat,
   dayFormat,
   shortDateFormat,

@@ -18,6 +18,50 @@ describe("md", () => {
   });
 });
 
+describe("excerpt", () => {
+  test("retourne une chaîne vide pour null/undefined", () => {
+    assert.equal(filters.excerpt(null), "");
+    assert.equal(filters.excerpt(undefined), "");
+  });
+
+  test("renvoie le texte tel quel quand il tient dans la limite", () => {
+    assert.equal(filters.excerpt("Court résumé."), "Court résumé.");
+  });
+
+  test("strippe le Markdown gras et italique (typographie conservée)", () => {
+    // markdown-it est configuré avec `typographer: true` → ' → ’
+    assert.equal(
+      filters.excerpt("Du **gras** et de _l'italique_ ici."),
+      "Du gras et de l’italique ici.",
+    );
+  });
+
+  test("rend une liste Markdown en texte avec espaces normalisés", () => {
+    const out = filters.excerpt("Au programme :\n- premier\n- second");
+    assert.equal(out, "Au programme : premier second");
+  });
+
+  test("tronque au dernier mot avec un ellipsis quand on dépasse maxLen", () => {
+    const longText = "un deux trois quatre cinq six sept huit neuf dix";
+    const out = filters.excerpt(longText, 15);
+    // 15 chars max → "un deux trois" (13) + "…", on coupe au dernier espace
+    assert.equal(out, "un deux trois…");
+  });
+
+  test("ne tronque pas si le texte est exactement à la limite", () => {
+    const text = "exactement vingt cinq char";
+    assert.equal(text.length, 26);
+    assert.equal(filters.excerpt(text, 26), text);
+  });
+
+  test("normalise les retours à la ligne multiples en un espace", () => {
+    assert.equal(
+      filters.excerpt("Première ligne\n\n\nDeuxième ligne"),
+      "Première ligne Deuxième ligne",
+    );
+  });
+});
+
 describe("normalizeAssetUrl", () => {
   test("préfixe les chemins absolus avec /assets", () => {
     assert.equal(
