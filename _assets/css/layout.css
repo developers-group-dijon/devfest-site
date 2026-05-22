@@ -72,6 +72,13 @@ body.scrolled .site-header .site-logo > img {
   display: inline;
 }
 
+/* Équivalent CSS pur (cf. la section scroll-state dans style.css). */
+@container page not scroll-state(scrolled: top) {
+  .site-header .site-logo > img {
+    display: inline;
+  }
+}
+
 .site-header > .centered-content {
   display: flex;
   flex-direction: row;

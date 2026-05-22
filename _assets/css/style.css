@@ -1,3 +1,13 @@
+/* Permet aux règles `@container page scroll-state(...)` ci-dessous de
+   détecter si la page est scrollée, sans aucun JS. Sur les navigateurs
+   qui ne supportent pas encore `scroll-state` (Safari, Firefox, Chrome
+   <134), cette propriété est ignorée et un fallback JS dans site.js
+   prend le relais en posant manuellement la classe `body.scrolled`. */
+html {
+  container-type: scroll-state;
+  container-name: page;
+}
+
 :root {
   /* Primary colors */
   --dark-primary-color: #8c0060;
