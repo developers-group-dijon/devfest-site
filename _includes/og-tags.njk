@@ -9,10 +9,12 @@
   Variables consommées :
     - ogTitle               || `event.name + " ⋅ " + title`
     - ogDescription         || description           || event.name
-    - ogImage               || image                 || "/brand-logo.webp"
+    - ogImage               || "/images/hero-big-logo.webp"   (logo de l'événement
+                                                       par défaut sur toutes les pages,
+                                                       plus identifiable que les
+                                                       bannières/avatars trop petits)
     - ogType                                          (default "website")
-    - ogCard                                          (default summary_large_image
-                                                       pour website, summary sinon)
+    - ogCard                                          (default "summary_large_image")
     - ogProfileFirstName / ogProfileLastName          (si ogType="profile")
     - session.speakers[]                              (si ogType="article" : couplage
                                                        implicite avec pages/session.njk
@@ -22,10 +24,10 @@
 #}
 {%- set _title = ogTitle | default(event.name + " ⋅ " + title) -%}
 {%- set _desc = (ogDescription | default(description) | default(event.name)) | excerpt(200) -%}
-{%- set _imgRaw = ogImage | default(image) | default("/brand-logo.webp") -%}
+{%- set _imgRaw = ogImage | default("/images/hero-big-logo.webp") -%}
 {%- set _img = _imgRaw if _imgRaw.startsWith("http") else site.url + (_imgRaw | normalizeAssetUrl) -%}
 {%- set _type = ogType | default("website") -%}
-{%- set _card = ogCard | default("summary_large_image" if _type == "website" else "summary") -%}
+{%- set _card = ogCard | default("summary_large_image") -%}
 {%- set _url = site.url + page.url -%}
 <link rel="canonical" href="{{ _url }}">
 <meta property="og:type" content="{{ _type }}">

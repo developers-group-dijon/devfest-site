@@ -20,17 +20,12 @@
         session: function(data) { return (data.sessions || []).find((s) => s.id === data.rawSession.id) },
         description: "{{ session.format.name }} ({{ session.durationMinutes }} minutes){{ (' ⋅ ' + session.category.name) if session.category.name }}{{ ' ⋅ ' + (session.level | formatLevel ) if session.level}}{{ ' ⋅ ' + (session.language | formatLanguage) if session.language }}\n{{ session.dateStart | shortDateFormat | capitalize }} à {{ session.dateStart | timeFormat }} ⋅ {{ session.tracks | mapName | join(', ') }}",
         // Meta sociales : le titre du talk seul (event.name reste exposé via og:site_name),
-        // l'abstract tronqué comme description (plus engageant que les métadonnées techniques),
-        // et la photo du premier speaker comme image (visuel humain, plutôt qu'une bannière
-        // générique). twitter:card en `summary` car l'avatar est carré.
+        // l'abstract tronqué comme description (plus engageant que les métadonnées techniques).
+        // L'image OG hérite du logo de l'événement défini par défaut dans og-tags.njk.
+        // Les balises article:author sont émises par la macro en bouclant sur session.speakers.
         ogTitle: "{{ session.title | safe }}",
         ogDescription: "{{ session.abstract | excerpt(200) }}",
-        ogImage: "{{ (session.speakers[0].photoUrl if (session.speakers[0] and session.speakers[0].photoUrl) else '/default-avatar.webp') }}",
         ogType: "article",
-        ogCard: "summary",
-        // Les balises article:author sont émises par la macro og-tags en bouclant
-        // directement sur `session.speakers` (une balise par speaker, conformément
-        // à la spec OG qui attend une URL de profil par auteur).
     },
 }
 ---
