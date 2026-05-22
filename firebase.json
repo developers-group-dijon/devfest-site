@@ -18,7 +18,7 @@
             },
             {
               "key": "Content-Security-Policy",
-              "value": "default-src 'self'; frame-ancestors 'none'; style-src 'self' 'unsafe-inline'; frame-src www.openstreetmap.org/export/embed.html"
+              "value": "default-src 'self'; frame-ancestors 'none'; style-src 'self' 'unsafe-inline'; frame-src https://www.openstreetmap.org"
             }
           ]
         }
