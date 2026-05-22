@@ -19,7 +19,8 @@
     - session.speakers[]                              (si ogType="article" : couplage
                                                        implicite avec pages/session.njk
                                                        — émet une balise article:author
-                                                       par speaker, URL absolue de profil)
+                                                       par speaker, contenant son nom
+                                                       complet en texte)
     - page.url, site.url, event.name
 #}
 {%- set _title = ogTitle | default(event.name + " ⋅ " + title) -%}
@@ -45,7 +46,7 @@
 {%- endif %}
 {%- if _type == "article" and session and session.speakers %}
 {%- for author in session.speakers %}
-<meta property="article:author" content="{{ site.url }}/speaker/{{ author.name | slugify }}/">
+<meta property="article:author" content="{{ author.name }}">
 {%- endfor %}
 {%- endif %}
 <meta name="twitter:card" content="{{ _card }}">
