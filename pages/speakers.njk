@@ -10,7 +10,7 @@ eleventyComputed:
 <div class="full-width speakers">
    {%- for speaker in speakers %}
    <div class="speaker">
-      <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async">
+      <span class="avatar-frame"><img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async"></span>
       <h2><a href="/speaker/{{ speaker.name | slugify }}">{{ speaker.name }}</a></h2>
       <div>{{ speaker.jobTitle }}</div>
       <div class="company">{{ speaker.company }}</div>

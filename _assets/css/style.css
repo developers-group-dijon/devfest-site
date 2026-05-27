@@ -19,16 +19,20 @@ html {
 
 :root {
   /* Primary colors */
-  --dark-primary-color: #8c0060;
-  --default-primary-color: #af0179;
-  --light-primary-color: #c74da1;
+  --dark-primary-color: #9a1a41;
+
+  /* on dévie un peu de #d85979 pour avoir un meilleur contraste */
+  --default-primary-color: #c2456a;
+  --light-primary-color: #ffb7c1;
+  --accent-color: #ffd93d;
 
   /* Background colors */
   --default-background-color: #fff;
-  --primary-background-color: #c74da1;
+  --primary-background-color: #c2456a;
   --gray-darker-background-color: #000;
   --gray-light-background-color: #eee;
   --gray-lighter-background-color: #f7f7f7;
+  --accent-background-color: #d97706;
 
   /* Text colors */
   --primary-text-color: #212121;
@@ -37,14 +41,76 @@ html {
 
   /* Other colors */
   --divider-color: #b6b6b6;
-  --index-header-gradient: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 0%));
+
+  /* Transitions */
+  --transition-pixel: 80ms steps(2);
+
+  /* Grain "dithering" 8-bit : fin damier de carrés noirs (3px) obtenu via
+     deux dégradés 45° décalés d'un demi-pas — recette qui donne de vrais
+     carrés alignés, contrairement à conic-gradient (wedges triangulaires).
+     Réutilisé par les overlays de header ci-dessous. */
+  --dither-grain:
+    linear-gradient(
+        45deg,
+        rgb(0 0 0 / 15%) 25%,
+        transparent 25% 75%,
+        rgb(0 0 0 / 15%) 75%
+      )
+      0 0 / 6px 6px,
+    linear-gradient(
+        45deg,
+        rgb(0 0 0 / 15%) 25%,
+        transparent 25% 75%,
+        rgb(0 0 0 / 15%) 75%
+      )
+      3px 3px / 6px 6px;
+
+  /* Overlays de header : damier dither posé sur un assombrissement en bandes
+     dures (posterisation 8-bit). Appliqués sur .hero-info / .page-header, qui
+     sont enfants de l'élément portant l'image — l'image n'est donc jamais
+     altérée, seul l'overlay l'est. */
+  --index-header-gradient:
+    var(--dither-grain),
+    linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 60%) 0 calc(64px + 5%),
+      rgb(0 0 0 / 50%) calc(64px + 5%) calc(2 * (64px + 5%)),
+      rgb(0 0 0 / 40%) calc(2 * (64px + 5%)) calc(3 * (64px + 5%)),
+      rgb(0 0 0 / 30%) calc(3 * (64px + 5%)) calc(4 * (64px + 5%)),
+      rgb(0 0 0 / 20%) calc(4 * (64px + 5%)) calc(5 * (64px + 5%)),
+      rgb(0 0 0 / 10%) calc(5 * (64px + 5%)) calc(6 * (64px + 5%))
+    );
   --index-header-shadow: 1px 1px 1px rgb(0 0 0 / 40%);
-  --page-header-gradient: linear-gradient(rgb(0 0 0 / 60%), rgb(0 0 0 / 30%));
+  --page-header-gradient:
+    var(--dither-grain),
+    linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 60%) 0 calc(64px + 5%),
+      rgb(0 0 0 / 50%) calc(64px + 5%) calc(2 * (64px + 5%)),
+      rgb(0 0 0 / 40%) calc(2 * (64px + 5%)) calc(3 * (64px + 5%)),
+      rgb(0 0 0 / 30%) calc(3 * (64px + 5%)) calc(4 * (64px + 5%)),
+      rgb(0 0 0 / 20%) calc(4 * (64px + 5%)) calc(5 * (64px + 5%)),
+      rgb(0 0 0 / 10%) calc(5 * (64px + 5%)) calc(6 * (64px + 5%))
+    );
   --page-header-shadow: 1px 1px 2px rgb(0 0 0);
+
+  /* Ombres pixel : offset solide, pas de blur, couleur du thème.
+     - --shadow-pixel : offset bas-droite, pour cartes / dialogs / boutons au hover.
+     - --shadow-pixel-bar : déclinaison "double ligne RPG" empilée sous l'élément,
+       pour la barre de header fixe (l'offset bas-droite n'a pas de sens en
+       bord de viewport). */
+  --shadow-pixel: 3px 3px 0 0 var(--dark-primary-color);
+  --shadow-pixel-bar:
+    0 2px 0 0 var(--dark-primary-color),
+    0 4px 0 0 var(--gray-darker-background-color);
+
+  /* Forme : arrondi "chunky" unique (look pixel/RPG). Remplace tous les
+     border-radius variés du site (avatars, pills, cartes). */
+  --radius: 3px;
 }
 
 body {
-  font-family: Poppins, sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-weight: 200;
   font-size: 15px;
   color: var(--primary-text-color);
@@ -60,16 +126,26 @@ h6 {
   font-weight: 400;
 }
 
+.site-links-group-title {
+  font-family: "Bitcount Grid Single Variable", sans-serif;
+  font-variation-settings: "ELSH" 50;
+  font-weight: 400;
+}
+
 /*
 La taille de la police des titres est calculée avec un ratio "Major second" (1.125)
 Le site https://typescale.com/?scale=1.125 permet d'avoir un aperçu du rendu
 */
 h1 {
   font-size: 2.027rem;
+  font-family: "Bitcount Grid Single Variable", sans-serif;
+  font-variation-settings: "ELSH" 50;
 }
 
 h2 {
   font-size: 1.802rem;
+  font-family: "Bitcount Grid Single Variable", sans-serif;
+  font-variation-settings: "ELSH" 50;
 }
 
 h3 {
@@ -117,19 +193,18 @@ a:hover {
 
 body.scrolled .site-header {
   background-color: var(--default-background-color);
-  box-shadow:
-    0 2px 2px 0 rgb(0 0 0 / 14%),
-    0 3px 1px -2px rgb(0 0 0 / 12%),
-    0 1px 5px 0 rgb(0 0 0 / 20%);
+  box-shadow: var(--shadow-pixel-bar);
   z-index: 10;
 }
 
 .site-header .menu a.item {
   transition: background-color 0.3s;
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 400;
+  font-family: "Bitcount Grid Single Variable", sans-serif;
+  font-variation-settings: "ELSH" 50;
+  font-size: 1.1rem;
   display: block;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   line-height: 64px;
   text-transform: uppercase;
   color: var(--primary-inv-text-color);
@@ -153,6 +228,33 @@ a.social-icon:hover svg {
 
 .site-header .menu a.item.home-icon {
   display: none;
+}
+
+.site-header .menu a.item.planning {
+  display: flex;
+  gap: 0.5em;
+}
+
+.site-header .menu a.item.planning .fav-count {
+  align-self: center;
+  display: inline-block;
+  min-width: 1.4rem;
+  padding: 0 0.2rem;
+  border-radius: var(--radius);
+  background: var(--default-primary-color);
+  color: var(--primary-inv-text-color);
+  font-size: 1rem;
+  line-height: 1.4rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.site-header .menu a.item.planning:hover {
+  text-decoration: none;
+}
+
+.site-header .menu a.item.planning:hover .planning-label {
+  text-decoration: underline;
 }
 
 .site-header .menu a.item .planning-icon,
@@ -204,20 +306,6 @@ a.social-icon:hover svg {
   }
 }
 
-.site-header .menu a.item .fav-count {
-  display: inline-block;
-  min-width: 1.4rem;
-  padding: 0 0.4rem;
-  border-radius: 1rem;
-  background: var(--default-primary-color);
-  color: var(--primary-inv-text-color);
-  font-size: 0.75rem;
-  line-height: 1.4rem;
-  font-weight: 600;
-  text-align: center;
-  vertical-align: middle;
-}
-
 .site-header .menu a.item .fav-count[hidden] {
   display: none;
 }
@@ -229,7 +317,7 @@ body.scrolled .site-header .menu a.item .fav-count {
 
 .site-header .menu a.item:hover {
   background-color: rgb(0 0 0 / 10%);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 body.scrolled .site-header .menu a.item {
@@ -254,10 +342,7 @@ body.scrolled .site-header .menu a.item.home-icon svg {
 @container page scroll-state(scrollable: top) {
   .site-header {
     background-color: var(--default-background-color);
-    box-shadow:
-      0 2px 2px 0 rgb(0 0 0 / 14%),
-      0 3px 1px -2px rgb(0 0 0 / 12%),
-      0 1px 5px 0 rgb(0 0 0 / 20%);
+    box-shadow: var(--shadow-pixel-bar);
     z-index: 10;
   }
 
@@ -276,42 +361,50 @@ a.cfp-link {
   display: inline-block;
   padding: 0 1rem;
   text-transform: uppercase;
-  border-radius: 0.5lh;
+  border-radius: var(--radius);
   background: var(--default-primary-color);
   line-height: 2em;
   align-self: center;
   color: var(--primary-inv-text-color) !important;
-  box-shadow:
-    0 2px 2px 0 rgb(0 0 0 / 14%),
-    0 3px 1px -2px rgb(0 0 0 / 12%),
-    0 1px 5px 0 rgb(0 0 0 / 20%);
-  transition: box-shadow 0.25s;
+
+  /* Ombre à zéro au repos : elle existe pour la transition mais n'est pas visible */
+  box-shadow: 0 0 0 0 var(--dark-primary-color);
+
+  /* Transition sur tout, en steps pour le rendu pixel saccadé */
+  transition:
+    transform var(--transition-pixel),
+    box-shadow var(--transition-pixel),
+    background var(--transition-pixel);
 }
 
 a.cfp-link:hover {
   background: var(--dark-primary-color);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-pixel);
 }
 
 @media (min-width: 900px) {
   .site-header .menu a.ticketing-link {
-    border-radius: 0.5lh;
+    border-radius: var(--radius);
     background: var(--default-primary-color);
     line-height: 2em;
     align-self: center;
     color: var(--primary-inv-text-color) !important;
+
+    /* Ombre à zéro au repos : elle existe pour la transition mais n'est pas visible */
+    box-shadow: 0 0 0 0 var(--dark-primary-color);
+
+    /* Transition sur tout, en steps pour le rendu pixel saccadé */
+    transition:
+      transform var(--transition-pixel),
+      box-shadow var(--transition-pixel),
+      background var(--transition-pixel);
   }
 
   .site-header .menu a.ticketing-link:hover {
-    background: var(--dark-primary-color);
-  }
-
-  .site-header .menu a.item.ticketing-link {
-    box-shadow:
-      0 2px 2px 0 rgb(0 0 0 / 14%),
-      0 3px 1px -2px rgb(0 0 0 / 12%),
-      0 1px 5px 0 rgb(0 0 0 / 20%);
-    transition: box-shadow 0.25s;
-    color: var(--primary-inv-text-color);
+    background: var(--default-primary-color);
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-pixel);
   }
 }
 
@@ -336,19 +429,41 @@ a.cfp-link:hover {
   display: inline-block;
 }
 
+.visible-link:hover {
+  color: var(--dark-primary-color);
+}
+
 .dark-zone .visible-link {
   color: var(--light-primary-color);
+}
+
+.dark-zone .visible-link:hover {
+  color: var(--default-primary-color);
 }
 
 .visible-link::after {
   content: " →";
 }
 
+/* Avatar « pixel art » : un mask SVG creuse 3 blocs à chaque coin
+   (1 bloc d'angle 100% transparent, 2 voisins à 50%). Le wrapper
+   .avatar-frame porte le fond rose qui apparaît dans les blocs
+   creusés — `mask` rogne aussi le background-color, donc le fond
+   doit vivre sur un élément non masqué. */
 .avatar {
   object-fit: cover;
   width: 128px;
   height: 128px;
-  border-radius: 50%;
+  mask-image: url("../images/avatar-mask.svg");
+  mask-mode: luminance;
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+
+.avatar-frame {
+  display: inline-block;
+  background: var(--default-primary-color);
+  line-height: 0;
 }
 
 .page-header {

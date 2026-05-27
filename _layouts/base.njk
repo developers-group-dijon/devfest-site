@@ -27,15 +27,17 @@ icons:
     <link rel="icon" type="{{ icon.type }}" sizes="{{ icon.sizes }}" href="{{ icon.href | normalizeAssetUrl }}">
     {%- endfor %}
     {# Préchargements critiques : polices 400/600 (les plus utilisées au-dessus de la ligne de flottaison) et image LCP des pages internes #}
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/poppins/files/poppins-latin-400-normal.woff2' | normalizeAssetUrl }}">
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/poppins/files/poppins-latin-600-normal.woff2' | normalizeAssetUrl }}">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/noto-sans/files/noto-sans-latin-400-normal.woff2' | normalizeAssetUrl }}">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/noto-sans/files/noto-sans-latin-400-normal.woff2' | normalizeAssetUrl }}">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/bitcount-grid-single/files/bitcount-grid-single-latin-full-normal.woff2' | normalizeAssetUrl }}">
     {%- if image %}
     <link rel="preload" as="image" fetchpriority="high" href="{{ image | normalizeAssetUrl }}">
     {%- endif %}
     <link rel="stylesheet" type="text/css" href="{{ '/css/layout.css' | normalizeAssetUrl }}">
     <link rel="stylesheet" type="text/css" href="{{ '/css/style.css' | normalizeAssetUrl }}">
-    <link rel="stylesheet" type="text/css" href="{{ '/poppins/latin-italic.css' | normalizeAssetUrl }}">
-    <link rel="stylesheet" type="text/css" href="{{ '/poppins/latin.css' | normalizeAssetUrl }}">
+    <link rel="stylesheet" type="text/css" href="{{ '/noto-sans/latin-italic.css' | normalizeAssetUrl }}">
+    <link rel="stylesheet" type="text/css" href="{{ '/noto-sans/latin.css' | normalizeAssetUrl }}">
+    <link rel="stylesheet" type="text/css" href="{{ '/bitcount-grid-single/full.css' | normalizeAssetUrl }}" />
   </head>
   <body data-edition="{{ event.name | slugify }}">
     <a class="skip-link" href="#main">Aller au contenu</a>

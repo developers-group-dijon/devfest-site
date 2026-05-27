@@ -42,7 +42,7 @@
 <div class="aside">
     {%- for speaker in session.speakers %}
     <div class="speaker">
-        <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async">
+        <span class="avatar-frame"><img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async"></span>
         <div><a class="speaker-name" href="/speaker/{{ speaker.name | slugify }}">{{ speaker.name }} ⋅ {{ speaker.company }}</a></div>
     </div>
     {%- endfor -%}

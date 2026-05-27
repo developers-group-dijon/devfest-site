@@ -25,7 +25,7 @@
 ---
 
 <div class="main-content">
-    <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" decoding="async">
+    <span class="avatar-frame"><img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" decoding="async"></span>
     <div class="job_title">{{ speaker.bio | md | safe }}</div>
     <div class="socials">
         {%- for social in speaker.socials %}

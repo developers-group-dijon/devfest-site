@@ -15,19 +15,29 @@
   gap: 0.5rem;
   padding: 0.4rem 1rem;
   border: 1px solid var(--default-primary-color);
-  border-radius: 1.5rem;
+  border-radius: var(--radius);
   background: var(--default-primary-color);
   color: var(--primary-inv-text-color);
   font-family: inherit;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+
+  /* Ombre à zéro au repos : elle existe pour la transition mais n'est pas visible */
+  box-shadow: 0 0 0 0 var(--dark-primary-color);
+
+  /* Transition sur tout, en steps pour le rendu pixel saccadé */
+  transition:
+    transform var(--transition-pixel),
+    box-shadow var(--transition-pixel),
+    background var(--transition-pixel);
 }
 
 .fav-share-button:hover,
 .fav-share-button:focus {
-  background: var(--dark-primary-color);
+  background: var(--default-primary-color);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-pixel);
 }
 
 .fav-share-button svg {
@@ -53,7 +63,7 @@
   padding: 1rem;
   margin-bottom: 1.5rem;
   border: 1px solid var(--default-primary-color);
-  border-radius: 0.4rem;
+  border-radius: var(--radius);
   background: rgb(199 77 161 / 8%);
 }
 
@@ -95,7 +105,7 @@
 .fav-import-button {
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 1.5rem;
+  border-radius: var(--radius);
   background: var(--default-primary-color);
   color: var(--primary-inv-text-color);
   font-family: inherit;
@@ -130,8 +140,8 @@
   width: 90%;
   padding: 1.5rem;
   background: var(--default-background-color);
-  border-radius: 0.4rem;
-  box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-pixel);
 }
 
 .fav-modal-content h2 {
@@ -149,7 +159,7 @@
 .fav-modal-actions button {
   padding: 0.6rem 1rem;
   border: 1px solid var(--divider-color);
-  border-radius: 0.3rem;
+  border-radius: var(--radius);
   background: var(--default-background-color);
   color: var(--primary-text-color);
   font-family: inherit;
@@ -201,13 +211,50 @@
 }
 
 .fav-card {
+  position: relative;
   display: grid;
-  grid-template-columns: 7rem 1fr;
+  grid-template-columns: 9rem 1fr;
   gap: 1rem;
   padding: 0.75rem 1rem;
   border: 1px solid var(--divider-color);
-  border-radius: 0.3rem;
+  border-radius: var(--radius);
   background: var(--default-background-color);
+
+  /* Ombre à zéro au repos : elle existe pour la transition mais n'est pas visible */
+  box-shadow: 0 0 0 0 var(--dark-primary-color);
+
+  /* Transition sur tout, en steps pour le rendu pixel saccadé */
+  transition:
+    transform var(--transition-pixel),
+    box-shadow var(--transition-pixel),
+    border-color var(--transition-pixel),
+    background var(--transition-pixel);
+}
+
+.fav-card:hover {
+  border-color: var(--default-primary-color);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-pixel);
+  z-index: 2; /* important : passe au-dessus des voisines */
+  outline: none;
+}
+
+.fav-card-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+.fav-card:hover .fav-card-title {
+  color: var(--default-primary-color);
+}
+
+.fav-card .fav-card-title a {
+  text-decoration: none;
+}
+
+.fav-card:hover .fav-card-title a {
+  text-decoration: underline;
 }
 
 .fav-card[hidden] {
@@ -231,14 +278,13 @@
   font-size: 0.85rem;
 }
 
-.fav-card-body {
-  position: relative;
+.fav-card-track {
+  font-size: 1rem;
+  font-weight: 400;
 }
 
-.fav-card-title {
-  margin: 0 0 0.4rem;
-  font-size: 1.15rem;
-  font-weight: 400;
+.fav-card-body {
+  position: relative;
 }
 
 .fav-card-meta {
@@ -250,6 +296,25 @@
 .fav-card-speakers {
   font-size: 0.95rem;
   margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+.fav-card-speakers .speaker-name {
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+
+.fav-card-speakers .avatar-frame {
+  vertical-align: middle;
+}
+
+/* Mini version : un seul bloc transparent par coin (pas de halftone)
+   pour ne pas charger les cartes du schedule. */
+.fav-card-speakers .avatar {
+  width: 2rem;
+  height: 2rem;
+  vertical-align: middle;
+  mask-image: url("../images/avatar-mask-mini.svg");
 }
 
 .fav-card-actions {
@@ -266,10 +331,11 @@
   gap: 0.3rem;
   padding: 0.2rem 0.7rem;
   border: 1px solid var(--default-primary-color);
-  border-radius: 1rem;
+  border-radius: var(--radius);
   color: var(--default-primary-color);
   font-family: inherit;
   font-size: 0.85rem;
+  font-weight: 400;
   text-decoration: none;
   transition:
     background-color 0.2s,
@@ -291,30 +357,30 @@
 
 .fav-card-remove {
   padding: 0.2rem 0.7rem;
-  border: 1px solid var(--divider-color);
-  border-radius: 1rem;
-  background: transparent;
-  color: var(--secondary-text-color);
+  border: 1px solid var(--default-primary-color);
+  border-radius: var(--radius);
+  color: var(--default-primary-color);
   font-family: inherit;
   font-size: 0.85rem;
+  background-color: var(--default-background-color);
   cursor: pointer;
   transition:
     background-color 0.2s,
-    color 0.2s,
-    border-color 0.2s;
+    color 0.2s;
 }
 
 .fav-card-remove:hover,
 .fav-card-remove:focus {
-  border-color: var(--default-primary-color);
-  color: var(--default-primary-color);
+  background: var(--default-primary-color);
+  color: var(--primary-inv-text-color);
+  text-decoration: none;
 }
 
 .fav-card-conflict-badge {
   display: inline-block;
   padding: 0.1rem 0.5rem;
-  border-radius: 0.7rem;
-  background: #d97706;
+  border-radius: var(--radius);
+  background: var(--accent-background-color);
   color: var(--primary-inv-text-color);
   font-size: 0.75rem;
   font-weight: 600;
@@ -332,17 +398,14 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 0.5rem;
   padding: 0.5rem;
-  border: 2px dashed #d97706;
-  border-radius: 0.4rem;
-  background: rgb(217 119 6 / 6%);
+  border: 2px dashed var(--dark-primary-color);
+  border-radius: var(--radius);
+  background: var(--light-primary-color);
 }
 
-.fav-conflict .fav-card {
-  border-color: rgb(217 119 6 / 50%);
-}
-
-.fav-card.in-conflict .fav-card-title {
-  color: var(--primary-text-color);
+.fav-conflict .fav-card,
+.fav-conflict .fav-card:hover {
+  border-color: var(--dark-primary-color);
 }
 
 @media (max-width: 600px) {

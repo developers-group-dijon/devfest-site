@@ -9,6 +9,9 @@
   not opera > 0
   not op_mob > 0
   not op_mini all
+  # Chrome 109 (ChromeOS LTS) reste dans "defaults" mais ne supporte pas
+  # `mask-image` sans préfixe (requis depuis Chrome 120). On le sort.
+  not chrome < 120
   not dead
 
 [build]

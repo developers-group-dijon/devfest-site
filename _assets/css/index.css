@@ -10,7 +10,7 @@
   min-height: 85dvh !important;
   width: 100%;
   background: var(--index-header-gradient);
-  padding-top: 15vh;
+  padding-top: 25vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +38,8 @@
 
 .big-logo {
   max-height: 300px;
-  filter: drop-shadow(2px 2px 1px rgb(0 0 0 / 30%));
+  margin: 0.5rem;
+  padding: 15px;
 }
 
 .hero-title {
@@ -48,8 +49,6 @@
   font-weight: 500;
   text-align: center;
   padding: 15px;
-
-  /* text-shadow: var(--index-header-shadow); */
 }
 
 .team-info {
@@ -105,6 +104,8 @@
   font-size: 3rem;
   margin-bottom: 1.5rem;
   font-weight: 400;
+  font-family: "Bitcount Grid Single Variable", sans-serif;
+  font-variation-settings: "ELSH" 50;
 }
 
 .stat-value::after {
@@ -140,21 +141,30 @@
 
 .sponsor {
   max-height: 90px;
-  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow:
-    0 2px 2px 0 rgb(0 0 0 / 14%),
-    0 3px 1px -2px rgb(0 0 0 / 12%),
-    0 1px 5px 0 rgb(0 0 0 / 20%);
-  transition: box-shadow 0.25s;
+  border: 1px solid var(--divider-color);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+
+  /* Ombre à zéro au repos : elle existe pour la transition mais n'est pas visible */
+  box-shadow: 0 0 0 0 var(--dark-primary-color);
+
+  /* Transition sur tout, en steps pour le rendu pixel saccadé */
+  transition:
+    transform var(--transition-pixel),
+    box-shadow var(--transition-pixel),
+    border-color var(--transition-pixel),
+    background var(--transition-pixel);
 }
 
 .sponsor:hover {
-  box-shadow:
-    0 8px 17px 0 rgb(0 0 0 / 20%),
-    0 6px 20px 0 rgb(0 0 0 / 19%);
+  border-color: var(--default-primary-color);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-pixel);
+  z-index: 2; /* important : passe au-dessus des voisines */
+  outline: none;
 }
 
 .sponsor .logo {
@@ -166,6 +176,10 @@
   background-color: var(--primary-background-color);
   padding-top: 1px;
   padding-bottom: 1px;
+}
+
+.ticketing h1 {
+  color: var(--default-background-color);
 }
 
 .pricings {
@@ -188,21 +202,30 @@
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  color: var(primary-text-color);
+  color: var(--primary-text-color);
   width: 200px;
   text-align: center;
+  border: 1px solid var(--divider-color);
+  border-radius: var(--radius);
   padding-top: 24px;
-  box-shadow:
-    0 2px 2px 0 rgb(0 0 0 / 14%),
-    0 3px 1px -2px rgb(0 0 0 / 12%),
-    0 1px 5px 0 rgb(0 0 0 / 20%);
-  transition: box-shadow 0.25s;
+
+  /* Ombre à zéro au repos : elle existe pour la transition mais n'est pas visible */
+  box-shadow: 0 0 0 0 var(--dark-primary-color);
+
+  /* Transition sur tout, en steps pour le rendu pixel saccadé */
+  transition:
+    transform var(--transition-pixel),
+    box-shadow var(--transition-pixel),
+    border-color var(--transition-pixel),
+    background var(--transition-pixel);
 }
 
 .pricing:hover {
-  box-shadow:
-    0 8px 17px 0 rgb(0 0 0 / 20%),
-    0 6px 20px 0 rgb(0 0 0 / 19%);
+  border-color: var(--divider-color);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-pixel);
+  z-index: 2; /* important : passe au-dessus des voisines */
+  outline: none;
   text-decoration: none;
 }
 
@@ -238,6 +261,10 @@
   margin-top: 0.5rem;
 }
 
+.pricing:hover .pricing-action {
+  color: var(--dark-primary-color);
+}
+
 .speakers {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -261,6 +288,8 @@
   font-size: 1.4rem;
   margin: 1em 0 0.5em;
   font-weight: 400;
+  font-family: "Bitcount Grid Single Variable", sans-serif;
+  font-variation-settings: "ELSH" 50;
 }
 
 .all-speakers {
