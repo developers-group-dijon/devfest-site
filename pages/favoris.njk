@@ -41,22 +41,23 @@ eleventyComputed:
             <div class="fav-card-time">
                <span class="fav-card-start">{{ session.dateStart | timeFormat }}</span>
                <span class="fav-card-duration">{{ session.durationMinutes }} min</span>
+               {%- for track in session.tracks -%}
+               <span class="fav-card-track">{{ track.name }}</span>
+               {%- endfor -%}
             </div>
             <div class="fav-card-body">
                <span class="fav-card-conflict-badge" hidden>Conflit</span>
                <h3 class="fav-card-title"><a href="/session/{{ session.id | slugify }}">{{ session.title }}</a></h3>
                <div class="fav-card-meta">
-                  {%- for track in session.tracks -%}
-                  {%- if not loop.first %} ⋅ {% endif -%}{{ track.name }}
-                  {%- endfor -%}
-                  {%- if session.level %} ⋅ {{ session.level | formatLevel }}{% endif -%}
+                  {%- if session.level %}{{ session.level | formatLevel }}{% endif -%}
                   {%- if session.language %} ⋅ {{ session.language | formatLanguage }}{% endif -%}
                   {%- if session.category.name %} ⋅ {{ session.category.name }}{% endif -%}
                </div>
                {%- if session.speakers.length %}
                <div class="fav-card-speakers">
                   {%- for speaker in session.speakers -%}
-                  {%- if not loop.first %}, {% endif -%}{{ speaker.name }}{% if speaker.company %} ({{ speaker.company }}){% endif -%}
+                  <span class="avatar-frame"><img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async"></span>
+                  <a class="speaker-name" href="/speaker/{{ speaker.name | slugify }}">{{ speaker.name }} ⋅ {{ speaker.company }}</a>
                   {%- endfor -%}
                </div>
                {%- endif %}

@@ -62,7 +62,7 @@ photos:
          {# Speakers en mode masqué #}
          {%- for speaker in speakers %}
          <div class="speaker" data-to-hide>
-            <img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async">
+            <span class="avatar-frame"><img class="avatar" src="{{ (speaker.photoUrl if speaker.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async"></span>
             <div class="speaker-name">{{ speaker.name }}</div>
             <div>{{ speaker.company }}</div>
          </div>
@@ -70,7 +70,7 @@ photos:
          {# Placeholders pour les speakers #}
          {%- for i in range(0, 4) %}
          <div class="speaker" data-to-remove>
-            <img class="avatar" src="{{ '/default-avatar.webp' | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async">
+            <span class="avatar-frame"><img class="avatar" src="{{ '/default-avatar.webp' | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async"></span>
             <div class="speaker-name">…</div>
             <div>…</div>
          </div>

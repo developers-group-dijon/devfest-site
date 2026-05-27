@@ -18,13 +18,32 @@
 }
 
 .speaker {
+  position: relative;
   border: 1px solid var(--divider-color);
-  border-radius: 0.2rem;
+  border-radius: var(--radius);
   padding: 2rem;
+
+  /* Ombre à zéro au repos : elle existe pour la transition mais n'est pas visible */
+  box-shadow: 0 0 0 0 var(--dark-primary-color);
+
+  /* Transition sur tout, en steps pour le rendu pixel saccadé */
+  transition:
+    transform var(--transition-pixel),
+    box-shadow var(--transition-pixel),
+    border-color var(--transition-pixel),
+    background var(--transition-pixel);
 }
 
 .speaker:hover {
-  background-color: var(--gray-lighter-background-color);
+  border-color: var(--default-primary-color);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-pixel);
+  z-index: 2; /* important : passe au-dessus des voisines */
+  outline: none;
+}
+
+.speaker:hover h2 a {
+  color: var(--default-primary-color);
 }
 
 .socials {

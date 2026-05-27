@@ -11,7 +11,7 @@ eleventyComputed:
 <div class="team full-width">
    {%- for member in team %}
    <div class="member">
-      <img class="avatar" src="{{ (member.photoUrl if member.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async">
+      <span class="avatar-frame"><img class="avatar" src="{{ (member.photoUrl if member.photoUrl else '/default-avatar.webp') | normalizeAssetUrl }}" alt="" width="128" height="128" loading="lazy" decoding="async"></span>
       <div class="name">{{ member.name }}</div>
       <div class="job_title">{{ member.jobTitle }} ⋅ {{ member.company }}</div>
       <div class="bio">{{ member.bio }}</div>
