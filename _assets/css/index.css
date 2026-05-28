@@ -187,7 +187,6 @@
   gap: 1rem;
   margin-bottom: 20px;
   justify-content: center;
-  align-items: start;
 }
 
 @media (max-width: 600px) {
@@ -253,6 +252,7 @@
 .pricing-comment {
   font-size: 0.8rem;
   color: var(--secondary-text-color);
+  flex-grow: 1;
 }
 
 .pricing-action {
