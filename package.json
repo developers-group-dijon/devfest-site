@@ -3,7 +3,6 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "postinstall": "puppeteer browsers install chrome --no-color",
     "clean": "rm -rf _site",
     "build:eleventy": "ELEVENTY_PRODUCTION=true eleventy",
     "build:og": "node _scripts/generate-og.js",
