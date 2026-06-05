@@ -378,7 +378,6 @@ a.cfp-link {
 }
 
 a.cfp-link:hover {
-  background: var(--dark-primary-color);
   transform: translate(-2px, -2px);
   box-shadow: var(--shadow-pixel);
 }
