@@ -8,7 +8,7 @@
  * - pas de endStart
  * - Nettoyer les abstracts : Markdown mais pas HTML
  *
- * À noter : hideTrackTitle (true par défaut, c'est comme ca dans OpenPlanner) est utilisé pour
+ * À noter : hideTrackTitle (false par défaut, c'est comme ca dans OpenPlanner) est utilisé pour
  * - savoir s'il faut générer une page de détail pour la session
  * - compter le nombre de sessions
  * On mettra généralement à true pour les pauses et les keynotes
@@ -28,6 +28,7 @@ export default [
     durationMinutes: 20,
     trackRange: ["amphi-paris", "amphi-niepce"],
     styleClass: "pause",
+    hideTrackTitle: true,
   },
   {
     id: "pause midi-atelier",
@@ -36,6 +37,7 @@ export default [
     durationMinutes: 30,
     trackRange: ["amphi-paris", "amphi-bernard"],
     styleClass: "pause",
+    hideTrackTitle: true,
   },
   {
     id: "pause midi-commun",
@@ -44,6 +46,7 @@ export default [
     durationMinutes: 65,
     trackRange: ["amphi-paris", "amphi-niepce"],
     styleClass: "pause repas-commun",
+    hideTrackTitle: true,
   },
   {
     id: "pause midi",
@@ -52,6 +55,7 @@ export default [
     durationMinutes: 25,
     trackRange: ["amphi-recoura", "amphi-niepce"],
     styleClass: "pause",
+    hideTrackTitle: true,
   },
   {
     id: "pause apres-midi",
@@ -60,6 +64,7 @@ export default [
     durationMinutes: 20,
     trackRange: ["amphi-recoura", "amphi-niepce"],
     styleClass: "pause",
+    hideTrackTitle: true,
   },
   {
     id: "pause apres-midi-atelier",
@@ -68,6 +73,7 @@ export default [
     durationMinutes: 15,
     trackRange: ["amphi-paris", "amphi-bernard"],
     styleClass: "pause",
+    hideTrackTitle: true,
   },
   // keynotes
   {
@@ -75,6 +81,7 @@ export default [
     title: "Remerciements et clôture de la journée",
     dateStartStr: "2026-12-04T17:55:00.000+01:00",
     durationMinutes: 10,
+    hideTrackTitle: true,
   },
   // tremplin
   {
@@ -89,6 +96,7 @@ export default [
     level: "BEGINNER",
     formatId: "cmnd2nkpn00dv01pfj5fi0f0s",
     categoryId: "cmnd2nkpz00e001pfnbtutqns",
+    hideTrackTitle: true,
   },
   {
     id: "tremplin-2",
@@ -102,6 +110,7 @@ export default [
     level: "BEGINNER",
     formatId: "cmnd2nkpn00dv01pfj5fi0f0s",
     categoryId: "cmnd2nkpz00e001pfnbtutqns",
+    hideTrackTitle: true,
   },
   // conférences
   {

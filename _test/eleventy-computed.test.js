@@ -162,7 +162,7 @@ describe("sessions (parseSessions)", () => {
     );
   });
 
-  test("hideTrackTitle est forcé à true si non explicitement false", () => {
+  test("hideTrackTitle est forcé à false si non explicitement true", () => {
     // Une session sans hideTrackTitle explicite devient hidden par défaut.
     const data = buildData([
       {
@@ -177,7 +177,7 @@ describe("sessions (parseSessions)", () => {
       },
     ]);
     const [session] = computed.sessions(data);
-    assert.equal(session.hideTrackTitle, true);
+    assert.equal(session.hideTrackTitle, false);
   });
 
   test("feedbackUrl construit à partir de openfeedbackId + date + id", () => {
