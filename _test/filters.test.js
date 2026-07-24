@@ -219,19 +219,19 @@ describe("mapName", () => {
 });
 
 describe("sessionIds", () => {
-  test("ne garde que les sessions avec hideTrackTitle strictement === false", () => {
+  test("exclut uniquement les sessions avec hideTrackTitle === true", () => {
     // Le manifeste sert à filtrer les favoris : les sessions sans page de
-    // détail (pauses, keynotes) ne doivent pas y figurer. La comparaison
-    // est volontairement stricte (=== false) pour exclure les sessions
-    // dont le flag n'a pas été défini explicitement.
+    // détail (pauses, keynotes) ne doivent pas y figurer. Le flag est faux
+    // par défaut (l'export OpenPlanner l'omet quand il est faux), donc une
+    // session sans flag a bien une page de détail.
     const raw = [
       { id: "s1", hideTrackTitle: false },
       { id: "s2", hideTrackTitle: true },
       { id: "s3", hideTrackTitle: false },
-      { id: "s4" }, // pas de flag → exclue
-      { id: "s5", hideTrackTitle: undefined }, // explicitement undefined → exclue
+      { id: "s4" }, // pas de flag → incluse
+      { id: "s5", hideTrackTitle: undefined }, // explicitement undefined → incluse
     ];
-    assert.deepEqual(filters.sessionIds(raw), ["s1", "s3"]);
+    assert.deepEqual(filters.sessionIds(raw), ["s1", "s3", "s4", "s5"]);
   });
 });
 

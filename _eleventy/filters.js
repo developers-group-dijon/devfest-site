@@ -241,7 +241,7 @@ function formatLanguage(value) {
  */
 function sessionIds(value) {
   return value
-    .filter((session) => session.hideTrackTitle === false)
+    .filter((session) => session.hideTrackTitle !== true)
     .map((session) => session.id);
 }
 
