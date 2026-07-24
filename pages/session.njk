@@ -5,7 +5,7 @@
         size: 1,
         alias: "rawSession",
         before: function(paginationData, fullData) {
-            return paginationData.filter(rawSession => rawSession.hideTrackTitle === false);
+            return paginationData.filter(rawSession => rawSession.hideTrackTitle !== true);
         },
     },
     permalink: "/session/{{ rawSession.id | slugify }}/",

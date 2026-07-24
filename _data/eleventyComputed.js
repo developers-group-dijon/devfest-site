@@ -112,7 +112,7 @@ function parseSessions(data) {
     const dateStart = new Date(session.dateStartStr);
     return {
       ...session,
-      hideTrackTitle: session.hideTrackTitle !== false,
+      hideTrackTitle: session.hideTrackTitle === true,
       dateStart,
       duration: session.durationMinutes * 60 * 1000,
       day: buildDay(dateStart),

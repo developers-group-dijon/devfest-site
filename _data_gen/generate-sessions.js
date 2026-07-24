@@ -51,7 +51,7 @@ export default function generateSessions(rawData, dataPath) {
  * - pas de endStart
  * - Nettoyer les abstracts : Markdown mais pas HTML
  *
- * À noter : hideTrackTitle (true par défaut, c'est comme ca dans OpenPlanner) est utilisé pour
+ * À noter : hideTrackTitle (false par défaut, c'est comme ça dans OpenPlanner) est utilisé pour
  * - savoir s'il faut générer une page de détail pour la session
  * - compter le nombre de sessions
  * On mettra généralement à true pour les pauses et les keynotes
