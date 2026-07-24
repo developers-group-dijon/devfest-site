@@ -373,6 +373,16 @@
   display: none;
 }
 
+.session.pause.repas-commun {
+  min-height: 20em;
+}
+
+@media (max-width: 900px) {
+  .session.pause.repas-commun {
+    min-height: 0;
+  }
+}
+
 .schedule-filters-collapse {
   margin-bottom: 1rem;
   border: 1px solid var(--divider-color);
@@ -492,4 +502,5 @@
 .schedule-page .day {
   content-visibility: auto;
   contain-intrinsic-size: auto 1200px;
+  padding: 3px;
 }
