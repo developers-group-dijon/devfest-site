@@ -131,6 +131,23 @@
   background-color: var(--gray-lighter-background-color);
 }
 
+.grid-day > div.session.keynote {
+  background-color: var(--default-background-color);
+  border: 2px solid var(--default-primary-color);
+}
+
+/* Badge « Keynote » injecté avant le titre (pas de markup dédié, compatible CSP) */
+.session.keynote .title::before {
+  content: "✦ Keynote";
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--default-primary-color);
+  margin-bottom: 0.4rem;
+}
+
 .date {
   /* Pour que l'ancre ne soit pas masquée par le header */
   scroll-margin-top: 64px;
@@ -263,6 +280,34 @@
   height: 2rem;
   vertical-align: middle;
   mask-image: url("../images/avatar-mask-mini.svg");
+}
+
+/* Keynote : masque la ligne catégorie ⋅ niveau ⋅ langue et durée */
+.session.keynote .extra {
+  display: none;
+}
+
+/* Keynote : bandeau horizontal, gros avatar + nom mis en avant */
+.session.keynote .speaker-title {
+  display: none;
+}
+
+.session.keynote .speaker {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.session.keynote .speaker .avatar {
+  width: 5rem;
+  height: 5rem;
+  mask-image: url("../images/avatar-mask.svg");
+}
+
+.session.keynote .speaker-name {
+  font-size: 1.4rem;
+  font-weight: 500;
 }
 
 .draft-warning {
