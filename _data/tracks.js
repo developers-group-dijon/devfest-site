@@ -8,19 +8,19 @@
  */
 export default [
   {
-    id: "amphi-paris",
-    name: "« Bien-être au travail »",
+    id: "jardins-de-la-tour",
+    name: "Les jardins de la tour",
   },
   {
-    id: "amphi-bernard",
-    name: "« Responsable / Accessibilité »",
+    id: "scriptorium",
+    name: "Le scriptorium",
   },
   {
-    id: "amphi-recoura",
-    name: "« Autour du code : archi, test, packaging, run »",
+    id: "tour-des-arcanes",
+    name: "La tour des arcanes",
   },
   {
-    id: "amphi-niepce",
-    name: "« Tech / dev »",
+    id: "forge",
+    name: "La forge",
   },
 ];
