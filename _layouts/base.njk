@@ -35,6 +35,7 @@ icons:
     {%- endif %}
     <link rel="stylesheet" type="text/css" href="{{ '/css/layout.css' | normalizeAssetUrl }}">
     <link rel="stylesheet" type="text/css" href="{{ '/css/style.css' | normalizeAssetUrl }}">
+    <link rel="stylesheet" type="text/css" href="{{ '/css/ticketing.css' | normalizeAssetUrl }}">
     <link rel="stylesheet" type="text/css" href="{{ '/noto-sans/latin-italic.css' | normalizeAssetUrl }}">
     <link rel="stylesheet" type="text/css" href="{{ '/noto-sans/latin.css' | normalizeAssetUrl }}">
     <link rel="stylesheet" type="text/css" href="{{ '/bitcount-grid-single/full.css' | normalizeAssetUrl }}" />
@@ -50,7 +51,7 @@ icons:
           {% if speakers.length > 0 %}<a class="item" href="/speakers/"><span class="speakers-icon">{% iconSvg 'solid/user' %}</span><span class="speakers-label">Speakers</span></a>{% endif %}
           {% if event.sessionCount > 0 %}<a class="item" href="/schedule/"><span class="schedule-icon">{% iconSvg 'solid/calendar' %}</span><span class="schedule-label">Programme</span></a>{% endif %}
           {% if event.sessionCount > 0 %}<a class="item planning" href="/favoris/"><span class="planning-icon">{% iconSvg 'solid/bookmark' %}</span><span class="planning-label">Mon&nbsp;planning</span> <span class="fav-count" hidden>0</span></a>{% endif %}
-          {% if ticketing.url %}<a class="item ticketing-link" href="{{ ticketing.url}}"><span class="ticket-icon">{% iconSvg 'solid/ticket' %}</span><span class="ticket-label">Billetterie</span></a>{% endif %}
+          {% if ticketing.url %}<a class="item ticketing-link" href="{{ ticketing.url}}"{% if ticketing.embedUrl %} data-ticketing-trigger{% endif %}><span class="ticket-icon">{% iconSvg 'solid/ticket' %}</span><span class="ticket-label">Billetterie</span></a>{% endif %}
           {% if event.sponsoringUrl %}<a class="item ticketing-link" href="{{ event.sponsoringUrl }}"><span class="sponsor-icon">{% iconSvg 'solid/euro' %}</span><span class="sponsor-label">Devenir&nbsp;sponsor</span></a>{% endif %}
         </div>
       </nav>
@@ -86,8 +87,23 @@ icons:
         <div class="centered-content">{{ event.name }}<a href="https://developers-group-dijon.fr/" rel="noopener noreferrer">Fait avec ❤ par le Developers Group Dijon</a></div>
       </div>
     </footer>
+    {%- if ticketing.embedUrl %}
+    <div class="ticketing-sheet" hidden role="dialog" aria-modal="true" aria-labelledby="ticketing-sheet-title">
+      <div class="ticketing-sheet-backdrop" data-ticketing-close></div>
+      <div class="ticketing-sheet-panel">
+        <div class="ticketing-sheet-header">
+          <h2 id="ticketing-sheet-title">Billetterie</h2>
+          <button type="button" class="ticketing-sheet-close" data-ticketing-close aria-label="Fermer">{% iconSvg 'solid/xmark' %}</button>
+        </div>
+        <div class="ticketing-sheet-body">
+          <iframe data-ticketing-iframe data-src="{{ ticketing.embedUrl }}" title="Billetterie" allow="payment"></iframe>
+        </div>
+      </div>
+    </div>
+    {%- endif %}
     <script type="application/json" id="sessions-manifest">{{ rawSessions | sessionIds | dump | safe }}</script>
     <script src="{{ '/js/site.js' | normalizeAssetUrl }}" ></script>
     <script type="module" src="{{ '/js/header-favorites.js' | normalizeAssetUrl }}"></script>
+    <script type="module" src="{{ '/js/ticketing-sheet.js' | normalizeAssetUrl }}"></script>
   </body>
 </html>
