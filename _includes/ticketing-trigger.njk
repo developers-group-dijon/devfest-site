@@ -1,0 +1,30 @@
+{#
+   Rend un déclencheur de billetterie autour d'un contenu passé en `{% call %}`.
+   Trois rendus selon la configuration de `_data/ticketing.js` :
+
+   - ni `url` ni `embedUrl` → `<div>` inerte (billetterie pas encore ouverte) ;
+   - `url` seule           → lien externe classique ;
+   - `embedUrl`            → `<button>` qui ouvre le `<dialog class="ticketing-sheet">`
+                             de `_layouts/base.njk` (cf. `_assets/js/ticketing-sheet.js`)
+                             sur `embedUrl`, doublé d'un `<noscript>` qui restaure le
+                             lien externe vers `url`.
+
+   Un contrôle qui ouvre une modale est un bouton, pas un lien : c'est ce qui
+   permet aux technologies d'assistance d'annoncer la bonne action, et ça évite
+   d'avoir à neutraliser une navigation à coups de `preventDefault`.
+
+   Les deux URL sont passées telles quelles, sans transformation : `embedUrl`
+   porte les paramètres d'intégration, `url` mène à la page normale. Elles sont
+   répétées à chaque appel plutôt que lues dans un réglage global, parce que
+   chaque tarif peut avoir les siennes (`TicketPricing.url` / `.embedUrl`).
+#}
+{%- macro ticketingTrigger(url, embedUrl, className) -%}
+{%- if not url and not embedUrl -%}
+<div class="{{ className }}">{{ caller() }}</div>
+{%- elif embedUrl -%}
+<button type="button" class="{{ className }}" data-ticketing-trigger data-ticketing-url="{{ embedUrl }}">{{ caller() }}</button>
+{%- if url %}<noscript><a class="{{ className }}" href="{{ url }}" rel="noopener noreferrer">{{ caller() }}</a></noscript>{% endif -%}
+{%- else -%}
+<a class="{{ className }}" href="{{ url }}" rel="noopener noreferrer">{{ caller() }}</a>
+{%- endif -%}
+{%- endmacro -%}

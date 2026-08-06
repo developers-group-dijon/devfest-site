@@ -9,6 +9,35 @@ import { JSDOM } from "jsdom";
 const ORIGINAL = {};
 
 /**
+ * jsdom (29.x) expose `HTMLDialogElement` mais n'implémente ni `showModal()`
+ * ni `close()` : il n'a pas de top layer. On pose un stub minimal adossé à
+ * l'attribut `open`, suffisant pour vérifier le câblage des déclencheurs.
+ *
+ * Ce qui n'est donc pas couvert par les tests l'est parce que la plateforme
+ * s'en charge : piège de focus, inertage de l'arrière-plan, `Esc`, retour du
+ * focus sur le déclencheur, `::backdrop`. `closedBy` est laissé absent, ce qui
+ * fait tester le chemin de repli du light-dismiss.
+ *
+ * @param {import("jsdom").DOMWindow} window
+ */
+function stubDialog(window) {
+  const proto = window.HTMLDialogElement?.prototype;
+  if (!proto || typeof proto.showModal === "function") {
+    return;
+  }
+  proto.showModal = function showModal() {
+    this.setAttribute("open", "");
+  };
+  proto.close = function close() {
+    if (!this.hasAttribute("open")) {
+      return;
+    }
+    this.removeAttribute("open");
+    this.dispatchEvent(new window.Event("close"));
+  };
+}
+
+/**
  * Initialise jsdom et expose `window`, `document`, `HTMLElement`, etc. en
  * globals afin qu'un module importé après l'appel les trouve disponibles.
  *
@@ -21,18 +50,24 @@ export function setupDOM(html, opts = {}) {
     url: opts.url ?? "http://localhost/",
     pretendToBeVisual: true,
   });
+  stubDialog(dom.window);
   // Note : on évite "navigator", "URL", "URLSearchParams" qui sont déjà
   // fournis (et parfois read-only) par Node 20+.
   for (const key of [
     "window",
     "document",
+    "Element",
     "HTMLElement",
     "HTMLButtonElement",
+    "HTMLDialogElement",
+    "HTMLIFrameElement",
     "HTMLInputElement",
     "HTMLAnchorElement",
     "HTMLDivElement",
     "Event",
     "CustomEvent",
+    "MouseEvent",
+    "KeyboardEvent",
     "location",
   ]) {
     try {

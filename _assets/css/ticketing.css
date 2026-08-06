@@ -1,0 +1,160 @@
+/* Bottom sheet de billetterie. Chargé uniquement quand `ticketing.embed` est
+   vrai (cf. `_layouts/base.njk`), donc en même temps que les `<button>` du
+   macro `_includes/ticketing-trigger.njk` et le `<dialog>`. */
+
+/* Les déclencheurs sont des `<button>` mais doivent ressembler aux `<a>`
+   qu'ils remplacent. `:where()` met la spécificité à zéro : ça neutralise les
+   styles par défaut du navigateur (author > UA quelle que soit la
+   spécificité) sans jamais écraser `.site-header .menu .item` (style.css) ni
+   `.pricing` (index.css) — leurs `padding`, `border`, `color`, `font` et
+   `text-align` restent la référence. */
+:where(button.item, button.pricing) {
+  appearance: none;
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+/* Pas de `display` sur l'état fermé : il ne faut pas écraser le
+   `display: none` que le navigateur applique à un `<dialog>` non ouvert.
+   `display` et `overlay` sont dans la transition avec
+   `transition-behavior: allow-discrete` pour que le panneau reste visible et
+   dans le top layer pendant l'animation de sortie. */
+.ticketing-sheet {
+  /* `margin: auto auto 0` colle le panneau en bas du viewport */
+  width: 100%;
+  max-width: none;
+  max-height: 90dvh;
+  margin: auto auto 0;
+
+  /* `padding: 0` est fonctionnel : le repli light-dismiss (Safari, Firefox ESR)
+     détecte le clic sur le backdrop via `event.target === dialog`, ce qui
+     suppose qu'aucune zone cliquable du dialog n'est en dehors de ses enfants. */
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--default-background-color);
+  box-shadow: var(--shadow-pixel);
+  transform: translateY(100%);
+  transition-property: transform, display, overlay;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-behavior: allow-discrete;
+}
+
+.ticketing-sheet[open] {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(0);
+
+  /* État de départ de l'animation d'entrée. À laisser après l'état ouvert. */
+  @starting-style {
+    transform: translateY(100%);
+  }
+}
+
+.ticketing-sheet::backdrop {
+  background-color: rgb(0 0 0 / 0%);
+  transition:
+    display 0.3s allow-discrete,
+    overlay 0.3s allow-discrete,
+    background-color 0.3s ease;
+}
+
+.ticketing-sheet[open]::backdrop {
+  background-color: rgb(0 0 0 / 50%);
+
+  @starting-style {
+    background-color: rgb(0 0 0 / 0%);
+  }
+}
+
+.ticketing-sheet-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.ticketing-sheet-header h2 {
+  margin: 0;
+  color: var(--primary-text-color);
+  font-size: 1.3rem;
+}
+
+/* `margin-inline-start: auto` : sous ~400 px l'en-tête passe à la ligne, et
+   `justify-content` ne recadre pas la deuxième ligne — sans ça le bouton de
+   fermeture se retrouve aligné à gauche au lieu du coin haut-droit attendu. */
+.ticketing-sheet-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-inline-start: auto;
+}
+
+.ticketing-sheet-external {
+  color: var(--primary-text-color);
+  font-size: 0.9rem;
+}
+
+.ticketing-sheet-close {
+  padding: 0.5rem;
+  border: none;
+  background: none;
+  color: var(--primary-text-color);
+  cursor: pointer;
+}
+
+.ticketing-sheet-close svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: currentcolor;
+}
+
+/* `min-height: 0` : sans lui, un enfant flex refuse de rétrécir sous sa
+   taille de contenu et l'iframe déborderait du `max-height` du dialog. */
+.ticketing-sheet-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* `dvh` et non `vh` : sur mobile, `vh` ignore la barre d'outils du navigateur,
+   ce qui pousserait l'en-tête du sheet et son bouton de fermeture hors écran. */
+.ticketing-sheet-body iframe {
+  display: block;
+  width: 100%;
+  height: 70dvh;
+  border: 0;
+}
+
+/* Le `<dialog>` modal couvre la page mais ne bloque pas son défilement. */
+html:has(.ticketing-sheet[open]) {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticketing-sheet {
+    transform: none;
+    transition-duration: 0.01ms;
+  }
+
+  .ticketing-sheet::backdrop {
+    transition-duration: 0.01ms;
+  }
+
+  @starting-style {
+    .ticketing-sheet[open] {
+      transform: none;
+    }
+  }
+}
