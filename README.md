@@ -105,7 +105,7 @@ Le script :
 1. **Créer le site Firebase pour l'archive** (interactif, console ou `firebase hosting:sites:create devfest-dijon-<année>`).
 2. **Configurer le DNS et le domaine personnalisé** dans la console Firebase pour `devfest-<année>.developers-group-dijon.fr`.
 3. **Pousser les deux branches** sur GitHub (`git push origin devfest-dijon-<année>` et `git push origin main`).
-4. **Éditer les contenus éditoriaux** sur `main` : `_data/rawEvent.js` (visitors, comments, team, dates exactes), `_data/sponsors.js`, `_data/ticketing.js`, assets visuels (logos, photos).
+4. **Éditer les contenus éditoriaux** sur `main` : `_data/rawEvent.js` (visitors, comments, team, dates exactes), `_data/sponsors.js`, `_data/ticketing.js` (`url`/`pricings` ; `embedUrl` optionnel, ouvre la billetterie dans un bottom sheet au lieu d'un lien externe s'il est défini), assets visuels (logos, photos).
 5. **Régénérer les données quand l'export OpenPlanner est prêt** : `node _data_gen/generate-from-openplanner.js <url-json-export>`.
 
 # Contribuer et outils de développement

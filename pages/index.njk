@@ -90,7 +90,7 @@ photos:
       <div class="pricings">
       {%- for pricing in ticketing.pricings %}
          {%- if pricing.url | default(ticketing.url) %}
-         <a class="pricing" rel="noopener noreferrer" href="{{ pricing.url | default(ticketing.url) }}">
+         <a class="pricing" rel="noopener noreferrer" href="{{ pricing.url | default(ticketing.url) }}"{% if ticketing.embedUrl %} data-ticketing-trigger{% endif %}>
          {%- else %}
          <div class="pricing">
          {%- endif %}
