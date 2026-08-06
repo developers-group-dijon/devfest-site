@@ -14,6 +14,10 @@ icons:
     sizes: 96x96
     type: image/webp
 ---
+{%- import "ticketing-trigger.njk" as ticketingMacros -%}
+{#- `ticketing.embedUrl` conditionne le CSS, le markup du dialog et le JS : rien
+    n'est chargé sur les éditions (notamment archivées) qui n'ont qu'un lien
+    externe. -#}
 <!doctype html>
 <html lang="fr">
   <head>
@@ -35,6 +39,14 @@ icons:
     {%- endif %}
     <link rel="stylesheet" type="text/css" href="{{ '/css/layout.css' | normalizeAssetUrl }}">
     <link rel="stylesheet" type="text/css" href="{{ '/css/style.css' | normalizeAssetUrl }}">
+    {%- if ticketing.embedUrl %}
+    <link rel="stylesheet" type="text/css" href="{{ '/css/ticketing.css' | normalizeAssetUrl }}">
+    {#- Sans JS, les `<button>` du macro `ticketing-trigger.njk` ne peuvent rien
+        ouvrir : on les masque pour ne laisser que les liens de leur `<noscript>`.
+        Un `<noscript><style>` est le seul moyen de cibler « scripting désactivé »
+        en CSS ; `style-src 'unsafe-inline'` de la CSP l'autorise. -#}
+    <noscript><style>[data-ticketing-trigger] { display: none; }</style></noscript>
+    {%- endif %}
     <link rel="stylesheet" type="text/css" href="{{ '/noto-sans/latin-italic.css' | normalizeAssetUrl }}">
     <link rel="stylesheet" type="text/css" href="{{ '/noto-sans/latin.css' | normalizeAssetUrl }}">
     <link rel="stylesheet" type="text/css" href="{{ '/bitcount-grid-single/full.css' | normalizeAssetUrl }}" />
@@ -50,7 +62,7 @@ icons:
           {% if speakers.length > 0 %}<a class="item" href="/speakers/"><span class="speakers-icon">{% iconSvg 'solid/user' %}</span><span class="speakers-label">Speakers</span></a>{% endif %}
           {% if event.sessionCount > 0 %}<a class="item" href="/schedule/"><span class="schedule-icon">{% iconSvg 'solid/calendar' %}</span><span class="schedule-label">Programme</span></a>{% endif %}
           {% if event.sessionCount > 0 %}<a class="item planning" href="/favoris/"><span class="planning-icon">{% iconSvg 'solid/bookmark' %}</span><span class="planning-label">Mon&nbsp;planning</span> <span class="fav-count" hidden>0</span></a>{% endif %}
-          {% if ticketing.url %}<a class="item ticketing-link" href="{{ ticketing.url}}"><span class="ticket-icon">{% iconSvg 'solid/ticket' %}</span><span class="ticket-label">Billetterie</span></a>{% endif %}
+          {% if ticketing.url or ticketing.embedUrl %}{% call ticketingMacros.ticketingTrigger(ticketing.url, ticketing.embedUrl, "item ticketing-link") %}<span class="ticket-icon">{% iconSvg 'solid/ticket' %}</span><span class="ticket-label">Billetterie</span>{% endcall %}{% endif %}
           {% if event.sponsoringUrl %}<a class="item ticketing-link" href="{{ event.sponsoringUrl }}"><span class="sponsor-icon">{% iconSvg 'solid/euro' %}</span><span class="sponsor-label">Devenir&nbsp;sponsor</span></a>{% endif %}
         </div>
       </nav>
@@ -86,8 +98,49 @@ icons:
         <div class="centered-content">{{ event.name }}<a href="https://developers-group-dijon.fr/" rel="noopener noreferrer">Fait avec ❤ par le Developers Group Dijon</a></div>
       </div>
     </footer>
+    {%- if ticketing.embedUrl %}
+    {#- `<dialog>` + `showModal()` : le piège de focus, l'inertage de l'arrière-plan,
+        `Esc` et le `::backdrop` sont fournis par la plateforme. `closedby="any"`
+        ajoute le light-dismiss (Safari et Firefox ESR ont un repli en JS).
+        L'iframe n'a pas de `src` : il est posé au premier clic depuis l'URL du
+        déclencheur (cf. `_assets/js/ticketing-sheet.js`), donc aucune requête
+        vers la billetterie n'est faite tant que le dialog n'est pas ouvert. -#}
+    <dialog class="ticketing-sheet" closedby="any" aria-labelledby="ticketing-sheet-title">
+      <div class="ticketing-sheet-header">
+        <h2 id="ticketing-sheet-title">Billetterie</h2>
+        <div class="ticketing-sheet-actions">
+          {#- Chemin de secours si l'iframe ne s'affiche pas (CSP, extension, cookies tiers
+              bloqués). Pointe sur `url` et non `embedUrl` : dans un onglet on veut la page
+              de billetterie normale, pas sa version taillée pour l'iframe. -#}
+          <a class="ticketing-sheet-external" href="{{ ticketing.url }}" target="_blank" rel="noopener noreferrer">Ouvrir dans un onglet</a>
+          {#- `autofocus` : sans lui, `showModal()` pose le focus sur le premier
+              élément focusable, ici le lien « ouvrir dans un onglet » — au
+              clavier, une entrée de dialog qui mène à quitter la page. Le poser
+              sur le `<dialog>` ne marche pas (il n'est pas focusable), donc on
+              vise explicitement le bouton de fermeture. -#}
+          <button type="button" class="ticketing-sheet-close" data-ticketing-close autofocus aria-label="Fermer la billetterie">{% iconSvg 'solid/xmark' %}</button>
+        </div>
+      </div>
+      <div class="ticketing-sheet-body">
+        {#- Pas de `sandbox` : décision assumée. Un `sandbox` assez permissif pour
+            un tunnel de paiement doit de toute façon inclure `allow-scripts` et
+            `allow-same-origin`, combinaison dont le navigateur signale lui-même
+            qu'elle permet à l'iframe de retirer son propre bac à sable — il
+            n'aurait donc pas été une barrière contre le prestataire. Il pouvait
+            en revanche casser le tunnel (redirections PSP, 3-D Secure), ce qui
+            n'a pas pu être vérifié sur un achat réel.
+            La frontière de confiance est donc `frame-src` dans `firebase.json` :
+            seule l'origine de la billetterie peut être embarquée. À reconsidérer
+            si un jour un achat de test complet valide un `sandbox`. -#}
+        <iframe data-ticketing-iframe title="Billetterie" allow="payment" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </dialog>
+    {%- endif %}
     <script type="application/json" id="sessions-manifest">{{ rawSessions | sessionIds | dump | safe }}</script>
     <script src="{{ '/js/site.js' | normalizeAssetUrl }}" ></script>
     <script type="module" src="{{ '/js/header-favorites.js' | normalizeAssetUrl }}"></script>
+    {%- if ticketing.embedUrl %}
+    <script type="module" src="{{ '/js/ticketing-sheet.js' | normalizeAssetUrl }}"></script>
+    {%- endif %}
   </body>
 </html>
