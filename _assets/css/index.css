@@ -224,13 +224,21 @@
     background var(--transition-pixel);
 }
 
-.pricing:hover {
+/* `:focus-visible` en plus de `:hover` : les cartes sont des contrôles
+   (lien ou `<button>` selon `ticketing.embed`) et doivent donner le même
+   retour visuel au clavier qu'à la souris. L'anneau de focus natif est
+   conservé, seul `outline` de `:hover` est neutralisé. */
+.pricing:hover,
+.pricing:focus-visible {
   border-color: var(--divider-color);
   transform: translate(-2px, -2px);
   box-shadow: var(--shadow-pixel);
   z-index: 2; /* important : passe au-dessus des voisines */
-  outline: none;
   text-decoration: none;
+}
+
+.pricing:hover {
+  outline: none;
 }
 
 .pricing > * {
@@ -266,7 +274,8 @@
   margin-top: 0.5rem;
 }
 
-.pricing:hover .pricing-action {
+.pricing:hover .pricing-action,
+.pricing:focus-visible .pricing-action {
   color: var(--dark-primary-color);
 }
 

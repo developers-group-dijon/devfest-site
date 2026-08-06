@@ -116,8 +116,12 @@
 
 /**
  * @typedef Ticketing
- * @property {?string} url
+ * @property {?string} url lien externe vers la billetterie
  * @property {string=} comment
+ * @property {string=} embedUrl variante embarquable de `url` (avec ses paramètres
+ *   d'intégration). Sa présence suffit à basculer les déclencheurs en `<button>` ouvrant
+ *   un `<dialog>` ; `url` reste utilisée pour les vrais liens (« ouvrir dans un onglet »,
+ *   repli `<noscript>`).
  * @property {TicketPricing[]} pricings
  */
 
@@ -127,7 +131,8 @@
  * @property {string} name
  * @property {string} price
  * @property {string=} comment
- * @property {string=} url
+ * @property {string=} url lien propre à ce tarif, sinon `Ticketing.url`
+ * @property {string=} embedUrl variante embarquable propre à ce tarif, sinon `Ticketing.embedUrl`
  */
 
 ///////////////////////////////

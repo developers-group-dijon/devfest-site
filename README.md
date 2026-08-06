@@ -105,8 +105,24 @@ Le script :
 1. **Créer le site Firebase pour l'archive** (interactif, console ou `firebase hosting:sites:create devfest-dijon-<année>`).
 2. **Configurer le DNS et le domaine personnalisé** dans la console Firebase pour `devfest-<année>.developers-group-dijon.fr`.
 3. **Pousser les deux branches** sur GitHub (`git push origin devfest-dijon-<année>` et `git push origin main`).
-4. **Éditer les contenus éditoriaux** sur `main` : `_data/rawEvent.js` (visitors, comments, team, dates exactes), `_data/sponsors.js`, `_data/ticketing.js`, assets visuels (logos, photos).
-5. **Régénérer les données quand l'export OpenPlanner est prêt** : `node _data_gen/generate-from-openplanner.js <url-json-export>`.
+4. **Éditer les contenus éditoriaux** sur `main` : `_data/rawEvent.js` (visitors, comments, team, dates exactes), `_data/sponsors.js`, `_data/ticketing.js` (`url`/`pricings`, plus `embedUrl` — voir ci-dessous), assets visuels (logos, photos).
+5. **Si le prestataire de billetterie change** et que `embedUrl` est utilisée : ajouter son origine à `frame-src` et à `payment=(…)` dans les en-têtes du target `main` de `firebase.json`, sinon l'iframe est bloquée en production.
+6. **Régénérer les données quand l'export OpenPlanner est prêt** : `node _data_gen/generate-from-openplanner.js <url-json-export>`.
+
+### Billetterie embarquée (`ticketing.embedUrl`)
+
+`_data/ticketing.js` porte deux URL, écrites en entier :
+
+- `url` — le lien externe vers la billetterie. Seul champ nécessaire : les déclencheurs (lien « Billetterie » du header, cartes de tarifs de l'accueil) sont alors de simples `<a>`. Un tarif peut avoir le sien via `pricing.url`.
+- `embedUrl` — la même billetterie en version embarquable, paramètres d'intégration compris (côté Skedl : `?embed=true&showHero=false&showMerch=true&showSponsors=true…`). **Sa seule présence** transforme les déclencheurs en `<button>` ouvrant un `<dialog>`, avec un `<noscript>` de repli vers `url`. Surchargeable par tarif via `pricing.embedUrl`.
+
+Les deux URL sont utilisées telles quelles, sans transformation au build : les paramètres d'intégration se règlent donc dans les données, sans toucher au code. Penser à les faire évoluer ensemble.
+
+Trois conséquences à ne pas oublier quand `embedUrl` est renseignée :
+
+- son origine doit figurer dans `frame-src` **et** dans `payment=(…)` de la `Permissions-Policy` du target `main` (`firebase.json`) — sans quoi la CSP bloque l'iframe et la délégation de la Payment Request API échoue. **C'est cette liste `frame-src` qui constitue la frontière de confiance** : l'iframe n'est pas mise en `sandbox`, un bac à sable assez permissif pour un tunnel de paiement devant inclure `allow-scripts` + `allow-same-origin`, combinaison qui permet à l'iframe de le retirer elle-même ;
+- `Esc` ne ferme pas le dialog quand le focus est passé dans l'iframe : l'événement clavier part au document embarqué. Comportement inhérent au cross-origin, non corrigeable côté site ; d'où le bouton de fermeture toujours visible, le clic hors panneau et le lien « ouvrir dans un onglet » ;
+- la hauteur de l'iframe suit le message `skedl:resize` émis par la billetterie (origine et frame émettrice vérifiées, cf. `_assets/js/ticketing-sheet.js`). Un autre prestataire n'émettra pas ce message : l'iframe gardera alors le `70dvh` de `_assets/css/ticketing.css` et son défilement interne.
 
 # Contribuer et outils de développement
 

@@ -16,6 +16,7 @@ photos:
  - "/images/photo8.webp"
 ---
 
+{%- import "ticketing-trigger.njk" as ticketingMacros -%}
 <link rel="stylesheet" type="text/css" href="{{ '/css/index.css' | normalizeAssetUrl }}" />
 <div class="hero-info-image" style="background-image: url('{{ background | normalizeAssetUrl}}')">
    <div class="hero-info">
@@ -89,21 +90,21 @@ photos:
       {%- endif %}
       <div class="pricings">
       {%- for pricing in ticketing.pricings %}
-         {%- if pricing.url | default(ticketing.url) %}
-         <a class="pricing" rel="noopener noreferrer" href="{{ pricing.url | default(ticketing.url) }}">
-         {%- else %}
-         <div class="pricing">
-         {%- endif %}
-            <div class="pricing-name">{{ pricing.name }}</div>
-            <div class="pricing-price">{{ pricing.price }}</div>
-            <div class="pricing-ticketing-comment">{{ ticketing.comment }}</div>
-            <div class="pricing-comment">{{ pricing.comment }}</div>
-         {%- if pricing.url | default(ticketing.url) %}
-            <div class="pricing-action visible-link">Acheter</div>
-         </a>
-         {%- else %}
-         </div>
-         {%- endif %}
+         {%- set pricingUrl = pricing.url | default(ticketing.url) %}
+         {%- set pricingEmbedUrl = pricing.embedUrl | default(ticketing.embedUrl) %}
+         {#- `<span>` et non `<div>` : avec une billetterie embarquée, la carte est
+             un `<button>`, dont le contenu autorisé est du phrasing content. Le
+             rendu est identique, `.pricing` étant un conteneur flex (ses
+             enfants sont blockifiés). -#}
+         {%- call ticketingMacros.ticketingTrigger(pricingUrl, pricingEmbedUrl, "pricing") %}
+            <span class="pricing-name">{{ pricing.name }}</span>
+            <span class="pricing-price">{{ pricing.price }}</span>
+            <span class="pricing-ticketing-comment">{{ ticketing.comment }}</span>
+            <span class="pricing-comment">{{ pricing.comment }}</span>
+            {%- if pricingUrl or pricingEmbedUrl %}
+            <span class="pricing-action visible-link">Acheter</span>
+            {%- endif %}
+         {%- endcall %}
       {%- endfor %}
       </div>
    </div>
