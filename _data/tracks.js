@@ -8,19 +8,19 @@
  */
 export default [
   {
-    id: "jardins-de-la-tour",
-    name: "Les jardins de la tour",
+    id: "sanctuaire-de-laclairiere",
+    name: "Le Sanctuaire de la Clairière",
   },
   {
-    id: "scriptorium",
-    name: "Le scriptorium",
+    id: "pont-desconfreries",
+    name: " Le Pont des Confréries",
   },
   {
-    id: "tour-des-arcanes",
-    name: "La tour des arcanes",
+    id: "citadelle-des-artisan-es",
+    name: "La Citadelle des Artisan·es",
   },
   {
-    id: "forge",
-    name: "La forge",
+    id: "table-ronde",
+    name: "La Table Ronde",
   },
 ];
