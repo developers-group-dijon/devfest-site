@@ -125,6 +125,11 @@ export default [
         logoUrl: "/sponsors/aer-bfc.webp",
       },
       {
+        name: "APRR",
+        website: "https://www.aprr.com/",
+        logoUrl: "/sponsors/aprr.webp",
+      },
+      {
         name: "Holberton",
         website: "https://www.holbertonschool.fr",
         logoUrl: "/sponsors/holberton.webp",
