@@ -118,6 +118,7 @@
  * @typedef Ticketing
  * @property {?string} url
  * @property {string=} comment
+ * @property {string=} embedUrl URL de l'embed billetterie affiché dans le bottom sheet (optionnel)
  * @property {TicketPricing[]} pricings
  */
 
