@@ -100,11 +100,6 @@ export default [
         logoUrl: "/sponsors/planet-bourgogne.webp",
       },
       {
-        name: "Sogeti",
-        website: "https://www.fr.sogeti.com/",
-        logoUrl: "/sponsors/sogeti.webp",
-      },
-      {
         name: "Steerway",
         website: "https://steerway.dev/",
         logoUrl: "/sponsors/steerway.webp",
