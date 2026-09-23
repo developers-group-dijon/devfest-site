@@ -1,0 +1,16 @@
+_data/rawSessions.js
+  h_0a88d9aba8622a 296
+_data/speakers.js
+  h_0a88d9aba8622a 45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "50f446c216d06aa6337da3ef249521b185f58f4f",
+  "prompts": {},
+  "humans": {
+    "h_0a88d9aba8622a": {
+      "author": "Yoan Thirion <yoan.thirion@gmail.com>"
+    }
+  }
+}
