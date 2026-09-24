@@ -30,16 +30,17 @@ export default {
       id: "early",
       name: "Tarif Early",
       price: "27 €",
-      comment: "Seulement 100 places !",
+      comment: "100 billets Early Bird en vente jusqu'au 31 octobre !",
     },
     {
       id: "standard",
-      name: "Tarif standard",
+      name: "Tarif Standard",
       price: "37 €",
+      comment: "Ouvre le 1er novembre",
     },
     {
-      id: "reduit",
-      name: "Tarif réduit",
+      id: "etudiant",
+      name: "Tarif étudiant",
       price: "20 €",
       comment:
         "Ce billet s'adresse aux personnes en situation de précarité, y compris les étudiants et les demandeurs d'emploi. Une pièce justificative pourra être demandée.",

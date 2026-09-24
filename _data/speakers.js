@@ -42,7 +42,7 @@ const speakers = [
     id: "cmnzy3p5j00o401o2zbrazim9",
     name: "Yoan Thirion",
     bio: "J'accompagne les équipes pour qu'elles s'améliorent dans la livraison de logiciels grâce aux pratiques Craft et Agile. \nJe les forme et les aide à mettre en œuvre des pratiques telles que Scrum, Kanban, XP, Domain Driven Design, Clean Code et bien d'autres encore...",
-    company: "Coda School",
+    company: "Coda",
     jobTitle: null,
     photoUrl: "/avatars/yoan-thirion.webp",
     socials: [
