@@ -1,0 +1,29 @@
+_data/ticketing.js
+  s_39591a56365b47::t_3150263c936a2d 33
+  s_39591a56365b47::t_9b125a5127925d 37,39,42-43
+_data/rawSessions.js
+  h_0a88d9aba8622a 296
+_data/speakers.js
+  h_0a88d9aba8622a 45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0c8318432d265b215fb3e70a446f6d7890212e85",
+  "prompts": {},
+  "humans": {
+    "h_0a88d9aba8622a": {
+      "author": "Yoan Thirion <yoan.thirion@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_39591a56365b47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "49cd2e12-aaaa-4147-95b0-00f0611c9a23",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": null
+    }
+  }
+}
