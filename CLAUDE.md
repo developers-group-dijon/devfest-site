@@ -6,7 +6,7 @@ Static site generator for the DevFest Dijon conference, built with Eleventy 3 + 
 
 - **Never run `git push`**, in any form. The user pushes.
 - **Never commit on `main`** (or on an archive branch `devfest-dijon-<year>`). Before the first commit, create a work branch (`git switch -c <type>/<short-topic>`, e.g. `feat/billetterie-embed`).
-- **Split commits into logical units.** Each commit does one thing and passes `npm run check` on its own. Don't mix data changes (`data:`), styling (`style:`) and behaviour (`feat:`/`fix:`) in one commit. Use `git add -p` or add files by path to stage selectively.
+- **Split commits into logical units.** Each commit does one thing and passes `npm run check` on its own. Don't mix data changes (`data:`), styling (`style:`) and behaviour (`feat:`/`fix:`) in one commit. Stage files by path. `git add -p` is interactive and unavailable to Claude; the `/commit` skill describes the alternative.
 - **Checking out an existing branch, or picking up work on an old one:** first run `git fetch` and compare with `main` (`git log --oneline main..HEAD`, `git log --oneline HEAD..main`). If `main` has moved ahead, **offer to rebase** onto `main` before doing anything else. Don't rebase without the user's agreement.
 - **Merges are fast-forward only:** `git merge --ff-only <branch>`. There must be no merge commits in history. If the fast-forward fails, rebase the branch onto the target, then retry. Never use `--no-ff` and never fall back to a real merge.
 - Don't touch changes you didn't make (for example, a `package-lock.json` that was already modified). Leave them out of your commits.
@@ -19,6 +19,17 @@ Commitlint enforces the format (`commitlint.config.js`, based on config-conventi
 - Subject in French, lowercase, verb in the 3rd-person present, no trailing period: `fix: corrige frame-src de la CSP`, `data: ajoute APRR en sponsor bronze`.
 - Optional body in French, wrapped at about 72 columns, explaining the _why_ (and citing the SHA of the commit being fixed when relevant).
 - `style:` is used for **visual/CSS** changes to the site, not only formatting.
+
+### Claude tooling (`.claude/`)
+
+Hooks (`.claude/settings.json` → `.claude/hooks/*.sh`) enforce the rules above:
+
+- `git-guard.sh` (PreToolUse Bash): blocks `git push`, commits on `main`/`devfest-dijon-*`, merges that aren't `--ff-only`, and `git pull` without `--ff-only`/`--rebase`.
+- `commitlint-check.sh` (PostToolUse Bash): after a `git commit`, validates the message. If it fails, fix it with `git commit --amend`.
+- `format.sh` (PostToolUse Edit|Write): prettier + `eslint --fix` / `stylelint --fix` on the modified file, and reports errors that can't be fixed automatically.
+- `session-branch-status.sh` (SessionStart): current branch and how far it is ahead of or behind `main`.
+
+Skills: `/commit` (atomic commits following the conventions) and `/resume-branch [branch]` (fetch + checkout + offer to rebase).
 
 ## Commands
 
