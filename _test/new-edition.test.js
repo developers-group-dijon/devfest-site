@@ -1,11 +1,12 @@
 // Tests unitaires des fonctions pures de `_scripts/new-edition.js`.
 // Le script lui-même (main, git, fs) n'est pas testé directement ; on couvre
-// les transformations (extraction d'année, patch de rawEvent, vidage de fichiers).
+// les transformations (année de site.json, patch de rawEvent, vidage de fichiers).
 
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
 import {
-  extractCurrentYear,
+  readSiteYear,
+  siteJson,
   replaceUnique,
   bumpRawEvent,
   emptyDataFile,
@@ -29,13 +30,35 @@ const SAMPLE_RAW_EVENT = `export default {
 };
 `;
 
-describe("extractCurrentYear", () => {
-  test("trouve l'année dans name: DevFest Dijon 2026", () => {
-    assert.equal(extractCurrentYear(SAMPLE_RAW_EVENT), 2026);
+describe("readSiteYear", () => {
+  test("lit year dans site.json", () => {
+    assert.equal(
+      readSiteYear(
+        '{ "url": "https://devfest.developers-group-dijon.fr", "year": 2026 }',
+      ),
+      2026,
+    );
   });
 
-  test("lance si le pattern est absent", () => {
-    assert.throws(() => extractCurrentYear("// pas de name"), /Impossible/);
+  test("lance si year est absent ou invalide", () => {
+    assert.throws(() => readSiteYear('{ "url": "x" }'), /"year"/);
+    assert.throws(() => readSiteYear('{ "year": "2026" }'), /"year"/);
+  });
+});
+
+describe("siteJson", () => {
+  test("édition courante : URL principale", () => {
+    assert.equal(
+      siteJson(2027, { archive: false }),
+      '{\n  "url": "https://devfest.developers-group-dijon.fr",\n  "year": 2027\n}\n',
+    );
+  });
+
+  test("archive : URL de l'année, sans slash final", () => {
+    assert.deepEqual(JSON.parse(siteJson(2026, { archive: true })), {
+      url: "https://devfest-2026.developers-group-dijon.fr",
+      year: 2026,
+    });
   });
 });
 
