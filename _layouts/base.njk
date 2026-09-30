@@ -129,7 +129,7 @@ icons:
             n'aurait donc pas été une barrière contre le prestataire. Il pouvait
             en revanche casser le tunnel (redirections PSP, 3-D Secure), ce qui
             n'a pas pu être vérifié sur un achat réel.
-            La frontière de confiance est donc `frame-src` dans `firebase.json` :
+            La frontière de confiance est donc `frame-src` (CSP de `_scripts/ovh/htaccess.js`) :
             seule l'origine de la billetterie peut être embarquée. À reconsidérer
             si un jour un achat de test complet valide un `sandbox`. -#}
         <iframe data-ticketing-iframe title="Billetterie" allow="payment" referrerpolicy="strict-origin-when-cross-origin"></iframe>
