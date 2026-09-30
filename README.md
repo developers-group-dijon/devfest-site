@@ -47,22 +47,21 @@ Il force aussi le HTTPS, applique les en-têtes de sécurité (CSP, Permissions-
 
 ## Quand le site est-il publié ?
 
-Même logique que le site [developers-group-dijon/site](https://github.com/developers-group-dijon/site) :
+L'édition publiée est celle de `_data/site.json` (`year`, et `url` : `devfest.…` pour l'édition courante, `devfest-<année>.…` pour une archive). L'environnement dépend de la branche :
 
-1. **build** (toujours) : `npm run check`, puis construction de la variante prod et de la variante test (URL de `_data/site.json` remplacée par l'URL de test), audit perf + a11y hors publication en prod ;
-2. **deploy-test** (tout push, pas les pull requests) : publication dans le dossier de test ;
-3. **deploy-production** (`main` et `devfest-dijon-<année>`, une fois le test publié) : publication dans le dossier de prod.
+| Branche                     | Publication                                           |
+| --------------------------- | ----------------------------------------------------- |
+| `main`                      | prod, dossier `<year>`, `.htaccess` racine mis à jour |
+| branche tirée de `main`     | test, dossier `<year>`, `.htaccess` racine mis à jour |
+| `devfest-dijon-<année>`     | prod, dossier `<year>` (archive)                      |
+| branche tirée d'une archive | test, dossier `<year>` (archive)                      |
+| pull request                | build et vérifications uniquement                     |
 
-| Branche construite      | Test | Prod | Dossier                                           |
-| ----------------------- | ---- | ---- | ------------------------------------------------- |
-| `main`                  | oui  | oui  | année de `_data/rawEvent.js` + `.htaccess` racine |
-| `devfest-dijon-<année>` | oui  | oui  | `<année>`                                         |
-| autre branche           | oui  | non  | année de `_data/rawEvent.js` + `.htaccess` racine |
-| pull request            | non  | non  | build et vérifications uniquement                 |
+Le workflow (`.github/workflows/build-deploy.yml`) reprend les étapes du site [developers-group-dijon/site](https://github.com/developers-group-dijon/site) : **build** (`npm run check`, build, audit perf + a11y en test), puis **deploy-test** ou **deploy-production**. Il vérifie aussi `site.json` : `year` doit correspondre à `url`, `main` doit porter l'édition courante et `devfest-dijon-<année>` l'archive de son année.
 
-Il n'y a qu'un environnement de test : le dernier push l'emporte.
+Pour modifier une édition passée : tirer une branche depuis `devfest-dijon-<année>`, pousser (publication en test sur `devfest-test-<année>.…`), ouvrir la PR vers la branche d'archive, puis la fusionner (publication en prod sur `devfest-<année>.…`).
 
-Le lancement manuel (_Actions_ > _Build et déploiement OVH_ > _Run workflow_) republie la branche choisie. Son champ « Branche à publier » sert aux archives créées avant ce workflow (2023 à 2025), qui ne le contiennent pas : lancer depuis `main` avec `devfest-dijon-<année>` ; les scripts de déploiement sont alors pris sur `main`.
+Il n'y a qu'une place de test par édition : deux branches de la même édition s'écrasent, le dernier push l'emporte.
 
 ## Configuration GitHub
 
@@ -158,8 +157,9 @@ npm run new-edition <année>
 
 Le script :
 
-- Crée la branche `devfest-dijon-<année-courante>` (archive) et y met à jour `_data/site.json` vers l'URL d'archive `https://devfest-<année-courante>.developers-group-dijon.fr`.
-- Sur `main` : met à jour `_data/rawEvent.js` (nom, dates, `previousEditions`, `callForPaper: null`, `sponsoringUrl: null`), et vide les fichiers OpenPlanner (`rawSessions.js`, `speakers.js`, `formats.js`, `categories.js`, `tracks.js`).
+- Lit l'année courante dans `_data/site.json` (`year`).
+- Crée la branche `devfest-dijon-<année-courante>` (archive) et y met à jour `_data/site.json` vers l'URL d'archive `https://devfest-<année-courante>.developers-group-dijon.fr` (même `year`).
+- Sur `main` : passe `year` de `_data/site.json` à la nouvelle année, met à jour `_data/rawEvent.js` (nom, dates, `previousEditions`, `callForPaper: null`, `sponsoringUrl: null`), et vide les fichiers OpenPlanner (`rawSessions.js`, `speakers.js`, `formats.js`, `categories.js`, `tracks.js`).
 - Crée 2 commits locaux (pas de `git push` automatique).
 
 À la fin, le script affiche en sortie les étapes manuelles restantes :
