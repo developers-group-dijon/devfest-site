@@ -45,8 +45,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Validate code
-        # --if-present : les plus anciennes archives n'ont pas de script `check`
-        run: npm run check --if-present
+        # Les archives 2023 et 2024 nomment ce script `lint` : le workflow est
+        # ainsi identique sur toutes les branches.
+        run: |
+          if npm run | grep -qE '^  check$'; then
+            npm run check
+          else
+            npm run lint
+          fi
       - name: Pointe le site vers l'URL de test
         if: steps.target.outputs.env == 'test'
         env:
