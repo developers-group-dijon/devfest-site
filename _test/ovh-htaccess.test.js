@@ -11,7 +11,7 @@ import {
   hostname,
 } from "../_scripts/ovh/htaccess.js";
 
-const HTPASSWD = "/homez.123/login/.htpasswd-devfest-test";
+const HTPASSWD = "/homez.123/login/devfest_test/.htpasswd";
 
 describe("hostname", () => {
   test("édition courante et archives en prod", () => {
@@ -126,6 +126,12 @@ describe("buildRootHtaccess (test)", () => {
     );
     assert.ok(out.includes(`AuthUserFile "${HTPASSWD}"`));
     assert.match(out, /Require valid-user/);
+  });
+
+  test("interdit l'accès direct au .htpasswd publié dans le dossier", () => {
+    assert.ok(
+      out.includes('<Files ".htpasswd">\n  Require all denied\n</Files>'),
+    );
   });
 
   test("exclut l'indexation et désactive le cache", () => {
