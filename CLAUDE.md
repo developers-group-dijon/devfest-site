@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Générateur de site statique pour la conférence DevFest Dijon, construit avec Eleventy 3 + Nunjucks et déployé sur Firebase Hosting. Le code, les commentaires, les tests, les messages de commit et l'interface sont tous en **français** : continuer à écrire en français.
+Générateur de site statique pour la conférence DevFest Dijon, construit avec Eleventy 3 + Nunjucks et publié par SFTP sur un hébergement mutualisé OVH (Apache). Le code, les commentaires, les tests, les messages de commit et l'interface sont tous en **français** : continuer à écrire en français.
 
 ## Workflow git (obligatoire)
 
@@ -70,6 +70,7 @@ _assets/          Fichiers statiques, copiés tels quels dans /assets
   css/            style.css (custom properties du thème), layout.css, un fichier CSS par page
   js/             JS navigateur vanilla en modules ES, sans bibliothèque
 _scripts/         Génération de l'image OG (sharp), new-edition.js
+  ovh/            Déploiement OVH : htaccess.js (.htaccess racine), target.js (où publier), deploy.sh (SFTP)
 _test/            Tests node:test + jsdom (_helpers/dom.js, timers.js)
 _audit/           Scripts Lighthouse/pa11y
 ```
@@ -90,12 +91,13 @@ _audit/           Scripts Lighthouse/pa11y
 
 ### Sécurité / hébergement
 
-- Les en-têtes HTTP (CSP, Permissions-Policy…) sont dans `firebase.json`, sous le target `main`. Toute nouvelle iframe ou origine externe (par exemple un prestataire de billetterie) doit être ajoutée à `frame-src`, et pour le paiement aussi à `payment=(…)`. Voir la section « Billetterie embarquée » du README.
+- Les en-têtes HTTP (CSP, Permissions-Policy…) sont dans `SECURITY_HEADERS` de `_scripts/ovh/htaccess.js`, qui génère le `.htaccess` racine (HTTPS forcé, aiguillage par hôte vers le dossier `<année>/`, 404, auth Basic en test). Ne jamais les modifier sur le serveur. Toute nouvelle iframe ou origine externe (par exemple un prestataire de billetterie) doit être ajoutée à `frame-src`, et pour le paiement aussi à `payment=(…)`. Voir la section « Billetterie embarquée » du README.
 - `default-src 'self'` : aucun script, police ou image externe. Les polices sont servies depuis `node_modules` via passthrough.
 
 ## Branches et déploiement
 
-- `main` = édition courante, déployée sur le site `devfest-dijon` (target Firebase `main`).
-- `devfest-dijon-<année>` = archives des éditions précédentes, chacune déployée sur son propre site. Ne pas les modifier sauf demande explicite.
-- Toute autre branche ou PR obtient un channel de preview Firebase temporaire (7 jours) après `check` + `clean-build` + `audit`.
+- Workflow unique : `.github/workflows/build-deploy.yml`, même logique que le dépôt `developers-group-dijon/site` (build, puis deploy-test ou deploy-production). Secrets par environnement GitHub : `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, `TEST_AUTH_USER`, `TEST_AUTH_PASSWORD`, `TEST_HTPASSWD_PATH`.
+- **`_data/site.json` porte l'édition** : `year` (dossier de publication, `data-edition`) et `url` (`devfest.…` = édition courante, `devfest-<année>.…` = archive). `_scripts/ovh/target.js` en déduit la cible et vérifie leur cohérence.
+- Environnement selon la branche : `main` et `devfest-dijon-<année>` → prod ; toute autre branche → test (`devfest-test[-<année>].…`, protégé par mot de passe). Les pull requests ne sont que construites et vérifiées.
+- `devfest-dijon-<année>` = archives des éditions précédentes. Pour les modifier : branche tirée de l'archive, PR vers l'archive. Ne pas les modifier sauf demande explicite.
 - Renovate met à jour les dépendances chaque mois (commits `chore(deps): …`).

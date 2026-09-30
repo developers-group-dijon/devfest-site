@@ -15,16 +15,77 @@ Le dépôt Git est prévu pour avoir :
 
 # CI et déploiement
 
-Le merges sur les branches branches `main` et `devfest-dijon-<année>` déclenches le workflow `.github/workflows/firebase-hosting-merge.yml`.
-Cela correspond à :
+Le site est publié par SFTP sur l'hébergement mutualisé OVH, par le workflow `.github/workflows/build-deploy.yml`.
 
-1. Lint du code
-2. Build du site
-3. Déploiement sur le site Firebase correspondant à la `target` du nom de la branche (mis à part la target `main` qui déploie sur le `site` `devfest-dijon`, les autres `target`s déploient sur un `site` du même nom que la `target`)
+## Organisation sur l'hébergement
 
-Les autres branches et le pull-request déclenchent le workflow `.github/workflows/firebase-hosting-pull-request.yml`.
-Cela reprend le mêmes étapes que le workflow `.github/workflows/firebase-hosting-merge.yml` à la différence que le déploiement Firebase se fait sur `channel` temporaire.
-Le site de preview ainsi créé est accessible 7 jours (dans le cas d'une pull-request, un commentaire indiquant l'adresse de preview est ajouté par Firebase).
+Deux environnements sur le même SFTP, chacun dans son dossier, avec un sous-dossier par édition :
+
+```
+~ (racine du compte OVH)
+├── devfest/              prod
+│   ├── .htaccess
+│   ├── 2024/
+│   ├── 2025/
+│   └── 2026/
+└── devfest_test/         test
+    ├── .htaccess
+    ├── .htpasswd         identifiants du test (accès direct interdit)
+    └── 2026/
+```
+
+Le `.htaccess` racine, généré par `_scripts/ovh/htaccess.js`, aiguille selon l'hôte :
+
+| Environnement | Édition courante                                  | Archives                                                  |
+| ------------- | ------------------------------------------------- | --------------------------------------------------------- |
+| prod          | `https://devfest.developers-group-dijon.fr/`      | `https://devfest-<année>.developers-group-dijon.fr/`      |
+| test          | `https://devfest-test.developers-group-dijon.fr/` | `https://devfest-test-<année>.developers-group-dijon.fr/` |
+
+Il force aussi le HTTPS, applique les en-têtes de sécurité (CSP, Permissions-Policy, HSTS…) à toutes les éditions, sert la page 404 de chaque édition et empêche l'accès direct aux dossiers `/<année>/`. En test, il demande un identifiant et un mot de passe (uniquement en HTTPS) et ajoute `X-Robots-Tag: noindex`.
+
+**Les en-têtes HTTP se modifient dans `_scripts/ovh/htaccess.js`** (`SECURITY_HEADERS`), jamais directement sur le serveur : le fichier est réécrit à chaque déploiement de l'édition courante.
+
+## Quand le site est-il publié ?
+
+L'édition publiée est celle de `_data/site.json` (`year`, et `url` : `devfest.…` pour l'édition courante, `devfest-<année>.…` pour une archive). L'environnement dépend de la branche :
+
+| Branche                     | Publication                                           |
+| --------------------------- | ----------------------------------------------------- |
+| `main`                      | prod, dossier `<year>`, `.htaccess` racine mis à jour |
+| branche tirée de `main`     | test, dossier `<year>`, `.htaccess` racine mis à jour |
+| `devfest-dijon-<année>`     | prod, dossier `<year>` (archive)                      |
+| branche tirée d'une archive | test, dossier `<year>` (archive)                      |
+| pull request                | build et vérifications uniquement                     |
+
+Le workflow (`.github/workflows/build-deploy.yml`) reprend les étapes du site [developers-group-dijon/site](https://github.com/developers-group-dijon/site) : **build** (`npm run check`, build, audit perf + a11y en test), puis **deploy-test** ou **deploy-production**. Il vérifie aussi `site.json` : `year` doit correspondre à `url`, `main` doit porter l'édition courante et `devfest-dijon-<année>` l'archive de son année.
+
+Pour modifier une édition passée : tirer une branche depuis `devfest-dijon-<année>`, pousser (publication en test sur `devfest-test-<année>.…`), ouvrir la PR vers la branche d'archive, puis la fusionner (publication en prod sur `devfest-<année>.…`).
+
+Il n'y a qu'une place de test par édition : deux branches de la même édition s'écrasent, le dernier push l'emporte.
+
+## Configuration GitHub
+
+Mêmes noms que pour le site developers-group-dijon. Les secrets sont définis dans les environnements GitHub (_Settings_ > _Environments_) :
+
+| Secret               | Environnements   | Contenu                                                                                                        |
+| -------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------- |
+| `FTP_SERVER`         | test, production | serveur SFTP (ex. `ssh.clusterXXX.hosting.ovh.net`)                                                            |
+| `FTP_USERNAME`       | test, production | identifiant FTP/SSH                                                                                            |
+| `FTP_PASSWORD`       | test, production | mot de passe FTP/SSH                                                                                           |
+| `TEST_AUTH_USER`     | test             | identifiant de l'environnement de test                                                                         |
+| `TEST_AUTH_PASSWORD` | test             | mot de passe de l'environnement de test                                                                        |
+| `TEST_HTPASSWD_PATH` | test             | chemin absolu du `.htpasswd` publié dans le dossier de test (ex. `/homez.123/<compte>/devfest_test/.htpasswd`) |
+
+Les dossiers sur le SFTP sont fixés en tête du workflow : `devfest` (prod) et `devfest_test` (test).
+
+## Côté OVH
+
+Dans _Hébergement_ > _Multisite_, chaque nom d'hôte est déclaré avec SSL activé et le dossier racine de son environnement :
+
+- `devfest.developers-group-dijon.fr` et chaque `devfest-<année>.developers-group-dijon.fr` → `devfest`
+- `devfest-test.developers-group-dijon.fr` et chaque `devfest-test-<année>.developers-group-dijon.fr` → `devfest_test`
+
+`npm run new-edition` rappelle les deux entrées à ajouter pour chaque nouvelle archive.
 
 # Personnaliser le contenu du site
 
@@ -96,18 +157,19 @@ npm run new-edition <année>
 
 Le script :
 
-- Crée la branche `devfest-dijon-<année-courante>` (archive) et y met à jour `_data/site.json` vers l'URL d'archive `https://devfest-<année-courante>.developers-group-dijon.fr/`.
-- Sur `main` : ajoute le mapping `target` → `site` dans `.firebaserc` et l'entrée `hosting` correspondante dans `firebase.json`, met à jour `_data/rawEvent.js` (nom, dates, `previousEditions`, `callForPaper: null`, `sponsoringUrl: null`), et vide les fichiers OpenPlanner (`rawSessions.js`, `speakers.js`, `formats.js`, `categories.js`, `tracks.js`).
+- Lit l'année courante dans `_data/site.json` (`year`).
+- Crée la branche `devfest-dijon-<année-courante>` (archive) et y met à jour `_data/site.json` vers l'URL d'archive `https://devfest-<année-courante>.developers-group-dijon.fr` (même `year`).
+- Sur `main` : passe `year` de `_data/site.json` à la nouvelle année, met à jour `_data/rawEvent.js` (nom, dates, `previousEditions`, `callForPaper: null`, `sponsoringUrl: null`), et vide les fichiers OpenPlanner (`rawSessions.js`, `speakers.js`, `formats.js`, `categories.js`, `tracks.js`).
 - Crée 2 commits locaux (pas de `git push` automatique).
 
 À la fin, le script affiche en sortie les étapes manuelles restantes :
 
-1. **Créer le site Firebase pour l'archive** (interactif, console ou `firebase hosting:sites:create devfest-dijon-<année>`).
-2. **Configurer le DNS et le domaine personnalisé** dans la console Firebase pour `devfest-<année>.developers-group-dijon.fr`.
-3. **Pousser les deux branches** sur GitHub (`git push origin devfest-dijon-<année>` et `git push origin main`).
-4. **Éditer les contenus éditoriaux** sur `main` : `_data/rawEvent.js` (visitors, comments, team, dates exactes), `_data/sponsors.js`, `_data/ticketing.js` (`url`/`pricings`, plus `embedUrl` — voir ci-dessous), assets visuels (logos, photos).
-5. **Si le prestataire de billetterie change** et que `embedUrl` est utilisée : ajouter son origine à `frame-src` et à `payment=(…)` dans les en-têtes du target `main` de `firebase.json`, sinon l'iframe est bloquée en production.
-6. **Régénérer les données quand l'export OpenPlanner est prêt** : `node _data_gen/generate-from-openplanner.js <url-json-export>`.
+1. **Déclarer les multisites OVH de l'archive**, avec SSL : `devfest-<année>.developers-group-dijon.fr` (dossier de prod) et `devfest-test-<année>.developers-group-dijon.fr` (dossier de test).
+2. **Pousser les deux branches** sur GitHub (`git push origin devfest-dijon-<année>` puis `git push origin main`) : chaque push publie son édition, et celui de `main` fait pointer l'hôte principal vers la nouvelle édition.
+3. **Éditer les contenus éditoriaux** sur `main` : `_data/rawEvent.js` (visitors, comments, team, dates exactes), `_data/sponsors.js`, `_data/ticketing.js` (`url`/`pricings`, plus `embedUrl` — voir ci-dessous), assets visuels (logos, photos).
+4. **Régénérer les données quand l'export OpenPlanner est prêt** : `node _data_gen/generate-from-openplanner.js <url-json-export>`.
+
+Si le prestataire de billetterie change et que `embedUrl` est utilisée : ajouter son origine à `frame-src` et à `payment=(…)` dans `SECURITY_HEADERS` (`_scripts/ovh/htaccess.js`), sinon l'iframe est bloquée en production.
 
 ### Billetterie embarquée (`ticketing.embedUrl`)
 
@@ -120,7 +182,7 @@ Les deux URL sont utilisées telles quelles, sans transformation au build : les 
 
 Trois conséquences à ne pas oublier quand `embedUrl` est renseignée :
 
-- son origine doit figurer dans `frame-src` **et** dans `payment=(…)` de la `Permissions-Policy` du target `main` (`firebase.json`) — sans quoi la CSP bloque l'iframe et la délégation de la Payment Request API échoue. **C'est cette liste `frame-src` qui constitue la frontière de confiance** : l'iframe n'est pas mise en `sandbox`, un bac à sable assez permissif pour un tunnel de paiement devant inclure `allow-scripts` + `allow-same-origin`, combinaison qui permet à l'iframe de le retirer elle-même ;
+- son origine doit figurer dans `frame-src` **et** dans `payment=(…)` de la `Permissions-Policy` (`SECURITY_HEADERS` dans `_scripts/ovh/htaccess.js`) — sans quoi la CSP bloque l'iframe et la délégation de la Payment Request API échoue. **C'est cette liste `frame-src` qui constitue la frontière de confiance** : l'iframe n'est pas mise en `sandbox`, un bac à sable assez permissif pour un tunnel de paiement devant inclure `allow-scripts` + `allow-same-origin`, combinaison qui permet à l'iframe de le retirer elle-même ;
 - `Esc` ne ferme pas le dialog quand le focus est passé dans l'iframe : l'événement clavier part au document embarqué. Comportement inhérent au cross-origin, non corrigeable côté site ; d'où le bouton de fermeture toujours visible, le clic hors panneau et le lien « ouvrir dans un onglet » ;
 - la hauteur de l'iframe suit le message `skedl:resize` émis par la billetterie (origine et frame émettrice vérifiées, cf. `_assets/js/ticketing-sheet.js`). Un autre prestataire n'émettra pas ce message : l'iframe gardera alors le `70dvh` de `_assets/css/ticketing.css` et son défilement interne.
 
