@@ -23,14 +23,14 @@ Deux environnements sur le même SFTP, chacun dans son dossier, avec un sous-dos
 
 ```
 ~ (racine du compte OVH)
-├── .htpasswd-devfest-test     identifiants du test, hors des dossiers web
-├── <OVH_PROD_DIR>/
+├── devfest/              prod
 │   ├── .htaccess
 │   ├── 2024/
 │   ├── 2025/
 │   └── 2026/
-└── <OVH_TEST_DIR>/
+└── devfest_test/         test
     ├── .htaccess
+    ├── .htpasswd         identifiants du test (accès direct interdit)
     └── 2026/
 ```
 
@@ -47,43 +47,44 @@ Il force aussi le HTTPS, applique les en-têtes de sécurité (CSP, Permissions-
 
 ## Quand le site est-il publié ?
 
-| Événement                                  | Environnement | Dossier                                           |
-| ------------------------------------------ | ------------- | ------------------------------------------------- |
-| push sur `main`                            | prod          | année de `_data/rawEvent.js` + `.htaccess` racine |
-| push sur `devfest-dijon-<année>`           | prod          | `<année>`                                         |
-| pull request (depuis ce dépôt) vers `main` | test          | année de `_data/rawEvent.js` + `.htaccess` racine |
-| pull request vers `devfest-dijon-<année>`  | test          | `<année>`                                         |
-| lancement manuel (_Run workflow_)          | au choix      | selon la branche choisie                          |
-| autres push, PR de fork                    | —             | build, vérifications et audit uniquement          |
+Même logique que le site [developers-group-dijon/site](https://github.com/developers-group-dijon/site) :
 
-Il n'y a qu'un environnement de test : la dernière PR mise à jour écrase la précédente. Pour les builds de test, l'URL de `_data/site.json` est remplacée par l'URL de test.
+1. **build** (toujours) : `npm run check`, puis construction de la variante prod et de la variante test (URL de `_data/site.json` remplacée par l'URL de test), audit perf + a11y hors publication en prod ;
+2. **deploy-test** (tout push, pas les pull requests) : publication dans le dossier de test ;
+3. **deploy-production** (`main` et `devfest-dijon-<année>`, une fois le test publié) : publication dans le dossier de prod.
 
-Le lancement manuel sert aussi à republier les archives créées avant ce workflow (2023 à 2025) : _Actions_ > _Build et déploiement OVH_ > _Run workflow_, branche `devfest-dijon-<année>`, environnement `prod`. Les scripts de déploiement sont pris sur la branche depuis laquelle le workflow est lancé (`main`).
+| Branche construite      | Test | Prod | Dossier                                           |
+| ----------------------- | ---- | ---- | ------------------------------------------------- |
+| `main`                  | oui  | oui  | année de `_data/rawEvent.js` + `.htaccess` racine |
+| `devfest-dijon-<année>` | oui  | oui  | `<année>`                                         |
+| autre branche           | oui  | non  | année de `_data/rawEvent.js` + `.htaccess` racine |
+| pull request            | non  | non  | build et vérifications uniquement                 |
+
+Il n'y a qu'un environnement de test : le dernier push l'emporte.
+
+Le lancement manuel (_Actions_ > _Build et déploiement OVH_ > _Run workflow_) republie la branche choisie. Son champ « Branche à publier » sert aux archives créées avant ce workflow (2023 à 2025), qui ne le contiennent pas : lancer depuis `main` avec `devfest-dijon-<année>` ; les scripts de déploiement sont alors pris sur `main`.
 
 ## Configuration GitHub
 
-Dans _Settings_ > _Secrets and variables_ > _Actions_ :
+Mêmes noms que pour le site developers-group-dijon. Les secrets sont définis dans les environnements GitHub (_Settings_ > _Environments_) :
 
-| Nom                        | Type     | Contenu                                                                              |
-| -------------------------- | -------- | ------------------------------------------------------------------------------------ |
-| `OVH_SFTP_HOST`            | secret   | serveur SFTP (ex. `ssh.clusterXXX.hosting.ovh.net`)                                  |
-| `OVH_SFTP_USER`            | secret   | identifiant FTP/SSH                                                                  |
-| `OVH_SFTP_PASSWORD`        | secret   | mot de passe FTP/SSH                                                                 |
-| `OVH_SFTP_KNOWN_HOSTS`     | secret   | sortie de `ssh-keyscan <OVH_SFTP_HOST>` (vérifiée avec l'empreinte affichée par OVH) |
-| `TEST_BASIC_AUTH_USER`     | secret   | identifiant de l'environnement de test                                               |
-| `TEST_BASIC_AUTH_PASSWORD` | secret   | mot de passe de l'environnement de test                                              |
-| `OVH_PROD_DIR`             | variable | dossier racine de la prod, relatif au compte (ex. `devfest`)                         |
-| `OVH_TEST_DIR`             | variable | dossier racine du test (ex. `devfest-test`)                                          |
-| `OVH_HOME_DIR`             | variable | chemin absolu du compte, pour `AuthUserFile` (ex. `/homez.123/devfestd`)             |
+| Secret               | Environnements   | Contenu                                                                                                        |
+| -------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------- |
+| `FTP_SERVER`         | test, production | serveur SFTP (ex. `ssh.clusterXXX.hosting.ovh.net`)                                                            |
+| `FTP_USERNAME`       | test, production | identifiant FTP/SSH                                                                                            |
+| `FTP_PASSWORD`       | test, production | mot de passe FTP/SSH                                                                                           |
+| `TEST_AUTH_USER`     | test             | identifiant de l'environnement de test                                                                         |
+| `TEST_AUTH_PASSWORD` | test             | mot de passe de l'environnement de test                                                                        |
+| `TEST_HTPASSWD_PATH` | test             | chemin absolu du `.htpasswd` publié dans le dossier de test (ex. `/homez.123/<compte>/devfest_test/.htpasswd`) |
 
-Les jobs de déploiement utilisent les environnements GitHub `production` et `test`, auxquels on peut ajouter des règles de protection (validation manuelle de la prod, par exemple).
+Les dossiers sur le SFTP sont fixés en tête du workflow : `devfest` (prod) et `devfest_test` (test).
 
 ## Côté OVH
 
 Dans _Hébergement_ > _Multisite_, chaque nom d'hôte est déclaré avec SSL activé et le dossier racine de son environnement :
 
-- `devfest.developers-group-dijon.fr` et chaque `devfest-<année>.developers-group-dijon.fr` → `OVH_PROD_DIR`
-- `devfest-test.developers-group-dijon.fr` et chaque `devfest-test-<année>.developers-group-dijon.fr` → `OVH_TEST_DIR`
+- `devfest.developers-group-dijon.fr` et chaque `devfest-<année>.developers-group-dijon.fr` → `devfest`
+- `devfest-test.developers-group-dijon.fr` et chaque `devfest-test-<année>.developers-group-dijon.fr` → `devfest_test`
 
 `npm run new-edition` rappelle les deux entrées à ajouter pour chaque nouvelle archive.
 
