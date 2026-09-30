@@ -1,6 +1,6 @@
 // Tests unitaires des fonctions pures de `_scripts/new-edition.js`.
 // Le script lui-même (main, git, fs) n'est pas testé directement ; on couvre
-// les transformations (extraction d'année, patch JSON, vidage de fichiers).
+// les transformations (extraction d'année, patch de rawEvent, vidage de fichiers).
 
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
@@ -8,8 +8,6 @@ import {
   extractCurrentYear,
   replaceUnique,
   bumpRawEvent,
-  addFirebaseTarget,
-  addFirebaseHosting,
   emptyDataFile,
 } from "../_scripts/new-edition.js";
 
@@ -111,85 +109,6 @@ describe("bumpRawEvent", () => {
     assert.throws(
       () => bumpRawEvent(SAMPLE_RAW_EVENT, 2030, 2031),
       /aucun match/,
-    );
-  });
-});
-
-describe("addFirebaseTarget", () => {
-  const base = {
-    projects: { default: "devfest-dijon" },
-    targets: {
-      "devfest-dijon": {
-        hosting: {
-          main: ["devfest-dijon"],
-          "devfest-dijon-2024": ["devfest-dijon-2024-b221b"],
-        },
-      },
-    },
-  };
-
-  test("insère le nouveau mapping après `main`", () => {
-    const out = addFirebaseTarget(base, 2026);
-    const keys = Object.keys(out.targets["devfest-dijon"].hosting);
-    assert.deepEqual(keys, [
-      "main",
-      "devfest-dijon-2026",
-      "devfest-dijon-2024",
-    ]);
-    assert.deepEqual(
-      out.targets["devfest-dijon"].hosting["devfest-dijon-2026"],
-      ["devfest-dijon-2026"],
-    );
-  });
-
-  test("lance si le mapping existe déjà", () => {
-    assert.throws(() => addFirebaseTarget(base, 2024), /existe déjà/);
-  });
-
-  test("n'altère pas l'objet source (immutable)", () => {
-    addFirebaseTarget(base, 2026);
-    assert.deepEqual(Object.keys(base.targets["devfest-dijon"].hosting), [
-      "main",
-      "devfest-dijon-2024",
-    ]);
-  });
-});
-
-describe("addFirebaseHosting", () => {
-  const base = {
-    hosting: [
-      { target: "main", public: "_site", ignore: ["firebase.json"] },
-      {
-        target: "devfest-dijon-2024",
-        public: "_site",
-        ignore: ["firebase.json"],
-      },
-    ],
-  };
-
-  test("insère après `main`", () => {
-    const out = addFirebaseHosting(base, 2026);
-    assert.deepEqual(
-      out.hosting.map((h) => h.target),
-      ["main", "devfest-dijon-2026", "devfest-dijon-2024"],
-    );
-    const archive = out.hosting[1];
-    assert.equal(archive.public, "_site");
-    assert.deepEqual(archive.ignore, [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**",
-    ]);
-  });
-
-  test("lance si l'entrée existe déjà", () => {
-    assert.throws(() => addFirebaseHosting(base, 2024), /existe déjà/);
-  });
-
-  test("lance si pas d'entrée main", () => {
-    assert.throws(
-      () => addFirebaseHosting({ hosting: [] }, 2026),
-      /pas d'entrée `main`/,
     );
   });
 });

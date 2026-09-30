@@ -2,10 +2,13 @@
 //   1. Crée la branche `devfest-dijon-<currentYear>` (archive), avec
 //      `_data/site.json` pointé vers l'URL d'archive.
 //   2. Revient sur `main` et :
-//        - ajoute le mapping Firebase pour l'archive (.firebaserc + firebase.json)
 //        - met à jour `_data/rawEvent.js` (nom, dates, previousEditions, CFP/sponsoring)
 //        - vide les fichiers OpenPlanner (rawSessions, speakers, formats, categories, tracks)
-//   3. Affiche les étapes manuelles restantes (Firebase CLI, DNS, push, contenu).
+//   3. Affiche les étapes manuelles restantes (multisite OVH, push, contenu).
+//
+// Rien à configurer côté hébergement dans le dépôt : le .htaccess racine
+// (_scripts/ovh/htaccess.js) sert toute archive `devfest-<année>.…` depuis
+// le dossier de son année, et désigne l'édition courante d'après rawEvent.js.
 //
 // Toutes les modifications sont commitées localement. Aucun `git push` automatique.
 //
@@ -16,6 +19,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { hostname } from "./ovh/htaccess.js";
 
 const REPO_ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -122,73 +126,6 @@ export function bumpRawEvent(source, currentYear, newYear) {
   out = replaceUnique(out, /previousEditions:\s*\[/, newEntry);
 
   return out;
-}
-
-/**
- * Ajoute le mapping Firebase pour l'archive de l'année.
- * @param {object} firebaserc - contenu parsé de `.firebaserc`
- * @param {number} year
- * @returns {object} nouvel objet (immutable)
- */
-export function addFirebaseTarget(firebaserc, year) {
-  const targetName = `devfest-dijon-${year}`;
-  const project = firebaserc.targets?.["devfest-dijon"];
-  if (!project || !project.hosting) {
-    throw new Error(".firebaserc : structure inattendue");
-  }
-  if (project.hosting[targetName]) {
-    throw new Error(`.firebaserc : ${targetName} existe déjà`);
-  }
-  // Reconstruction pour insérer juste après `main`
-  /** @type {Record<string, string[]>} */
-  const newHosting = {};
-  for (const [k, v] of Object.entries(project.hosting)) {
-    newHosting[k] = v;
-    if (k === "main") {
-      newHosting[targetName] = [targetName];
-    }
-  }
-  return {
-    ...firebaserc,
-    targets: {
-      ...firebaserc.targets,
-      "devfest-dijon": {
-        ...project,
-        hosting: newHosting,
-      },
-    },
-  };
-}
-
-/**
- * Ajoute une entrée hosting (archive) dans firebase.json, après `main`.
- * @param {object} firebaseJson - contenu parsé de `firebase.json`
- * @param {number} year
- * @returns {object} nouvel objet
- */
-export function addFirebaseHosting(firebaseJson, year) {
-  const targetName = `devfest-dijon-${year}`;
-  if (!Array.isArray(firebaseJson.hosting)) {
-    throw new Error("firebase.json : `hosting` n'est pas un tableau");
-  }
-  if (firebaseJson.hosting.some((h) => h.target === targetName)) {
-    throw new Error(`firebase.json : entrée ${targetName} existe déjà`);
-  }
-  const entry = {
-    target: targetName,
-    public: "_site",
-    ignore: ["firebase.json", "**/.*", "**/node_modules/**"],
-  };
-  const mainIdx = firebaseJson.hosting.findIndex((h) => h.target === "main");
-  if (mainIdx === -1) {
-    throw new Error("firebase.json : pas d'entrée `main`");
-  }
-  const newHosting = [
-    ...firebaseJson.hosting.slice(0, mainIdx + 1),
-    entry,
-    ...firebaseJson.hosting.slice(mainIdx + 1),
-  ];
-  return { ...firebaseJson, hosting: newHosting };
 }
 
 /**
@@ -303,7 +240,8 @@ function createArchiveBranch(currentYear) {
   git(["checkout", "-b", archiveBranch]);
 
   const sitePath = path.join(REPO_ROOT, "_data/site.json");
-  const siteArchiveUrl = `https://devfest-${currentYear}.developers-group-dijon.fr/`;
+  // Sans slash final : les templates concatènent `site.url + page.url`
+  const siteArchiveUrl = `https://${hostname("prod", currentYear)}`;
   fs.writeFileSync(
     sitePath,
     JSON.stringify({ url: siteArchiveUrl }, null, 2) + "\n",
@@ -322,41 +260,19 @@ function createArchiveBranch(currentYear) {
 function updateMain(currentYear, newYear) {
   console.log(`\n▶ Phase B : préparation de main pour l'édition ${newYear}`);
 
-  // 4a + 4b : firebase
-  const firebasercPath = path.join(REPO_ROOT, ".firebaserc");
-  const firebaserc = JSON.parse(fs.readFileSync(firebasercPath, "utf8"));
-  const newFirebaserc = addFirebaseTarget(firebaserc, currentYear);
-  fs.writeFileSync(
-    firebasercPath,
-    JSON.stringify(newFirebaserc, null, 2) + "\n",
-  );
-
-  const firebaseJsonPath = path.join(REPO_ROOT, "firebase.json");
-  const firebaseJson = JSON.parse(fs.readFileSync(firebaseJsonPath, "utf8"));
-  const newFirebaseJson = addFirebaseHosting(firebaseJson, currentYear);
-  fs.writeFileSync(
-    firebaseJsonPath,
-    JSON.stringify(newFirebaseJson, null, 2) + "\n",
-  );
-
-  // 4c : rawEvent.js
+  // rawEvent.js
   const rawEventPath = path.join(REPO_ROOT, "_data/rawEvent.js");
   const rawEventSource = fs.readFileSync(rawEventPath, "utf8");
   const newRawEvent = bumpRawEvent(rawEventSource, currentYear, newYear);
   fs.writeFileSync(rawEventPath, newRawEvent);
 
-  // 4d : réinitialisation des fichiers OpenPlanner
+  // Réinitialisation des fichiers OpenPlanner
   for (const file of OPEN_PLANNER_FILES) {
     fs.writeFileSync(path.join(REPO_ROOT, file.path), emptyDataFile(file.type));
   }
 
-  // 4e : commit
-  const toAdd = [
-    ".firebaserc",
-    "firebase.json",
-    "_data/rawEvent.js",
-    ...OPEN_PLANNER_FILES.map((f) => f.path),
-  ];
+  // Commit
+  const toAdd = ["_data/rawEvent.js", ...OPEN_PLANNER_FILES.map((f) => f.path)];
   git(["add", ...toAdd]);
   git(["commit", "-m", `data: en route pour le devfest dijon ${newYear}`]);
 }
@@ -374,29 +290,28 @@ function printNextSteps(currentYear, newYear) {
   );
   console.log(`✅ main préparée pour l'édition ${bold(String(newYear))}.`);
   console.log(`\n📋 ${bold("Étapes manuelles restantes :")}\n`);
-  console.log(`  1. Créer le site Firebase pour l'archive :`);
   console.log(
-    dim(`     firebase hosting:sites:create devfest-dijon-${currentYear}`),
+    `  1. Dans l'espace client OVH (Hébergement > Multisite), ajouter avec SSL :`,
+  );
+  console.log(
+    `     - ${bold(hostname("prod", currentYear))} → dossier de prod`,
+  );
+  console.log(
+    `     - ${bold(hostname("test", currentYear))} → dossier de test`,
   );
   console.log(
     dim(
-      `     firebase target:apply hosting devfest-dijon-${currentYear} devfest-dijon-${currentYear}`,
+      `     (mêmes dossiers racine que ${hostname("prod")} et ${hostname("test")})\n`,
     ),
   );
-  console.log(
-    `     (corriger .firebaserc si Firebase ajoute un suffixe aléatoire au site_id)\n`,
-  );
 
-  console.log(`  2. Configurer DNS + domaine personnalisé pour`);
   console.log(
-    `     ${bold(`devfest-${currentYear}.developers-group-dijon.fr`)} dans la console Firebase.\n`,
+    `  2. Pousser les deux branches (chacune déclenche son déploiement) :`,
   );
-
-  console.log(`  3. Pousser les deux branches :`);
   console.log(dim(`     git push origin devfest-dijon-${currentYear}`));
   console.log(dim(`     git push origin main\n`));
 
-  console.log(`  4. Éditer manuellement sur main :`);
+  console.log(`  3. Éditer manuellement sur main :`);
   console.log(
     `     - _data/rawEvent.js : visitors, comments, team, dates exactes`,
   );
@@ -407,7 +322,7 @@ function printNextSteps(currentYear, newYear) {
   );
 
   console.log(
-    `  5. Régénérer les données quand l'export OpenPlanner est prêt :`,
+    `  4. Régénérer les données quand l'export OpenPlanner est prêt :`,
   );
   console.log(
     dim(`     node _data_gen/generate-from-openplanner.js <url-json-export>`),
