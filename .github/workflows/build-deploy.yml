@@ -1,0 +1,174 @@
+name: Build et déploiement OVH
+
+# Cible (cf. _scripts/ovh/target.js) :
+#   - push sur main / devfest-dijon-<année> → prod
+#   - pull request du dépôt                  → test (édition selon la branche cible)
+#   - lancement manuel                       → branche et environnement choisis
+#     (sert notamment à publier les anciennes archives, qui n'ont pas ce workflow)
+#   - autres push, PR de fork                → build + vérifications uniquement
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Branche à publier (ex. main, devfest-dijon-2024)"
+        required: true
+        default: main
+      environment:
+        description: "Environnement"
+        type: choice
+        options:
+          - test
+          - prod
+        default: test
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      deploy: ${{ steps.target.outputs.deploy }}
+      env: ${{ steps.target.outputs.env }}
+      year: ${{ steps.target.outputs.year }}
+      update_root: ${{ steps.target.outputs.update_root }}
+      url: ${{ steps.target.outputs.url }}
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - name: Récupère le site
+        uses: actions/checkout@v6
+        with:
+          # Vide hors lancement manuel : ref de l'événement
+          ref: ${{ inputs.ref }}
+          path: site
+      # Les scripts de déploiement viennent toujours du commit du workflow,
+      # y compris quand on publie une ancienne branche qui ne les a pas.
+      - name: Récupère les scripts de déploiement
+        uses: actions/checkout@v6
+        with:
+          path: tools
+          sparse-checkout: _scripts
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v6
+        with:
+          node-version: "lts/Krypton"
+          cache: "npm"
+          cache-dependency-path: site/package-lock.json
+      - name: Détermine la cible du déploiement
+        id: target
+        working-directory: .
+        env:
+          SAME_REPO: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+          INPUT_REF: ${{ inputs.ref }}
+          INPUT_ENVIRONMENT: ${{ inputs.environment }}
+          RAW_EVENT_PATH: site/_data/rawEvent.js
+        run: node tools/_scripts/ovh/target.js | tee -a "$GITHUB_OUTPUT"
+      - name: Install dependencies
+        run: npm ci
+      - name: Validate code
+        # Les anciennes archives publiées à la main n'ont pas toutes `npm run check`
+        if: github.event_name != 'workflow_dispatch'
+        run: npm run check
+      - name: Pointe le site vers l'URL de test
+        if: steps.target.outputs.env == 'test'
+        env:
+          SITE_URL: ${{ steps.target.outputs.url }}
+        run: |
+          if [ -f _data/site.json ]; then
+            jq --arg url "$SITE_URL" '.url = $url' _data/site.json > site.json.tmp
+            mv site.json.tmp _data/site.json
+          fi
+      - name: Build site
+        run: npm run clean-build
+      - name: Audit perf + a11y
+        id: audit
+        if: github.event_name == 'pull_request' || (github.event_name == 'push' && steps.target.outputs.deploy != 'true')
+        env:
+          LHCI_NUMBER_OF_RUNS: "3"
+        run: npm run audit
+      - name: Upload Lighthouse reports
+        if: always() && steps.audit.outcome != 'skipped'
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-reports
+          path: site/.lighthouseci/
+          retention-days: 7
+          include-hidden-files: true
+      - name: Conserve le site construit
+        if: steps.target.outputs.deploy == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: site
+          path: site/_site/
+          retention-days: 1
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ needs.build.outputs.env == 'prod' && 'production' || 'test' }}
+      url: ${{ needs.build.outputs.url }}
+    # Un seul déploiement à la fois par environnement (le .htaccess racine est partagé)
+    concurrency:
+      group: ovh-${{ needs.build.outputs.env }}
+      cancel-in-progress: false
+    env:
+      TARGET_ENV: ${{ needs.build.outputs.env }}
+      YEAR: ${{ needs.build.outputs.year }}
+      HTPASSWD_REMOTE: .htpasswd-devfest-test
+    steps:
+      - name: Récupère les scripts de déploiement
+        uses: actions/checkout@v6
+        with:
+          sparse-checkout: _scripts
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v6
+        with:
+          node-version: "lts/Krypton"
+      - name: Récupère le site construit
+        uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: _site
+      - name: Installe lftp et htpasswd
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lftp apache2-utils
+      - name: Génère le .htaccess racine
+        if: needs.build.outputs.update_root == 'true'
+        env:
+          OVH_HTPASSWD_PATH: ${{ vars.OVH_HOME_DIR }}/.htpasswd-devfest-test
+        run: |
+          node _scripts/ovh/htaccess.js "$TARGET_ENV" "$YEAR" > "$RUNNER_TEMP/root.htaccess"
+          echo "ROOT_HTACCESS=$RUNNER_TEMP/root.htaccess" >> "$GITHUB_ENV"
+      - name: Génère le .htpasswd de test
+        if: needs.build.outputs.env == 'test'
+        env:
+          TEST_USER: ${{ secrets.TEST_BASIC_AUTH_USER }}
+          TEST_PASSWORD: ${{ secrets.TEST_BASIC_AUTH_PASSWORD }}
+        run: |
+          printf '%s' "$TEST_PASSWORD" | htpasswd -niB "$TEST_USER" > "$RUNNER_TEMP/htpasswd"
+          echo "HTPASSWD=$RUNNER_TEMP/htpasswd" >> "$GITHUB_ENV"
+      - name: Publie sur OVH
+        env:
+          OVH_SFTP_HOST: ${{ secrets.OVH_SFTP_HOST }}
+          OVH_SFTP_USER: ${{ secrets.OVH_SFTP_USER }}
+          OVH_SFTP_PASSWORD: ${{ secrets.OVH_SFTP_PASSWORD }}
+          OVH_SFTP_KNOWN_HOSTS: ${{ secrets.OVH_SFTP_KNOWN_HOSTS }}
+          OVH_PROD_DIR: ${{ vars.OVH_PROD_DIR }}
+          OVH_TEST_DIR: ${{ vars.OVH_TEST_DIR }}
+          SITE_DIR: _site
+        # Choix explicite du dossier : une variable prod manquante ne doit
+        # jamais faire publier dans le dossier de test (ou l'inverse).
+        run: |
+          if [ "$TARGET_ENV" = prod ]; then
+            export OVH_REMOTE_DIR="$OVH_PROD_DIR"
+          else
+            export OVH_REMOTE_DIR="$OVH_TEST_DIR"
+          fi
+          _scripts/ovh/deploy.sh
