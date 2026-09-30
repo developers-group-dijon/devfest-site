@@ -14,8 +14,10 @@
 // de passe ne circule jamais en clair) et exclu de l'indexation.
 //
 // Usage : node _scripts/ovh/htaccess.js <prod|test> <année-courante>
-//   Variable d'environnement requise en test : OVH_HTPASSWD_PATH (chemin
-//   absolu du fichier .htpasswd sur l'hébergement).
+//   Variable d'environnement requise en test : HTPASSWD_PATH (chemin absolu
+//   du .htpasswd sur l'hébergement, secret TEST_HTPASSWD_PATH). Comme pour le
+//   site developers-group-dijon, le .htpasswd est publié à la racine du
+//   dossier de test et son accès direct est interdit.
 
 import { pathToFileURL } from "node:url";
 
@@ -138,6 +140,9 @@ export function buildRootHtaccess({ env, currentYear, htpasswdPath }) {
   AuthUserFile ${apacheQuote(htpasswdPath)}
   Require valid-user
 </If>
+<Files ".htpasswd">
+  Require all denied
+</Files>
 `
       : "";
 
@@ -192,7 +197,7 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     buildRootHtaccess({
       env,
       currentYear: Number(year),
-      htpasswdPath: process.env.OVH_HTPASSWD_PATH,
+      htpasswdPath: process.env.HTPASSWD_PATH,
     }),
   );
 }
