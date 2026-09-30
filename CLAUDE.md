@@ -96,9 +96,8 @@ _audit/           Scripts Lighthouse/pa11y
 
 ## Branches et déploiement
 
-- Workflow unique : `.github/workflows/build-deploy.yml`. La cible est calculée par `_scripts/ovh/target.js` (testé dans `_test/ovh-target.test.js`).
-- Même logique de publication que le dépôt `developers-group-dijon/site` : le build vérifie et construit les variantes prod et test, tout push (hors PR) publie en test, puis `main` et les archives sont publiées en prod. Secrets par environnement GitHub : `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, `TEST_AUTH_USER`, `TEST_AUTH_PASSWORD`, `TEST_HTPASSWD_PATH`.
-- `main` = édition courante, publiée dans le dossier de l'année de `_data/rawEvent.js`, servie sur `devfest.developers-group-dijon.fr` (test : `devfest-test.…`, protégé par mot de passe).
-- `devfest-dijon-<année>` = archives des éditions précédentes, publiées dans le dossier `<année>/` et servies sur `devfest-<année>.developers-group-dijon.fr`. Ne pas les modifier sauf demande explicite.
-- Les pull requests ne sont que construites et vérifiées. Il n'y a qu'un seul environnement de test : le dernier push l'emporte.
+- Workflow unique : `.github/workflows/build-deploy.yml`, même logique que le dépôt `developers-group-dijon/site` (build, puis deploy-test ou deploy-production). Secrets par environnement GitHub : `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, `TEST_AUTH_USER`, `TEST_AUTH_PASSWORD`, `TEST_HTPASSWD_PATH`.
+- **`_data/site.json` porte l'édition** : `year` (dossier de publication, `data-edition`) et `url` (`devfest.…` = édition courante, `devfest-<année>.…` = archive). `_scripts/ovh/target.js` en déduit la cible et vérifie leur cohérence.
+- Environnement selon la branche : `main` et `devfest-dijon-<année>` → prod ; toute autre branche → test (`devfest-test[-<année>].…`, protégé par mot de passe). Les pull requests ne sont que construites et vérifiées.
+- `devfest-dijon-<année>` = archives des éditions précédentes. Pour les modifier : branche tirée de l'archive, PR vers l'archive. Ne pas les modifier sauf demande explicite.
 - Renovate met à jour les dépendances chaque mois (commits `chore(deps): …`).
