@@ -97,8 +97,8 @@ _audit/           Scripts Lighthouse/pa11y
 ## Branches et déploiement
 
 - Workflow unique : `.github/workflows/build-deploy.yml`. La cible est calculée par `_scripts/ovh/target.js` (testé dans `_test/ovh-target.test.js`).
-- `main` = édition courante, publiée en prod dans le dossier de l'année de `_data/rawEvent.js`, servie sur `devfest.developers-group-dijon.fr`.
+- Même logique de publication que le dépôt `developers-group-dijon/site` : le build vérifie et construit les variantes prod et test, tout push (hors PR) publie en test, puis `main` et les archives sont publiées en prod. Secrets par environnement GitHub : `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, `TEST_AUTH_USER`, `TEST_AUTH_PASSWORD`, `TEST_HTPASSWD_PATH`.
+- `main` = édition courante, publiée dans le dossier de l'année de `_data/rawEvent.js`, servie sur `devfest.developers-group-dijon.fr` (test : `devfest-test.…`, protégé par mot de passe).
 - `devfest-dijon-<année>` = archives des éditions précédentes, publiées dans le dossier `<année>/` et servies sur `devfest-<année>.developers-group-dijon.fr`. Ne pas les modifier sauf demande explicite.
-- Les PR du dépôt sont publiées sur l'environnement de test (`devfest-test[-<année>].developers-group-dijon.fr`, protégé par mot de passe), après `check` + `clean-build` + `audit`. Il n'y a qu'un seul environnement de test.
-- Les autres push (branches de travail) ne font que build, vérifications et audit.
+- Les pull requests ne sont que construites et vérifiées. Il n'y a qu'un seul environnement de test : le dernier push l'emporte.
 - Renovate met à jour les dépendances chaque mois (commits `chore(deps): …`).
