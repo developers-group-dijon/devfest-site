@@ -105,6 +105,6 @@ if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     fs.readFileSync(process.env.SITE_JSON ?? "_data/site.json", "utf8"),
   );
   process.stdout.write(
-    formatOutputs(resolveTarget({ branch: process.env.BRANCH, site })),
+    formatOutputs(resolveTarget({ branch: process.env.BRANCH ?? "", site })),
   );
 }

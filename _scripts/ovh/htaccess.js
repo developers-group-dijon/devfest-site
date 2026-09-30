@@ -137,7 +137,7 @@ export function buildRootHtaccess({ env, currentYear, htpasswdPath }) {
 <If "%{HTTPS} == 'on' || req('X-Forwarded-Proto') == 'https'">
   AuthType Basic
   AuthName "DevFest Dijon (test)"
-  AuthUserFile ${apacheQuote(htpasswdPath)}
+  AuthUserFile ${apacheQuote(htpasswdPath ?? "")}
   Require valid-user
 </If>
 <Files ".htpasswd">
