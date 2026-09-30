@@ -1,23 +1,18 @@
 name: Build et déploiement OVH
 
-# Même logique que le dépôt developers-group-dijon/site :
-#   - build : vérifie le code, construit les variantes prod et test ;
-#   - deploy-test : tout push (pas les pull requests) publie en test ;
-#   - deploy-production : main et les branches d'archive devfest-dijon-<année>
-#     sont publiées en prod, une fois le test publié.
-# Le lancement manuel accepte une autre branche que celle du workflow : il sert
-# à publier les anciennes archives, qui n'ont pas ce workflow.
+# L'édition publiée vient de _data/site.json (`year`, `url`), l'environnement
+# de la branche (cf. _scripts/ovh/target.js) :
+#   - main, devfest-dijon-<année>  → production, dossier <year>
+#   - toute autre branche          → test, dossier <year>
+#     (une branche tirée d'une archive est donc publiée en test sur
+#     devfest-test-<année>, une branche tirée de main sur devfest-test)
+#   - pull request                 → build et vérifications uniquement
+#     (le push de la branche a déjà publié en test)
 on:
   pull_request:
-    branches: [main]
   push:
     branches: ["**"]
   workflow_dispatch:
-    inputs:
-      ref:
-        description: "Branche à publier, si différente (ex. devfest-dijon-2024)"
-        required: false
-        default: ""
 
 permissions:
   contents: read
@@ -31,113 +26,81 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
+      env: ${{ steps.target.outputs.env }}
       year: ${{ steps.target.outputs.year }}
       update_root: ${{ steps.target.outputs.update_root }}
-      deploy_prod: ${{ steps.target.outputs.deploy_prod }}
-      test_url: ${{ steps.target.outputs.test_url }}
-      prod_url: ${{ steps.target.outputs.prod_url }}
-    defaults:
-      run:
-        working-directory: site
+      url: ${{ steps.target.outputs.url }}
     steps:
-      - name: Récupère le site
-        uses: actions/checkout@v6
-        with:
-          # Vide hors lancement manuel : ref de l'événement
-          ref: ${{ inputs.ref }}
-          path: site
-      # Les scripts de déploiement viennent toujours du commit du workflow,
-      # y compris quand on publie une ancienne branche qui ne les a pas.
-      - name: Récupère les scripts de déploiement
-        uses: actions/checkout@v6
-        with:
-          path: tools
-          sparse-checkout: _scripts
+      - uses: actions/checkout@v6
       - name: Use Node.js LTS
         uses: actions/setup-node@v6
         with:
           node-version: "lts/Krypton"
           cache: "npm"
-          cache-dependency-path: site/package-lock.json
-      - name: Détermine l'édition à publier
+      - name: Détermine l'édition et l'environnement
         id: target
-        working-directory: .
         env:
-          BRANCH: ${{ inputs.ref || github.head_ref || github.ref_name }}
-          RAW_EVENT_PATH: site/_data/rawEvent.js
-        run: node tools/_scripts/ovh/target.js | tee -a "$GITHUB_OUTPUT"
+          BRANCH: ${{ github.head_ref || github.ref_name }}
+        run: node _scripts/ovh/target.js | tee -a "$GITHUB_OUTPUT"
       - name: Install dependencies
         run: npm ci
       - name: Validate code
         # --if-present : les plus anciennes archives n'ont pas de script `check`
         run: npm run check --if-present
-      - name: Build test
+      - name: Pointe le site vers l'URL de test
+        if: steps.target.outputs.env == 'test'
         env:
-          SITE_URL: ${{ steps.target.outputs.test_url }}
+          SITE_URL: ${{ steps.target.outputs.url }}
         run: |
-          if [ -f _data/site.json ]; then
-            jq --arg url "$SITE_URL" '.url = $url' _data/site.json > site.json.tmp
-            mv site.json.tmp _data/site.json
-          fi
-          npm run clean-build
-          # Hors du dossier du site : Eleventy retraiterait ce HTML au build suivant
-          mv _site "$RUNNER_TEMP/public-test"
-          git checkout -- _data/site.json 2>/dev/null || true
-      - name: Build production
-        run: |
-          npm run clean-build
-          cp -r _site "$RUNNER_TEMP/public"
+          jq --arg url "$SITE_URL" '.url = $url' _data/site.json > site.json.tmp
+          mv site.json.tmp _data/site.json
+      - name: Build site
+        run: npm run clean-build
       - name: Audit perf + a11y
         id: audit
-        if: github.event_name == 'pull_request' || steps.target.outputs.deploy_prod != 'true'
+        if: steps.target.outputs.env == 'test'
         env:
           LHCI_NUMBER_OF_RUNS: "3"
-        run: npm run audit
+        run: npm run audit --if-present
       - name: Upload Lighthouse reports
         if: always() && steps.audit.outcome != 'skipped'
         uses: actions/upload-artifact@v7
         with:
           name: lighthouse-reports
-          path: site/.lighthouseci/
+          path: .lighthouseci/
           retention-days: 7
           include-hidden-files: true
-      - name: Upload public dir
+          if-no-files-found: ignore
+      - name: Upload site
         uses: actions/upload-artifact@v7
         with:
-          name: public
-          path: ${{ runner.temp }}/public
-          retention-days: 7
-      - name: Upload public-test dir
-        uses: actions/upload-artifact@v7
-        with:
-          name: public-test
-          path: ${{ runner.temp }}/public-test
+          name: site
+          path: _site
           retention-days: 7
 
   deploy-test:
     needs: build
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && needs.build.outputs.env == 'test'
     runs-on: ubuntu-latest
     environment:
       name: test
-      url: ${{ needs.build.outputs.test_url }}
+      url: ${{ needs.build.outputs.url }}
     concurrency:
       group: deploy-test
       cancel-in-progress: false
     steps:
-      - name: Récupère les scripts de déploiement
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           sparse-checkout: _scripts
       - name: Use Node.js LTS
         uses: actions/setup-node@v6
         with:
           node-version: "lts/Krypton"
-      - name: Download public-test dir
+      - name: Download site
         uses: actions/download-artifact@v8
         with:
-          name: public-test
-          path: public-test
+          name: site
+          path: _site
       - name: Install lftp and htpasswd
         run: sudo apt-get update && sudo apt-get install -y lftp apache2-utils
       - name: Protect with password
@@ -168,33 +131,32 @@ jobs:
           ENV_NAME: test
           REMOTE_DIR: ${{ env.TEST_DIR }}
           YEAR: ${{ needs.build.outputs.year }}
-          SITE_DIR: public-test
+          SITE_DIR: _site
         run: _scripts/ovh/deploy.sh
 
   deploy-production:
-    needs: [build, deploy-test]
-    if: github.event_name != 'pull_request' && needs.build.outputs.deploy_prod == 'true'
+    needs: build
+    if: github.event_name != 'pull_request' && needs.build.outputs.env == 'prod'
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: ${{ needs.build.outputs.prod_url }}
+      url: ${{ needs.build.outputs.url }}
     concurrency:
       group: deploy-production
       cancel-in-progress: false
     steps:
-      - name: Récupère les scripts de déploiement
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           sparse-checkout: _scripts
       - name: Use Node.js LTS
         uses: actions/setup-node@v6
         with:
           node-version: "lts/Krypton"
-      - name: Download public dir
+      - name: Download site
         uses: actions/download-artifact@v8
         with:
-          name: public
-          path: public
+          name: site
+          path: _site
       - name: Install lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
       - name: Génère le .htaccess racine
@@ -212,5 +174,5 @@ jobs:
           ENV_NAME: production
           REMOTE_DIR: ${{ env.PROD_DIR }}
           YEAR: ${{ needs.build.outputs.year }}
-          SITE_DIR: public
+          SITE_DIR: _site
         run: _scripts/ovh/deploy.sh
