@@ -1,14 +1,17 @@
 // Automatise le démarrage d'une nouvelle édition :
 //   1. Crée la branche `devfest-dijon-<currentYear>` (archive), avec
 //      `_data/site.json` pointé vers l'URL d'archive.
+//      L'année courante est celle de `_data/site.json` (`year`).
 //   2. Revient sur `main` et :
+//        - passe `year` de `_data/site.json` à la nouvelle année
 //        - met à jour `_data/rawEvent.js` (nom, dates, previousEditions, CFP/sponsoring)
 //        - vide les fichiers OpenPlanner (rawSessions, speakers, formats, categories, tracks)
 //   3. Affiche les étapes manuelles restantes (multisite OVH, push, contenu).
 //
 // Rien à configurer côté hébergement dans le dépôt : le .htaccess racine
 // (_scripts/ovh/htaccess.js) sert toute archive `devfest-<année>.…` depuis
-// le dossier de son année, et désigne l'édition courante d'après rawEvent.js.
+// le dossier de son année, et le workflow publie chaque branche dans le
+// dossier de la `year` de son site.json.
 //
 // Toutes les modifications sont commitées localement. Aucun `git push` automatique.
 //
@@ -37,18 +40,30 @@ const OPEN_PLANNER_FILES = [
 // ---- Fonctions pures (testables) -------------------------------------------
 
 /**
- * Extrait l'année courante du `name` de `_data/rawEvent.js`.
+ * Lit l'année de l'édition dans le contenu de `_data/site.json`.
  * @param {string} source - contenu du fichier
  * @returns {number}
  */
-export function extractCurrentYear(source) {
-  const m = source.match(/name:\s*"DevFest Dijon (\d{4})"/);
-  if (!m) {
+export function readSiteYear(source) {
+  const year = JSON.parse(source).year;
+  if (!Number.isInteger(year) || String(year).length !== 4) {
     throw new Error(
-      'Impossible de trouver `name: "DevFest Dijon <YYYY>"` dans _data/rawEvent.js',
+      `_data/site.json : "year" doit être une année sur 4 chiffres (reçu ${JSON.stringify(year)})`,
     );
   }
-  return Number(m[1]);
+  return year;
+}
+
+/**
+ * Contenu de `_data/site.json` pour une édition.
+ * @param {number} year
+ * @param {{ archive: boolean }} opts
+ * @returns {string}
+ */
+export function siteJson(year, { archive }) {
+  // Sans slash final : les templates concatènent `site.url + page.url`
+  const url = `https://${archive ? hostname("prod", year) : hostname("prod")}`;
+  return JSON.stringify({ url, year }, null, 2) + "\n";
 }
 
 /**
@@ -167,7 +182,7 @@ function gitCapture(args) {
 }
 
 /**
- * Vérifications préalables : argument, branche, working tree, fichier rawEvent,
+ * Vérifications préalables : argument, branche, working tree, année de site.json,
  * absence de la branche d'archive cible. Exit 1 si non-satisfait.
  * @param {string|undefined} newYearArg
  * @returns {{ currentYear: number, newYear: number }}
@@ -193,7 +208,7 @@ function preflight(newYearArg) {
     process.exit(1);
   }
 
-  const sourcePath = path.join(REPO_ROOT, "_data/rawEvent.js");
+  const sourcePath = path.join(REPO_ROOT, "_data/site.json");
   if (!fs.existsSync(sourcePath)) {
     console.error(`❌ Fichier introuvable : ${sourcePath}`);
     process.exit(1);
@@ -202,7 +217,7 @@ function preflight(newYearArg) {
   const source = fs.readFileSync(sourcePath, "utf8");
   let currentYear;
   try {
-    currentYear = extractCurrentYear(source);
+    currentYear = readSiteYear(source);
   } catch (err) {
     console.error(`❌ ${err.message}`);
     process.exit(1);
@@ -239,12 +254,9 @@ function createArchiveBranch(currentYear) {
 
   git(["checkout", "-b", archiveBranch]);
 
-  const sitePath = path.join(REPO_ROOT, "_data/site.json");
-  // Sans slash final : les templates concatènent `site.url + page.url`
-  const siteArchiveUrl = `https://${hostname("prod", currentYear)}`;
   fs.writeFileSync(
-    sitePath,
-    JSON.stringify({ url: siteArchiveUrl }, null, 2) + "\n",
+    path.join(REPO_ROOT, "_data/site.json"),
+    siteJson(currentYear, { archive: true }),
   );
 
   git(["add", "_data/site.json"]);
@@ -260,6 +272,12 @@ function createArchiveBranch(currentYear) {
 function updateMain(currentYear, newYear) {
   console.log(`\n▶ Phase B : préparation de main pour l'édition ${newYear}`);
 
+  // site.json : l'édition courante passe à la nouvelle année
+  fs.writeFileSync(
+    path.join(REPO_ROOT, "_data/site.json"),
+    siteJson(newYear, { archive: false }),
+  );
+
   // rawEvent.js
   const rawEventPath = path.join(REPO_ROOT, "_data/rawEvent.js");
   const rawEventSource = fs.readFileSync(rawEventPath, "utf8");
@@ -272,7 +290,11 @@ function updateMain(currentYear, newYear) {
   }
 
   // Commit
-  const toAdd = ["_data/rawEvent.js", ...OPEN_PLANNER_FILES.map((f) => f.path)];
+  const toAdd = [
+    "_data/site.json",
+    "_data/rawEvent.js",
+    ...OPEN_PLANNER_FILES.map((f) => f.path),
+  ];
   git(["add", ...toAdd]);
   git(["commit", "-m", `data: en route pour le devfest dijon ${newYear}`]);
 }
