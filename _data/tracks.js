@@ -21,6 +21,6 @@ export default [
   },
   {
     id: "table-ronde",
-    name: "La Table Ronde",
+    name: "La Table Carré",
   },
 ];
