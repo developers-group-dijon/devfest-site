@@ -1,0 +1,19 @@
+_data/rawEvent.js
+  s_39591a56365b47::t_67aed65a218ef2 26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "dcf6ba8847b3d3a6773c5dc1ff1c2bc2815693f0",
+  "prompts": {},
+  "sessions": {
+    "s_39591a56365b47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "49cd2e12-aaaa-4147-95b0-00f0611c9a23",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Yoan Thirion <yoan.thirion@gmail.com>"
+    }
+  }
+}
