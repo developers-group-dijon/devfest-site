@@ -78,7 +78,7 @@ Le planning présenté est une version provisoire qui est susceptible d'évoluer
          </div>
          {%- for session in sessions | filterByDateStart(slot) %}
             {%- set column = (session.trackRange[0]+" / "+session.trackRange[1]+"-end") if session.trackRange else (session.trackId | default ("track / -1")) %}
-         <div class="{{ session.styleClass }} session" {% if not session.hideTrackTitle %}data-session-id="{{ session.id }}" data-format-id="{{ session.format.id }}" data-category-id="{{ session.category.id }}"{% endif %} style="grid-column: {{ column }} ; grid-row: slot_{{ session.dateStart | dateKey }} / span {{ session | countSlots(daySlot) }}">
+         <div class="{{ session.styleClass }} session" {% if not session.hideTrackTitle %}data-session-id="{{ session.id }}" {% endif %}{% if session.format %}data-format-id="{{ session.format.id }}" data-category-id="{{ session.category.id }}" {% endif %} style="grid-column: {{ column }} ; grid-row: slot_{{ session.dateStart | dateKey }} / span {{ session | countSlots(daySlot) }}">
             {%- if not session.hideTrackTitle %}
             <div class="session-actions-grid">
                {%- if session.feedbackUrl %}

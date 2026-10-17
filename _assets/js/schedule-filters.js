@@ -1,6 +1,8 @@
 // Filtres côté client de la page programme : format, catégorie, recherche texte.
 // Masque les cellules de la grille via l'attribut `hidden`. Les pauses/keynotes
-// (sans `data-session-id`) restent toujours visibles.
+// (sans `data-format-id`) restent toujours visibles. On ne s'appuie pas sur
+// `data-session-id`, absent des sessions `hideTrackTitle` (ex. tremplins)
+// qui doivent pourtant être filtrables.
 //
 // La logique de filtrage elle-même est dans `./schedule-filters-utils.js`
 // (pure, testable sans DOM). Ce module se contente d'extraire les
@@ -31,8 +33,8 @@ let cards = [];
  * ne change pas après build.
  */
 function collectCards() {
-  cards = [...document.querySelectorAll(".session[data-session-id]")].flatMap(
-    (element) => {
+  cards = [...document.querySelectorAll(".session[data-format-id]")].flatMap(
+    (element, index) => {
       if (!(element instanceof HTMLElement)) {
         return [];
       }
@@ -40,7 +42,7 @@ function collectCards() {
         {
           element,
           desc: {
-            id: element.getAttribute("data-session-id") ?? "",
+            id: String(index),
             formatId: element.getAttribute("data-format-id"),
             categoryId: element.getAttribute("data-category-id"),
             text: element.textContent ?? "",

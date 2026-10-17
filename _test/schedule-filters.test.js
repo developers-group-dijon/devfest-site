@@ -13,10 +13,11 @@ import { installFakeTimers } from "./_helpers/timers.js";
 /** @type {?ReturnType<typeof installFakeTimers>} */
 let fakeTimers = null;
 
-// HTML minimal pour les 4 tests qui restent (reset, message empty,
+// HTML minimal pour les tests qui restent (reset, message empty,
 // pauses intactes, aria-pressed) : 1 chip Format, 1 input, 1 bouton
 // reset, 1 .filter-empty, 1 session matchante, 1 session non
-// matchante (pour avoir quelque chose à masquer/restaurer), 1 pause.
+// matchante (pour avoir quelque chose à masquer/restaurer), 1 session
+// sans `data-session-id` mais filtrable (tremplin), 1 pause.
 const HTML = `<!doctype html><html><body data-edition="test">
   <button type="button" class="filter-chip" data-filter="format" data-value="fmt-conf" aria-pressed="false">Conf</button>
   <input id="schedule-search" type="search">
@@ -24,6 +25,7 @@ const HTML = `<!doctype html><html><body data-edition="test">
   <p class="filter-empty" hidden></p>
   <div class="session" data-session-id="s1" data-format-id="fmt-conf">s1</div>
   <div class="session" data-session-id="s2" data-format-id="fmt-other">s2</div>
+  <div class="session tremplin" data-format-id="fmt-other">Tremplin</div>
   <div class="session pause">Pause</div>
   </body></html>`;
 
@@ -93,7 +95,14 @@ describe("schedule-filters", () => {
     assert.deepEqual(visibleSessionIds(), []);
   });
 
-  test("les pauses (sans data-session-id) sont toujours intactes", async () => {
+  test("une session sans data-session-id mais avec format (tremplin) est filtrée", async () => {
+    await load();
+    const tremplin = globalThis.document.querySelector(".session.tremplin");
+    clickChip("format", "fmt-conf");
+    assert.ok(tremplin.hasAttribute("hidden"));
+  });
+
+  test("les pauses (sans data-format-id) sont toujours intactes", async () => {
     await load();
     const pause = globalThis.document.querySelector(".session.pause");
     clickChip("format", "fmt-conf");

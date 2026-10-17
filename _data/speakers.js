@@ -336,8 +336,8 @@ const speakers = [
         link: "https://github.com/bdelacretaz",
       },
       {
-        id: "link",
-        name: "link",
+        id: "mastodon",
+        name: "mastodon",
         link: "https://fosstodon.org/@bdelacretaz",
       },
       {
@@ -529,13 +529,13 @@ const speakers = [
     photoUrl: "/avatars/thomas-broyer.webp",
     socials: [
       {
-        id: "link",
-        name: "link",
+        id: "bluesky",
+        name: "bluesky",
         link: "https://mu.social/profile/tbroyer.ltgt.net",
       },
       {
-        id: "link",
-        name: "link",
+        id: "mastodon",
+        name: "mastodon",
         link: "https://piaille.fr/@tbroyer",
       },
     ],
