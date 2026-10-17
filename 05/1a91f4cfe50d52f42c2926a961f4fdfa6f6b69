@@ -1,0 +1,23 @@
+_test/commitlint.test.js
+  s_39591a56365b47::t_a99e2f8aff19a7 16,20
+  s_39591a56365b47::t_46e25324bd4dfe 17-19,21-30
+commitlint.config.js
+  s_39591a56365b47::t_e737aaadbc0b07 6-13
+  s_39591a56365b47::t_5ae962e345a134 16-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "051a91f4cfe50d52f42c2926a961f4fdfa6f6b69",
+  "prompts": {},
+  "sessions": {
+    "s_39591a56365b47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "49cd2e12-aaaa-4147-95b0-00f0611c9a23",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Yoan Thirion <yoan.thirion@gmail.com>"
+    }
+  }
+}
