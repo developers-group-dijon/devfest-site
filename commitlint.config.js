@@ -3,11 +3,18 @@ export default {
   ignores: [
     (message) => {
       const [subject, ...body] = message.split("\n");
-      const commits = body.filter((line) => line.trim() !== "");
+      // Un squash-merge GitHub ajoute aussi des trailers (`Co-authored-by: …`),
+      // un séparateur `---------`, et parfois un sous-commit `* Initial plan`
+      // généré automatiquement par l'agent Copilot : on ne les compte pas
+      // comme de vrais sous-commits à valider.
+      const noiseBullet = /^\* Initial plan$/i;
+      const subCommits = body
+        .filter((line) => line.trim().startsWith("* "))
+        .filter((line) => !noiseBullet.test(line.trim()));
       return (
         /\(#\d+\)$/.test(subject) &&
-        commits.length > 0 &&
-        commits.every((line) =>
+        subCommits.length > 0 &&
+        subCommits.every((line) =>
           /^\* (?:build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test|data): .+/.test(
             line,
           ),
