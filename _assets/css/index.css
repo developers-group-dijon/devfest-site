@@ -177,6 +177,12 @@
   max-height: 100%;
 }
 
+.association-logo {
+  height: 1.2em;
+  width: auto;
+  vertical-align: middle;
+}
+
 .ticketing {
   background-color: var(--primary-background-color);
   padding-top: 1px;
