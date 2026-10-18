@@ -139,6 +139,17 @@ photos:
       </div>
    </div>
 </div>
+<div>
+   <div class="centered-content">
+      <h1>L'association à l'honneur : Yeeso</h1>
+      <p>Nous militons pour un numérique plus inclusif, et c'est une conviction que nous retrouvons à 100&nbsp;% dans les valeurs de <a href="https://yeeso.fr/" target="_blank" rel="noopener noreferrer">Yeeso</a>, qui œuvre pour plus de diversité et d'inclusion dans la tech.</p>
+      {%- for speaker in speakers %}
+      {%- if speaker.company == "Yeeso" %}
+      <p>C'est pourquoi nous sommes ravis d'accueillir <a href="/speaker/{{ speaker.name | slugify }}/">{{ speaker.name }}</a>, de Yeeso, en keynote d'ouverture du DevFest Dijon 2026.</p>
+      {%- endif %}
+      {%- endfor %}
+   </div>
+</div>
 {%- if sponsors.length > 0 %}
 <div>
    <div class="centered-content sponsor-types">
