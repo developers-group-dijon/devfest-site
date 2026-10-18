@@ -1,0 +1,21 @@
+_assets/css/index.css
+  s_39591a56365b47::t_3b71b46e5b42b1 180-185
+pages/index.njk
+  s_39591a56365b47::t_4f35f9728ea206 145
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "82953bbff5b79ac57f5ce8c8a264877a1f8df306",
+  "prompts": {},
+  "sessions": {
+    "s_39591a56365b47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "49cd2e12-aaaa-4147-95b0-00f0611c9a23",
+        "model": "unknown"
+      },
+      "human_author": "Yoan Thirion <yoan.thirion@gmail.com>"
+    }
+  }
+}
