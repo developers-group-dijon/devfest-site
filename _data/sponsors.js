@@ -24,11 +24,6 @@ export default [
         website: "https://www.ube.fr/",
         logoUrl: "/sponsors/ube.webp",
       },
-      {
-        name: "Yeeso",
-        website: "https://yeeso.org/",
-        logoUrl: "/sponsors/yeeso.webp",
-      },
     ],
   },
   {
