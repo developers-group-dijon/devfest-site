@@ -1,0 +1,19 @@
+pages/index.njk
+  s_39591a56365b47::t_41fe8544af85ce 154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f882a0e29aea7cb34108bdc696d5372d01da03a4",
+  "prompts": {},
+  "sessions": {
+    "s_39591a56365b47": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "49cd2e12-aaaa-4147-95b0-00f0611c9a23",
+        "model": "unknown"
+      },
+      "human_author": "Yoan Thirion <yoan.thirion@gmail.com>"
+    }
+  }
+}
