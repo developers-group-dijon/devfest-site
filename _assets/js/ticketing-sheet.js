@@ -10,18 +10,16 @@
 // `Esc`, restauration du focus sur le déclencheur à la fermeture, `::backdrop` —
 // est délégué à `showModal()`. Ne pas réintroduire de gestion manuelle ici.
 //
-// Limite mesurée sous Chrome 151 : quand le focus est passé DANS l'iframe,
-// `Esc` ne ferme plus, l'événement clavier partant au document embarqué et non
-// au nôtre (aucun `keydown` n'atteint notre document, même en capture). C'est
-// inhérent au cross-origin : rien à corriger ici, et surveiller
-// `document.activeElement` n'y changerait rien. Le seul vrai correctif serait
-// que la billetterie émette un message de fermeture sur `Escape` — elle n'en
-// émet pas (seul `skedl:resize` a été observé). Les issues de secours restent :
-// le clic hors du panneau (`closedby="any"`), le bouton de fermeture — toujours
-// visible et réatteignable en 3 tabulations depuis l'iframe — et le lien
-// « ouvrir dans un onglet ».
+// Quand le focus est passé DANS l'iframe, `Esc` n'atteint plus notre document
+// (l'événement clavier part au document embarqué, cross-origin oblige). La
+// billetterie le relaie donc par un message `skedl:close`, qui ferme le
+// dialog. Elle ne l'émet pas quand `Esc` sert à fermer une de ses propres
+// modales (choix de taille, galerie). Restent en plus le clic hors du panneau
+// (`closedby="any"`), le bouton de fermeture et le lien « ouvrir dans un
+// onglet ».
 
 const RESIZE_MESSAGE = "skedl:resize";
+const CLOSE_MESSAGE = "skedl:close";
 
 window.addEventListener("DOMContentLoaded", () => {
   const dialog = document.querySelector("dialog.ticketing-sheet");
@@ -88,7 +86,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // reste le défaut avant le premier message ; le `max-height` du dialog et le
   // `overflow-y: auto` du corps bornent une valeur aberrante.
   //
-  // Deux garde-fous avant d'écrire quoi que ce soit dans le DOM : l'origine doit
+  // Deux garde-fous avant d'agir sur quoi que ce soit : l'origine doit
   // être celle de l'URL qu'on a chargée, et le message doit venir de NOTRE
   // iframe (une autre frame de même origine ne peut pas se faire passer pour
   // elle).
@@ -97,6 +95,10 @@ window.addEventListener("DOMContentLoaded", () => {
       return;
     }
     if (event.source !== iframe.contentWindow) {
+      return;
+    }
+    if (event.data?.type === CLOSE_MESSAGE) {
+      dialog.close();
       return;
     }
     if (event.data?.type !== RESIZE_MESSAGE) {
