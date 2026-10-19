@@ -176,7 +176,7 @@ Si le prestataire de billetterie change et que `embedUrl` est utilisée : ajoute
 `_data/ticketing.js` porte deux URL, écrites en entier :
 
 - `url` — le lien externe vers la billetterie. Seul champ nécessaire : les déclencheurs (lien « Billetterie » du header, cartes de tarifs de l'accueil) sont alors de simples `<a>`. Un tarif peut avoir le sien via `pricing.url`.
-- `embedUrl` — la même billetterie en version embarquable, paramètres d'intégration compris (côté Skedl : `?embed=true&showHero=false&showMerch=true&showSponsors=true…`). **Sa seule présence** transforme les déclencheurs en `<button>` ouvrant un `<dialog>`, avec un `<noscript>` de repli vers `url`. Surchargeable par tarif via `pricing.embedUrl`.
+- `embedUrl` — la même billetterie en version embarquable, paramètres d'intégration compris (côté Skedl : `?embed=true&showHero=false&showMerch=true&showSponsors=true&layout=fill…`). **Sa seule présence** transforme les déclencheurs en `<button>` ouvrant un `<dialog>`, avec un `<noscript>` de repli vers `url`. Surchargeable par tarif via `pricing.embedUrl`.
 
 Les deux URL sont utilisées telles quelles, sans transformation au build : les paramètres d'intégration se règlent donc dans les données, sans toucher au code. Penser à les faire évoluer ensemble.
 
@@ -184,7 +184,7 @@ Trois conséquences à ne pas oublier quand `embedUrl` est renseignée :
 
 - son origine doit figurer dans `frame-src` **et** dans `payment=(…)` de la `Permissions-Policy` (`SECURITY_HEADERS` dans `_scripts/ovh/htaccess.js`) — sans quoi la CSP bloque l'iframe et la délégation de la Payment Request API échoue. **C'est cette liste `frame-src` qui constitue la frontière de confiance** : l'iframe n'est pas mise en `sandbox`, un bac à sable assez permissif pour un tunnel de paiement devant inclure `allow-scripts` + `allow-same-origin`, combinaison qui permet à l'iframe de le retirer elle-même ;
 - quand le focus est passé dans l'iframe, `Esc` n'atteint plus notre document (cross-origin). La billetterie le relaie par un message `skedl:close`, qui ferme le dialog (origine et frame émettrice vérifiées, cf. `_assets/js/ticketing-sheet.js`). Un autre prestataire ne l'émettra pas : restent le bouton de fermeture, le clic hors panneau et le lien « ouvrir dans un onglet » ;
-- la hauteur de l'iframe suit le message `skedl:resize` émis par la billetterie (origine et frame émettrice vérifiées, cf. `_assets/js/ticketing-sheet.js`). Un autre prestataire n'émettra pas ce message : l'iframe gardera alors le `70dvh` de `_assets/css/ticketing.css` et son défilement interne.
+- l'iframe remplit le sheet (hauteur fixe de `90dvh`, cf. `_assets/css/ticketing.css`) et c'est la billetterie qui défile, grâce à `layout=fill` dans `embedUrl`. Sans ce paramètre, Skedl se dimensionne sur son contenu : sa barre « Retour / Continuer » et son panier ne restent alors plus visibles.
 
 # Contribuer et outils de développement
 

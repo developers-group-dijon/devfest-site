@@ -17,8 +17,10 @@
 // modales (choix de taille, galerie). Restent en plus le clic hors du panneau
 // (`closedby="any"`), le bouton de fermeture et le lien « ouvrir dans un
 // onglet ».
+//
+// La hauteur de l'iframe n'est pas pilotée ici : elle remplit le sheet et la
+// billetterie défile elle-même (`layout=fill`, cf. `_data/ticketing.js`).
 
-const RESIZE_MESSAGE = "skedl:resize";
 const CLOSE_MESSAGE = "skedl:close";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -54,10 +56,8 @@ window.addEventListener("DOMContentLoaded", () => {
     if (iframe.getAttribute("src") !== url) {
       iframe.setAttribute("src", url);
       // Nouvelle URL : l'origine attendue est déduite d'elle (et non codée en
-      // dur, pour ne pas casser si la billetterie change de domaine), et la
-      // hauteur repart du défaut CSS le temps du prochain `skedl:resize`.
+      // dur, pour ne pas casser si la billetterie change de domaine).
       embedOrigin = readOrigin(url);
-      iframe.style.height = "";
     }
     dialog.showModal();
   });
@@ -80,16 +80,9 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // La billetterie annonce la hauteur réelle de son contenu. On la suit pour
-  // éviter l'espace mort et le double défilement (hauteur fixe de l'iframe qui
-  // scrolle dans un corps qui scrolle aussi). Le `70dvh` de `ticketing.css`
-  // reste le défaut avant le premier message ; le `max-height` du dialog et le
-  // `overflow-y: auto` du corps bornent une valeur aberrante.
-  //
-  // Deux garde-fous avant d'agir sur quoi que ce soit : l'origine doit
-  // être celle de l'URL qu'on a chargée, et le message doit venir de NOTRE
-  // iframe (une autre frame de même origine ne peut pas se faire passer pour
-  // elle).
+  // Deux garde-fous avant d'agir : l'origine doit être celle de l'URL qu'on a
+  // chargée, et le message doit venir de NOTRE iframe (une autre frame de même
+  // origine ne peut pas se faire passer pour elle).
   window.addEventListener("message", (event) => {
     if (!embedOrigin || event.origin !== embedOrigin) {
       return;
@@ -97,18 +90,10 @@ window.addEventListener("DOMContentLoaded", () => {
     if (event.source !== iframe.contentWindow) {
       return;
     }
-    if (event.data?.type === CLOSE_MESSAGE) {
-      dialog.close();
+    if (event.data?.type !== CLOSE_MESSAGE) {
       return;
     }
-    if (event.data?.type !== RESIZE_MESSAGE) {
-      return;
-    }
-    const height = Number(event.data.height);
-    if (!Number.isFinite(height) || height <= 0) {
-      return;
-    }
-    iframe.style.height = `${height}px`;
+    dialog.close();
   });
 });
 
