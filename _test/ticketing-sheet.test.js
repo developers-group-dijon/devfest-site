@@ -148,7 +148,7 @@ describe("ticketing-sheet", () => {
     assert.ok(!sheet().hasAttribute("open"));
   });
 
-  describe("messages de la billetterie", () => {
+  describe("message skedl:close", () => {
     /**
      * @param {object} data
      * @param {{origin?: string, source?: unknown}} [opts]
@@ -163,61 +163,7 @@ describe("ticketing-sheet", () => {
       );
     }
 
-    test("applique la hauteur annoncée par l'embed", async () => {
-      await load(HTML_WITH_SHEET);
-      clickTrigger();
-      assert.equal(iframe().style.height, "");
-
-      postMessage({ type: "skedl:resize", height: 630 });
-
-      assert.equal(iframe().style.height, "630px");
-    });
-
-    test("ignore un message d'une autre origine", async () => {
-      await load(HTML_WITH_SHEET);
-      clickTrigger();
-
-      postMessage(
-        { type: "skedl:resize", height: 9999 },
-        { origin: "https://evil.test" },
-      );
-
-      assert.equal(iframe().style.height, "");
-    });
-
-    test("ignore un message qui ne vient pas de notre iframe", async () => {
-      await load(HTML_WITH_SHEET);
-      clickTrigger();
-
-      postMessage({ type: "skedl:resize", height: 9999 }, { source: null });
-
-      assert.equal(iframe().style.height, "");
-    });
-
-    test("ignore une hauteur non exploitable", async () => {
-      await load(HTML_WITH_SHEET);
-      clickTrigger();
-
-      postMessage({ type: "skedl:resize", height: "beaucoup" });
-      postMessage({ type: "skedl:resize", height: 0 });
-      postMessage({ type: "skedl:resize" });
-      postMessage({ type: "autre-chose", height: 500 });
-
-      assert.equal(iframe().style.height, "");
-    });
-
-    test("changer d'URL remet la hauteur au défaut CSS", async () => {
-      await load(HTML_WITH_SHEET);
-      clickTrigger();
-      postMessage({ type: "skedl:resize", height: 630 });
-      assert.equal(iframe().style.height, "630px");
-
-      clickTrigger("#pricing-early");
-
-      assert.equal(iframe().style.height, "");
-    });
-
-    test("skedl:close ferme le dialog quand la billetterie relaie Esc", async () => {
+    test("ferme le dialog quand la billetterie relaie Esc", async () => {
       await load(HTML_WITH_SHEET);
       clickTrigger();
 
@@ -226,21 +172,32 @@ describe("ticketing-sheet", () => {
       assert.ok(!sheet().hasAttribute("open"));
     });
 
-    test("skedl:close d'une autre origine ou d'une autre frame est ignoré", async () => {
+    test("ignore un message d'une autre origine", async () => {
       await load(HTML_WITH_SHEET);
       clickTrigger();
 
       postMessage({ type: "skedl:close" }, { origin: "https://evil.test" });
+
+      assert.ok(sheet().hasAttribute("open"));
+    });
+
+    test("ignore un message qui ne vient pas de notre iframe", async () => {
+      await load(HTML_WITH_SHEET);
+      clickTrigger();
+
       postMessage({ type: "skedl:close" }, { source: null });
 
       assert.ok(sheet().hasAttribute("open"));
     });
 
-    test("aucun message n'est pris en compte avant la première ouverture", async () => {
+    test("ignore les autres messages, dont l'ancien skedl:resize", async () => {
       await load(HTML_WITH_SHEET);
+      clickTrigger();
 
-      postMessage({ type: "skedl:resize", height: 630 });
+      postMessage({ type: "skedl:resize", height: 9999 });
+      postMessage({ type: "autre-chose" });
 
+      assert.ok(sheet().hasAttribute("open"));
       assert.equal(iframe().style.height, "");
     });
   });
