@@ -14,6 +14,10 @@
  *   que la page porte déjà, bandeau, onglets, équipe, galerie, et on garde ce
  *   que la billetterie affiche mieux que nous, sponsors et boutique) se règlent
  *   donc ici, sans toucher au code. Penser à les faire évoluer ensemble.
+ * - `layout=fill` : l'iframe remplit le sheet et la billetterie défile
+ *   elle-même, ce qui garde visibles sa barre « Retour / Continuer » et son
+ *   panier. Sans lui, elle se dimensionne sur son contenu et rien ne peut y
+ *   rester collé à l'écran.
  */
 
 /** @type {import("./types.js").Ticketing} */
@@ -23,7 +27,7 @@ export default {
   url: "https://skedl.link/developersgroup-dijon/devfest-2026",
   // url: "https://skedl-pub-staging.vercel.app/developersgroup-dijon/dev-fest-dijon-2026?embed=true&showHero=false&showTabs=false&showTeam=false&showMerch=false&showGallery=false&showSponsors=false",
   embedUrl:
-    "https://skedl.link/developersgroup-dijon/devfest-2026?embed=true&showHero=false&showTabs=false&showTeam=false&showMerch=true&showGallery=false&showSponsors=true",
+    "https://skedl.link/developersgroup-dijon/devfest-2026?embed=true&showHero=false&showTabs=false&showTeam=false&showMerch=true&showGallery=false&showSponsors=true&layout=fill",
   // "https://skedl-pub-staging.vercel.app/developersgroup-dijon/dev-fest-dijon-2026?embed=true&showHero=false&showTabs=false&showTeam=false&showMerch=false&showGallery=false&showSponsors=false",
   pricings: [
     {
