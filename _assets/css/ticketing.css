@@ -51,6 +51,11 @@
 .ticketing-sheet[open] {
   display: flex;
   flex-direction: column;
+
+  /* Hauteur fixe, et pas seulement plafonnée : l'iframe la remplit
+     (`height: 100%` plus bas), et une hauteur en % ne se résout que contre un
+     parent dont la hauteur est définie. */
+  height: 90dvh;
   transform: translateY(0);
 
   /* État de départ de l'animation d'entrée. À laisser après l'état ouvert. */
@@ -121,19 +126,20 @@
 }
 
 /* `min-height: 0` : sans lui, un enfant flex refuse de rétrécir sous sa
-   taille de contenu et l'iframe déborderait du `max-height` du dialog. */
+   taille de contenu et l'iframe déborderait de la hauteur du dialog.
+   `overflow: hidden` : c'est la billetterie qui défile, dans l'iframe
+   (`layout=fill`, cf. `_data/ticketing.js`). Un corps qui défilerait aussi
+   emporterait sa barre d'actions et son panier hors de la vue. */
 .ticketing-sheet-body {
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
-/* `dvh` et non `vh` : sur mobile, `vh` ignore la barre d'outils du navigateur,
-   ce qui pousserait l'en-tête du sheet et son bouton de fermeture hors écran. */
 .ticketing-sheet-body iframe {
   display: block;
   width: 100%;
-  height: 70dvh;
+  height: 100%;
   border: 0;
 }
 
