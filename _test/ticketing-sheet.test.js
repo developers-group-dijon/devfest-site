@@ -148,7 +148,7 @@ describe("ticketing-sheet", () => {
     assert.ok(!sheet().hasAttribute("open"));
   });
 
-  describe("message skedl:resize", () => {
+  describe("messages de la billetterie", () => {
     /**
      * @param {object} data
      * @param {{origin?: string, source?: unknown}} [opts]
@@ -215,6 +215,25 @@ describe("ticketing-sheet", () => {
       clickTrigger("#pricing-early");
 
       assert.equal(iframe().style.height, "");
+    });
+
+    test("skedl:close ferme le dialog quand la billetterie relaie Esc", async () => {
+      await load(HTML_WITH_SHEET);
+      clickTrigger();
+
+      postMessage({ type: "skedl:close" });
+
+      assert.ok(!sheet().hasAttribute("open"));
+    });
+
+    test("skedl:close d'une autre origine ou d'une autre frame est ignoré", async () => {
+      await load(HTML_WITH_SHEET);
+      clickTrigger();
+
+      postMessage({ type: "skedl:close" }, { origin: "https://evil.test" });
+      postMessage({ type: "skedl:close" }, { source: null });
+
+      assert.ok(sheet().hasAttribute("open"));
     });
 
     test("aucun message n'est pris en compte avant la première ouverture", async () => {

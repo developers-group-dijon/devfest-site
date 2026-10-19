@@ -121,7 +121,7 @@ Les deux URL sont utilisées telles quelles, sans transformation au build : les 
 Trois conséquences à ne pas oublier quand `embedUrl` est renseignée :
 
 - son origine doit figurer dans `frame-src` **et** dans `payment=(…)` de la `Permissions-Policy` du target `main` (`firebase.json`) — sans quoi la CSP bloque l'iframe et la délégation de la Payment Request API échoue. **C'est cette liste `frame-src` qui constitue la frontière de confiance** : l'iframe n'est pas mise en `sandbox`, un bac à sable assez permissif pour un tunnel de paiement devant inclure `allow-scripts` + `allow-same-origin`, combinaison qui permet à l'iframe de le retirer elle-même ;
-- `Esc` ne ferme pas le dialog quand le focus est passé dans l'iframe : l'événement clavier part au document embarqué. Comportement inhérent au cross-origin, non corrigeable côté site ; d'où le bouton de fermeture toujours visible, le clic hors panneau et le lien « ouvrir dans un onglet » ;
+- quand le focus est passé dans l'iframe, `Esc` n'atteint plus notre document (cross-origin). La billetterie le relaie par un message `skedl:close`, qui ferme le dialog (origine et frame émettrice vérifiées, cf. `_assets/js/ticketing-sheet.js`). Un autre prestataire ne l'émettra pas : restent le bouton de fermeture, le clic hors panneau et le lien « ouvrir dans un onglet » ;
 - la hauteur de l'iframe suit le message `skedl:resize` émis par la billetterie (origine et frame émettrice vérifiées, cf. `_assets/js/ticketing-sheet.js`). Un autre prestataire n'émettra pas ce message : l'iframe gardera alors le `70dvh` de `_assets/css/ticketing.css` et son défilement interne.
 
 # Contribuer et outils de développement
