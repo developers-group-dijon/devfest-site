@@ -15,7 +15,13 @@ export default [
     jobTitle: "Senior Solutions Architect",
     company: "Capgemini",
     photoUrl: "/avatars/guillaume-poittevin.webp",
-    socials: [{ id: "linkedin", name: "Linkedin", link: "theguit" }],
+    socials: [
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/theguit/",
+      },
+    ],
   },
   {
     name: "Mathilde Couenne",
@@ -23,7 +29,11 @@ export default [
     company: "Alteca",
     photoUrl: "/avatars/mathilde.webp",
     socials: [
-      { id: "linkedin", name: "Linkedin", link: "mathilde-couenne-a27504109" },
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/mathilde-couenne-a27504109/",
+      },
     ],
   },
   {
@@ -31,7 +41,13 @@ export default [
     jobTitle: "Architecte solutions",
     company: "OwlNext",
     photoUrl: "/avatars/adrien.webp",
-    socials: [{ id: "linkedin", name: "Linkedin", link: "adrien-gras" }],
+    socials: [
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/adrien-gras/",
+      },
+    ],
   },
   {
     name: "Xavier Calland",
@@ -39,8 +55,16 @@ export default [
     company: "Atol CD",
     photoUrl: "/avatars/xavier.webp",
     socials: [
-      { id: "linkedin", name: "Linkedin", link: "xavier-calland-4471866" },
-      { id: "github", name: "GitHub", link: "xavier-calland" },
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/xavier-calland-4471866/",
+      },
+      {
+        id: "github",
+        name: "GitHub",
+        link: "https://github.com/xavier-calland",
+      },
       {
         id: "mastodon",
         name: "Mastodon",
@@ -53,7 +77,13 @@ export default [
     jobTitle: "Directrice",
     company: "Osanah communication",
     photoUrl: "/avatars/caroline.webp",
-    socials: [{ id: "linkedin", name: "Linkedin", link: "carolinechanlon" }],
+    socials: [
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/carolinechanlon/",
+      },
+    ],
   },
   {
     name: "Matthieu Lamalle",
@@ -61,7 +91,11 @@ export default [
     company: "Cadoles",
     photoUrl: "/avatars/matthieu.webp",
     socials: [
-      { id: "linkedin", name: "Linkedin", link: "matthieu-lamalle-29387a53" },
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/matthieu-lamalle-29387a53/",
+      },
     ],
   },
   {
@@ -69,7 +103,13 @@ export default [
     jobTitle: "Responsable de formation Numérique",
     company: "DIIAGE",
     photoUrl: "/avatars/michel.webp",
-    socials: [{ id: "linkedin", name: "Linkedin", link: "themoat" }],
+    socials: [
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/themoat/",
+      },
+    ],
   },
   {
     name: "Fabrice Ubertosi",
@@ -77,7 +117,11 @@ export default [
     company: "CPage",
     photoUrl: "/avatars/fabrice.webp",
     socials: [
-      { id: "linkedin", name: "Linkedin", link: "ubertosi-fabrice-11b763124" },
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/ubertosi-fabrice-11b763124/",
+      },
     ],
   },
   {
@@ -86,8 +130,12 @@ export default [
     company: "APRR",
     photoUrl: "/avatars/yoann.webp",
     socials: [
-      { id: "linkedin", name: "Linkedin", link: "yoann-rouquie" },
-      { id: "github", name: "GitHub", link: "yoannrq" },
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/yoann-rouquie/",
+      },
+      { id: "github", name: "GitHub", link: "https://github.com/yoannrq" },
     ],
   },
   {
@@ -96,20 +144,36 @@ export default [
     company: "Coda Dijon",
     photoUrl: "/avatars/yoan.webp",
     socials: [
-      { id: "linkedin", name: "Linkedin", link: "yoanthirion" },
-      { id: "github", name: "GitHub", link: "ythirion" },
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/yoanthirion/",
+      },
+      { id: "github", name: "GitHub", link: "https://github.com/ythirion" },
     ],
   },
   {
     name: "Jérémy Colombet",
     company: "Garganttua",
     photoUrl: "/avatars/jeremy.webp",
-    socials: [{ id: "linkedin", name: "Linkedin", link: "jeremy-colombet" }],
+    socials: [
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/jeremy-colombet/",
+      },
+    ],
   },
   {
     name: "Guillaume Lerouxel",
     photoUrl: "/avatars/guillaume-l.webp",
-    socials: [{ id: "linkedin", name: "Linkedin", link: "guillaumelerouxel" }],
+    socials: [
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/guillaumelerouxel/",
+      },
+    ],
   },
   {
     name: "Vincent Rozier",
@@ -118,7 +182,11 @@ export default [
       "Responsable de service développement logiciel pour l'Assurance Retraite",
     company: "Carsat BFC",
     socials: [
-      { id: "linkedin", name: "Linkedin", link: "vincent-rozier-aba86427" },
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/vincent-rozier-aba86427/",
+      },
     ],
   },
   {
@@ -126,7 +194,13 @@ export default [
     photoUrl: "/avatars/hussein.webp",
     jobTitle: "Computer Vision & Robotics Researcher",
     company: "CIAD",
-    socials: [{ id: "linkedin", name: "Linkedin", link: "hussein-loubani" }],
+    socials: [
+      {
+        id: "linkedin",
+        name: "Linkedin",
+        link: "https://www.linkedin.com/in/hussein-loubani/",
+      },
+    ],
   },
 ];
 
