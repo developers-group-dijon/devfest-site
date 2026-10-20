@@ -133,8 +133,8 @@ export function buildRootHtaccess({ env, currentYear, htpasswdPath }) {
       ? `
 # Authentification de l'environnement de test. Demandée seulement en HTTPS :
 # en HTTP, la redirection ci-dessous passe d'abord, sinon le navigateur
-# enverrait le mot de passe en clair.
-<If "%{HTTPS} == 'on' || req('X-Forwarded-Proto') == 'https'">
+# enverrait le mot de passe en clair. Le défi Let's Encrypt en est exempté.
+<If "(%{HTTPS} == 'on' || req('X-Forwarded-Proto') == 'https') && %{REQUEST_URI} !~ m#^/\\.well-known/acme-challenge/#">
   AuthType Basic
   AuthName "DevFest Dijon (test)"
   AuthUserFile ${apacheQuote(htpasswdPath ?? "")}
@@ -161,6 +161,11 @@ ${headers.join("\n")}
 </IfModule>
 ${auth}
 RewriteEngine On
+
+# Défi Let's Encrypt (HTTP-01) servi tel quel depuis la racine : ni HTTPS
+# forcé, ni slash final, ni aiguillage vers une édition. Sans cela, le
+# renouvellement du certificat SSL du multisite pourrait échouer.
+RewriteRule ^\\.well-known/acme-challenge/ - [END]
 
 # HTTPS forcé. OVH peut terminer le TLS en amont : X-Forwarded-Proto fait foi.
 RewriteCond %{HTTPS} !=on

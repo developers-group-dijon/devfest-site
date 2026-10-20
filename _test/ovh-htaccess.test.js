@@ -99,6 +99,14 @@ describe("buildRootHtaccess (prod)", () => {
     );
   });
 
+  test("sert le défi Let's Encrypt avant toute redirection ou réécriture", () => {
+    const acme = out.indexOf(
+      "RewriteRule ^\\.well-known/acme-challenge/ - [END]",
+    );
+    assert.ok(acme > 0);
+    assert.ok(acme < out.indexOf("RewriteCond %{HTTPS} !=on"));
+  });
+
   test("page 404, cache public, ni authentification ni noindex", () => {
     assert.match(out, /^ErrorDocument 404 \/404\.html$/m);
     assert.match(out, /Cache-Control "public, max-age=3600"/);
@@ -118,10 +126,10 @@ describe("buildRootHtaccess (test)", () => {
     assert.ok(out.includes("^devfest-test-(\\d{4})\\.developers-group-dijon"));
   });
 
-  test("protège par mot de passe, uniquement en HTTPS", () => {
+  test("protège par mot de passe, uniquement en HTTPS, hors défi Let's Encrypt", () => {
     assert.ok(
       out.includes(
-        `<If "%{HTTPS} == 'on' || req('X-Forwarded-Proto') == 'https'">`,
+        `<If "(%{HTTPS} == 'on' || req('X-Forwarded-Proto') == 'https') && %{REQUEST_URI} !~ m#^/\\.well-known/acme-challenge/#">`,
       ),
     );
     assert.ok(out.includes(`AuthUserFile "${HTPASSWD}"`));
