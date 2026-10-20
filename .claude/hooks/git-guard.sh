@@ -12,17 +12,19 @@ cmd=$(jq -r '.tool_input.command // empty')
 # Début de (sous-)commande : début de ligne ou après ; & | ( ou un retour ligne
 start='(^|[;&|(]|\n)[[:space:]]*'
 git_cmd="${start}git([[:space:]]+-C[[:space:]]+[^[:space:]]+)?[[:space:]]+"
+# Fin de sous-commande git : `\b` ne suffit pas, il accepterait `merge-base` ou `commit-tree`
+end='(?![\w-])'
 
 block() {
   echo "Bloqué par .claude/hooks/git-guard.sh : $1" >&2
   exit 2
 }
 
-if grep -Pzq "${git_cmd}push\b" <<<"$cmd"; then
+if grep -Pzq "${git_cmd}push${end}" <<<"$cmd"; then
   block "Claude ne fait jamais de git push. C'est l'utilisateur qui pousse."
 fi
 
-if grep -Pzq "${git_cmd}commit\b" <<<"$cmd"; then
+if grep -Pzq "${git_cmd}commit${end}" <<<"$cmd"; then
   # On tolère la création de branche dans la même commande (`git switch -c x && git commit …`)
   if ! grep -Pzq "${git_cmd}(switch[[:space:]]+-c|checkout[[:space:]]+-b)\b" <<<"$cmd"; then
     branch=$(git -C "${CLAUDE_PROJECT_DIR:-.}" rev-parse --abbrev-ref HEAD 2>/dev/null)
@@ -32,7 +34,7 @@ if grep -Pzq "${git_cmd}commit\b" <<<"$cmd"; then
   fi
 fi
 
-if grep -Pzq "${git_cmd}merge\b" <<<"$cmd"; then
+if grep -Pzq "${git_cmd}merge${end}" <<<"$cmd"; then
   if ! grep -Pzq -- "--ff-only\b" <<<"$cmd" || grep -Pzq -- "--no-ff\b" <<<"$cmd"; then
     # `git merge --abort` / `--continue` ne créent pas de commit de merge
     if ! grep -Pzq -- "merge[[:space:]]+--(abort|quit)\b" <<<"$cmd"; then
@@ -41,7 +43,7 @@ if grep -Pzq "${git_cmd}merge\b" <<<"$cmd"; then
   fi
 fi
 
-if grep -Pzq "${git_cmd}pull\b" <<<"$cmd"; then
+if grep -Pzq "${git_cmd}pull${end}" <<<"$cmd"; then
   if ! grep -Pzq -- "--(ff-only|rebase)\b" <<<"$cmd"; then
     block "git pull doit être fait en --ff-only (ou --rebase) pour éviter un commit de merge."
   fi
