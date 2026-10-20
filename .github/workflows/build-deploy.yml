@@ -1,0 +1,184 @@
+name: Build et déploiement OVH
+
+# L'édition publiée vient de _data/site.json (`year`, `url`), l'environnement
+# de la branche (cf. _scripts/ovh/target.js) :
+#   - main, devfest-dijon-<année>  → production, dossier <year>
+#   - toute autre branche          → test, dossier <year>
+#     (une branche tirée d'une archive est donc publiée en test sur
+#     devfest-test-<année>, une branche tirée de main sur devfest-test)
+#   - pull request                 → build et vérifications uniquement
+#     (le push de la branche a déjà publié en test)
+on:
+  pull_request:
+  push:
+    branches: ["**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  # Dossiers des environnements sur le SFTP OVH (une édition par sous-dossier <année>/)
+  PROD_DIR: devfest
+  TEST_DIR: devfest_test
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      env: ${{ steps.target.outputs.env }}
+      year: ${{ steps.target.outputs.year }}
+      update_root: ${{ steps.target.outputs.update_root }}
+      url: ${{ steps.target.outputs.url }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v6
+        with:
+          node-version: "lts/Krypton"
+          cache: "npm"
+      - name: Détermine l'édition et l'environnement
+        id: target
+        env:
+          BRANCH: ${{ github.head_ref || github.ref_name }}
+        run: node _scripts/ovh/target.js | tee -a "$GITHUB_OUTPUT"
+      - name: Install dependencies
+        run: npm ci
+      - name: Validate code
+        # Les archives 2023 et 2024 nomment ce script `lint` : le workflow est
+        # ainsi identique sur toutes les branches.
+        run: |
+          if npm run | grep -qE '^  check$'; then
+            npm run check
+          else
+            npm run lint
+          fi
+      - name: Pointe le site vers l'URL de test
+        if: steps.target.outputs.env == 'test'
+        env:
+          SITE_URL: ${{ steps.target.outputs.url }}
+        run: |
+          jq --arg url "$SITE_URL" '.url = $url' _data/site.json > site.json.tmp
+          mv site.json.tmp _data/site.json
+      - name: Build site
+        run: npm run clean-build
+      - name: Audit perf + a11y
+        id: audit
+        if: steps.target.outputs.env == 'test'
+        env:
+          LHCI_NUMBER_OF_RUNS: "3"
+        run: npm run audit --if-present
+      - name: Upload Lighthouse reports
+        if: always() && steps.audit.outcome != 'skipped'
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/
+          retention-days: 7
+          include-hidden-files: true
+          if-no-files-found: ignore
+      - name: Upload site
+        uses: actions/upload-artifact@v7
+        with:
+          name: site
+          path: _site
+          retention-days: 7
+
+  deploy-test:
+    needs: build
+    if: github.event_name != 'pull_request' && needs.build.outputs.env == 'test'
+    runs-on: ubuntu-latest
+    environment:
+      name: test
+      url: ${{ needs.build.outputs.url }}
+    concurrency:
+      group: deploy-test
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          sparse-checkout: _scripts
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v6
+        with:
+          node-version: "lts/Krypton"
+      - name: Download site
+        uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: _site
+      - name: Install lftp and htpasswd
+        run: sudo apt-get update && sudo apt-get install -y lftp apache2-utils
+      - name: Protect with password
+        env:
+          AUTH_USER: ${{ secrets.TEST_AUTH_USER }}
+          AUTH_PASSWORD: ${{ secrets.TEST_AUTH_PASSWORD }}
+          HTPASSWD_PATH: ${{ secrets.TEST_HTPASSWD_PATH }}
+          UPDATE_ROOT: ${{ needs.build.outputs.update_root }}
+          YEAR: ${{ needs.build.outputs.year }}
+        run: |
+          for v in AUTH_USER AUTH_PASSWORD HTPASSWD_PATH; do
+            if [ -z "${!v}" ]; then
+              echo "::error::$v est vide : secret ou variable absent de l'environnement GitHub « test » ou du dépôt"
+              exit 1
+            fi
+          done
+          printf '%s\n' "$AUTH_PASSWORD" | htpasswd -niB -C 12 "$AUTH_USER" > "$RUNNER_TEMP/.htpasswd"
+          echo "HTPASSWD=$RUNNER_TEMP/.htpasswd" >> "$GITHUB_ENV"
+          if [ "$UPDATE_ROOT" = true ]; then
+            node _scripts/ovh/htaccess.js test "$YEAR" > "$RUNNER_TEMP/root.htaccess"
+            echo "ROOT_HTACCESS=$RUNNER_TEMP/root.htaccess" >> "$GITHUB_ENV"
+          fi
+      - name: Upload sftp
+        env:
+          SFTP_HOST: ${{ secrets.FTP_SERVER }}
+          SFTP_USER: ${{ secrets.FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          ENV_NAME: test
+          REMOTE_DIR: ${{ env.TEST_DIR }}
+          YEAR: ${{ needs.build.outputs.year }}
+          SITE_DIR: _site
+        run: _scripts/ovh/deploy.sh
+
+  deploy-production:
+    needs: build
+    if: github.event_name != 'pull_request' && needs.build.outputs.env == 'prod'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: ${{ needs.build.outputs.url }}
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          sparse-checkout: _scripts
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v6
+        with:
+          node-version: "lts/Krypton"
+      - name: Download site
+        uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: _site
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+      - name: Génère le .htaccess racine
+        if: needs.build.outputs.update_root == 'true'
+        env:
+          YEAR: ${{ needs.build.outputs.year }}
+        run: |
+          node _scripts/ovh/htaccess.js prod "$YEAR" > "$RUNNER_TEMP/root.htaccess"
+          echo "ROOT_HTACCESS=$RUNNER_TEMP/root.htaccess" >> "$GITHUB_ENV"
+      - name: Upload sftp
+        env:
+          SFTP_HOST: ${{ secrets.FTP_SERVER }}
+          SFTP_USER: ${{ secrets.FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          ENV_NAME: production
+          REMOTE_DIR: ${{ env.PROD_DIR }}
+          YEAR: ${{ needs.build.outputs.year }}
+          SITE_DIR: _site
+        run: _scripts/ovh/deploy.sh
