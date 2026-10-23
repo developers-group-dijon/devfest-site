@@ -220,9 +220,9 @@ export default [
   {
     id: "cmol8q72e006501oh1j8rof2r",
     title:
-      "🎤 Qui est veut être Dev !? — le matchmaking startup x tech qui change la donne",
+      "🎤 Qui veut être mon associé Dev/CTO ? — le matchmaking startup x tech qui change la donne",
     abstract:
-      "Inspiré de Qui veut être mon associé ?, ici, les entrepreneurs pitchent… pour séduire un futur associé tech 💻\n\nLe concept ?\nMettre en relation des startups en quête de développeurs avec des profils techniques à l’esprit entrepreneurial, prêts à s’engager dans une aventure ambitieuse. L’objectif : créer des rencontres à fort potentiel, là où naissent les meilleures équipes.\n\nPourquoi participer ?\n\n💡 Découvrir des projets concrets où ton expertise tech fait vraiment la différence\n🚀 T’impliquer dans une aventure entrepreneuriale, en tant que futur CTO ou cofondateur\n🧠 Challenger des idées, poser tes questions, et voir ce qui te donne envie de builder\n😄 Vivre un format dynamique, sans pression — tu explores, tu échanges, tu choisis\n\nParce qu’un bon produit, c’est avant tout une bonne équipe.",
+      "Inspiré de «Qui veut être mon associé ?», ici, les entrepreneurs pitchent… pour séduire un futur associé tech 💻\n\nLe concept ?\nMettre en relation des startups en quête de développeurs avec des profils techniques à l’esprit entrepreneurial, prêts à s’engager dans une aventure ambitieuse. L’objectif : créer des rencontres à fort potentiel, là où naissent les meilleures équipes.\n\nPourquoi participer ?\n\n💡 Découvrir des projets concrets où ton expertise tech fait vraiment la différence\n🚀 T’impliquer dans une aventure entrepreneuriale, en tant que futur CTO ou cofondateur\n🧠 Challenger des idées, poser tes questions, et voir ce qui te donne envie de builder\n😄 Vivre un format dynamique, sans pression — tu explores, tu échanges, tu choisis\n\nParce qu’un bon produit, c’est avant tout une bonne équipe.",
     dateStartStr: "2026-12-04T10:15:00.000+00:00",
     durationMinutes: 50,
     speakerIds: ["cmol8q71l006401ohp3x3w8ts"],
