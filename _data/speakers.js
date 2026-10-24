@@ -326,7 +326,7 @@ const speakers = [
     id: "cmpntvw1k00t801qj0znd9mkp",
     name: "Bertrand Delacrétaz",
     bio: "Ingénieur retraité, [Bertrand Delacrétaz](https://grep.codeconsult.ch) a consacré plus de 40 ans au développement de logiciels, principalement dans le domaine du Web, travaillant notamment pour le Parlement Fédéral Suisse, la Radio Télévision Suisse et pour Adobe en tant que Principal Scientist. Membre du comité de direction de la fondation ASF (apache.org) pendant 14 ans, il est un acteur engagé du logiciel libre. Depuis plus de 20 ans, il intervient dans des conférences internationales, notamment pour promouvoir une approche responsable et durable face aux mutations technologiques.",
-    company: "Adobe",
+    company: "Indépendant",
     jobTitle: null,
     photoUrl: "/avatars/bertrand-delacretaz.webp",
     socials: [
