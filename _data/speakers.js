@@ -209,16 +209,16 @@ const speakers = [
   },
   {
     id: "cmotx4djo009401pxkmjo51pq",
-    name: "Emmanuelle Aboaf",
-    bio: "Sourde de naissance et bionique avec mes deux implants cochléaires, je suis développeuse fullstack et coach en accessibilité chez Shodo. Dans mon monde idéal, tout doit être accessible aussi bien dans la vraie vie que sur le Web.",
+    name: "Angi Guyard",
+    bio: "Après une reconversion réussie grâce à l’école 42, je suis aujourd’hui développeuse et militante pour un numérique plus inclusif et une société équitable. Passionnée par les enjeux d’accessibilité numérique, de neurodiversité, de diversité dans la tech et d’égalité, je m’engage à sensibiliser et partager des bonnes pratiques pour construire un monde où chaque personne a sa place, avec ses besoins et ses particularités.\n\nCe qui m’anime, c’est de rendre les choses accessibles à toustes, que ce soit à travers mon vécu, mes conférences ou mes actions concrètes. L’inclusion, ce n’est pas un concept abstrait : c’est une démarche à la portée de toustes, capable de transformer nos environnements et de rapprocher les individus. Mon ambition ? Poser les bases d’un monde plus juste, un projet collectif qui commence par des actes simples mais significatifs.",
     company: "Shodo",
-    jobTitle: null,
-    photoUrl: "/avatars/emmanuelle-aboaf.webp",
+    jobTitle: "Ingénieure en développement",
+    photoUrl: "/avatars/angi-guyard.webp",
     socials: [
       {
         id: "linkedin",
         name: "linkedin",
-        link: "https://www.linkedin.com/in/emmanuelle-aboaf/",
+        link: "https://www.linkedin.com/in/angi-guyard/",
       },
     ],
   },
