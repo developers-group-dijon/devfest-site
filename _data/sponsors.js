@@ -129,6 +129,11 @@ export default [
         website: "https://www.holbertonschool.fr",
         logoUrl: "/sponsors/holberton.webp",
       },
+      {
+        name: "OKStatus",
+        website: "https://www.okstatus.eu",
+        logoUrl: "/sponsors/okstatus.png",
+      },
     ],
   },
 ];
