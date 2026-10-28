@@ -32,6 +32,11 @@ jobs:
       url: ${{ steps.target.outputs.url }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          # Historique complet : sinon, en PR, commitlint ne voit que le commit
+          # de merge créé par GitHub (qu'il ignore) et laisse passer les commits
+          # invalides de la PR.
+          fetch-depth: 0
       - name: Use Node.js LTS
         uses: actions/setup-node@v6
         with:
