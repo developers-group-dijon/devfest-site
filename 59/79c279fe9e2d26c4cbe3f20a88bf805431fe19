@@ -1,0 +1,14 @@
+_data/rawSessions.js
+  h_0a88d9aba8622a 87,102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5979c279fe9e2d26c4cbe3f20a88bf805431fe19",
+  "prompts": {},
+  "humans": {
+    "h_0a88d9aba8622a": {
+      "author": "Yoan Thirion <yoan.thirion@gmail.com>"
+    }
+  }
+}
