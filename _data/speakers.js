@@ -540,6 +540,32 @@ const speakers = [
       },
     ],
   },
+  {
+    id: "leo-jacquemin",
+    name: "Léo Jacquemin",
+    bio: "Initialement destiné à devenir chercheur en physique quantique, Léo découvre par accident le développement web et n'en est plus jamais revenu. Après 10 années d'expérience en tant que développeur tout-terrain, il revient désormais à ses premiers amours : le frontend, l'UX, et milite régulièrement pour un web plus sobre, inclusif... mais swag' quand même, entre deux meetup React Nord, qu'il anime depuis 2024.",
+    photoUrl: "/avatars/leo-jacquemin.webp",
+    socials: [
+      {
+        id: "linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/in/ljacquemin/",
+      },
+    ],
+  },
+  {
+    id: "thomas-hodson",
+    name: "Thomas Hodson",
+    bio: "Je m'appelle Thomas Hodson. J'ai 23 ans et je suis entrepreneur en informatique.\n\nJe suis programmeur depuis 2015 et programmeur Rust depuis 2020.\n\nJ'ai eu l'opportunité de travailler sur de multiples projets dans des domaines variés (logiciel de bord pour un satellite, crypto & IA, industrie, jeux, ...).",
+    photoUrl: "/avatars/thomas-hodson.webp",
+    socials: [
+      {
+        id: "linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/in/thomas-hodson/",
+      },
+    ],
+  },
 ];
 
 export default speakers;

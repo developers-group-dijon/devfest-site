@@ -86,31 +86,32 @@ export default [
   // tremplin
   {
     id: "tremplin-1",
-    title: "Talk issu du Tremplin du DevFest Dijon",
-    abstract: "_Informations à venir…_",
+    title:
+      "Relation toxique avec sa base de données : 6 comportements à éviter",
+    abstract:
+      "On parle beaucoup de relations toxiques ces derniers temps. Mais rarement de la plus silencieuse d’entre elles : celle que nous entretenons avec notre base de données.\n\nEn tant que développeurs — souvent front, parfois back — nous accusons facilement “la DB” quand ça ralentit.\nPourtant, dans la majorité des cas, la base fait exactement ce qu’on lui demande… et c’est précisément le problème.\n\nDans ce talk accessible et concret, je vous propose de décortiquer 6 comportements très courants qui épuisent inutilement une base de données :\n\n- Le chaos permanent\n- La surcharge mentale\n- L’emprise transactionnelle\n- La pénurie organisée\n- Le voyage inutile\n- L’éloignement toxique\n\nÀ travers des métaphores simples, des exemples concrets et des situations vécues, nous verrons comment reconnaître ces “red flags”\net développer une intuition claire des mécanismes physiques qui gouvernent la performance d’un système. Et chacun repartira avec une check-list thérapeutique pour soigner les choses… avant qu’il ne soit trop tard !!",
     dateStartStr: "2026-12-04T12:10:00.000+01:00",
     durationMinutes: 20,
-    speakerIds: [],
+    speakerIds: ["leo-jacquemin"],
     trackId: "sanctuaire-de-laclairiere",
     language: "fr",
     level: "BEGINNER",
     formatId: "cmnd2nkpn00dv01pfj5fi0f0s",
     categoryId: "cmnd2nkpz00e001pfnbtutqns",
-    hideTrackTitle: true,
   },
   {
     id: "tremplin-2",
-    title: "Talk issu du Tremplin du DevFest Dijon",
-    abstract: "_Informations à venir…_",
+    title: "Rendre l'implicite explicite",
+    abstract:
+      'Cette conférence a pour sujet la programmation nouvelle génération. Elle s’axe autour des bugs fréquents de développement et comment la programmation nouvelle génération tente d’y remédier.\n\nPour la présentation je vais utiliser deux langages de programmation.\n\n- Il y aura du code Rust pour présenter les nouvelles solutions / approches.\n- Il y aura du code C# pour illustrer comment les principes/outils de Rust peuvent se transposer dans des langages « classiques ». L’objectif est de faire un « avant/après ».\n\nJe vais également faire occasionnellement quelques références à d’autres langages comme Go, Zig, V…\n\nDans cette conférence je distingue deux "catégories" de bugs :\n\n- Les bugs techniques (liés au.x langage.s)\n- Les bugs « logiques » (liés à la conception)\n\nJe vais répondre aux questions suivantes :\n\n- Comment sécuriser le pointeur null pour ne plus avoir de mauvaises surprises en Runtime ?\n- Comment le système d’erreurs de Rust simplifie et sécurise le code ? Comment puis-je me débarrasser des exceptions surprises et des try/catch infernaux ?\n- Pourquoi favoriser les expressions au lieu des instructions ? En quoi cela impacte-t-il la qualité et la fiabilité de mon code ?\n- En quoi l’immuabilité et l’encapsulation par défaut est un vrai plus pour mon code ?\n- En quoi le modèle de gestion des ressources de Rust (Ownership, Borrowing, Lifetimes) peut transformer ma façon de programmer ? Quels en seront les bénéfices ?\n- [BONUS] En quoi les monades réduisent les bugs et optimisent mon code ? Pourquoi favoriser les interfaces plutôt que l’héritage ?\n\nConclusion : Pourquoi est-ce que les langages de programmation nouvelle génération se concentrent sur les performances ? Est-ce que aujourd’hui le "bas niveau" est toujours synonyme de "difficile à écrire" ? Ne serait-il pas intéressant d’envisager ces nouveaux langages pour vos prochains projets ?',
     dateStartStr: "2026-12-04T12:10:00.000+01:00",
     durationMinutes: 20,
-    speakerIds: [],
+    speakerIds: ["thomas-hodson"],
     trackId: "pont-desconfreries",
     language: "fr",
     level: "BEGINNER",
     formatId: "cmnd2nkpn00dv01pfj5fi0f0s",
     categoryId: "cmnd2nkpz00e001pfnbtutqns",
-    hideTrackTitle: true,
   },
   // conférences
   {
