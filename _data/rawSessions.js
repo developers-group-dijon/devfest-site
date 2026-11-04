@@ -83,9 +83,8 @@ export default [
     durationMinutes: 10,
     hideTrackTitle: true,
   },
-  // tremplin
   {
-    id: "tremplin-1",
+    id: "rQlFLW6LfirLgR5t5yyQ",
     title:
       "Relation toxique avec sa base de données : 6 comportements à éviter",
     abstract:
@@ -100,7 +99,7 @@ export default [
     categoryId: "cmnd2nkpz00e001pfnbtutqns",
   },
   {
-    id: "tremplin-2",
+    id: "oZgdGXu1RQvFfpkdqrGl",
     title: "Rendre l'implicite explicite",
     abstract:
       'Cette conférence a pour sujet la programmation nouvelle génération. Elle s’axe autour des bugs fréquents de développement et comment la programmation nouvelle génération tente d’y remédier.\n\nPour la présentation je vais utiliser deux langages de programmation.\n\n- Il y aura du code Rust pour présenter les nouvelles solutions / approches.\n- Il y aura du code C# pour illustrer comment les principes/outils de Rust peuvent se transposer dans des langages « classiques ». L’objectif est de faire un « avant/après ».\n\nJe vais également faire occasionnellement quelques références à d’autres langages comme Go, Zig, V…\n\nDans cette conférence je distingue deux "catégories" de bugs :\n\n- Les bugs techniques (liés au.x langage.s)\n- Les bugs « logiques » (liés à la conception)\n\nJe vais répondre aux questions suivantes :\n\n- Comment sécuriser le pointeur null pour ne plus avoir de mauvaises surprises en Runtime ?\n- Comment le système d’erreurs de Rust simplifie et sécurise le code ? Comment puis-je me débarrasser des exceptions surprises et des try/catch infernaux ?\n- Pourquoi favoriser les expressions au lieu des instructions ? En quoi cela impacte-t-il la qualité et la fiabilité de mon code ?\n- En quoi l’immuabilité et l’encapsulation par défaut est un vrai plus pour mon code ?\n- En quoi le modèle de gestion des ressources de Rust (Ownership, Borrowing, Lifetimes) peut transformer ma façon de programmer ? Quels en seront les bénéfices ?\n- [BONUS] En quoi les monades réduisent les bugs et optimisent mon code ? Pourquoi favoriser les interfaces plutôt que l’héritage ?\n\nConclusion : Pourquoi est-ce que les langages de programmation nouvelle génération se concentrent sur les performances ? Est-ce que aujourd’hui le "bas niveau" est toujours synonyme de "difficile à écrire" ? Ne serait-il pas intéressant d’envisager ces nouveaux langages pour vos prochains projets ?',
@@ -113,7 +112,6 @@ export default [
     formatId: "cmnd2nkpn00dv01pfj5fi0f0s",
     categoryId: "cmnd2nkpz00e001pfnbtutqns",
   },
-  // conférences
   {
     id: "DsxCS78g4rtSz8vKtGSm",
     title:
