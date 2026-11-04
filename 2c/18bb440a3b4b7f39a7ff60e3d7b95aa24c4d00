@@ -1,0 +1,19 @@
+_data/rawSessions.js
+  s_741bb0c7fef910::t_b3ea466deac480 211,214,441,444
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2c18bb440a3b4b7f39a7ff60e3d7b95aa24c4d00",
+  "prompts": {},
+  "sessions": {
+    "s_741bb0c7fef910": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6f0c2011-c5ef-4fe9-9c77-13f4c2e6a163",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Yoan Thirion <yoan.thirion@gmail.com>"
+    }
+  }
+}
