@@ -1,0 +1,21 @@
+_data/speakers.js
+  s_741bb0c7fef910::t_fc6965a81bd5cb 161-163
+_data/rawSessions.js
+  s_741bb0c7fef910::t_fc6965a81bd5cb 220,222,225
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ea91291e01ca6d1190d5f3d29f8bc003de863f86",
+  "prompts": {},
+  "sessions": {
+    "s_741bb0c7fef910": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6f0c2011-c5ef-4fe9-9c77-13f4c2e6a163",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Yoan Thirion <yoan.thirion@gmail.com>"
+    }
+  }
+}
