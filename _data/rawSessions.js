@@ -217,13 +217,12 @@ export default [
   },
   {
     id: "cmol8q72e006501oh1j8rof2r",
-    title:
-      "🎤 Qui veut être mon associé Dev/CTO ? — le matchmaking startup x tech qui change la donne",
+    title: "Guide de survie à l'ère des LLMs",
     abstract:
-      "Inspiré de «Qui veut être mon associé ?», ici, les entrepreneurs pitchent… pour séduire un futur associé tech 💻\n\nLe concept ?\nMettre en relation des startups en quête de développeurs avec des profils techniques à l’esprit entrepreneurial, prêts à s’engager dans une aventure ambitieuse. L’objectif : créer des rencontres à fort potentiel, là où naissent les meilleures équipes.\n\nPourquoi participer ?\n\n💡 Découvrir des projets concrets où ton expertise tech fait vraiment la différence\n🚀 T’impliquer dans une aventure entrepreneuriale, en tant que futur CTO ou cofondateur\n🧠 Challenger des idées, poser tes questions, et voir ce qui te donne envie de builder\n😄 Vivre un format dynamique, sans pression — tu explores, tu échanges, tu choisis\n\nParce qu’un bon produit, c’est avant tout une bonne équipe.",
+      "Les LLMs impactent nos sociétés et notre métier se trouve en première ligne.\nLes conséquences de cette technologie sont profondes mais difficilement prévisibles.\n\nComment s'y retrouver lorsque le discours ambiant est si polarisé et exagéré ? Quelle place donner à ces outils dans notre métier et quel en est le prix ? Allez-vous trouver du boulot après vos études ? Et que se passe-t-il pour nous après que la bulle éclate ?\n\nComme éléments de réponse, je vous propose un guide pour comprendre cette technologie et ses impacts, un petit manuel d'autodéfense intellectuelle pour vous aider à démêler le vrai de la hype, afin de garder la tête froide face aux gros titres.",
     dateStartStr: "2026-12-04T10:15:00.000+00:00",
     durationMinutes: 50,
-    speakerIds: ["cmol8q71l006401ohp3x3w8ts"],
+    speakerIds: ["camille-teruel"],
     trackId: "sanctuaire-de-laclairiere",
     language: "fr",
     level: "BEGINNER",

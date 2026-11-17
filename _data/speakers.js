@@ -158,10 +158,9 @@ const speakers = [
     ],
   },
   {
-    id: "cmol8q71l006401ohp3x3w8ts",
-    name: "Jef Canzano",
-    bio: "Jef Canzano\nDirecteur des Docks Numériques\nSpécialisé dans l'accompagnement de projets innovants de solution SaaS, appli web et mobile.",
-    photoUrl: "/avatars/jef-canzano.webp",
+    id: "camille-teruel",
+    name: "Camille Teruel",
+    bio: "Je suis passionné par les outils et les méthodes qui facilitent le développement logiciel et qui nous guident vers la création de meilleurs systèmes.\n\nC'est ce qui m'a d'abord mené vers la conception de langages de programmation et l'analyse statique, puis vers l'IHM, puis vers le deep learning appliqué au code.\n\nJe développe actuellement steerway, un outil qui prend le contrepied des agents autonomes en remettant l'humain au centre du développement. Steerway utilise des LLMs comme moyen d'augmenter l'humain plutôt que de le remplacer.",
     socials: [],
   },
   {
