@@ -1,0 +1,19 @@
+_data/speakers.js
+  s_741bb0c7fef910::t_8a0969bd0c31c0 163
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5fe1886364f0ba04acc54b2d9279420c8a32abae",
+  "prompts": {},
+  "sessions": {
+    "s_741bb0c7fef910": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6f0c2011-c5ef-4fe9-9c77-13f4c2e6a163",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Yoan Thirion <yoan.thirion@gmail.com>"
+    }
+  }
+}
